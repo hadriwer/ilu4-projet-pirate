@@ -19,4 +19,9 @@ public class Attaque extends Carte {
     public int getActionVie() {
         return actionVie;
     }
+    
+    @Override
+    public String toString() {
+        return "Carte Attaque -> dégat = " + actionVie;
+    }
 }

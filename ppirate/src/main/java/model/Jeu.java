@@ -9,13 +9,15 @@ package model;
  * @author wer
  */
 public class Jeu {
+    private static final int NOMBRE_CARTE = 3;
     private Joueur joueur1;
     private Joueur joueur2;
+    private boolean tourDeJeu;
     private Pioche pioche;
     
     public Jeu() {
-        joueur1 = new Joueur();
-        joueur2 = new Joueur();
         pioche = new Pioche();
+        joueur1 = new Joueur("Jack Sparrow", pioche.distribuer(NOMBRE_CARTE));
+        joueur2 = new Joueur("Barbe Noire", pioche.distribuer(NOMBRE_CARTE));
     }
 }

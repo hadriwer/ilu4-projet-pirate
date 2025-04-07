@@ -25,4 +25,7 @@ public abstract class Carte {
     public String getDescription() {
         return description;
     }
+    
+    @Override
+    public abstract String toString();
 }

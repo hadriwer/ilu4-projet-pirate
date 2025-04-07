@@ -20,4 +20,9 @@ public class Popularite extends Carte {
         return pointDePop;
     }
     
+    @Override
+    public String toString() {
+        return "Carte Popularité -> gain = " + pointDePop;
+    }
+    
 }

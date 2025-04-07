@@ -4,10 +4,17 @@
  */
 package model;
 
+import java.util.List;
+import model.cartes.Carte;
+
 /**
  *
  * @author wer
  */
 public class MainJoueur {
+    private List<Carte> mainJoueur;
     
+    public MainJoueur(List<Carte> mainJoueur) {
+        this.mainJoueur = mainJoueur;
+    }
 }
