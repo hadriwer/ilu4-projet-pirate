@@ -29,6 +29,6 @@ public class Joueur {
 
         public MainJoueur(List<Carte> mainJoueur) {
             this.mainJoueur = mainJoueur;
+        }
     }
-}
 }

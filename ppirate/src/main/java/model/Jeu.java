@@ -4,6 +4,10 @@
  */
 package model;
 
+import java.util.List;
+import java.util.Stack;
+import model.cartes.Carte;
+
 /**
  *
  * @author wer
@@ -14,6 +18,10 @@ public class Jeu {
     private Joueur joueur2;
     private boolean tourDeJeu;
     private Pioche pioche;
+    
+    // Zone de jeu
+    private List<Carte> zonePopularite;
+    private Stack<Carte> zoneAction;
     
     public Jeu() {
         pioche = new Pioche();

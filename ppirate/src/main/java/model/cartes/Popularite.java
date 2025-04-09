@@ -24,5 +24,18 @@ public class Popularite extends Carte {
     public String toString() {
         return "Carte Popularité -> gain = " + pointDePop;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Popularite p = (Popularite)o;
+        return pointDePop == p.getPointDepPopularite() && super.getNom().equals(p.getNom());
+    }
+
+    @Override
+    public int hashCode() {
+        return 37 * pointDePop * super.getNom().hashCode();
+    }
     
 }
