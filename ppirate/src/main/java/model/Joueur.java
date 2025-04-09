@@ -23,4 +23,12 @@ public class Joueur {
         this.nom = nom;
         this.mainJoueur = new MainJoueur(mainJoueur);        
     }
+    
+    private class MainJoueur {
+        private List<Carte> mainJoueur;
+
+        public MainJoueur(List<Carte> mainJoueur) {
+            this.mainJoueur = mainJoueur;
+    }
+}
 }
