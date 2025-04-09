@@ -6,7 +6,9 @@ package testFonctionnel;
 
 import java.util.List;
 import model.Pioche;
+import model.cartes.Attaque;
 import model.cartes.Carte;
+import model.cartes.Popularite;
 
 /**
  *
@@ -36,6 +38,15 @@ public class TestUnitaire {
         System.out.println("Taille de la liste après distribuer = " + p.getPioche().size());
     }
     
+    private static void testEqualsCarte() {
+        Carte c1 = new Attaque("Sabotage", "tqt", 2);
+        Carte c2 = new Attaque("Sabotage", "hahahahha", 2);
+        Carte c3 = new Popularite("Fierté", "tqt", 1);
+        System.out.println("c1 == c1 ? : " + c1.equals(c1));
+        System.out.println("c1 == c2 ? : " + c1.equals(c2));
+        System.out.println("c2 == c3 ? : " + c2.equals(c3));
+    }
+    
     public static void main(String[] args) {
         System.out.println("*************************************************");
         TestUnitaire.testPiocher();
@@ -44,5 +55,6 @@ public class TestUnitaire {
         System.out.println("*************************************************");
         TestUnitaire.testDistribuer();
         System.out.println("*************************************************");
+        TestUnitaire.testEqualsCarte();
     }
 }

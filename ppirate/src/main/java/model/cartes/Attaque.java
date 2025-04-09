@@ -9,7 +9,7 @@ package model.cartes;
  * @author wer
  */
 public class Attaque extends Carte {
-    private int actionVie;
+    private final int actionVie;
     
     public Attaque(String nom, String description, int actionVie) {
         super(nom, description);
@@ -23,5 +23,18 @@ public class Attaque extends Carte {
     @Override
     public String toString() {
         return "Carte Attaque -> dégat = " + actionVie;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Attaque carte = (Attaque)o;
+        return this.actionVie == carte.getActionVie() && super.getNom().equals(carte.getNom());
+    }
+
+    @Override
+    public int hashCode() {
+        return 31 * actionVie * super.getNom().hashCode();
     }
 }
