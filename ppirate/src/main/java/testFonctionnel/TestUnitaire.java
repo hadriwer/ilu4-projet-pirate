@@ -42,9 +42,11 @@ public class TestUnitaire {
         Carte c1 = new Attaque("Sabotage", "tqt", 2);
         Carte c2 = new Attaque("Sabotage", "hahahahha", 2);
         Carte c3 = new Popularite("Fierté", "tqt", 1);
+        Carte c4 = new Popularite("Fierté", "une autre description", 1);
         System.out.println("c1 == c1 ? : " + c1.equals(c1));
         System.out.println("c1 == c2 ? : " + c1.equals(c2));
         System.out.println("c2 == c3 ? : " + c2.equals(c3));
+        System.out.println("c3 == c4 ? : " + c3.equals(c4));
     }
     
     public static void main(String[] args) {

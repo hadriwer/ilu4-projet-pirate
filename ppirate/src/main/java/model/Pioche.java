@@ -25,10 +25,10 @@ public class Pioche {
     }
     
     public void initPioche() {
-        for (int i = 0; i < 3; i ++)
-            pioche.add(new Attaque("Coup de Sabre", "tqt", 10));
+        for (int i = 0; i < 5; i ++)
+            pioche.add(new Attaque("Coup de Sabre", "tqt", 1));
         
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 5; i++)
             pioche.add(new Popularite("Vainqueur", "tqt", 1));
         
         trierPioche();
