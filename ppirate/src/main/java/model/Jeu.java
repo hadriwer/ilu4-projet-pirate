@@ -6,7 +6,9 @@ package model;
 
 import java.util.List;
 import java.util.Stack;
+import model.cartes.Attaque;
 import model.cartes.Carte;
+import model.cartes.Popularite;
 
 /**
  *
@@ -27,5 +29,39 @@ public class Jeu {
         pioche = new Pioche();
         joueur1 = new Joueur("Jack Sparrow", pioche.distribuer(NOMBRE_CARTE));
         joueur2 = new Joueur("Barbe Noire", pioche.distribuer(NOMBRE_CARTE));
+        this.tourDeJeu = true;
+    }
+    
+    public Joueur donnerTourDeJoueur() {
+        return tourDeJeu ? joueur1 : joueur2;
+    }
+    
+    public void changerJoueur() {
+        this.tourDeJeu = !tourDeJeu;
+    }
+    
+    public void deposerCarte(Carte carte) {
+        if (carte instanceof Attaque) {
+            zoneAction.add(carte);
+        }
+        else if (carte instanceof Popularite) {
+            zonePopularite.add(carte);
+        }
+        else {
+            throw new IllegalStateException("Aucune des cartes connues");
+        }
+    }
+    
+    public boolean giveFinPartie() {
+        return joueur1.giveGagnant() || joueur2.giveGagnant();
+    }
+   
+    public Joueur giveJoueurGagnant() {
+        if (joueur1.giveGagnant() || joueur2.givePerdant()) {
+            return joueur1;
+        }
+        else {
+            return joueur2;
+        }
     }
 }
