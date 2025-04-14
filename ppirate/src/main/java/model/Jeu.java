@@ -15,11 +15,12 @@ import model.cartes.Popularite;
  * @author wer
  */
 public class Jeu {
-    private static final int NOMBRE_CARTE = 3;
+    private static final int NOMBRE_CARTE = 4;
     private Joueur joueur1;
     private Joueur joueur2;
     private boolean tourDeJeu;
     private Pioche pioche;
+    private int compteNombreJeu;
     
     // Zone de jeu
     private List<Carte> zonePopularite;
@@ -30,6 +31,7 @@ public class Jeu {
         joueur1 = new Joueur("Jack Sparrow", pioche.distribuer(NOMBRE_CARTE));
         joueur2 = new Joueur("Barbe Noire", pioche.distribuer(NOMBRE_CARTE));
         this.tourDeJeu = true;
+        this.compteNombreJeu = 1;
     }
     
     public Joueur donnerTourDeJoueur() {
@@ -53,7 +55,10 @@ public class Jeu {
     }
     
     public boolean giveFinPartie() {
-        return joueur1.giveGagnant() || joueur2.giveGagnant();
+        return joueur1.giveGagnant() 
+                || joueur1.givePerdant()
+                || joueur2.giveGagnant()
+                || joueur2.givePerdant();
     }
    
     public Joueur giveJoueurGagnant() {
@@ -62,6 +67,23 @@ public class Jeu {
         }
         else {
             return joueur2;
+        }
+    }
+    
+    public void jouerJeu() {
+        while (giveFinPartie()) {
+            System.out.println("Nombre étape de jeu : " + compteNombreJeu);
+            
+            Joueur playingJoueur = donnerTourDeJoueur();
+            Carte piocherCarte = pioche.piocher();
+            
+            playingJoueur.prendreCarte(piocherCarte);
+            
+            
+            
+            changerJoueur();
+            
+            compteNombreJeu++;
         }
     }
 }

@@ -69,6 +69,10 @@ public class Joueur {
                 this.mainJoueur.toString();
     }
     
+    public void prendreCarte(Carte carte){
+        mainJoueur.prendreCarte(carte);
+    }
+    
     private class MainJoueur {
         private List<Carte> mainJoueur;
 
