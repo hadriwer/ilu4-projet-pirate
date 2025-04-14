@@ -4,6 +4,11 @@
  */
 package boundary.presentation;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
+import model.Joueur;
+
 /**
  *
  * @author ember
@@ -15,8 +20,17 @@ public class Plateau extends javax.swing.JFrame {
      */
     public Plateau() {
         initComponents();
+        setImage();
     }
 
+    public void setImage(){
+        BufferedImage image=ChargeurImage.chargerImage("presentation/plateau_background.png");
+        Image imageEchelle;
+        imageEchelle = image.getScaledInstance(backgroundLabel.getWidth(), backgroundLabel.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon typeIcon=new ImageIcon(imageEchelle);
+        backgroundLabel.setIcon(typeIcon);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,6 +40,7 @@ public class Plateau extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLayeredPane1 = new javax.swing.JLayeredPane();
         panelJoueur2 = new javax.swing.JPanel();
         panelInfosJ2 = new javax.swing.JPanel();
         panelImageJ2 = new javax.swing.JPanel();
@@ -89,14 +104,21 @@ public class Plateau extends javax.swing.JFrame {
         fillerMain2J1 = new javax.swing.Box.Filler(new java.awt.Dimension(100, 0), new java.awt.Dimension(200, 0), new java.awt.Dimension(100, 32767));
         panelTimerTour = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
+        backgroundLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1920, 1080));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
             }
         });
 
+        jLayeredPane1.setMaximumSize(new java.awt.Dimension(1920, 1080));
+        jLayeredPane1.setMinimumSize(new java.awt.Dimension(1920, 1080));
+        jLayeredPane1.setLayout(new java.awt.BorderLayout());
+
+        panelJoueur2.setOpaque(false);
         panelJoueur2.setLayout(new java.awt.BorderLayout());
 
         panelInfosJ2.setLayout(new java.awt.BorderLayout());
@@ -125,6 +147,7 @@ public class Plateau extends javax.swing.JFrame {
 
         panelJoueur2.add(panelInfosJ2, java.awt.BorderLayout.WEST);
 
+        panelMainJ2.setOpaque(false);
         panelMainJ2.setLayout(new javax.swing.BoxLayout(panelMainJ2, javax.swing.BoxLayout.LINE_AXIS));
         panelMainJ2.add(fillerMain1J2);
 
@@ -173,11 +196,13 @@ public class Plateau extends javax.swing.JFrame {
 
         panelJoueur2.add(panelMainJ2, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(panelJoueur2, java.awt.BorderLayout.NORTH);
+        jLayeredPane1.add(panelJoueur2, java.awt.BorderLayout.NORTH);
 
+        panelCommun.setOpaque(false);
         panelCommun.setLayout(new java.awt.BorderLayout());
 
         panelZonesPopularite.setBorder(javax.swing.BorderFactory.createEmptyBorder(50, 50, 50, 50));
+        panelZonesPopularite.setOpaque(false);
         panelZonesPopularite.setLayout(new java.awt.GridLayout(2, 0));
 
         panelZonePopulariteJ2.setBackground(new java.awt.Color(255, 204, 153));
@@ -228,8 +253,9 @@ public class Plateau extends javax.swing.JFrame {
 
         panelCommun.add(panelPioche, java.awt.BorderLayout.EAST);
 
-        getContentPane().add(panelCommun, java.awt.BorderLayout.CENTER);
+        jLayeredPane1.add(panelCommun, java.awt.BorderLayout.CENTER);
 
+        panelJoueur1.setOpaque(false);
         panelJoueur1.setLayout(new java.awt.BorderLayout());
 
         panelInfosJ1.setLayout(new java.awt.BorderLayout());
@@ -258,6 +284,7 @@ public class Plateau extends javax.swing.JFrame {
 
         panelJoueur1.add(panelInfosJ1, java.awt.BorderLayout.WEST);
 
+        panelMainJ1.setOpaque(false);
         panelMainJ1.setLayout(new javax.swing.BoxLayout(panelMainJ1, javax.swing.BoxLayout.LINE_AXIS));
         panelMainJ1.add(fillerMain1J1);
 
@@ -305,7 +332,29 @@ public class Plateau extends javax.swing.JFrame {
 
         panelJoueur1.add(panelMainJ1, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(panelJoueur1, java.awt.BorderLayout.SOUTH);
+        jLayeredPane1.add(panelJoueur1, java.awt.BorderLayout.SOUTH);
+
+        backgroundLabel.setMaximumSize(new java.awt.Dimension(1920, 1080));
+        backgroundLabel.setMinimumSize(new java.awt.Dimension(1920, 1080));
+        backgroundLabel.setOpaque(true);
+        backgroundLabel.setPreferredSize(new java.awt.Dimension(1920, 1080));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 990, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(backgroundLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(backgroundLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1024, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -320,6 +369,7 @@ public class Plateau extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel backgroundLabel;
     private boundary.presentation.CartePanel cartePanel1;
     private javax.swing.Box.Filler fillerEspaceCarte1J1;
     private javax.swing.Box.Filler fillerEspaceCarte1J2;
@@ -354,6 +404,7 @@ public class Plateau extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel panelCarte1J2;
     private javax.swing.JPanel panelCarte2J1;
     private javax.swing.JPanel panelCarte2J2;
