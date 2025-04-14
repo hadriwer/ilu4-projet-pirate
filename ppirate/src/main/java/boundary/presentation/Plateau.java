@@ -76,8 +76,7 @@ public class Plateau extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         panelMainJ1 = new javax.swing.JPanel();
         fillerMain1J1 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 0), new java.awt.Dimension(200, 0), new java.awt.Dimension(60, 32767));
-        panelCarte1J1 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
+        cartePanel1 = new boundary.presentation.CartePanel();
         fillerEspaceCarte1J1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         panelCarte2J1 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -92,7 +91,11 @@ public class Plateau extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.BorderLayout());
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
         panelJoueur2.setLayout(new java.awt.BorderLayout());
 
@@ -258,13 +261,12 @@ public class Plateau extends javax.swing.JFrame {
         panelMainJ1.setLayout(new javax.swing.BoxLayout(panelMainJ1, javax.swing.BoxLayout.LINE_AXIS));
         panelMainJ1.add(fillerMain1J1);
 
-        panelCarte1J1.setBackground(new java.awt.Color(153, 102, 255));
-        panelCarte1J1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 10, 0, 10));
-
-        jLabel19.setText("CARTE 1");
-        panelCarte1J1.add(jLabel19);
-
-        panelMainJ1.add(panelCarte1J1);
+        cartePanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cartePanel1MousePressed(evt);
+            }
+        });
+        panelMainJ1.add(cartePanel1);
         panelMainJ1.add(fillerEspaceCarte1J1);
 
         panelCarte2J1.setBackground(new java.awt.Color(153, 102, 255));
@@ -308,8 +310,17 @@ public class Plateau extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cartePanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartePanel1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cartePanel1MousePressed
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        System.out.println("boundary.presentation.Plateau.formMousePressed()");
+    }//GEN-LAST:event_formMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private boundary.presentation.CartePanel cartePanel1;
     private javax.swing.Box.Filler fillerEspaceCarte1J1;
     private javax.swing.Box.Filler fillerEspaceCarte1J2;
     private javax.swing.Box.Filler fillerEspaceCarte2J1;
@@ -333,7 +344,6 @@ public class Plateau extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -344,7 +354,6 @@ public class Plateau extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel panelCarte1J1;
     private javax.swing.JPanel panelCarte1J2;
     private javax.swing.JPanel panelCarte2J1;
     private javax.swing.JPanel panelCarte2J2;

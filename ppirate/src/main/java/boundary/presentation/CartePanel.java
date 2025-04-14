@@ -20,10 +20,11 @@ public class CartePanel extends javax.swing.JPanel {
     //Attributs pour l'IHM
     private int posX, posY; // Position 
     private int dimX, dimY; // Dimension
+    private int newPosX, newPosY; // Position nouvelles
     private Carte carte = new Attaque("", "", 0);
     private boolean drag = false; // indique si on est entrain de déplacer la carte
-    private int decalageX; // Distance horizontale entre le clic et le coin gauche de la carte
-    private int decalageY; // Distance verticale entre le clic et le coin haut de la carte 
+    private int posMouseX; // Distance horizontale entre le clic et le coin gauche de la carte
+    private int posMouseY; // Distance verticale entre le clic et le coin haut de la carte 
     
     /**
      * Creates new form CartePanel
@@ -110,22 +111,23 @@ public class CartePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
-        if (carte.clicIn(evt.getX(), evt.getY())) {
-            drag = true;
+        
+        drag = true;
 
-            decalageX = evt.getX() - carte.getPosX();
-            decalageY = evt.getY() - carte.getPosY();
-            
-            System.out.println("control.CarteController.mousePressed()");
-        }
+        posMouseX = evt.getX();
+        posMouseY = evt.getY();
+
     }//GEN-LAST:event_jPanel1MousePressed
 
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
         if (drag) {
-            int newPosX = evt.getX() - decalageX;
-            int newPosY = evt.getY() - decalageY;
-
-            carte.moveTo(newPosX, newPosY); 
+            int tempPosX = evt.getX() - posMouseX;
+            int tempPosY = evt.getY() - posMouseY;
+            
+            newPosX = getX() + tempPosX;
+            newPosY = getY() + tempPosY;
+            
+            this.setLocation(newPosX, newPosY);
             repaint();                   
         }
     }//GEN-LAST:event_jPanel1MouseDragged
@@ -148,13 +150,6 @@ public class CartePanel extends javax.swing.JPanel {
 
     public int getDimY() {
         return dimY;
-    }
-    
-    
-    // Déplace la carte à une nouvelle position (x, y).
-    public void moveTo(int newPosX, int newPosY) {
-        this.posX = newPosX;
-        this.posY = newPosY;
     }
     
     
