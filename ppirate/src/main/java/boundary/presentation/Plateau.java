@@ -92,7 +92,7 @@ public class Plateau extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         panelJoueur2.setLayout(new java.awt.BorderLayout());
 

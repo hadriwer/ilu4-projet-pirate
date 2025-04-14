@@ -2,41 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package boundary.presentation;
-
-import java.awt.AlphaComposite;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.geom.RoundRectangle2D;
+package boundary.presentation.components;
 
 /**
  *
- * @author David Marquet
+ * @author vnm4618a
  */
-public class ZonePopularitePanel extends javax.swing.JPanel {
-    private float opacite;
-    private static final int BORDURE = 15;
+public class MainJoueurPanel extends javax.swing.JPanel {
+
     /**
-     * Creates new form ZonePopularitePanel
+     * Creates new form MainJoueurPanel
      */
-    public ZonePopularitePanel() {
-        this.opacite = 0.5f;
+    public MainJoueurPanel() {
         initComponents();
-    }
-    
-    @Override
-    protected void paintComponent(Graphics g){
-        Graphics2D g2d = (Graphics2D) g.create();
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,this.opacite)); // baisse l'opacité du panel
-        g2d.setColor(Color.BLACK);
-        g2d.fill(new RoundRectangle2D.Float(0,0,getWidth(),getHeight(),BORDURE,BORDURE));
-        
-        g2d.dispose();
-        
-        super.paintComponent(g);
     }
 
     /**
@@ -48,21 +26,33 @@ public class ZonePopularitePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setOpaque(false);
+        jLabel1 = new javax.swing.JLabel();
+
+        setBorder(javax.swing.BorderFactory.createLineBorder(null));
+
+        jLabel1.setFont(new java.awt.Font("Yrsa", 0, 36)); // NOI18N
+        jLabel1.setText("Main du joueur");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1132, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(195, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(245, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
