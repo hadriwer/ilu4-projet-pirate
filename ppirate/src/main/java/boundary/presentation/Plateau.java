@@ -108,6 +108,8 @@ public class Plateau extends javax.swing.JFrame {
         getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
 
         jPanel1.setOpaque(false);
+        jPanel1.setMaximumSize(new java.awt.Dimension(1080, 720));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1080, 720));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         panelCommun.setOpaque(false);
