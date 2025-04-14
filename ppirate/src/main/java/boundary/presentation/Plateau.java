@@ -90,24 +90,27 @@ public class Plateau extends javax.swing.JFrame {
         backgroundLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 720));
-        setMinimumSize(new java.awt.Dimension(800, 720));
-        setPreferredSize(new java.awt.Dimension(800, 720));
+        setMaximumSize(new java.awt.Dimension(1080, 720));
+        setMinimumSize(new java.awt.Dimension(1080, 720));
+        setPreferredSize(new java.awt.Dimension(1080, 720));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
             }
         });
 
-        jLayeredPane1.setMaximumSize(new java.awt.Dimension(300, 720));
-        jLayeredPane1.setMinimumSize(new java.awt.Dimension(300, 720));
-        jLayeredPane1.setPreferredSize(new java.awt.Dimension(300, 378));
+        jLayeredPane1.setMaximumSize(new java.awt.Dimension(1080, 720));
+        jLayeredPane1.setMinimumSize(new java.awt.Dimension(1080, 720));
+        jLayeredPane1.setPreferredSize(new java.awt.Dimension(1080, 720));
         jLayeredPane1.setLayout(new java.awt.BorderLayout());
 
         panelJoueur2.setOpaque(false);
         panelJoueur2.setLayout(new java.awt.BorderLayout());
 
+        panelInfosJ2.setOpaque(false);
         panelInfosJ2.setLayout(new java.awt.BorderLayout());
+
+        jaugeDePopularitePanel2.setOpaque(false);
 
         javax.swing.GroupLayout jaugeDePopularitePanel2Layout = new javax.swing.GroupLayout(jaugeDePopularitePanel2);
         jaugeDePopularitePanel2.setLayout(jaugeDePopularitePanel2Layout);
@@ -121,6 +124,8 @@ public class Plateau extends javax.swing.JFrame {
         );
 
         panelInfosJ2.add(jaugeDePopularitePanel2, java.awt.BorderLayout.EAST);
+
+        jaugeDeViePanel2.setOpaque(false);
         panelInfosJ2.add(jaugeDeViePanel2, java.awt.BorderLayout.SOUTH);
         panelInfosJ2.add(profilJoueurPanel2, java.awt.BorderLayout.CENTER);
 
@@ -208,6 +213,7 @@ public class Plateau extends javax.swing.JFrame {
 
         panelCommun.add(panelZonesPopularite, java.awt.BorderLayout.CENTER);
 
+        panelZoneAction.setOpaque(false);
         panelZoneAction.setPreferredSize(new java.awt.Dimension(100, 26));
         panelZoneAction.setLayout(new java.awt.GridLayout(3, 0));
         panelZoneAction.add(fillerZoneAction1);
@@ -237,6 +243,7 @@ public class Plateau extends javax.swing.JFrame {
         panelJoueur1.setOpaque(false);
         panelJoueur1.setLayout(new java.awt.BorderLayout());
 
+        panelInfosJ1.setOpaque(false);
         panelInfosJ1.setLayout(new java.awt.BorderLayout());
 
         jaugeDePopularitePanel1.setBackground(null);
@@ -254,6 +261,8 @@ public class Plateau extends javax.swing.JFrame {
         );
 
         panelInfosJ1.add(jaugeDePopularitePanel1, java.awt.BorderLayout.EAST);
+
+        jaugeDeViePanel1.setOpaque(false);
         panelInfosJ1.add(jaugeDeViePanel1, java.awt.BorderLayout.NORTH);
         panelInfosJ1.add(profilJoueurPanel1, java.awt.BorderLayout.CENTER);
 
@@ -300,10 +309,10 @@ public class Plateau extends javax.swing.JFrame {
 
         jLayeredPane1.add(panelJoueur1, java.awt.BorderLayout.SOUTH);
 
-        backgroundLabel.setMaximumSize(new java.awt.Dimension(600, 720));
-        backgroundLabel.setMinimumSize(new java.awt.Dimension(600, 720));
+        backgroundLabel.setMaximumSize(new java.awt.Dimension(1080, 720));
+        backgroundLabel.setMinimumSize(new java.awt.Dimension(1080, 720));
         backgroundLabel.setOpaque(true);
-        backgroundLabel.setPreferredSize(new java.awt.Dimension(600, 720));
+        backgroundLabel.setPreferredSize(new java.awt.Dimension(1080, 720));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

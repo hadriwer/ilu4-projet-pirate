@@ -4,13 +4,13 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[800, 720]"/>
+      <Dimension value="[1080, 720]"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[800, 720]"/>
+      <Dimension value="[1080, 720]"/>
     </Property>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[800, 720]"/>
+      <Dimension value="[1080, 720]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -57,13 +57,13 @@
     <Container class="javax.swing.JLayeredPane" name="jLayeredPane1">
       <Properties>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[300, 720]"/>
+          <Dimension value="[1080, 720]"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[300, 720]"/>
+          <Dimension value="[1080, 720]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[300, 378]"/>
+          <Dimension value="[1080, 720]"/>
         </Property>
       </Properties>
 
@@ -82,6 +82,9 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="panelInfosJ2">
+              <Properties>
+                <Property name="opaque" type="boolean" value="false"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                   <BorderConstraints direction="West"/>
@@ -91,6 +94,9 @@
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
               <SubComponents>
                 <Container class="boundary.presentation.components.JaugeDePopularitePanel" name="jaugeDePopularitePanel2">
+                  <Properties>
+                    <Property name="opaque" type="boolean" value="false"/>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                       <BorderConstraints direction="East"/>
@@ -111,6 +117,9 @@
                   </Layout>
                 </Container>
                 <Component class="boundary.presentation.components.JaugeDeViePanel" name="jaugeDeViePanel2">
+                  <Properties>
+                    <Property name="opaque" type="boolean" value="false"/>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                       <BorderConstraints direction="South"/>
@@ -306,6 +315,7 @@
             </Container>
             <Container class="javax.swing.JPanel" name="panelZoneAction">
               <Properties>
+                <Property name="opaque" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[100, 26]"/>
                 </Property>
@@ -442,6 +452,9 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="panelInfosJ1">
+              <Properties>
+                <Property name="opaque" type="boolean" value="false"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                   <BorderConstraints direction="West"/>
@@ -477,6 +490,9 @@
                   </Layout>
                 </Container>
                 <Component class="boundary.presentation.components.JaugeDeViePanel" name="jaugeDeViePanel1">
+                  <Properties>
+                    <Property name="opaque" type="boolean" value="false"/>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                       <BorderConstraints direction="North"/>
@@ -597,14 +613,14 @@
     <Component class="javax.swing.JLabel" name="backgroundLabel">
       <Properties>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[600, 720]"/>
+          <Dimension value="[1080, 720]"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[600, 720]"/>
+          <Dimension value="[1080, 720]"/>
         </Property>
         <Property name="opaque" type="boolean" value="true"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[600, 720]"/>
+          <Dimension value="[1080, 720]"/>
         </Property>
       </Properties>
     </Component>
