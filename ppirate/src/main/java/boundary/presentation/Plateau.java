@@ -4,6 +4,7 @@
  */
 package boundary.presentation;
 
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
@@ -20,12 +21,15 @@ public class Plateau extends javax.swing.JFrame {
      */
     public Plateau() {
         initComponents();
+        backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
         setImage();
+        setResizable(false);
     }
 
     public void setImage(){
         BufferedImage image=ChargeurImage.chargerImage("presentation/plateau_background.png");
         Image imageEchelle;
+        System.out.println(backgroundLabel.getWidth() + " / " + backgroundLabel.getHeight());
         imageEchelle = image.getScaledInstance(backgroundLabel.getWidth(), backgroundLabel.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon typeIcon=new ImageIcon(imageEchelle);
         backgroundLabel.setIcon(typeIcon);
@@ -40,24 +44,7 @@ public class Plateau extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLayeredPane1 = new javax.swing.JLayeredPane();
-        panelJoueur2 = new javax.swing.JPanel();
-        panelInfosJ2 = new javax.swing.JPanel();
-        jaugeDePopularitePanel2 = new boundary.presentation.components.JaugeDePopularitePanel();
-        jaugeDeViePanel2 = new boundary.presentation.components.JaugeDeViePanel();
-        profilJoueurPanel2 = new boundary.presentation.components.ProfilJoueurPanel();
-        panelMainJ2 = new javax.swing.JPanel();
-        fillerMain1J2 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 0), new java.awt.Dimension(200, 0), new java.awt.Dimension(60, 32767));
-        cartePanel8 = new boundary.presentation.CartePanel();
-        fillerEspaceCarte1J2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        cartePanel7 = new boundary.presentation.CartePanel();
-        fillerEspaceCarte2J2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        cartePanel6 = new boundary.presentation.CartePanel();
-        fillerEspaceCarte3J2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        cartePanel5 = new boundary.presentation.CartePanel();
-        fillerMain2J2 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 0), new java.awt.Dimension(200, 0), new java.awt.Dimension(60, 32767));
-        panelDescriptionCarte = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         panelCommun = new javax.swing.JPanel();
         panelZonesPopularite = new javax.swing.JPanel();
         zonePopularitePanel1 = new boundary.presentation.components.ZonePopularitePanel();
@@ -87,6 +74,24 @@ public class Plateau extends javax.swing.JFrame {
         cartePanel4 = new boundary.presentation.CartePanel();
         fillerMain2J1 = new javax.swing.Box.Filler(new java.awt.Dimension(100, 0), new java.awt.Dimension(200, 0), new java.awt.Dimension(100, 32767));
         timerPanel1 = new boundary.presentation.components.TimerPanel();
+        panelJoueur2 = new javax.swing.JPanel();
+        panelInfosJ2 = new javax.swing.JPanel();
+        jaugeDePopularitePanel2 = new boundary.presentation.components.JaugeDePopularitePanel();
+        jaugeDeViePanel2 = new boundary.presentation.components.JaugeDeViePanel();
+        profilJoueurPanel2 = new boundary.presentation.components.ProfilJoueurPanel();
+        panelMainJ2 = new javax.swing.JPanel();
+        fillerMain1J2 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 0), new java.awt.Dimension(200, 0), new java.awt.Dimension(60, 32767));
+        cartePanel8 = new boundary.presentation.CartePanel();
+        fillerEspaceCarte1J2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        cartePanel7 = new boundary.presentation.CartePanel();
+        fillerEspaceCarte2J2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        cartePanel6 = new boundary.presentation.CartePanel();
+        fillerEspaceCarte3J2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        cartePanel5 = new boundary.presentation.CartePanel();
+        fillerMain2J2 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 0), new java.awt.Dimension(200, 0), new java.awt.Dimension(60, 32767));
+        panelDescriptionCarte = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         backgroundLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,11 +103,141 @@ public class Plateau extends javax.swing.JFrame {
                 formMousePressed(evt);
             }
         });
+        getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
 
-        jLayeredPane1.setMaximumSize(new java.awt.Dimension(1080, 720));
-        jLayeredPane1.setMinimumSize(new java.awt.Dimension(1080, 720));
-        jLayeredPane1.setPreferredSize(new java.awt.Dimension(1080, 720));
-        jLayeredPane1.setLayout(new java.awt.BorderLayout());
+        jPanel1.setOpaque(false);
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        panelCommun.setOpaque(false);
+        panelCommun.setLayout(new java.awt.BorderLayout());
+
+        panelZonesPopularite.setBorder(javax.swing.BorderFactory.createEmptyBorder(50, 50, 50, 50));
+        panelZonesPopularite.setOpaque(false);
+        panelZonesPopularite.setLayout(new java.awt.GridLayout(2, 0));
+
+        javax.swing.GroupLayout zonePopularitePanel1Layout = new javax.swing.GroupLayout(zonePopularitePanel1);
+        zonePopularitePanel1.setLayout(zonePopularitePanel1Layout);
+        zonePopularitePanel1Layout.setHorizontalGroup(
+            zonePopularitePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1320, Short.MAX_VALUE)
+        );
+        zonePopularitePanel1Layout.setVerticalGroup(
+            zonePopularitePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 390, Short.MAX_VALUE)
+        );
+
+        panelZonesPopularite.add(zonePopularitePanel1);
+
+        javax.swing.GroupLayout zonePopularitePanel2Layout = new javax.swing.GroupLayout(zonePopularitePanel2);
+        zonePopularitePanel2.setLayout(zonePopularitePanel2Layout);
+        zonePopularitePanel2Layout.setHorizontalGroup(
+            zonePopularitePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1320, Short.MAX_VALUE)
+        );
+        zonePopularitePanel2Layout.setVerticalGroup(
+            zonePopularitePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 390, Short.MAX_VALUE)
+        );
+
+        panelZonesPopularite.add(zonePopularitePanel2);
+
+        panelCommun.add(panelZonesPopularite, java.awt.BorderLayout.CENTER);
+
+        panelZoneAction.setOpaque(false);
+        panelZoneAction.setPreferredSize(new java.awt.Dimension(100, 26));
+        panelZoneAction.setLayout(new java.awt.GridLayout(3, 0));
+        panelZoneAction.add(fillerZoneAction1);
+
+        panelZoneAction1.setBackground(new java.awt.Color(204, 255, 102));
+        panelZoneAction1.setPreferredSize(new java.awt.Dimension(100, 26));
+        panelZoneAction1.setLayout(new javax.swing.BoxLayout(panelZoneAction1, javax.swing.BoxLayout.LINE_AXIS));
+
+        jLabel15.setText("ACTION");
+        panelZoneAction1.add(jLabel15);
+
+        panelZoneAction.add(panelZoneAction1);
+        panelZoneAction.add(fillerZoneAction2);
+
+        panelCommun.add(panelZoneAction, java.awt.BorderLayout.WEST);
+
+        panelPioche.setPreferredSize(new java.awt.Dimension(100, 26));
+        panelPioche.setLayout(new java.awt.GridLayout(3, 0));
+        panelPioche.add(fillerPioche1);
+        panelPioche.add(pioche1);
+        panelPioche.add(fillerPioche2);
+
+        panelCommun.add(panelPioche, java.awt.BorderLayout.EAST);
+
+        jPanel1.add(panelCommun, java.awt.BorderLayout.CENTER);
+
+        panelJoueur1.setOpaque(false);
+        panelJoueur1.setLayout(new java.awt.BorderLayout());
+
+        panelInfosJ1.setOpaque(false);
+        panelInfosJ1.setLayout(new java.awt.BorderLayout());
+
+        jaugeDePopularitePanel1.setBackground(null);
+        jaugeDePopularitePanel1.setOpaque(false);
+
+        javax.swing.GroupLayout jaugeDePopularitePanel1Layout = new javax.swing.GroupLayout(jaugeDePopularitePanel1);
+        jaugeDePopularitePanel1.setLayout(jaugeDePopularitePanel1Layout);
+        jaugeDePopularitePanel1Layout.setHorizontalGroup(
+            jaugeDePopularitePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 117, Short.MAX_VALUE)
+        );
+        jaugeDePopularitePanel1Layout.setVerticalGroup(
+            jaugeDePopularitePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        panelInfosJ1.add(jaugeDePopularitePanel1, java.awt.BorderLayout.EAST);
+
+        jaugeDeViePanel1.setOpaque(false);
+        panelInfosJ1.add(jaugeDeViePanel1, java.awt.BorderLayout.NORTH);
+        panelInfosJ1.add(profilJoueurPanel1, java.awt.BorderLayout.CENTER);
+
+        panelJoueur1.add(panelInfosJ1, java.awt.BorderLayout.WEST);
+
+        panelMainJ1.setOpaque(false);
+        panelMainJ1.setLayout(new javax.swing.BoxLayout(panelMainJ1, javax.swing.BoxLayout.LINE_AXIS));
+        panelMainJ1.add(fillerMain1J1);
+
+        cartePanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cartePanel2MousePressed(evt);
+            }
+        });
+        panelMainJ1.add(cartePanel2);
+        panelMainJ1.add(fillerEspaceCarte1J1);
+
+        cartePanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cartePanel1MousePressed(evt);
+            }
+        });
+        panelMainJ1.add(cartePanel1);
+        panelMainJ1.add(fillerEspaceCarte2J1);
+
+        cartePanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cartePanel3MousePressed(evt);
+            }
+        });
+        panelMainJ1.add(cartePanel3);
+        panelMainJ1.add(fillerEspaceCarte3J1);
+
+        cartePanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cartePanel4MousePressed(evt);
+            }
+        });
+        panelMainJ1.add(cartePanel4);
+        panelMainJ1.add(fillerMain2J1);
+        panelMainJ1.add(timerPanel1);
+
+        panelJoueur1.add(panelMainJ1, java.awt.BorderLayout.CENTER);
+
+        jPanel1.add(panelJoueur1, java.awt.BorderLayout.SOUTH);
 
         panelJoueur2.setOpaque(false);
         panelJoueur2.setLayout(new java.awt.BorderLayout());
@@ -176,160 +311,37 @@ public class Plateau extends javax.swing.JFrame {
 
         panelJoueur2.add(panelMainJ2, java.awt.BorderLayout.CENTER);
 
-        jLayeredPane1.add(panelJoueur2, java.awt.BorderLayout.NORTH);
+        jPanel1.add(panelJoueur2, java.awt.BorderLayout.NORTH);
 
-        panelCommun.setOpaque(false);
-        panelCommun.setLayout(new java.awt.BorderLayout());
-
-        panelZonesPopularite.setBorder(javax.swing.BorderFactory.createEmptyBorder(50, 50, 50, 50));
-        panelZonesPopularite.setOpaque(false);
-        panelZonesPopularite.setLayout(new java.awt.GridLayout(2, 0));
-
-        javax.swing.GroupLayout zonePopularitePanel1Layout = new javax.swing.GroupLayout(zonePopularitePanel1);
-        zonePopularitePanel1.setLayout(zonePopularitePanel1Layout);
-        zonePopularitePanel1Layout.setHorizontalGroup(
-            zonePopularitePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 980, Short.MAX_VALUE)
-        );
-        zonePopularitePanel1Layout.setVerticalGroup(
-            zonePopularitePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
-        );
-
-        panelZonesPopularite.add(zonePopularitePanel1);
-
-        javax.swing.GroupLayout zonePopularitePanel2Layout = new javax.swing.GroupLayout(zonePopularitePanel2);
-        zonePopularitePanel2.setLayout(zonePopularitePanel2Layout);
-        zonePopularitePanel2Layout.setHorizontalGroup(
-            zonePopularitePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 980, Short.MAX_VALUE)
-        );
-        zonePopularitePanel2Layout.setVerticalGroup(
-            zonePopularitePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
-        );
-
-        panelZonesPopularite.add(zonePopularitePanel2);
-
-        panelCommun.add(panelZonesPopularite, java.awt.BorderLayout.CENTER);
-
-        panelZoneAction.setOpaque(false);
-        panelZoneAction.setPreferredSize(new java.awt.Dimension(100, 26));
-        panelZoneAction.setLayout(new java.awt.GridLayout(3, 0));
-        panelZoneAction.add(fillerZoneAction1);
-
-        panelZoneAction1.setBackground(new java.awt.Color(204, 255, 102));
-        panelZoneAction1.setPreferredSize(new java.awt.Dimension(100, 26));
-        panelZoneAction1.setLayout(new javax.swing.BoxLayout(panelZoneAction1, javax.swing.BoxLayout.LINE_AXIS));
-
-        jLabel15.setText("ACTION");
-        panelZoneAction1.add(jLabel15);
-
-        panelZoneAction.add(panelZoneAction1);
-        panelZoneAction.add(fillerZoneAction2);
-
-        panelCommun.add(panelZoneAction, java.awt.BorderLayout.WEST);
-
-        panelPioche.setPreferredSize(new java.awt.Dimension(100, 26));
-        panelPioche.setLayout(new java.awt.GridLayout(3, 0));
-        panelPioche.add(fillerPioche1);
-        panelPioche.add(pioche1);
-        panelPioche.add(fillerPioche2);
-
-        panelCommun.add(panelPioche, java.awt.BorderLayout.EAST);
-
-        jLayeredPane1.add(panelCommun, java.awt.BorderLayout.CENTER);
-
-        panelJoueur1.setOpaque(false);
-        panelJoueur1.setLayout(new java.awt.BorderLayout());
-
-        panelInfosJ1.setOpaque(false);
-        panelInfosJ1.setLayout(new java.awt.BorderLayout());
-
-        jaugeDePopularitePanel1.setBackground(null);
-        jaugeDePopularitePanel1.setOpaque(false);
-
-        javax.swing.GroupLayout jaugeDePopularitePanel1Layout = new javax.swing.GroupLayout(jaugeDePopularitePanel1);
-        jaugeDePopularitePanel1.setLayout(jaugeDePopularitePanel1Layout);
-        jaugeDePopularitePanel1Layout.setHorizontalGroup(
-            jaugeDePopularitePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 117, Short.MAX_VALUE)
-        );
-        jaugeDePopularitePanel1Layout.setVerticalGroup(
-            jaugeDePopularitePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
-
-        panelInfosJ1.add(jaugeDePopularitePanel1, java.awt.BorderLayout.EAST);
-
-        jaugeDeViePanel1.setOpaque(false);
-        panelInfosJ1.add(jaugeDeViePanel1, java.awt.BorderLayout.NORTH);
-        panelInfosJ1.add(profilJoueurPanel1, java.awt.BorderLayout.CENTER);
-
-        panelJoueur1.add(panelInfosJ1, java.awt.BorderLayout.WEST);
-
-        panelMainJ1.setOpaque(false);
-        panelMainJ1.setLayout(new javax.swing.BoxLayout(panelMainJ1, javax.swing.BoxLayout.LINE_AXIS));
-        panelMainJ1.add(fillerMain1J1);
-
-        cartePanel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cartePanel2MousePressed(evt);
-            }
-        });
-        panelMainJ1.add(cartePanel2);
-        panelMainJ1.add(fillerEspaceCarte1J1);
-
-        cartePanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cartePanel1MousePressed(evt);
-            }
-        });
-        panelMainJ1.add(cartePanel1);
-        panelMainJ1.add(fillerEspaceCarte2J1);
-
-        cartePanel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cartePanel3MousePressed(evt);
-            }
-        });
-        panelMainJ1.add(cartePanel3);
-        panelMainJ1.add(fillerEspaceCarte3J1);
-
-        cartePanel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cartePanel4MousePressed(evt);
-            }
-        });
-        panelMainJ1.add(cartePanel4);
-        panelMainJ1.add(fillerMain2J1);
-        panelMainJ1.add(timerPanel1);
-
-        panelJoueur1.add(panelMainJ1, java.awt.BorderLayout.CENTER);
-
-        jLayeredPane1.add(panelJoueur1, java.awt.BorderLayout.SOUTH);
+        getContentPane().add(jPanel1);
 
         backgroundLabel.setMaximumSize(new java.awt.Dimension(1080, 720));
         backgroundLabel.setMinimumSize(new java.awt.Dimension(1080, 720));
         backgroundLabel.setOpaque(true);
         backgroundLabel.setPreferredSize(new java.awt.Dimension(1080, 720));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 990, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(backgroundLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1280, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1620, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(backgroundLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(backgroundLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE))
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1140, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(backgroundLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
+
+        getContentPane().add(jPanel2);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -397,7 +409,8 @@ public class Plateau extends javax.swing.JFrame {
     private javax.swing.Box.Filler fillerZoneAction2;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private boundary.presentation.components.JaugeDePopularitePanel jaugeDePopularitePanel1;
     private boundary.presentation.components.JaugeDePopularitePanel jaugeDePopularitePanel2;
     private boundary.presentation.components.JaugeDeViePanel jaugeDeViePanel1;
