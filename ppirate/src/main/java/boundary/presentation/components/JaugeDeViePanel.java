@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package boundary.presentation;
+package boundary.presentation.components;
 
 /**
  *
@@ -31,11 +31,11 @@ public class JaugeDeViePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        vie1 = new boundary.presentation.ViePanel();
-        vie2 = new boundary.presentation.ViePanel();
-        vie3 = new boundary.presentation.ViePanel();
-        vie4 = new boundary.presentation.ViePanel();
-        vie5 = new boundary.presentation.ViePanel();
+        vie1 = new boundary.presentation.components.ViePanel();
+        vie2 = new boundary.presentation.components.ViePanel();
+        vie3 = new boundary.presentation.components.ViePanel();
+        vie4 = new boundary.presentation.components.ViePanel();
+        vie5 = new boundary.presentation.components.ViePanel();
 
         setMaximumSize(new java.awt.Dimension(150, 30));
         setMinimumSize(new java.awt.Dimension(150, 30));
@@ -110,10 +110,10 @@ public class JaugeDeViePanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private boundary.presentation.ViePanel vie1;
-    private boundary.presentation.ViePanel vie2;
-    private boundary.presentation.ViePanel vie3;
-    private boundary.presentation.ViePanel vie4;
-    private boundary.presentation.ViePanel vie5;
+    private boundary.presentation.components.ViePanel vie1;
+    private boundary.presentation.components.ViePanel vie2;
+    private boundary.presentation.components.ViePanel vie3;
+    private boundary.presentation.components.ViePanel vie4;
+    private boundary.presentation.components.ViePanel vie5;
     // End of variables declaration//GEN-END:variables
 }
