@@ -8,7 +8,7 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
-import model.Joueur;
+import util.EnumJoueur;
 
 /**
  *
@@ -24,6 +24,8 @@ public class Plateau extends javax.swing.JFrame {
         backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
         setImage();
         setResizable(false);
+        profilJoueurPanel1.setJoueur(EnumJoueur.JACK_LE_BORGNE);
+        profilJoueurPanel2.setJoueur(EnumJoueur.BILL_JAMBE_DE_BOIS);
     }
 
     public void setImage(){

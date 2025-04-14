@@ -8,7 +8,7 @@ import boundary.presentation.ChargeurImage;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
-import model.Joueur;
+import util.EnumJoueur;
 
 /**
  *
@@ -16,20 +16,17 @@ import model.Joueur;
  */
 public class ProfilJoueurPanel extends javax.swing.JPanel {
 
-    private Joueur joueur;
+    private EnumJoueur joueur;
 
-    public Joueur getJoueur() {
+    public EnumJoueur getJoueur() {
         return joueur;
     }
 
-    public void setJoueur(Joueur joueur) {
+    public void setJoueur(EnumJoueur joueur) {
         this.joueur = joueur;
         setImage(joueur);
     }
 
-    
-    
-    
     
     /**
      * Creates new form ProfilJoueurPanel
@@ -38,7 +35,7 @@ public class ProfilJoueurPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    public void setImage(Joueur joueur){
+    public void setImage(EnumJoueur joueur){
         BufferedImage image=ChargeurImage.chargerImage("presentation/"+joueur.toString().toLowerCase()+"_joueur.png");
         Image imageEchelle;
         imageEchelle = image.getScaledInstance(iconLabel.getWidth(), iconLabel.getHeight(), Image.SCALE_SMOOTH);

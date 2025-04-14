@@ -85,6 +85,9 @@ public class ViePanel extends javax.swing.JPanel {
         if (pleine){
             g2d.setColor(Color.red);
             g2d.fill(heart);
+        }else{
+            g2d.setColor(Color.black);
+            g2d.fill(heart);
         }
     }
 
