@@ -91,8 +91,7 @@ public class Plateau extends javax.swing.JFrame {
         fillerEspaceCarte3J2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         cartePanel5 = new boundary.presentation.CartePanel();
         fillerMain2J2 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 0), new java.awt.Dimension(200, 0), new java.awt.Dimension(60, 32767));
-        panelDescriptionCarte = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
+        descriptionPanel1 = new boundary.presentation.components.DescriptionPanel();
         jPanel2 = new javax.swing.JPanel();
         backgroundLabel = new javax.swing.JLabel();
 
@@ -127,7 +126,7 @@ public class Plateau extends javax.swing.JFrame {
         );
         zonePopularitePanel1Layout.setVerticalGroup(
             zonePopularitePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGap(0, 167, Short.MAX_VALUE)
         );
 
         panelZonesPopularite.add(zonePopularitePanel1);
@@ -140,7 +139,7 @@ public class Plateau extends javax.swing.JFrame {
         );
         zonePopularitePanel2Layout.setVerticalGroup(
             zonePopularitePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGap(0, 167, Short.MAX_VALUE)
         );
 
         panelZonesPopularite.add(zonePopularitePanel2);
@@ -259,7 +258,7 @@ public class Plateau extends javax.swing.JFrame {
         );
         jaugeDePopularitePanel2Layout.setVerticalGroup(
             jaugeDePopularitePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 125, Short.MAX_VALUE)
         );
 
         panelInfosJ2.add(jaugeDePopularitePanel2, java.awt.BorderLayout.EAST);
@@ -306,12 +305,12 @@ public class Plateau extends javax.swing.JFrame {
         panelMainJ2.add(cartePanel5);
         panelMainJ2.add(fillerMain2J2);
 
-        panelDescriptionCarte.setBackground(new java.awt.Color(0, 102, 102));
-
-        jLabel14.setText("DESC");
-        panelDescriptionCarte.add(jLabel14);
-
-        panelMainJ2.add(panelDescriptionCarte);
+        descriptionPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                descriptionPanel1MousePressed(evt);
+            }
+        });
+        panelMainJ2.add(descriptionPanel1);
 
         panelJoueur2.add(panelMainJ2, java.awt.BorderLayout.CENTER);
 
@@ -386,6 +385,13 @@ public class Plateau extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cartePanel8MousePressed
 
+    private void descriptionPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descriptionPanel1MousePressed
+        // TODO add your handling code here:
+        //pour l'instant le code est dans un event mousePressed mais l'idée
+        //serait d'appeler la fonction losqu'une carte est jouée
+        descriptionPanel1.setDescription("une description");
+    }//GEN-LAST:event_descriptionPanel1MousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundLabel;
@@ -397,6 +403,7 @@ public class Plateau extends javax.swing.JFrame {
     private boundary.presentation.CartePanel cartePanel6;
     private boundary.presentation.CartePanel cartePanel7;
     private boundary.presentation.CartePanel cartePanel8;
+    private boundary.presentation.components.DescriptionPanel descriptionPanel1;
     private javax.swing.Box.Filler fillerEspaceCarte1J1;
     private javax.swing.Box.Filler fillerEspaceCarte1J2;
     private javax.swing.Box.Filler fillerEspaceCarte2J1;
@@ -411,7 +418,6 @@ public class Plateau extends javax.swing.JFrame {
     private javax.swing.Box.Filler fillerPioche2;
     private javax.swing.Box.Filler fillerZoneAction1;
     private javax.swing.Box.Filler fillerZoneAction2;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -420,7 +426,6 @@ public class Plateau extends javax.swing.JFrame {
     private boundary.presentation.components.JaugeDeViePanel jaugeDeViePanel1;
     private boundary.presentation.components.JaugeDeViePanel jaugeDeViePanel2;
     private javax.swing.JPanel panelCommun;
-    private javax.swing.JPanel panelDescriptionCarte;
     private javax.swing.JPanel panelInfosJ1;
     private javax.swing.JPanel panelInfosJ2;
     private javax.swing.JPanel panelJoueur1;
