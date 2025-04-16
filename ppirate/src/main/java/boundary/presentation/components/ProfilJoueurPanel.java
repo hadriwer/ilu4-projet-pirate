@@ -55,6 +55,10 @@ public class ProfilJoueurPanel extends javax.swing.JPanel {
 
         iconLabel = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(130, 130));
+
+        iconLabel.setPreferredSize(new java.awt.Dimension(280, 280));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
