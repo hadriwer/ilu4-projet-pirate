@@ -4,10 +4,21 @@
  */
 package controller;
 
+import model.Jeu;
+import model.cartes.Carte;
+
 /**
  *
  * @author vnm4618a
  */
 public class ControlJouerCarte {
+    private Jeu jeu;
     
+    public ControlJouerCarte(Jeu jeu) {
+        this.jeu = jeu;
+    }
+    
+    public void deposerCarte(Carte carte) {
+        jeu.deposerCarte(carte);
+    }
 }
