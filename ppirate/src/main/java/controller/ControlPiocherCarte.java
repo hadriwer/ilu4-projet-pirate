@@ -4,10 +4,16 @@
  */
 package controller;
 
+import model.Jeu;
+
 /**
  *
  * @author vnm4618a
  */
 public class ControlPiocherCarte {
+    private Jeu jeu;
     
+    public ControlPiocherCarte(Jeu jeu) {
+        this.jeu = jeu;
+    }
 }

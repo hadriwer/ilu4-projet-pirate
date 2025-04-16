@@ -24,7 +24,7 @@ public class Jeu {
     
     // Zone de jeu
     private List<Carte> zonePopularite;
-    private Stack<Carte> zoneAction;
+    private List<Carte> zoneAction;
     
     public Jeu() {
         pioche = new Pioche();
@@ -85,5 +85,13 @@ public class Jeu {
             
             compteNombreJeu++;
         }
+    }
+    
+    public List<Carte> getZoneAction() {
+        return zoneAction;
+    }
+    
+    public List<Carte> getZonePopularite() {
+        return zonePopularite;
     }
 }
