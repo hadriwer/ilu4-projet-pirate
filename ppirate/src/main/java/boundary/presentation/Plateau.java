@@ -39,7 +39,6 @@ public class Plateau extends javax.swing.JFrame {
     public void setImage(){
         BufferedImage image=ChargeurImage.chargerImage("presentation/plateau_background.png");
         Image imageEchelle;
-        System.out.println(backgroundLabel.getWidth() + " / " + backgroundLabel.getHeight());
         imageEchelle = image.getScaledInstance(backgroundLabel.getWidth(), backgroundLabel.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon typeIcon=new ImageIcon(imageEchelle);
         backgroundLabel.setIcon(typeIcon);
@@ -175,6 +174,7 @@ public class Plateau extends javax.swing.JFrame {
 
         panelCommun.add(panelZoneAction, java.awt.BorderLayout.WEST);
 
+        panelPioche.setOpaque(false);
         panelPioche.setPreferredSize(new java.awt.Dimension(100, 26));
         panelPioche.setLayout(new java.awt.GridLayout(3, 0));
         panelPioche.add(fillerPioche1);
@@ -209,6 +209,8 @@ public class Plateau extends javax.swing.JFrame {
 
         jaugeDeViePanel1.setOpaque(false);
         panelInfosJ1.add(jaugeDeViePanel1, java.awt.BorderLayout.NORTH);
+
+        profilJoueurPanel1.setOpaque(false);
         panelInfosJ1.add(profilJoueurPanel1, java.awt.BorderLayout.CENTER);
 
         panelJoueur1.add(panelInfosJ1, java.awt.BorderLayout.WEST);
@@ -277,6 +279,8 @@ public class Plateau extends javax.swing.JFrame {
 
         jaugeDeViePanel2.setOpaque(false);
         panelInfosJ2.add(jaugeDeViePanel2, java.awt.BorderLayout.SOUTH);
+
+        profilJoueurPanel2.setOpaque(false);
         panelInfosJ2.add(profilJoueurPanel2, java.awt.BorderLayout.CENTER);
 
         panelJoueur2.add(panelInfosJ2, java.awt.BorderLayout.WEST);

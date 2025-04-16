@@ -183,6 +183,7 @@
             </Container>
             <Container class="javax.swing.JPanel" name="panelPioche">
               <Properties>
+                <Property name="opaque" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[100, 26]"/>
                 </Property>
@@ -297,6 +298,9 @@
                   </Constraints>
                 </Component>
                 <Component class="boundary.presentation.components.ProfilJoueurPanel" name="profilJoueurPanel1">
+                  <Properties>
+                    <Property name="opaque" type="boolean" value="false"/>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                       <BorderConstraints direction="Center"/>
@@ -463,6 +467,9 @@
                   </Constraints>
                 </Component>
                 <Component class="boundary.presentation.components.ProfilJoueurPanel" name="profilJoueurPanel2">
+                  <Properties>
+                    <Property name="opaque" type="boolean" value="false"/>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                       <BorderConstraints direction="Center"/>

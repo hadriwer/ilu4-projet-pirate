@@ -4,6 +4,13 @@
  */
 package boundary.presentation.components;
 
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.geom.RoundRectangle2D;
+
 /**
  *
  * @author David Marquet
@@ -16,12 +23,28 @@ public class TimerPanel extends javax.swing.JPanel {
     javax.swing.Timer timer;
     private int decompte;
     private static final int TEMPS = 60;
+    private float opacite;
+    private static final int BORDURE = 15;
     
     public TimerPanel() {
+        this.opacite = 0.5f;
         initComponents();
         this.timer = new javax.swing.Timer(1000, (e) -> { timerEventHandler(e); });
         timer.start();
         this.decompte = TEMPS;
+    }
+    
+    @Override
+    protected void paintComponent(Graphics g){
+        Graphics2D g2d = (Graphics2D) g.create();
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,this.opacite)); // baisse l'opacité du panel
+        g2d.setColor(Color.BLACK);
+        g2d.fill(new RoundRectangle2D.Float(0,0,getWidth(),getHeight(),BORDURE,BORDURE));
+        
+        g2d.dispose();
+        
+        super.paintComponent(g);
     }
     
     private void timerEventHandler(java.awt.event.ActionEvent e) {
@@ -33,6 +56,7 @@ public class TimerPanel extends javax.swing.JPanel {
         }else{
            timerTxt.setText(String.valueOf(this.decompte)); 
         }
+        repaint();
     }
 
     /**
@@ -47,10 +71,14 @@ public class TimerPanel extends javax.swing.JPanel {
         nomTimer = new javax.swing.JLabel();
         timerTxt = new javax.swing.JLabel();
 
+        setOpaque(false);
+
         nomTimer.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nomTimer.setForeground(new java.awt.Color(255, 255, 255));
         nomTimer.setText("TEMPS DU TOUR");
 
         timerTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        timerTxt.setForeground(new java.awt.Color(255, 255, 255));
         timerTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         timerTxt.setText(String.valueOf(TEMPS));
 
