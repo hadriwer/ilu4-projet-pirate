@@ -4,6 +4,7 @@
  */
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 import model.cartes.Attaque;
@@ -16,22 +17,24 @@ import model.cartes.Popularite;
  */
 public class Jeu {
     private static final int NOMBRE_CARTE = 4;
-    private Joueur joueur1;
-    private Joueur joueur2;
+    private final Joueur joueur1;
+    private final Joueur joueur2;
     private boolean tourDeJeu;
-    private Pioche pioche;
+    private final Pioche pioche;
     private int compteNombreJeu;
     
     // Zone de jeu
-    private List<Carte> zonePopularite;
-    private Stack<Carte> zoneAction;
+    private final List<Carte> zonePopularite;
+    private final Stack<Carte> zoneAction;
     
     public Jeu() {
         pioche = new Pioche();
         joueur1 = new Joueur("Jack Sparrow", pioche.distribuer(NOMBRE_CARTE));
         joueur2 = new Joueur("Barbe Noire", pioche.distribuer(NOMBRE_CARTE));
-        this.tourDeJeu = true;
-        this.compteNombreJeu = 1;
+        tourDeJeu = true;
+        compteNombreJeu = 1;
+        zonePopularite = new ArrayList<>();
+        zoneAction = new Stack<>();
     }
     
     public Joueur donnerTourDeJoueur() {
@@ -45,33 +48,30 @@ public class Jeu {
     public void deposerCarte(Carte carte) {
         if (carte instanceof Attaque) {
             zoneAction.add(carte);
-        }
-        else if (carte instanceof Popularite) {
+        } else if (carte instanceof Popularite) {
             zonePopularite.add(carte);
-        }
-        else {
+        } else {
             throw new IllegalStateException("Aucune des cartes connues");
         }
     }
     
-    public boolean giveFinPartie() {
-        return joueur1.giveGagnant() 
-                || joueur1.givePerdant()
-                || joueur2.giveGagnant()
-                || joueur2.givePerdant();
+    public boolean verifierFinPartie() {
+        return joueur1.aGagne() 
+                || joueur1.aPerdu()
+                || joueur2.aGagne()
+                || joueur2.aPerdu();
     }
    
     public Joueur giveJoueurGagnant() {
-        if (joueur1.giveGagnant() || joueur2.givePerdant()) {
+        if (joueur1.aGagne() || joueur2.aGagne()) {
             return joueur1;
-        }
-        else {
+        } else {
             return joueur2;
         }
     }
     
     public void jouerJeu() {
-        while (giveFinPartie()) {
+        while (!verifierFinPartie()) {
             System.out.println("Nombre étape de jeu : " + compteNombreJeu);
             
             Joueur playingJoueur = donnerTourDeJoueur();
