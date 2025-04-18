@@ -86,4 +86,12 @@ public class Jeu {
             compteNombreJeu++;
         }
     }
+    
+    public List<Carte> getZoneAction() {
+        return zoneAction;
+    }
+    
+    public List<Carte> getZonePopularite() {
+        return zonePopularite;
+    }
 }
