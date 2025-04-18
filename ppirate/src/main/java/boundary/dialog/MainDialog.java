@@ -4,6 +4,7 @@
  */
 package boundary.dialog;
 
+import boundary.AdaptateurDuNoyauFonctionnel;
 import boundary.presentation.Plateau;
 
 /**
@@ -11,6 +12,12 @@ import boundary.presentation.Plateau;
  * @author ember
  */
 public class MainDialog {
+    
+    private AdaptateurDuNoyauFonctionnel jeu;
+    
+    public MainDialog(AdaptateurDuNoyauFonctionnel jeu) {
+        this.jeu = jeu;
+    }
     
     public void initDialog() {
         Plateau vuePlateau = new Plateau();
@@ -22,7 +29,8 @@ public class MainDialog {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        MainDialog dialog = new MainDialog();
+        AdaptateurDuNoyauFonctionnel jeu = new AdaptateurDuNoyauFonctionnel();
+        MainDialog dialog = new MainDialog(jeu);
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
