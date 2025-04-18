@@ -5,10 +5,10 @@
 package testFonctionnel;
 
 import java.util.List;
-import model.Pioche;
-import model.cartes.Attaque;
-import model.cartes.Carte;
-import model.cartes.Popularite;
+import noyauFonctionnel.entity.Pioche;
+import noyauFonctionnel.entity.cartes.Attaque;
+import noyauFonctionnel.entity.cartes.Carte;
+import noyauFonctionnel.entity.cartes.Popularite;
 
 /**
  *

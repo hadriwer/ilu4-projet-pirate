@@ -15,6 +15,7 @@ public class MainDialog {
     public void initDialog() {
         Plateau vuePlateau = new Plateau();
         vuePlateau.setVisible(true);
+        // interfaceNoyauFonct
     }
     
      /**

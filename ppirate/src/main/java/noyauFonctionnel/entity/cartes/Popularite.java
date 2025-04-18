@@ -2,39 +2,40 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model.cartes;
+package noyauFonctionnel.entity.cartes;
 
 /**
  *
  * @author wer
  */
-public class Attaque extends Carte {
-    private final int actionVie;
+public class Popularite extends Carte {
+    private int pointDePop;
     
-    public Attaque(String nom, String description, int actionVie) {
+    public Popularite(String nom, String description, int pointDePop) {
         super(nom, description);
-        this.actionVie = actionVie;
+        this.pointDePop = pointDePop;
     }
 
-    public int getActionVie() {
-        return actionVie;
+    public int getPointDepPopularite() {
+        return pointDePop;
     }
     
     @Override
     public String toString() {
-        return "Carte Attaque -> dégat = " + actionVie;
+        return "Carte Popularité -> gain = " + pointDePop;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Attaque carte = (Attaque)o;
-        return this.actionVie == carte.getActionVie() && super.getNom().equals(carte.getNom());
+        Popularite p = (Popularite)o;
+        return pointDePop == p.getPointDepPopularite() && super.getNom().equals(p.getNom());
     }
 
     @Override
     public int hashCode() {
-        return 31 * actionVie * super.getNom().hashCode();
+        return 37 * pointDePop * super.getNom().hashCode();
     }
+    
 }

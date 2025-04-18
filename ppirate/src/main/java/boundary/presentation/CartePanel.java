@@ -7,9 +7,8 @@ package boundary.presentation;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import javax.swing.JPanel;
-import model.cartes.Attaque;
-
-import model.cartes.Carte;
+import noyauFonctionnel.entity.cartes.Attaque;
+import noyauFonctionnel.entity.cartes.Carte;
 
 /**
  *
