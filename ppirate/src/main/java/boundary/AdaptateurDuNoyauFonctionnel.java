@@ -4,7 +4,9 @@
  */
 package boundary;
 
-import noyauFonctionnel.controller.ControlJeu;
+import java.util.List;
+import noyauFonctionnel.controller.*;
+import noyauFonctionnel.entity.cartes.*;
 
 /**
  *
@@ -12,7 +14,7 @@ import noyauFonctionnel.controller.ControlJeu;
  */
 public class AdaptateurDuNoyauFonctionnel {
 
-    public void getZoneAction(ControlJeu controlJeu) {
-        controlJeu.getZoneAction();
+    public List<Carte> getZoneAction(ControlJeu controlJeu) {
+        return controlJeu.getZoneAction();
     }
 }
