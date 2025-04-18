@@ -1,7 +1,7 @@
 
-import controller.ControlJouerCarte;
-import controller.ControlPiocherCarte;
-import model.Jeu;
+import noyauFonctionnel.controller.ControlJouerCarte;
+import noyauFonctionnel.controller.ControlPiocherCarte;
+import noyauFonctionnel.entity.Jeu;
 
 
 /**
