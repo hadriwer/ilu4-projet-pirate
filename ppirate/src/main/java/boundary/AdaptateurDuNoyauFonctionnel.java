@@ -4,17 +4,35 @@
  */
 package boundary;
 
-import java.util.List;
 import noyauFonctionnel.controller.*;
-import noyauFonctionnel.entity.cartes.*;
+import noyauFonctionnel.entity.Jeu;
 
 /**
  *
  * @author wer
  */
 public class AdaptateurDuNoyauFonctionnel {
+    private Jeu jeu;
+    private ControlJeu controlJeu;
+    private ControlJouerCarte controlJouerCarte;
+    private ControlPiocherCarte controlPiocherCarte;
+    
+    public AdaptateurDuNoyauFonctionnel() {
+        this.jeu = new Jeu();
+        this.controlJeu = new ControlJeu(jeu);
+        this.controlJouerCarte = new ControlJouerCarte(jeu);
+        this.controlPiocherCarte = new ControlPiocherCarte(jeu);
+    }
 
-    public List<Carte> getZoneAction(ControlJeu controlJeu) {
-        return controlJeu.getZoneAction();
+    public ControlJeu getControlJeu() {
+        return controlJeu;
+    }
+    
+    public ControlJouerCarte getControlJouerCarte() {
+        return controlJouerCarte;
+    }
+    
+    public ControlPiocherCarte getControlPiocherCarte() {
+        return controlPiocherCarte;
     }
 }
