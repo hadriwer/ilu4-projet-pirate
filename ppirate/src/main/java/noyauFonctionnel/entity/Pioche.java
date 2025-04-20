@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package noyauFonctionnel.entity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import model.cartes.Attaque;
-import model.cartes.Carte;
-import model.cartes.Popularite;
+import noyauFonctionnel.entity.cartes.Attaque;
+import noyauFonctionnel.entity.cartes.Carte;
+import noyauFonctionnel.entity.cartes.Popularite;
 
 /**
  *
