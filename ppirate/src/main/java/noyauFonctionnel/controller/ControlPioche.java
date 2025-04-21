@@ -5,15 +5,24 @@
 package noyauFonctionnel.controller;
 
 import noyauFonctionnel.entity.Jeu;
+import noyauFonctionnel.entity.Pioche;
 
 /**
  *
  * @author vnm4618a
  */
-public class ControlPiocherCarte {
+public class ControlPioche {
     private Jeu jeu;
     
-    public ControlPiocherCarte(Jeu jeu) {
+    public ControlPioche(Jeu jeu) {
         this.jeu = jeu;
+    }
+    
+    public Pioche getPiocheJeu(){
+        return jeu.getPioche();
+    }
+    
+    public boolean isPiocheEmpty() {
+        return getPiocheJeu().getPioche().isEmpty();
     }
 }

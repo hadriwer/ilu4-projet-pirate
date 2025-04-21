@@ -6,6 +6,7 @@ package noyauFonctionnel.controller;
 
 import java.util.List;
 import noyauFonctionnel.entity.Jeu;
+import noyauFonctionnel.entity.Pioche;
 import noyauFonctionnel.entity.cartes.Carte;
 
 /**

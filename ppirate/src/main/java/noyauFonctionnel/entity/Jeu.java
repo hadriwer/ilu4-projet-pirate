@@ -6,7 +6,6 @@ package noyauFonctionnel.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 import noyauFonctionnel.entity.cartes.Attaque;
 import noyauFonctionnel.entity.cartes.Carte;
 import noyauFonctionnel.entity.cartes.Popularite;
@@ -25,16 +24,16 @@ public class Jeu {
     
     // Zone de jeu
     private final List<Carte> zonePopularite;
-    private final Stack<Carte> zoneAction;
+    private final List<Carte> zoneAction;
     
     public Jeu() {
         pioche = new Pioche();
         joueur1 = new Joueur("Jack Sparrow", pioche.distribuer(NOMBRE_CARTE));
         joueur2 = new Joueur("Barbe Noire", pioche.distribuer(NOMBRE_CARTE));
-        tourDeJeu = true;
-        compteNombreJeu = 1;
-        zonePopularite = new ArrayList<>();
-        zoneAction = new Stack<>();
+        this.tourDeJeu = true;
+        this.compteNombreJeu = 1;
+        this.zoneAction = new ArrayList<>();
+        this.zonePopularite = new ArrayList<>();
     }
     
     public Joueur donnerTourDeJoueur() {
@@ -93,5 +92,17 @@ public class Jeu {
     
     public List<Carte> getZonePopularite() {
         return zonePopularite;
+    }
+    
+    public Pioche getPioche() {
+        return pioche;
+    }
+    
+    public Joueur getJoueur1() {
+        return joueur1;
+    }
+    
+    public Joueur getJoueur2() {
+        return joueur2;
     }
 }

@@ -4,6 +4,7 @@
  */
 package boundary.presentation;
 
+import boundary.AdaptateurDuNoyauFonctionnel;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -16,17 +17,23 @@ import util.EnumJoueur;
  * @author ember
  */
 public class Plateau extends javax.swing.JFrame {
+    private AdaptateurDuNoyauFonctionnel noyau;
 
     /**
      * Creates new form Plateau
+     * @param noyau
      */
-    public Plateau() {
+    public Plateau(AdaptateurDuNoyauFonctionnel noyau) {
+        this.noyau = noyau;
         initComponents();
         backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
         setImage();
         setResizable(false);
         profilJoueurPanel1.setJoueur(EnumJoueur.JACK_LE_BORGNE);
         profilJoueurPanel2.setJoueur(EnumJoueur.BILL_JAMBE_DE_BOIS);
+        
+        // Set Adaptateur Noyau Fonctionnel 
+        pioche1.setAdaptateur(noyau);
     }
 
     public void setImage(){
@@ -36,6 +43,10 @@ public class Plateau extends javax.swing.JFrame {
         imageEchelle = image.getScaledInstance(backgroundLabel.getWidth(), backgroundLabel.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon typeIcon=new ImageIcon(imageEchelle);
         backgroundLabel.setIcon(typeIcon);
+    }
+    
+    public AdaptateurDuNoyauFonctionnel getAdaptateurNoyau() {
+        return noyau;
     }
     
     /**

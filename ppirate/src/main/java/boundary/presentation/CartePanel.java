@@ -20,7 +20,6 @@ public class CartePanel extends javax.swing.JPanel {
     private int posX, posY; // Position 
     private int dimX, dimY; // Dimension
     private int newPosX, newPosY; // Position nouvelles
-    private Carte carte = new Attaque("", "", 0);
     private boolean drag = false; // indique si on est entrain de déplacer la carte
     private int posMouseX; // Distance horizontale entre le clic et le coin gauche de la carte
     private int posMouseY; // Distance verticale entre le clic et le coin haut de la carte 

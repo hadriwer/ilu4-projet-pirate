@@ -4,6 +4,8 @@
  */
 package model.cartes;
 
+import noyauFonctionnel.entity.cartes.Carte;
+
 /**
  *
  * @author ember

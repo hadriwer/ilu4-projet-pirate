@@ -1,6 +1,6 @@
 
 import noyauFonctionnel.controller.ControlJouerCarte;
-import noyauFonctionnel.controller.ControlPiocherCarte;
+import noyauFonctionnel.controller.ControlPioche;
 import noyauFonctionnel.entity.Jeu;
 
 
@@ -19,7 +19,7 @@ public class Main {
         Jeu jeu = new Jeu();
         
         ControlJouerCarte controlJouerCarte = new ControlJouerCarte(jeu);
-        ControlPiocherCarte controlPiocherCarte = new ControlPiocherCarte(jeu);
+        ControlPioche controlPiocherCarte = new ControlPioche(jeu);
         
         System.out.println(controlJouerCarte);
         System.out.println(controlPiocherCarte);

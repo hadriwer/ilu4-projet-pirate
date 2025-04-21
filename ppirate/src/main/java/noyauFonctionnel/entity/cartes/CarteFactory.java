@@ -1,5 +1,7 @@
 package model.cartes;
 
+import noyauFonctionnel.entity.cartes.Popularite;
+
 /**
  *
  * @author ember

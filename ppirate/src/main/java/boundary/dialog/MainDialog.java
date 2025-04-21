@@ -20,7 +20,7 @@ public class MainDialog {
     }
     
     public void initDialog() {
-        Plateau vuePlateau = new Plateau();
+        Plateau vuePlateau = new Plateau(jeu);
         vuePlateau.setVisible(true);
         // interfaceNoyauFonct
     }
