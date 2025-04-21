@@ -15,13 +15,15 @@ public class AdaptateurDuNoyauFonctionnel {
     private Jeu jeu;
     private ControlJeu controlJeu;
     private ControlJouerCarte controlJouerCarte;
-    private ControlPiocherCarte controlPiocherCarte;
+    private ControlPioche controlPiocherCarte;
+    private ControlJoueur controlJoueur;
     
     public AdaptateurDuNoyauFonctionnel() {
         this.jeu = new Jeu();
         this.controlJeu = new ControlJeu(jeu);
         this.controlJouerCarte = new ControlJouerCarte(jeu);
-        this.controlPiocherCarte = new ControlPiocherCarte(jeu);
+        this.controlPiocherCarte = new ControlPioche(jeu);
+        this.controlJoueur = new ControlJoueur(jeu);
     }
 
     public ControlJeu getControlJeu() {
@@ -32,7 +34,11 @@ public class AdaptateurDuNoyauFonctionnel {
         return controlJouerCarte;
     }
     
-    public ControlPiocherCarte getControlPiocherCarte() {
+    public ControlPioche getControlPioche() {
         return controlPiocherCarte;
+    }
+    
+    public ControlJoueur getControlJoueur() {
+        return controlJoueur;
     }
 }

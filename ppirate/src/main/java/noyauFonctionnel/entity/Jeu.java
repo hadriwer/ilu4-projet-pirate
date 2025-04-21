@@ -16,7 +16,7 @@ import noyauFonctionnel.entity.cartes.Popularite;
  * @author wer
  */
 public class Jeu {
-    private static final int NOMBRE_CARTE = 0;
+    private static final int NOMBRE_CARTE = 4;
     private Joueur joueur1;
     private Joueur joueur2;
     private boolean tourDeJeu;
@@ -100,5 +100,13 @@ public class Jeu {
     
     public Pioche getPioche() {
         return pioche;
+    }
+    
+    public Joueur getJoueur1() {
+        return joueur1;
+    }
+    
+    public Joueur getJoueur2() {
+        return joueur2;
     }
 }

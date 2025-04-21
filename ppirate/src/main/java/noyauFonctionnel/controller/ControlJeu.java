@@ -20,14 +20,6 @@ public class ControlJeu {
         this.jeu = jeu;
     }
     
-    public Pioche getPiocheJeu(){
-        return jeu.getPioche();
-    }
-    
-    public boolean isPiocheEmpty() {
-        return getPiocheJeu().getPioche().isEmpty();
-    }
-    
     public List<Carte> getZoneAction() {
         return jeu.getZoneAction();
     }
