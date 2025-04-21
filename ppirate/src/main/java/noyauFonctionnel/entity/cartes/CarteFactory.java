@@ -1,6 +1,4 @@
-package model.cartes;
-
-import noyauFonctionnel.entity.cartes.Popularite;
+package noyauFonctionnel.entity.cartes;
 
 /**
  *
