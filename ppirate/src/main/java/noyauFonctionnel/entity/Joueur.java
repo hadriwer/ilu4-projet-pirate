@@ -73,7 +73,7 @@ public class Joueur {
         mainJoueur.prendreCarte(carte);
     }
     
-    private class MainJoueur {
+    public class MainJoueur {
         private List<Carte> mainJoueur;
 
         public MainJoueur(List<Carte> mainJoueur) {
@@ -94,6 +94,10 @@ public class Joueur {
             }
         }  
         
+        public List<Carte> getCartes() {
+            return mainJoueur;
+        }
+        
         @Override
         public String toString(){
             String cartes = "Contenu de la main du joueur :";
@@ -103,6 +107,5 @@ public class Joueur {
             cartes += "]";
             return cartes;
         }
-        
     }
 }
