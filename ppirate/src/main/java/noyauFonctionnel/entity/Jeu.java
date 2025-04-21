@@ -4,6 +4,7 @@
  */
 package noyauFonctionnel.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 import noyauFonctionnel.entity.cartes.Attaque;
@@ -15,7 +16,7 @@ import noyauFonctionnel.entity.cartes.Popularite;
  * @author wer
  */
 public class Jeu {
-    private static final int NOMBRE_CARTE = 4;
+    private static final int NOMBRE_CARTE = 0;
     private Joueur joueur1;
     private Joueur joueur2;
     private boolean tourDeJeu;
@@ -32,6 +33,8 @@ public class Jeu {
         joueur2 = new Joueur("Barbe Noire", pioche.distribuer(NOMBRE_CARTE));
         this.tourDeJeu = true;
         this.compteNombreJeu = 1;
+        this.zoneAction = new ArrayList<>();
+        this.zonePopularite = new ArrayList<>();
     }
     
     public Joueur donnerTourDeJoueur() {
@@ -93,5 +96,9 @@ public class Jeu {
     
     public List<Carte> getZonePopularite() {
         return zonePopularite;
+    }
+    
+    public Pioche getPioche() {
+        return pioche;
     }
 }

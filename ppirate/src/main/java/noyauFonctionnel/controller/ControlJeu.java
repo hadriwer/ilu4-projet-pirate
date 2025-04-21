@@ -6,6 +6,7 @@ package noyauFonctionnel.controller;
 
 import java.util.List;
 import noyauFonctionnel.entity.Jeu;
+import noyauFonctionnel.entity.Pioche;
 import noyauFonctionnel.entity.cartes.Carte;
 
 /**
@@ -17,6 +18,14 @@ public class ControlJeu {
     
     public ControlJeu(Jeu jeu) {
         this.jeu = jeu;
+    }
+    
+    public Pioche getPiocheJeu(){
+        return jeu.getPioche();
+    }
+    
+    public boolean isPiocheEmpty() {
+        return getPiocheJeu().getPioche().isEmpty();
     }
     
     public List<Carte> getZoneAction() {
