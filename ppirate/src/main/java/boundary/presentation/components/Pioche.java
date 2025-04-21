@@ -4,11 +4,21 @@
  */
 package boundary.presentation.components;
 
+import boundary.AdaptateurDuNoyauFonctionnel;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+
 /**
  *
  * @author wer
  */
 public class Pioche extends javax.swing.JPanel {
+    private AdaptateurDuNoyauFonctionnel noyau;
 
     /**
      * Creates new form PanelPioche
@@ -26,33 +36,67 @@ public class Pioche extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(300, 300));
         setMinimumSize(new java.awt.Dimension(300, 300));
         setPreferredSize(new java.awt.Dimension(300, 300));
-
-        jLabel1.setFont(new java.awt.Font("Yrsa", 0, 36)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Pioche");
-        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.repaint();
+        Graphics2D g2d = (Graphics2D)g;
+        
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        int x = 0;
+        int y = 0;
+        int width = 100;
+        int height = 100;
+        int arc = 30;
+        
+        if (noyau.getControlJeu().isPiocheEmpty()) {
+            // faire la pioche vide
+            g2d.setColor(new Color(200, 200, 200)); // gris clair
+            g2d.fillRoundRect(x, y, width, height, arc, arc);
+            g2d.setColor(Color.DARK_GRAY);
+            g2d.setStroke(new BasicStroke(3));
+            g2d.drawRoundRect(x, y, width, height, arc, arc);
+
+            g2d.setFont(new Font("Serif", Font.BOLD, 24));
+            g2d.drawString("Vide", x + 45, y + height / 2);
+        }
+        else {
+            // afficher le dos d'une carte
+            GradientPaint gradient = new GradientPaint(x, y, new Color(150, 0, 0), x + width, y + height, new Color(255, 50, 50));
+            g2d.setPaint(gradient);
+            g2d.fillRoundRect(x, y, width, height, arc, arc);
+
+            g2d.setColor(Color.WHITE);
+            g2d.setStroke(new BasicStroke(3));
+            g2d.drawRoundRect(x, y, width, height, arc, arc);
+            
+            g2d.setColor(Color.black);
+            g2d.setFont(new Font("Serif", Font.BOLD, 24));
+            g2d.drawString("Pioche", x + 10, y + height / 2);
+        }
+    }
+    
+    public void setAdaptateur(AdaptateurDuNoyauFonctionnel noyau) {
+        this.noyau = noyau;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
