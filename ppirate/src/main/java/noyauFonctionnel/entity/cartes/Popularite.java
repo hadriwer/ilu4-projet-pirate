@@ -9,20 +9,26 @@ package noyauFonctionnel.entity.cartes;
  * @author wer
  */
 public class Popularite extends Carte {
-    private int pointDePop;
+    private final int pointDePop;
+    private final int selfDegats;
     
-    public Popularite(String nom, String description, int pointDePop) {
+    public Popularite(String nom, String description, int pointDePop, int selfDegats) {
         super(nom, description);
         this.pointDePop = pointDePop;
+        this.selfDegats = selfDegats;
     }
 
-    public int getPointDepPopularite() {
+    public int getPointDepPop() {
         return pointDePop;
+    }
+    
+    public int getSelfDegats() {
+        return selfDegats;
     }
     
     @Override
     public String toString() {
-        return "Carte Popularité -> gain = " + pointDePop;
+        return "Carte Popularité -> gain = " + pointDePop + ", dégats à nous même = " + selfDegats;
     }
 
     @Override
@@ -30,7 +36,7 @@ public class Popularite extends Carte {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Popularite p = (Popularite)o;
-        return pointDePop == p.getPointDepPopularite() && super.getNom().equals(p.getNom());
+        return pointDePop == p.getPointDepPop() && selfDegats == p.getSelfDegats() && super.getNom().equals(p.getNom());
     }
 
     @Override

@@ -10,19 +10,25 @@ package noyauFonctionnel.entity.cartes;
  */
 public class Attaque extends Carte {
     private final int actionVie;
+    private final int selfDegats;
     
-    public Attaque(String nom, String description, int actionVie) {
+    public Attaque(String nom, String description, int actionVie, int selfDegats) {
         super(nom, description);
         this.actionVie = actionVie;
+        this.selfDegats = selfDegats;
     }
 
     public int getActionVie() {
         return actionVie;
     }
     
+    public int getSelfDegats() {
+        return selfDegats;
+    }
+    
     @Override
     public String toString() {
-        return "Carte Attaque -> dégat = " + actionVie;
+        return "Carte Attaque -> dégat = " + actionVie + ", dégat à nous même = " + selfDegats;
     }
 
     @Override
@@ -30,7 +36,7 @@ public class Attaque extends Carte {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Attaque carte = (Attaque)o;
-        return this.actionVie == carte.getActionVie() && super.getNom().equals(carte.getNom());
+        return actionVie == carte.getActionVie() && selfDegats == carte.getSelfDegats() && super.getNom().equals(carte.getNom());
     }
 
     @Override

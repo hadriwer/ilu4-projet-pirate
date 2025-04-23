@@ -6,7 +6,6 @@ package noyauFonctionnel.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 import noyauFonctionnel.entity.cartes.Attaque;
 import noyauFonctionnel.entity.cartes.Carte;
 import noyauFonctionnel.entity.cartes.Popularite;
@@ -17,10 +16,10 @@ import noyauFonctionnel.entity.cartes.Popularite;
  */
 public class Jeu {
     private static final int NOMBRE_CARTE = 4;
-    private Joueur joueur1;
-    private Joueur joueur2;
+    private final Joueur joueur1;
+    private final Joueur joueur2;
     private boolean tourDeJeu;
-    private Pioche pioche;
+    private final Pioche pioche;
     private int compteNombreJeu;
     
     // Zone de jeu
@@ -64,24 +63,23 @@ public class Jeu {
         }
     }
     
-    public boolean giveFinPartie() {
-        return joueur1.giveGagnant() 
-                || joueur1.givePerdant()
-                || joueur2.giveGagnant()
-                || joueur2.givePerdant();
+    public boolean verifierFinPartie() {
+        return joueur1.aGagne() 
+                || joueur1.aPerdu()
+                || joueur2.aGagne()
+                || joueur2.aPerdu();
     }
    
     public Joueur giveJoueurGagnant() {
-        if (joueur1.giveGagnant() || joueur2.givePerdant()) {
+        if (joueur1.aGagne() || joueur2.aGagne()) {
             return joueur1;
-        }
-        else {
+        } else {
             return joueur2;
         }
     }
     
     public void jouerJeu() {
-        while (giveFinPartie()) {
+        while (!verifierFinPartie()) {
             System.out.println("Nombre étape de jeu : " + compteNombreJeu);
             
             Joueur playingJoueur = donnerTourDeJoueur();

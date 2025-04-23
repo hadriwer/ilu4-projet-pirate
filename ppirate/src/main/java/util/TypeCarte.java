@@ -27,10 +27,10 @@ public enum TypeCarte {
     public Carte creerCarte() {
         switch (this) {
             case ATTAQUE -> {
-                return new Attaque(nom, description, 2);
+                return new Attaque(nom, description, 2, 0);
             }
             case POPULARITE -> {
-                return new Popularite(nom, description, 1);
+                return new Popularite(nom, description, 1, 0);
             }
             default -> throw new IllegalArgumentException("Type de carte inconnu");
         }

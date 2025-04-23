@@ -53,11 +53,11 @@ public class Joueur {
         }
     }
     
-    public boolean giveGagnant(){
+    public boolean aGagne(){
         return this.indicePopularite == 5;
     }
     
-    public boolean givePerdant(){
+    public boolean aPerdu(){
         return this.indiceVie == 0;
     }
     
