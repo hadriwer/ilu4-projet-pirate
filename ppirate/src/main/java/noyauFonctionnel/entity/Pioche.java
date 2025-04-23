@@ -9,10 +9,6 @@ import noyauFonctionnel.entity.cartes.Carte;
 import noyauFonctionnel.entity.cartes.CarteFactory;
 import noyauFonctionnel.entity.cartes.ConfigurationCarte;
 
-/**
- *
- * @author wer
- */
 public class Pioche {
     private final List<Carte> pioche;
     
@@ -23,7 +19,7 @@ public class Pioche {
         
         for (ConfigurationCarte configuration : configurations) {
             for (int x = 0; x < configuration.getNbExemplaires(); x++) {
-                pioche.add(configuration.getCarte());
+                pioche.add(configuration.getCarte().clone());
             }
         }
         
