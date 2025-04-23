@@ -24,8 +24,12 @@ public class ControlJeu {
         return jeu.getZoneAction();
     }
     
-    public List<Carte> getPopularite() {
-        return jeu.getZonePopularite();
+    public List<Carte> getZonePopulariteJ1() {
+        return jeu.getZonePopulariteJ1();
+    }
+    
+    public List<Carte> getZonePopulariteJ2() {
+        return jeu.getZonePopulariteJ2();
     }
     
     public boolean isZoneActionEmpty() { // DEMANDER AU PROF

@@ -28,6 +28,9 @@ public class ZonePopularitePanel extends javax.swing.JPanel {
     
     @Override
     protected void paintComponent(Graphics g){
+        super.paintComponent(g);
+        System.out.println("repaint zone popularite");
+        
         Graphics2D g2d = (Graphics2D) g.create();
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,this.opacite)); // baisse l'opacité du panel
@@ -35,8 +38,6 @@ public class ZonePopularitePanel extends javax.swing.JPanel {
         g2d.fill(new RoundRectangle2D.Float(0,0,getWidth(),getHeight(),BORDURE,BORDURE));
         
         g2d.dispose();
-        
-        super.paintComponent(g);
     }
 
     /**
@@ -49,17 +50,6 @@ public class ZonePopularitePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         setOpaque(false);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1132, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
     }// </editor-fold>//GEN-END:initComponents
 
 

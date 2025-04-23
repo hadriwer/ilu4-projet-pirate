@@ -23,8 +23,9 @@ public class Jeu {
     private int compteNombreJeu;
     
     // Zone de jeu
-    private final List<Carte> zonePopularite;
-    private final List<Carte> zoneAction;
+    private List<Carte> zonePopulariteJ1;
+    private List<Carte> zonePopulariteJ2;
+    private List<Carte> zoneAction;
     
     public Jeu() {
         pioche = new Pioche();
@@ -33,7 +34,8 @@ public class Jeu {
         this.tourDeJeu = true;
         this.compteNombreJeu = 1;
         this.zoneAction = new ArrayList<>();
-        this.zonePopularite = new ArrayList<>();
+        this.zonePopulariteJ1 = new ArrayList<>();
+        this.zonePopulariteJ2 = new ArrayList<>();
     }
     
     public Joueur donnerTourDeJoueur() {
@@ -47,9 +49,16 @@ public class Jeu {
     public void deposerCarte(Carte carte) {
         if (carte instanceof Attaque) {
             zoneAction.add(carte);
-        } else if (carte instanceof Popularite) {
-            zonePopularite.add(carte);
-        } else {
+        }
+        else if (carte instanceof Popularite) {
+            if (tourDeJeu) {
+                zonePopulariteJ1.add(carte);
+            }
+            else{
+                zonePopulariteJ2.add(carte);
+            }
+        }
+        else {
             throw new IllegalStateException("Aucune des cartes connues");
         }
     }
@@ -90,8 +99,12 @@ public class Jeu {
         return zoneAction;
     }
     
-    public List<Carte> getZonePopularite() {
-        return zonePopularite;
+    public List<Carte> getZonePopulariteJ1() {
+        return zonePopulariteJ1;
+    }
+    
+    public List<Carte> getZonePopulariteJ2() {
+        return zonePopulariteJ2;
     }
     
     public Pioche getPioche() {
