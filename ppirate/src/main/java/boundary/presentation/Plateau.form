@@ -83,7 +83,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="1320" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="780" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -98,7 +98,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="1320" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="780" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -337,11 +337,6 @@
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalStrut"/>
                   </AuxValues>
                 </Component>
-                <Component class="boundary.presentation.CartePanel" name="cartePanel2">
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cartePanel2MousePressed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.Box$Filler" name="fillerEspaceCarte1J1">
                   <Properties>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -351,11 +346,6 @@
                   <AuxValues>
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalGlue"/>
                   </AuxValues>
-                </Component>
-                <Component class="boundary.presentation.CartePanel" name="cartePanel1">
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cartePanel1MousePressed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.Box$Filler" name="fillerEspaceCarte2J1">
                   <Properties>
@@ -367,11 +357,6 @@
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalGlue"/>
                   </AuxValues>
                 </Component>
-                <Component class="boundary.presentation.CartePanel" name="cartePanel3">
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cartePanel3MousePressed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.Box$Filler" name="fillerEspaceCarte3J1">
                   <Properties>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -381,11 +366,6 @@
                   <AuxValues>
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalGlue"/>
                   </AuxValues>
-                </Component>
-                <Component class="boundary.presentation.CartePanel" name="cartePanel4">
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cartePanel4MousePressed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.Box$Filler" name="fillerMain2J1">
                   <Properties>
@@ -506,11 +486,6 @@
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalStrut"/>
                   </AuxValues>
                 </Component>
-                <Component class="boundary.presentation.CartePanel" name="cartePanel8">
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cartePanel8MousePressed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.Box$Filler" name="fillerEspaceCarte1J2">
                   <Properties>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -520,11 +495,6 @@
                   <AuxValues>
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalGlue"/>
                   </AuxValues>
-                </Component>
-                <Component class="boundary.presentation.CartePanel" name="cartePanel7">
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cartePanel7MousePressed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.Box$Filler" name="fillerEspaceCarte2J2">
                   <Properties>
@@ -536,11 +506,6 @@
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalGlue"/>
                   </AuxValues>
                 </Component>
-                <Component class="boundary.presentation.CartePanel" name="cartePanel6">
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cartePanel6MousePressed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.Box$Filler" name="fillerEspaceCarte3J2">
                   <Properties>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -550,11 +515,6 @@
                   <AuxValues>
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalGlue"/>
                   </AuxValues>
-                </Component>
-                <Component class="boundary.presentation.CartePanel" name="cartePanel5">
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cartePanel5MousePressed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.Box$Filler" name="fillerMain2J2">
                   <Properties>

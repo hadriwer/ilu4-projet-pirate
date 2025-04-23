@@ -4,10 +4,10 @@
  */
 package boundary.presentation;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import javax.swing.JPanel;
-import noyauFonctionnel.entity.cartes.Attaque;
 import noyauFonctionnel.entity.cartes.Carte;
 
 /**
@@ -20,21 +20,45 @@ public class CartePanel extends javax.swing.JPanel {
     private int posX, posY; // Position 
     private int dimX, dimY; // Dimension
     private int newPosX, newPosY; // Position nouvelles
-    private Carte carte = new Attaque("", "", 0);
     private boolean drag = false; // indique si on est entrain de déplacer la carte
     private int posMouseX; // Distance horizontale entre le clic et le coin gauche de la carte
-    private int posMouseY; // Distance verticale entre le clic et le coin haut de la carte 
+    private int posMouseY; // Distance verticale entre le clic et le coin haut de la carte
+    private Carte carte;
     
     /**
      * Creates new form CartePanel
+     * @param carte
      */
-    public CartePanel() {
+    public CartePanel(Carte carte, boolean interactif) {
+        this.carte = carte;
         initComponents();
+        initUI();
+        this.setSize(new java.awt.Dimension(100, 130));
+        if (!interactif) {
+            removeInteractivity();
+        }
+    }
+    
+    public void initUI() {
+        jLabel1.setText(carte.getNom());
+        jLabel2.setText(carte.getDescription());
+    }
+    
+    private void removeInteractivity() {
+        for (java.awt.event.MouseMotionListener mml : jPanel1.getMouseMotionListeners()) {
+            jPanel1.removeMouseMotionListener(mml);
+        }
     }
     
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+    
+        g.setColor(Color.LIGHT_GRAY);
+        g.fillRect(0, 0, getWidth(), getHeight());
+
+        g.setColor(Color.RED);
+        g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
     }
         
     /**
@@ -50,6 +74,8 @@ public class CartePanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+
+        setRequestFocusEnabled(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setPreferredSize(new java.awt.Dimension(80, 120));
@@ -68,45 +94,15 @@ public class CartePanel extends javax.swing.JPanel {
         });
 
         jLabel1.setText("Nom Carte");
+        jPanel1.add(jLabel1);
 
         jLabel2.setText("- Effet 1 ");
+        jPanel1.add(jLabel2);
 
         jLabel3.setText("- Effet 2");
+        jPanel1.add(jLabel3);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        add(jPanel1);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed

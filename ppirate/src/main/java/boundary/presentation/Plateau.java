@@ -5,7 +5,9 @@
 package boundary.presentation;
 
 import boundary.AdaptateurDuNoyauFonctionnel;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
@@ -32,6 +34,8 @@ public class Plateau extends javax.swing.JFrame {
         profilJoueurPanel1.setJoueur(EnumJoueur.JACK_LE_BORGNE);
         profilJoueurPanel2.setJoueur(EnumJoueur.BILL_JAMBE_DE_BOIS);
         
+        afficherCarteZonePopularite();
+        
         // Set Adaptateur Noyau Fonctionnel 
         pioche1.setAdaptateur(noyau);
     }
@@ -46,6 +50,29 @@ public class Plateau extends javax.swing.JFrame {
     
     public AdaptateurDuNoyauFonctionnel getAdaptateurNoyau() {
         return noyau;
+    }
+    
+    public void afficherCarteZonePopularite() {
+        System.out.println("IN");
+        zonePopularitePanel1.removeAll();
+        zonePopularitePanel2.removeAll();
+        
+        noyau.getControlJeu().getZonePopulariteJ1().forEach(carte -> {
+            System.out.println("Carte ajoutée dans zone Popularité du joueur 1 : " + carte);
+            CartePanel c = new CartePanel(carte, false);
+            zonePopularitePanel1.add(c);
+        });
+        
+        noyau.getControlJeu().getZonePopulariteJ2().forEach(carte -> {
+            System.out.println("Carte ajoutée dans zone Popularité du joueur 2 : " + carte);
+            CartePanel c = new CartePanel(carte, false);
+            zonePopularitePanel2.add(c);
+        });
+        
+        zonePopularitePanel1.revalidate();
+        zonePopularitePanel1.repaint();
+        zonePopularitePanel2.revalidate();
+        zonePopularitePanel2.repaint();
     }
     
     /**
@@ -78,13 +105,9 @@ public class Plateau extends javax.swing.JFrame {
         profilJoueurPanel1 = new boundary.presentation.components.ProfilJoueurPanel();
         panelMainJ1 = new javax.swing.JPanel();
         fillerMain1J1 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 0), new java.awt.Dimension(200, 0), new java.awt.Dimension(60, 32767));
-        cartePanel2 = new boundary.presentation.CartePanel();
         fillerEspaceCarte1J1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        cartePanel1 = new boundary.presentation.CartePanel();
         fillerEspaceCarte2J1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        cartePanel3 = new boundary.presentation.CartePanel();
         fillerEspaceCarte3J1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        cartePanel4 = new boundary.presentation.CartePanel();
         fillerMain2J1 = new javax.swing.Box.Filler(new java.awt.Dimension(100, 0), new java.awt.Dimension(200, 0), new java.awt.Dimension(100, 32767));
         timerPanel1 = new boundary.presentation.components.TimerPanel();
         panelJoueur2 = new javax.swing.JPanel();
@@ -94,13 +117,9 @@ public class Plateau extends javax.swing.JFrame {
         profilJoueurPanel2 = new boundary.presentation.components.ProfilJoueurPanel();
         panelMainJ2 = new javax.swing.JPanel();
         fillerMain1J2 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 0), new java.awt.Dimension(200, 0), new java.awt.Dimension(60, 32767));
-        cartePanel8 = new boundary.presentation.CartePanel();
         fillerEspaceCarte1J2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        cartePanel7 = new boundary.presentation.CartePanel();
         fillerEspaceCarte2J2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        cartePanel6 = new boundary.presentation.CartePanel();
         fillerEspaceCarte3J2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        cartePanel5 = new boundary.presentation.CartePanel();
         fillerMain2J2 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 0), new java.awt.Dimension(200, 0), new java.awt.Dimension(60, 32767));
         descriptionPanel1 = new boundary.presentation.components.DescriptionPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -133,7 +152,7 @@ public class Plateau extends javax.swing.JFrame {
         zonePopularitePanel1.setLayout(zonePopularitePanel1Layout);
         zonePopularitePanel1Layout.setHorizontalGroup(
             zonePopularitePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1320, Short.MAX_VALUE)
+            .addGap(0, 780, Short.MAX_VALUE)
         );
         zonePopularitePanel1Layout.setVerticalGroup(
             zonePopularitePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +165,7 @@ public class Plateau extends javax.swing.JFrame {
         zonePopularitePanel2.setLayout(zonePopularitePanel2Layout);
         zonePopularitePanel2Layout.setHorizontalGroup(
             zonePopularitePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1320, Short.MAX_VALUE)
+            .addGap(0, 780, Short.MAX_VALUE)
         );
         zonePopularitePanel2Layout.setVerticalGroup(
             zonePopularitePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,37 +237,9 @@ public class Plateau extends javax.swing.JFrame {
         panelMainJ1.setOpaque(false);
         panelMainJ1.setLayout(new javax.swing.BoxLayout(panelMainJ1, javax.swing.BoxLayout.LINE_AXIS));
         panelMainJ1.add(fillerMain1J1);
-
-        cartePanel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cartePanel2MousePressed(evt);
-            }
-        });
-        panelMainJ1.add(cartePanel2);
         panelMainJ1.add(fillerEspaceCarte1J1);
-
-        cartePanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cartePanel1MousePressed(evt);
-            }
-        });
-        panelMainJ1.add(cartePanel1);
         panelMainJ1.add(fillerEspaceCarte2J1);
-
-        cartePanel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cartePanel3MousePressed(evt);
-            }
-        });
-        panelMainJ1.add(cartePanel3);
         panelMainJ1.add(fillerEspaceCarte3J1);
-
-        cartePanel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cartePanel4MousePressed(evt);
-            }
-        });
-        panelMainJ1.add(cartePanel4);
         panelMainJ1.add(fillerMain2J1);
         panelMainJ1.add(timerPanel1);
 
@@ -288,37 +279,9 @@ public class Plateau extends javax.swing.JFrame {
         panelMainJ2.setOpaque(false);
         panelMainJ2.setLayout(new javax.swing.BoxLayout(panelMainJ2, javax.swing.BoxLayout.LINE_AXIS));
         panelMainJ2.add(fillerMain1J2);
-
-        cartePanel8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cartePanel8MousePressed(evt);
-            }
-        });
-        panelMainJ2.add(cartePanel8);
         panelMainJ2.add(fillerEspaceCarte1J2);
-
-        cartePanel7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cartePanel7MousePressed(evt);
-            }
-        });
-        panelMainJ2.add(cartePanel7);
         panelMainJ2.add(fillerEspaceCarte2J2);
-
-        cartePanel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cartePanel6MousePressed(evt);
-            }
-        });
-        panelMainJ2.add(cartePanel6);
         panelMainJ2.add(fillerEspaceCarte3J2);
-
-        cartePanel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cartePanel5MousePressed(evt);
-            }
-        });
-        panelMainJ2.add(cartePanel5);
         panelMainJ2.add(fillerMain2J2);
 
         descriptionPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -365,41 +328,9 @@ public class Plateau extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cartePanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartePanel1MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cartePanel1MousePressed
-
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         System.out.println("boundary.presentation.Plateau.formMousePressed()");
     }//GEN-LAST:event_formMousePressed
-
-    private void cartePanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartePanel2MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cartePanel2MousePressed
-
-    private void cartePanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartePanel3MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cartePanel3MousePressed
-
-    private void cartePanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartePanel4MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cartePanel4MousePressed
-
-    private void cartePanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartePanel5MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cartePanel5MousePressed
-
-    private void cartePanel6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartePanel6MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cartePanel6MousePressed
-
-    private void cartePanel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartePanel7MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cartePanel7MousePressed
-
-    private void cartePanel8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartePanel8MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cartePanel8MousePressed
 
     private void descriptionPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descriptionPanel1MousePressed
         // TODO add your handling code here:
@@ -411,14 +342,6 @@ public class Plateau extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundLabel;
-    private boundary.presentation.CartePanel cartePanel1;
-    private boundary.presentation.CartePanel cartePanel2;
-    private boundary.presentation.CartePanel cartePanel3;
-    private boundary.presentation.CartePanel cartePanel4;
-    private boundary.presentation.CartePanel cartePanel5;
-    private boundary.presentation.CartePanel cartePanel6;
-    private boundary.presentation.CartePanel cartePanel7;
-    private boundary.presentation.CartePanel cartePanel8;
     private boundary.presentation.components.DescriptionPanel descriptionPanel1;
     private javax.swing.Box.Filler fillerEspaceCarte1J1;
     private javax.swing.Box.Filler fillerEspaceCarte1J2;
