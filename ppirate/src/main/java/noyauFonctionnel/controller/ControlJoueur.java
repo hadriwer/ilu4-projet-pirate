@@ -41,4 +41,12 @@ public class ControlJoueur {
     public int getPointDeVieJ2() {
         return jeu.getJoueur2().getIndiceVie();
     }
+    
+    public int getIndicePopulariteJ1() {
+        return jeu.getJoueur1().getIndicePopularite();
+    }
+    
+    public int getIndicePopulariteJ2() {
+        return jeu.getJoueur2().getIndicePopularite();
+    }
 }

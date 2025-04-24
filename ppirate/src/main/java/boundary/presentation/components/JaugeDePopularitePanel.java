@@ -62,7 +62,18 @@ public class JaugeDePopularitePanel extends javax.swing.JPanel {
         initComponents();
     }
     
-    public void setNiveau(NiveauPopularite newNiveau) {
+    public void setNiveau(int pop) {
+        NiveauPopularite newNiveau;
+        
+        newNiveau = switch (pop) {
+            case 0 -> NiveauPopularite.NIVEAU0;
+            case 1 -> NiveauPopularite.NIVEAU1;
+            case 2 -> NiveauPopularite.NIVEAU2;
+            case 3 -> NiveauPopularite.NIVEAU3;
+            case 4 -> NiveauPopularite.NIVEAU4;
+            default -> NiveauPopularite.NIVEAU5;
+        };
+        
         this.niveau = newNiveau;
         repaint();
     }

@@ -5,6 +5,7 @@
 package boundary.presentation;
 
 import boundary.AdaptateurDuNoyauFonctionnel;
+import boundary.presentation.components.JaugeDePopularitePanel;
 import boundary.presentation.components.ViePanel;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -56,6 +57,7 @@ public class Plateau extends javax.swing.JFrame {
     public final void updatePlateau() {
         afficherCarteZonePopularite();
         updateJaugeVie();
+        updatePopularite();
     }
     
     public void afficherCarteZonePopularite() {
@@ -98,6 +100,14 @@ public class Plateau extends javax.swing.JFrame {
                 vies.setPleine(true);
             }
         }
+    }
+    
+    public void updatePopularite() {
+        int pop_j1 = noyau.getControlJoueur().getIndicePopulariteJ1();
+        int pop_j2 = noyau.getControlJoueur().getIndicePopulariteJ2();
+        
+        jaugeDePopularitePanel1.setNiveau(pop_j1);
+        jaugeDePopularitePanel2.setNiveau(pop_j2);
     }
     
     /**
