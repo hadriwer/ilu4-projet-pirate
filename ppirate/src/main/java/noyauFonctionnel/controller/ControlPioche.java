@@ -23,6 +23,6 @@ public class ControlPioche {
     }
     
     public boolean isPiocheEmpty() {
-        return getPiocheJeu().getPioche().isEmpty();
+        return getPiocheJeu().isEmpty();
     }
 }

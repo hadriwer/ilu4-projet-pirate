@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package noyauFonctionnel.entity.cartes;
 
-/**
- *
- * @author wer
- */
+import java.util.Objects;
+
 public class Popularite extends Carte {
     private final int pointDePop;
     private final int selfDegats;
@@ -28,20 +22,20 @@ public class Popularite extends Carte {
     
     @Override
     public String toString() {
-        return "Carte Popularité -> gain = " + pointDePop + ", dégats à nous même = " + selfDegats;
+        return "Popularite[nom=" + this.getNom() + ", gain=" + pointDePop + ", auto-degat=" + selfDegats + "]";
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Popularite p = (Popularite)o;
-        return pointDePop == p.getPointDepPop() && selfDegats == p.getSelfDegats() && super.getNom().equals(p.getNom());
+        if (!super.equals(o)) return false; // check attributs de la superclass
+        Popularite p = (Popularite) o;
+        return pointDePop == p.getPointDepPop() && selfDegats == p.getSelfDegats();
     }
 
     @Override
     public int hashCode() {
-        return 37 * pointDePop * super.getNom().hashCode();
+        return Objects.hash(super.hashCode(), pointDePop, selfDegats);
     }
-    
 }

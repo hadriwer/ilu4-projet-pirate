@@ -71,7 +71,7 @@ public class Jeu {
     }
    
     public Joueur giveJoueurGagnant() {
-        if (joueur1.aGagne() || joueur2.aGagne()) {
+        if (joueur1.aGagne() || joueur2.aPerdu()) {
             return joueur1;
         } else {
             return joueur2;

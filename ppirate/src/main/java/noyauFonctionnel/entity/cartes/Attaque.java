@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package noyauFonctionnel.entity.cartes;
 
-/**
- *
- * @author wer
- */
+import java.util.Objects;
+
 public class Attaque extends Carte {
     private final int actionVie;
     private final int selfDegats;
@@ -28,19 +22,20 @@ public class Attaque extends Carte {
     
     @Override
     public String toString() {
-        return "Carte Attaque -> dégat = " + actionVie + ", dégat à nous même = " + selfDegats;
+        return "Attaque[nom=" + this.getNom() + ", degat=" + actionVie + ", auto-degat=" + selfDegats + "]";
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Attaque carte = (Attaque)o;
-        return actionVie == carte.getActionVie() && selfDegats == carte.getSelfDegats() && super.getNom().equals(carte.getNom());
+        if (!super.equals(o)) return false; // check attributs de la superclass
+        Attaque a = (Attaque) o;
+        return actionVie == a.getActionVie() && selfDegats == a.getSelfDegats();
     }
 
     @Override
     public int hashCode() {
-        return 31 * actionVie * super.getNom().hashCode();
+        return Objects.hash(super.hashCode(), actionVie, selfDegats);
     }
 }

@@ -10,9 +10,8 @@ package noyauFonctionnel.entity.cartes;
  */
 
 public class ConfigurationCarte {
-	
-	private int nbExemplaires;
-	private Carte carte;
+	private final int nbExemplaires;
+	private final Carte carte;
 
 	public ConfigurationCarte(Carte carte, int nbExemplaires) {
 		this.carte = carte;
@@ -26,7 +25,5 @@ public class ConfigurationCarte {
 	public int getNbExemplaires() {
 		return nbExemplaires;
 	}
-
-
 }
 
