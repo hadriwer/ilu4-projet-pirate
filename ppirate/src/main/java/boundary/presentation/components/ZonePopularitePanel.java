@@ -29,7 +29,6 @@ public class ZonePopularitePanel extends javax.swing.JPanel {
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
-        System.out.println("repaint zone popularite");
         
         Graphics2D g2d = (Graphics2D) g.create();
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);

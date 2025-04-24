@@ -32,6 +32,7 @@ public class ViePanel extends javax.swing.JPanel {
 
     public void setPleine(boolean pleine) {
         this.pleine = pleine;
+        repaint();
     }
     
     

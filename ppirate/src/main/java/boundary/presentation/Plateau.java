@@ -5,6 +5,7 @@
 package boundary.presentation;
 
 import boundary.AdaptateurDuNoyauFonctionnel;
+import boundary.presentation.components.ViePanel;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -34,7 +35,7 @@ public class Plateau extends javax.swing.JFrame {
         profilJoueurPanel1.setJoueur(EnumJoueur.JACK_LE_BORGNE);
         profilJoueurPanel2.setJoueur(EnumJoueur.BILL_JAMBE_DE_BOIS);
         
-        afficherCarteZonePopularite();
+        updatePlateau();
         
         // Set Adaptateur Noyau Fonctionnel 
         pioche1.setAdaptateur(noyau);
@@ -50,6 +51,11 @@ public class Plateau extends javax.swing.JFrame {
     
     public AdaptateurDuNoyauFonctionnel getAdaptateurNoyau() {
         return noyau;
+    }
+    
+    public final void updatePlateau() {
+        afficherCarteZonePopularite();
+        updateJaugeVie();
     }
     
     public void afficherCarteZonePopularite() {
@@ -73,6 +79,25 @@ public class Plateau extends javax.swing.JFrame {
         zonePopularitePanel1.repaint();
         zonePopularitePanel2.revalidate();
         zonePopularitePanel2.repaint();
+    }
+    
+    public void updateJaugeVie() {
+        int vie_j1 = noyau.getControlJoueur().getPointDeVieJ1();
+        int vie_j2 = noyau.getControlJoueur().getPointDeVieJ2();
+        System.out.println("vie joueur1 = " + vie_j1 + " vie joueur2 = " + vie_j2);
+        
+        for (int i = 0; i < 5; i++){
+            if (i <= vie_j1) {
+                System.out.println("j1");
+                ViePanel vies = (ViePanel) jaugeDeViePanel1.getComponent(i);
+                vies.setPleine(true);
+            }
+            if (i <= vie_j2) {
+                System.out.println("j2");
+                ViePanel vies = (ViePanel) jaugeDeViePanel2.getComponent(i);
+                vies.setPleine(true);
+            }
+        }
     }
     
     /**

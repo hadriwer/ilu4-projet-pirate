@@ -33,4 +33,12 @@ public class ControlJoueur {
     public boolean isMainJoueur2Empty() {
         return getMainJoueur2().getCartes().isEmpty();
     }
+    
+    public int getPointDeVieJ1() {
+        return jeu.getJoueur1().getIndiceVie();
+    }
+    
+    public int getPointDeVieJ2() {
+        return jeu.getJoueur2().getIndiceVie();
+    }
 }
