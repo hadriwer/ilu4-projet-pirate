@@ -61,7 +61,6 @@ public class Plateau extends javax.swing.JFrame {
     }
     
     public void afficherCarteZonePopularite() {
-        System.out.println("IN");
         zonePopularitePanel1.removeAll();
         zonePopularitePanel2.removeAll();
         
@@ -86,16 +85,13 @@ public class Plateau extends javax.swing.JFrame {
     public void updateJaugeVie() {
         int vie_j1 = noyau.getControlJoueur().getPointDeVieJ1();
         int vie_j2 = noyau.getControlJoueur().getPointDeVieJ2();
-        System.out.println("vie joueur1 = " + vie_j1 + " vie joueur2 = " + vie_j2);
         
         for (int i = 0; i < 5; i++){
             if (i <= vie_j1) {
-                System.out.println("j1");
                 ViePanel vies = (ViePanel) jaugeDeViePanel1.getComponent(i);
                 vies.setPleine(true);
             }
             if (i <= vie_j2) {
-                System.out.println("j2");
                 ViePanel vies = (ViePanel) jaugeDeViePanel2.getComponent(i);
                 vies.setPleine(true);
             }
