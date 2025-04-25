@@ -78,20 +78,30 @@ public class Jeu {
         }
     }
     
-    public void jouerJeu() {
-        while (!verifierFinPartie()) {
-            System.out.println("Nombre étape de jeu : " + compteNombreJeu);
-            
-            Joueur playingJoueur = donnerTourDeJoueur();
-            Carte piocherCarte = pioche.piocher();
-            
-            playingJoueur.prendreCarte(piocherCarte);
-            
-            
-            
-            changerJoueur();
-            
-            compteNombreJeu++;
+    public void appliquerEffetCarte(Carte carte) {
+        switch (carte) {
+            case Attaque a -> {
+                if (tourDeJeu) {
+                    // Joueur 1 qui joue donc joueur2 qui subit sur une Attaque
+                    joueur1.perdreVie(a.getSelfDegats());
+                    joueur2.perdreVie(a.getSelfDegats());
+                }
+                else {
+                    joueur1.perdreVie(a.getSelfDegats());
+                    joueur2.perdreVie(a.getSelfDegats());
+                }
+            }
+            case Popularite p -> {
+                if (tourDeJeu) {
+                    joueur1.gagnerPop(p.getPointDepPop());
+                    joueur1.perdreVie(p.getSelfDegats());
+                }
+                else {
+                    joueur2.gagnerPop(p.getPointDepPop());
+                    joueur2.perdreVie(p.getSelfDegats());
+                }
+            }
+            default -> throw new IllegalStateException("Aucune des cartes connues");
         }
     }
     

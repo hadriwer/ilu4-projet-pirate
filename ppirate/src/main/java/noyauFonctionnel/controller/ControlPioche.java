@@ -6,6 +6,7 @@ package noyauFonctionnel.controller;
 
 import noyauFonctionnel.entity.Jeu;
 import noyauFonctionnel.entity.Pioche;
+import noyauFonctionnel.entity.cartes.Carte;
 
 /**
  *
@@ -24,5 +25,9 @@ public class ControlPioche {
     
     public boolean isPiocheEmpty() {
         return getPiocheJeu().isEmpty();
+    }
+    
+    public Carte piocher() {
+        return getPiocheJeu().piocher();
     }
 }

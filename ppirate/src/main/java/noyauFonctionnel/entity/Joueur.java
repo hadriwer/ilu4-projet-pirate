@@ -41,15 +41,21 @@ public class Joueur {
         return this.mainJoueur;
     }
     
-    public void perdreVie(){
-        if (indiceVie > 0){
-            this.indiceVie --;
+    public void perdreVie(int vie){
+        if (indiceVie - vie >= 0){
+            this.indiceVie += vie;
+        }
+        else {
+            this.indiceVie = 0;
         }
     }
     
-    public void gagnerPop(){
-        if(indicePopularite < 5){
-           this.indicePopularite ++; 
+    public void gagnerPop(int popularite){
+        if (indicePopularite + popularite <= 5) {
+            this.indicePopularite += popularite;
+        }
+        else{
+            this.indicePopularite = 5;
         }
     }
     

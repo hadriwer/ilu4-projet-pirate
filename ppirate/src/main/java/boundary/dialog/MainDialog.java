@@ -6,6 +6,7 @@ package boundary.dialog;
 
 import boundary.AdaptateurDuNoyauFonctionnel;
 import boundary.presentation.Plateau;
+import javax.swing.Timer;
 
 /**
  *
@@ -13,16 +14,34 @@ import boundary.presentation.Plateau;
  */
 public class MainDialog {
     
-    private AdaptateurDuNoyauFonctionnel jeu;
+    private AdaptateurDuNoyauFonctionnel adaptateurNoyau;
     
-    public MainDialog(AdaptateurDuNoyauFonctionnel jeu) {
-        this.jeu = jeu;
+    public MainDialog(AdaptateurDuNoyauFonctionnel noyau) {
+        this.adaptateurNoyau = noyau;
     }
     
     public void initDialog() {
-        Plateau vuePlateau = new Plateau(jeu);
+        Plateau vuePlateau = new Plateau(adaptateurNoyau);
         vuePlateau.setVisible(true);
-        // interfaceNoyauFonct
+        
+        Timer boucleJeu = new Timer(60000, e -> {
+            if (adaptateurNoyau.getControlJeu().verifierFinPartie()) {
+                // TODO logique de fin de partie (arrêter le timer)
+            }
+            // TODO drag and drop
+            System.out.println("Une carte a été choisie.");
+            // adaptateurNoyau.getControlJeu().appliquerEffetCarte(/*carte*/);
+            System.out.println("On applique les effets de la carte choisie");
+            // adaptateurNoyau.getControlJeu().deposerCarte(/*carte*/);
+            System.out.println("carte déposée de sa zone");
+            adaptateurNoyau.getControlJeu().joueurPrendreCarte(adaptateurNoyau.getControlPioche().piocher());
+            System.out.println("On pioche une nouvelle carte.");
+            // vuePlateau.updateMainJoueur();
+            vuePlateau.updatePlateau();
+            adaptateurNoyau.getControlJeu().changerJoueur();
+            System.out.println("On change de joueur.");
+        });
+        boucleJeu.start();
     }
     
      /**

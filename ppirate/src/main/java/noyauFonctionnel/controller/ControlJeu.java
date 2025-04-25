@@ -6,6 +6,7 @@ package noyauFonctionnel.controller;
 
 import java.util.List;
 import noyauFonctionnel.entity.Jeu;
+import noyauFonctionnel.entity.Joueur;
 import noyauFonctionnel.entity.Pioche;
 import noyauFonctionnel.entity.cartes.Carte;
 
@@ -18,6 +19,30 @@ public class ControlJeu {
     
     public ControlJeu(Jeu jeu) {
         this.jeu = jeu;
+    }
+    
+    public boolean verifierFinPartie() {
+        return jeu.verifierFinPartie();
+    }
+    
+    public Joueur donnerTourDeJoueur() {
+        return jeu.donnerTourDeJoueur();
+    }
+    
+    public void joueurPrendreCarte(Carte carte) {
+        donnerTourDeJoueur().prendreCarte(carte);
+    }
+    
+    public void changerJoueur() {
+        jeu.changerJoueur();
+    }
+    
+    public void appliquerEffetCarte(Carte carte) {
+        jeu.appliquerEffetCarte(carte);
+    }
+    
+    public void deposerCarte(Carte carte) {
+        jeu.deposerCarte(carte);
     }
     
     public List<Carte> getZoneAction() {
