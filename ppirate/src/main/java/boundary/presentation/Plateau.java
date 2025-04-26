@@ -104,11 +104,9 @@ public class Plateau extends javax.swing.JFrame {
         jaugeDeViePanel1 = new boundary.presentation.components.JaugeDeViePanel();
         profilJoueurPanel1 = new boundary.presentation.components.ProfilJoueurPanel();
         panelMainJ1 = new javax.swing.JPanel();
-        fillerMain1J1 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 0), new java.awt.Dimension(200, 0), new java.awt.Dimension(60, 32767));
-        fillerEspaceCarte1J1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        fillerEspaceCarte2J1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        fillerEspaceCarte3J1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        fillerMain2J1 = new javax.swing.Box.Filler(new java.awt.Dimension(100, 0), new java.awt.Dimension(200, 0), new java.awt.Dimension(100, 32767));
+        filler1MainJ1 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 32767));
+        mainJoueurPanel1 = new boundary.presentation.components.MainJoueurPanel();
+        filler2MainJ1 = new javax.swing.Box.Filler(new java.awt.Dimension(100, 0), new java.awt.Dimension(100, 2), new java.awt.Dimension(500, 32767));
         timerPanel1 = new boundary.presentation.components.TimerPanel();
         panelJoueur2 = new javax.swing.JPanel();
         panelInfosJ2 = new javax.swing.JPanel();
@@ -116,19 +114,15 @@ public class Plateau extends javax.swing.JFrame {
         jaugeDeViePanel2 = new boundary.presentation.components.JaugeDeViePanel();
         profilJoueurPanel2 = new boundary.presentation.components.ProfilJoueurPanel();
         panelMainJ2 = new javax.swing.JPanel();
-        fillerMain1J2 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 0), new java.awt.Dimension(200, 0), new java.awt.Dimension(60, 32767));
-        fillerEspaceCarte1J2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        fillerEspaceCarte2J2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        fillerEspaceCarte3J2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        fillerMain2J2 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 0), new java.awt.Dimension(200, 0), new java.awt.Dimension(60, 32767));
+        filler1MainJ2 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 32767));
+        mainJoueurPanel2 = new boundary.presentation.components.MainJoueurPanel();
+        filler2MainJ2 = new javax.swing.Box.Filler(new java.awt.Dimension(100, 0), new java.awt.Dimension(100, 0), new java.awt.Dimension(100, 32767));
         descriptionPanel1 = new boundary.presentation.components.DescriptionPanel();
         jPanel2 = new javax.swing.JPanel();
         backgroundLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1080, 720));
         setMinimumSize(new java.awt.Dimension(1080, 720));
-        setPreferredSize(new java.awt.Dimension(1080, 720));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
@@ -236,11 +230,21 @@ public class Plateau extends javax.swing.JFrame {
 
         panelMainJ1.setOpaque(false);
         panelMainJ1.setLayout(new javax.swing.BoxLayout(panelMainJ1, javax.swing.BoxLayout.LINE_AXIS));
-        panelMainJ1.add(fillerMain1J1);
-        panelMainJ1.add(fillerEspaceCarte1J1);
-        panelMainJ1.add(fillerEspaceCarte2J1);
-        panelMainJ1.add(fillerEspaceCarte3J1);
-        panelMainJ1.add(fillerMain2J1);
+        panelMainJ1.add(filler1MainJ1);
+
+        javax.swing.GroupLayout mainJoueurPanel1Layout = new javax.swing.GroupLayout(mainJoueurPanel1);
+        mainJoueurPanel1.setLayout(mainJoueurPanel1Layout);
+        mainJoueurPanel1Layout.setHorizontalGroup(
+            mainJoueurPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 481, Short.MAX_VALUE)
+        );
+        mainJoueurPanel1Layout.setVerticalGroup(
+            mainJoueurPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+        );
+
+        panelMainJ1.add(mainJoueurPanel1);
+        panelMainJ1.add(filler2MainJ1);
         panelMainJ1.add(timerPanel1);
 
         panelJoueur1.add(panelMainJ1, java.awt.BorderLayout.CENTER);
@@ -278,12 +282,23 @@ public class Plateau extends javax.swing.JFrame {
 
         panelMainJ2.setOpaque(false);
         panelMainJ2.setLayout(new javax.swing.BoxLayout(panelMainJ2, javax.swing.BoxLayout.LINE_AXIS));
-        panelMainJ2.add(fillerMain1J2);
-        panelMainJ2.add(fillerEspaceCarte1J2);
-        panelMainJ2.add(fillerEspaceCarte2J2);
-        panelMainJ2.add(fillerEspaceCarte3J2);
-        panelMainJ2.add(fillerMain2J2);
+        panelMainJ2.add(filler1MainJ2);
 
+        javax.swing.GroupLayout mainJoueurPanel2Layout = new javax.swing.GroupLayout(mainJoueurPanel2);
+        mainJoueurPanel2.setLayout(mainJoueurPanel2Layout);
+        mainJoueurPanel2Layout.setHorizontalGroup(
+            mainJoueurPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        mainJoueurPanel2Layout.setVerticalGroup(
+            mainJoueurPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+        );
+
+        panelMainJ2.add(mainJoueurPanel2);
+        panelMainJ2.add(filler2MainJ2);
+
+        descriptionPanel1.setPreferredSize(new java.awt.Dimension(219, 113));
         descriptionPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 descriptionPanel1MousePressed(evt);
@@ -343,16 +358,10 @@ public class Plateau extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundLabel;
     private boundary.presentation.components.DescriptionPanel descriptionPanel1;
-    private javax.swing.Box.Filler fillerEspaceCarte1J1;
-    private javax.swing.Box.Filler fillerEspaceCarte1J2;
-    private javax.swing.Box.Filler fillerEspaceCarte2J1;
-    private javax.swing.Box.Filler fillerEspaceCarte2J2;
-    private javax.swing.Box.Filler fillerEspaceCarte3J1;
-    private javax.swing.Box.Filler fillerEspaceCarte3J2;
-    private javax.swing.Box.Filler fillerMain1J1;
-    private javax.swing.Box.Filler fillerMain1J2;
-    private javax.swing.Box.Filler fillerMain2J1;
-    private javax.swing.Box.Filler fillerMain2J2;
+    private javax.swing.Box.Filler filler1MainJ1;
+    private javax.swing.Box.Filler filler1MainJ2;
+    private javax.swing.Box.Filler filler2MainJ1;
+    private javax.swing.Box.Filler filler2MainJ2;
     private javax.swing.Box.Filler fillerPioche1;
     private javax.swing.Box.Filler fillerPioche2;
     private javax.swing.Box.Filler fillerZoneAction1;
@@ -364,6 +373,8 @@ public class Plateau extends javax.swing.JFrame {
     private boundary.presentation.components.JaugeDePopularitePanel jaugeDePopularitePanel2;
     private boundary.presentation.components.JaugeDeViePanel jaugeDeViePanel1;
     private boundary.presentation.components.JaugeDeViePanel jaugeDeViePanel2;
+    private boundary.presentation.components.MainJoueurPanel mainJoueurPanel1;
+    private boundary.presentation.components.MainJoueurPanel mainJoueurPanel2;
     private javax.swing.JPanel panelCommun;
     private javax.swing.JPanel panelInfosJ1;
     private javax.swing.JPanel panelInfosJ2;
