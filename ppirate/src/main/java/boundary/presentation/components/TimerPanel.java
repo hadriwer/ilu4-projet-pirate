@@ -22,7 +22,7 @@ public class TimerPanel extends javax.swing.JPanel {
      */
     javax.swing.Timer timer;
     private int decompte;
-    private static final int TEMPS = 60;
+    private static final int TEMPS = 10;
     private float opacite;
     private static final int BORDURE = 15;
     
@@ -57,6 +57,24 @@ public class TimerPanel extends javax.swing.JPanel {
            timerTxt.setText(String.valueOf(this.decompte)); 
         }
         repaint();
+    }
+    
+    public void restartTimer() {
+        if (timer.isRunning()){
+            timer.stop();
+        }
+        this.decompte = TEMPS;
+        timer.start();
+        repaint();
+    }
+    
+    public void updateTimer(int timeLeft) {
+        this.decompte = timeLeft;
+        repaint();
+    }
+    
+    public int getDecompte() {
+        return decompte;
     }
 
     /**

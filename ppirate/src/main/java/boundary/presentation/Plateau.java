@@ -6,6 +6,7 @@ package boundary.presentation;
 
 import boundary.AdaptateurDuNoyauFonctionnel;
 import boundary.presentation.components.JaugeDePopularitePanel;
+import boundary.presentation.components.TimerPanel;
 import boundary.presentation.components.ViePanel;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -72,7 +73,7 @@ public class Plateau extends javax.swing.JFrame {
         });
         
         noyau.getControlJoueur().getMainJoueur2().getCartes().forEach(carte -> {
-            CartePanel c = new CartePanel(carte, tourDeJeu);
+            CartePanel c = new CartePanel(carte, !tourDeJeu);
             mainJoueurPanel2.add(c);
         });
         
@@ -126,6 +127,10 @@ public class Plateau extends javax.swing.JFrame {
         
         jaugeDePopularitePanel1.setNiveau(pop_j1);
         jaugeDePopularitePanel2.setNiveau(pop_j2);
+    }
+    
+    public TimerPanel getTimerPanel() {
+        return timerPanel1;
     }
     
     /**
@@ -194,31 +199,7 @@ public class Plateau extends javax.swing.JFrame {
         panelZonesPopularite.setBorder(javax.swing.BorderFactory.createEmptyBorder(50, 50, 50, 50));
         panelZonesPopularite.setOpaque(false);
         panelZonesPopularite.setLayout(new java.awt.GridLayout(2, 0));
-
-        javax.swing.GroupLayout zonePopularitePanel1Layout = new javax.swing.GroupLayout(zonePopularitePanel1);
-        zonePopularitePanel1.setLayout(zonePopularitePanel1Layout);
-        zonePopularitePanel1Layout.setHorizontalGroup(
-            zonePopularitePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 780, Short.MAX_VALUE)
-        );
-        zonePopularitePanel1Layout.setVerticalGroup(
-            zonePopularitePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 167, Short.MAX_VALUE)
-        );
-
         panelZonesPopularite.add(zonePopularitePanel1);
-
-        javax.swing.GroupLayout zonePopularitePanel2Layout = new javax.swing.GroupLayout(zonePopularitePanel2);
-        zonePopularitePanel2.setLayout(zonePopularitePanel2Layout);
-        zonePopularitePanel2Layout.setHorizontalGroup(
-            zonePopularitePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 780, Short.MAX_VALUE)
-        );
-        zonePopularitePanel2Layout.setVerticalGroup(
-            zonePopularitePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 167, Short.MAX_VALUE)
-        );
-
         panelZonesPopularite.add(zonePopularitePanel2);
 
         panelCommun.add(panelZonesPopularite, java.awt.BorderLayout.CENTER);
@@ -284,18 +265,6 @@ public class Plateau extends javax.swing.JFrame {
         panelMainJ1.setOpaque(false);
         panelMainJ1.setLayout(new javax.swing.BoxLayout(panelMainJ1, javax.swing.BoxLayout.LINE_AXIS));
         panelMainJ1.add(filler1MainJ1);
-
-        javax.swing.GroupLayout mainJoueurPanel1Layout = new javax.swing.GroupLayout(mainJoueurPanel1);
-        mainJoueurPanel1.setLayout(mainJoueurPanel1Layout);
-        mainJoueurPanel1Layout.setHorizontalGroup(
-            mainJoueurPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 481, Short.MAX_VALUE)
-        );
-        mainJoueurPanel1Layout.setVerticalGroup(
-            mainJoueurPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
-        );
-
         panelMainJ1.add(mainJoueurPanel1);
         panelMainJ1.add(filler2MainJ1);
         panelMainJ1.add(timerPanel1);
@@ -336,18 +305,6 @@ public class Plateau extends javax.swing.JFrame {
         panelMainJ2.setOpaque(false);
         panelMainJ2.setLayout(new javax.swing.BoxLayout(panelMainJ2, javax.swing.BoxLayout.LINE_AXIS));
         panelMainJ2.add(filler1MainJ2);
-
-        javax.swing.GroupLayout mainJoueurPanel2Layout = new javax.swing.GroupLayout(mainJoueurPanel2);
-        mainJoueurPanel2.setLayout(mainJoueurPanel2Layout);
-        mainJoueurPanel2Layout.setHorizontalGroup(
-            mainJoueurPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        mainJoueurPanel2Layout.setVerticalGroup(
-            mainJoueurPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
-        );
-
         panelMainJ2.add(mainJoueurPanel2);
         panelMainJ2.add(filler2MainJ2);
 
@@ -364,6 +321,8 @@ public class Plateau extends javax.swing.JFrame {
         jPanel1.add(panelJoueur2, java.awt.BorderLayout.NORTH);
 
         getContentPane().add(jPanel1);
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(640, 360));
 
         backgroundLabel.setMaximumSize(new java.awt.Dimension(1080, 720));
         backgroundLabel.setMinimumSize(new java.awt.Dimension(1080, 720));

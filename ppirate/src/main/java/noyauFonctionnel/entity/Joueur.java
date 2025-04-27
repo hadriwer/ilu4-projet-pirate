@@ -83,7 +83,7 @@ public class Joueur {
         private List<Carte> mainJoueur;
 
         public MainJoueur(List<Carte> mainJoueur) {
-            this.mainJoueur = new ArrayList<>();
+            this.mainJoueur = new ArrayList<>(mainJoueur);
         }
         
         public List<Carte> getMain(){
