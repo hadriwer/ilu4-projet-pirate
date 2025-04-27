@@ -128,4 +128,8 @@ public class Jeu {
     public Joueur getJoueur2() {
         return joueur2;
     }
+    
+    public boolean getTourDeJeur() {
+        return tourDeJeu;
+    }
 }

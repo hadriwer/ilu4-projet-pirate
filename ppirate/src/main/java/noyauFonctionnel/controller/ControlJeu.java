@@ -21,6 +21,10 @@ public class ControlJeu {
         this.jeu = jeu;
     }
     
+    public boolean getTourDeJeu() {
+        return jeu.getTourDeJeur();
+    }
+    
     public boolean verifierFinPartie() {
         return jeu.verifierFinPartie();
     }

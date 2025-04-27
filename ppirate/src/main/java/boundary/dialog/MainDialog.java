@@ -13,7 +13,6 @@ import javax.swing.Timer;
  * @author ember
  */
 public class MainDialog {
-    
     private AdaptateurDuNoyauFonctionnel adaptateurNoyau;
     
     public MainDialog(AdaptateurDuNoyauFonctionnel noyau) {
@@ -25,6 +24,9 @@ public class MainDialog {
         vuePlateau.setVisible(true);
         
         Timer boucleJeu = new Timer(60000, e -> {
+            System.out.println(adaptateurNoyau.getControlJoueur().getMainJoueur1().getCartes());
+            System.out.println(adaptateurNoyau.getControlJoueur().getMainJoueur2().getCartes());
+            vuePlateau.updatePlateau();
             if (adaptateurNoyau.getControlJeu().verifierFinPartie()) {
                 // TODO logique de fin de partie (arrêter le timer)
             }
@@ -36,12 +38,13 @@ public class MainDialog {
             System.out.println("carte déposée de sa zone");
             adaptateurNoyau.getControlJeu().joueurPrendreCarte(adaptateurNoyau.getControlPioche().piocher());
             System.out.println("On pioche une nouvelle carte.");
-            // vuePlateau.updateMainJoueur();
+            vuePlateau.updateMainJoueur();
             vuePlateau.updatePlateau();
             adaptateurNoyau.getControlJeu().changerJoueur();
             System.out.println("On change de joueur.");
         });
         boucleJeu.start();
+        
     }
     
      /**
@@ -52,6 +55,7 @@ public class MainDialog {
         MainDialog dialog = new MainDialog(jeu);
         
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 dialog.initDialog();
             }

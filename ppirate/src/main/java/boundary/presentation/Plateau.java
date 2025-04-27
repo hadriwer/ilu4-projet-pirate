@@ -58,6 +58,28 @@ public class Plateau extends javax.swing.JFrame {
         afficherCarteZonePopularite();
         updateJaugeVie();
         updatePopularite();
+        updateMainJoueur();
+    }
+    
+    public void updateMainJoueur() {
+        mainJoueurPanel1.removeAll();
+        mainJoueurPanel2.removeAll();
+        boolean tourDeJeu = noyau.getControlJeu().getTourDeJeu();
+        
+        noyau.getControlJoueur().getMainJoueur1().getCartes().forEach(carte -> {
+            CartePanel c = new CartePanel(carte, tourDeJeu);
+            mainJoueurPanel1.add(c);
+        });
+        
+        noyau.getControlJoueur().getMainJoueur2().getCartes().forEach(carte -> {
+            CartePanel c = new CartePanel(carte, tourDeJeu);
+            mainJoueurPanel2.add(c);
+        });
+        
+        mainJoueurPanel1.revalidate();
+        mainJoueurPanel1.repaint();
+        mainJoueurPanel2.revalidate();
+        mainJoueurPanel2.repaint();
     }
     
     public void afficherCarteZonePopularite() {
