@@ -71,16 +71,6 @@
                 <Property name="columns" type="int" value="0"/>
                 <Property name="rows" type="int" value="2"/>
               </Layout>
-              <SubComponents>
-                <Container class="UI.presentation.components.ZonePopularitePanel" name="zonePopularitePanel1">
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
-                </Container>
-                <Container class="UI.presentation.components.ZonePopularitePanel" name="zonePopularitePanel2">
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
-                </Container>
-              </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="panelZoneAction">
               <Properties>
@@ -187,8 +177,6 @@
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.VerticalStrut"/>
                   </AuxValues>
                 </Component>
-                <Component class="UI.presentation.components.Pioche" name="pioche1">
-                </Component>
                 <Component class="javax.swing.Box$Filler" name="fillerPioche2">
                   <Properties>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -232,54 +220,6 @@
               </Constraints>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
-              <SubComponents>
-                <Container class="UI.presentation.components.JaugeDePopularitePanel" name="jaugeDePopularitePanel1">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="null" type="code"/>
-                    </Property>
-                    <Property name="opaque" type="boolean" value="false"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                      <BorderConstraints direction="East"/>
-                    </Constraint>
-                  </Constraints>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="117" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="120" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                </Container>
-                <Component class="UI.presentation.components.JaugeDeViePanel" name="jaugeDeViePanel1">
-                  <Properties>
-                    <Property name="opaque" type="boolean" value="false"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                      <BorderConstraints direction="North"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="UI.presentation.components.ProfilJoueurPanel" name="profilJoueurPanel1">
-                  <Properties>
-                    <Property name="opaque" type="boolean" value="false"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                      <BorderConstraints direction="Center"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-              </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="panelMainJ1">
               <Properties>
@@ -309,10 +249,6 @@
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalStrut"/>
                   </AuxValues>
                 </Component>
-                <Container class="UI.presentation.components.MainJoueurPanel" name="mainJoueurPanel1">
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
-                </Container>
                 <Component class="javax.swing.Box$Filler" name="filler2MainJ1">
                   <Properties>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -328,8 +264,6 @@
                   <AuxValues>
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalStrut"/>
                   </AuxValues>
-                </Component>
-                <Component class="UI.presentation.components.TimerPanel" name="timerPanel1">
                 </Component>
               </SubComponents>
             </Container>
@@ -358,51 +292,6 @@
               </Constraints>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
-              <SubComponents>
-                <Container class="UI.presentation.components.JaugeDePopularitePanel" name="jaugeDePopularitePanel2">
-                  <Properties>
-                    <Property name="opaque" type="boolean" value="false"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                      <BorderConstraints direction="East"/>
-                    </Constraint>
-                  </Constraints>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="125" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                </Container>
-                <Component class="UI.presentation.components.JaugeDeViePanel" name="jaugeDeViePanel2">
-                  <Properties>
-                    <Property name="opaque" type="boolean" value="false"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                      <BorderConstraints direction="South"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="UI.presentation.components.ProfilJoueurPanel" name="profilJoueurPanel2">
-                  <Properties>
-                    <Property name="opaque" type="boolean" value="false"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                      <BorderConstraints direction="Center"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-              </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="panelMainJ2">
               <Properties>
@@ -432,10 +321,6 @@
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalStrut"/>
                   </AuxValues>
                 </Component>
-                <Container class="UI.presentation.components.MainJoueurPanel" name="mainJoueurPanel2">
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
-                </Container>
                 <Component class="javax.swing.Box$Filler" name="filler2MainJ2">
                   <Properties>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -451,16 +336,6 @@
                   <AuxValues>
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalStrut"/>
                   </AuxValues>
-                </Component>
-                <Component class="UI.presentation.components.DescriptionPanel" name="descriptionPanel1">
-                  <Properties>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[219, 113]"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="descriptionPanel1MousePressed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
