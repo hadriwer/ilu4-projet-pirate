@@ -25,13 +25,13 @@ public class MainDialog {
         Plateau vuePlateau = new Plateau(adaptateurNoyau);
         TimerPanel timerPanel = vuePlateau.getTimerPanel();
         vuePlateau.setVisible(true);
+        vuePlateau.updatePlateau();
         
-        Timer boucleJeu = new Timer(60000, e -> {
+        Timer boucleJeu = new Timer(10000, e -> {
             this.numTour += 1;
             System.out.println("Début du Tour numéro : " + numTour);
             System.out.println("Le pirate " + adaptateurNoyau.getControlJeu().donnerTourDeJoueur());
             timerPanel.updateTimer(timerPanel.getDecompte());
-            vuePlateau.updatePlateau();
             if (adaptateurNoyau.getControlJeu().verifierFinPartie()) {
                 // TODO logique de fin de partie (arrêter le timer)
             }

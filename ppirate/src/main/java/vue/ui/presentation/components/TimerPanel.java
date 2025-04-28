@@ -22,7 +22,7 @@ public class TimerPanel extends javax.swing.JPanel {
      */
     javax.swing.Timer timer;
     private int decompte;
-    private static final int TEMPS = 60;
+    private static final int TEMPS = 10;
     private float opacite;
     private static final int BORDURE = 15;
     
