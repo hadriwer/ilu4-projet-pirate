@@ -29,7 +29,7 @@ public class ControlJeu {
         return jeu.verifierFinPartie();
     }
     
-    public Joueur donnerTourDeJoueur() {
+    public Joueur donnerTourDeJoueur() { // TODO pas bon
         return jeu.donnerTourDeJoueur();
     }
     
@@ -61,7 +61,7 @@ public class ControlJeu {
         return jeu.getZonePopulariteJ2();
     }
     
-    public boolean isZoneActionEmpty() { // DEMANDER AU PROF
+    public boolean isZoneActionEmpty() {
         return getZoneAction().isEmpty();
     }
     

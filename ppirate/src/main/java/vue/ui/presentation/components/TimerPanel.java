@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package boundary.presentation.components;
+package vue.ui.presentation.components;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
@@ -22,7 +22,7 @@ public class TimerPanel extends javax.swing.JPanel {
      */
     javax.swing.Timer timer;
     private int decompte;
-    private static final int TEMPS = 10;
+    private static final int TEMPS = 60;
     private float opacite;
     private static final int BORDURE = 15;
     

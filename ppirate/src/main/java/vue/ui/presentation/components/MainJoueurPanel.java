@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package boundary.presentation.components;
+package vue.ui.presentation.components;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
@@ -13,15 +13,15 @@ import java.awt.geom.RoundRectangle2D;
 
 /**
  *
- * @author David Marquet
+ * @author Mathéo Vintrou
  */
-public class ZonePopularitePanel extends javax.swing.JPanel {
+public class MainJoueurPanel extends javax.swing.JPanel {
     private float opacite;
-    private static final int BORDURE = 15;
+    private static final int BORDURE = 10;
     /**
-     * Creates new form ZonePopularitePanel
+     * Creates new form MainJoueurPanel
      */
-    public ZonePopularitePanel() {
+    public MainJoueurPanel() {
         this.opacite = 0.5f;
         initComponents();
     }

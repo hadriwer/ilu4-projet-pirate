@@ -36,6 +36,7 @@ public class Jeu {
         this.zoneAction = new ArrayList<>();
         this.zonePopulariteJ1 = new ArrayList<>();
         this.zonePopulariteJ2 = new ArrayList<>();
+        zoneAction.add(pioche.piocher());
     }
     
     public Joueur donnerTourDeJoueur() {

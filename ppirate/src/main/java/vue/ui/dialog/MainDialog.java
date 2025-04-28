@@ -2,11 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package boundary.dialog;
+package vue.ui.dialog;
 
-import boundary.AdaptateurDuNoyauFonctionnel;
-import boundary.presentation.Plateau;
-import boundary.presentation.components.TimerPanel;
+import vue.ui.presentation.Plateau;
+import vue.ui.presentation.components.TimerPanel;
 import javax.swing.Timer;
 
 /**
@@ -27,7 +26,7 @@ public class MainDialog {
         TimerPanel timerPanel = vuePlateau.getTimerPanel();
         vuePlateau.setVisible(true);
         
-        Timer boucleJeu = new Timer(10000, e -> {
+        Timer boucleJeu = new Timer(60000, e -> {
             this.numTour += 1;
             System.out.println("Début du Tour numéro : " + numTour);
             System.out.println("Le pirate " + adaptateurNoyau.getControlJeu().donnerTourDeJoueur());

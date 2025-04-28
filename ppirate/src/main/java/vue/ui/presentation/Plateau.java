@@ -1,13 +1,13 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Gvue.uiForms/JFrame.java to edit this template
  */
-package boundary.presentation;
+package vue.ui.presentation;
 
-import boundary.AdaptateurDuNoyauFonctionnel;
-import boundary.presentation.components.JaugeDePopularitePanel;
-import boundary.presentation.components.TimerPanel;
-import boundary.presentation.components.ViePanel;
+import vue.ui.dialog.AdaptateurDuNoyauFonctionnel;
+import vue.ui.presentation.components.JaugeDePopularitePanel;
+import vue.ui.presentation.components.TimerPanel;
+import vue.ui.presentation.components.ViePanel;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -26,6 +26,7 @@ public class Plateau extends javax.swing.JFrame {
 
     /**
      * Creates new form Plateau
+     * 
      * @param noyau
      */
     public Plateau(AdaptateurDuNoyauFonctionnel noyau) {
@@ -36,80 +37,82 @@ public class Plateau extends javax.swing.JFrame {
         setResizable(false);
         profilJoueurPanel1.setJoueur(EnumJoueur.JACK_LE_BORGNE);
         profilJoueurPanel2.setJoueur(EnumJoueur.BILL_JAMBE_DE_BOIS);
-        
+
         updatePlateau();
-        
-        // Set Adaptateur Noyau Fonctionnel 
+
+        // Set Adaptateur Noyau Fonctionnel
         pioche1.setAdaptateur(noyau);
     }
 
-    public void setImage(){
-        BufferedImage image=ChargeurImage.chargerImage("presentation/plateau_background.png");
+    public void setImage() {
+        BufferedImage image = ChargeurImage.chargerImage("presentation/plateau_background.png");
         Image imageEchelle;
-        imageEchelle = image.getScaledInstance(backgroundLabel.getWidth(), backgroundLabel.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon typeIcon=new ImageIcon(imageEchelle);
+        imageEchelle = image.getScaledInstance(backgroundLabel.getWidth(), backgroundLabel.getHeight(),
+                Image.SCALE_SMOOTH);
+        ImageIcon typeIcon = new ImageIcon(imageEchelle);
         backgroundLabel.setIcon(typeIcon);
     }
-    
+
     public AdaptateurDuNoyauFonctionnel getAdaptateurNoyau() {
         return noyau;
     }
-    
+
     public final void updatePlateau() {
         afficherCarteZonePopularite();
         updateJaugeVie();
         updatePopularite();
         updateMainJoueur();
+        updateZoneAction();
     }
-    
+
     public void updateMainJoueur() {
         mainJoueurPanel1.removeAll();
         mainJoueurPanel2.removeAll();
         boolean tourDeJeu = noyau.getControlJeu().getTourDeJeu();
-        
+
         noyau.getControlJoueur().getMainJoueur1().getCartes().forEach(carte -> {
             CartePanel c = new CartePanel(carte, tourDeJeu);
             mainJoueurPanel1.add(c);
         });
-        
+
         noyau.getControlJoueur().getMainJoueur2().getCartes().forEach(carte -> {
             CartePanel c = new CartePanel(carte, !tourDeJeu);
             mainJoueurPanel2.add(c);
         });
-        
+
         mainJoueurPanel1.revalidate();
         mainJoueurPanel1.repaint();
         mainJoueurPanel2.revalidate();
         mainJoueurPanel2.repaint();
     }
-    
+
     public void afficherCarteZonePopularite() {
         zonePopularitePanel1.removeAll();
         zonePopularitePanel2.removeAll();
-        
+
         noyau.getControlJeu().getZonePopulariteJ1().forEach(carte -> {
             System.out.println("Carte ajoutée dans zone Popularité du joueur 1 : " + carte);
             CartePanel c = new CartePanel(carte, false);
             zonePopularitePanel1.add(c);
         });
-        
+
         noyau.getControlJeu().getZonePopulariteJ2().forEach(carte -> {
             System.out.println("Carte ajoutée dans zone Popularité du joueur 2 : " + carte);
             CartePanel c = new CartePanel(carte, false);
             zonePopularitePanel2.add(c);
         });
-        
+
         zonePopularitePanel1.revalidate();
         zonePopularitePanel1.repaint();
         zonePopularitePanel2.revalidate();
         zonePopularitePanel2.repaint();
     }
-    
+
     public void updateJaugeVie() {
         int vie_j1 = noyau.getControlJoueur().getPointDeVieJ1();
         int vie_j2 = noyau.getControlJoueur().getPointDeVieJ2();
-        
-        for (int i = 0; i < 5; i++){
+
+        for (int i = 0; i < 5; i++) {
             if (i <= vie_j1) {
                 ViePanel vies = (ViePanel) jaugeDeViePanel1.getComponent(i);
                 vies.setPleine(true);
@@ -120,62 +123,82 @@ public class Plateau extends javax.swing.JFrame {
             }
         }
     }
-    
+
     public void updatePopularite() {
         int pop_j1 = noyau.getControlJoueur().getIndicePopulariteJ1();
         int pop_j2 = noyau.getControlJoueur().getIndicePopulariteJ2();
-        
+
         jaugeDePopularitePanel1.setNiveau(pop_j1);
         jaugeDePopularitePanel2.setNiveau(pop_j2);
     }
-    
+
+    public void updateZoneAction() {
+        if (!noyau.getControlJeu().getZoneAction().isEmpty()) {
+            panelZoneAction.removeAll();
+            CartePanel premCarte = new CartePanel(noyau.getControlJeu().getZoneAction().getFirst(), false);
+            panelZoneAction.add(premCarte);
+        }
+        
+        panelZoneAction.revalidate();
+        panelZoneAction.repaint();
+    }
+
     public TimerPanel getTimerPanel() {
         return timerPanel1;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
      * regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         panelCommun = new javax.swing.JPanel();
         panelZonesPopularite = new javax.swing.JPanel();
-        zonePopularitePanel1 = new boundary.presentation.components.ZonePopularitePanel();
-        zonePopularitePanel2 = new boundary.presentation.components.ZonePopularitePanel();
+        zonePopularitePanel1 = new vue.ui.presentation.components.ZonePopularitePanel();
+        zonePopularitePanel2 = new vue.ui.presentation.components.ZonePopularitePanel();
         panelZoneAction = new javax.swing.JPanel();
-        fillerZoneAction1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 150), new java.awt.Dimension(32767, 50));
+        fillerZoneAction1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 150),
+                new java.awt.Dimension(32767, 50));
         panelZoneAction1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        fillerZoneAction2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
+        fillerZoneAction2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50),
+                new java.awt.Dimension(32767, 50));
         panelPioche = new javax.swing.JPanel();
-        fillerPioche1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 150), new java.awt.Dimension(32767, 50));
-        pioche1 = new boundary.presentation.components.Pioche();
-        fillerPioche2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
+        fillerPioche1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 150),
+                new java.awt.Dimension(32767, 50));
+        pioche1 = new vue.ui.presentation.components.Pioche();
+        fillerPioche2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50),
+                new java.awt.Dimension(32767, 50));
         panelJoueur1 = new javax.swing.JPanel();
         panelInfosJ1 = new javax.swing.JPanel();
-        jaugeDePopularitePanel1 = new boundary.presentation.components.JaugeDePopularitePanel();
-        jaugeDeViePanel1 = new boundary.presentation.components.JaugeDeViePanel();
-        profilJoueurPanel1 = new boundary.presentation.components.ProfilJoueurPanel();
+        jaugeDePopularitePanel1 = new vue.ui.presentation.components.JaugeDePopularitePanel();
+        jaugeDeViePanel1 = new vue.ui.presentation.components.JaugeDeViePanel();
+        profilJoueurPanel1 = new vue.ui.presentation.components.ProfilJoueurPanel();
         panelMainJ1 = new javax.swing.JPanel();
-        filler1MainJ1 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 32767));
-        mainJoueurPanel1 = new boundary.presentation.components.MainJoueurPanel();
-        filler2MainJ1 = new javax.swing.Box.Filler(new java.awt.Dimension(100, 0), new java.awt.Dimension(100, 2), new java.awt.Dimension(500, 32767));
-        timerPanel1 = new boundary.presentation.components.TimerPanel();
+        filler1MainJ1 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 0),
+                new java.awt.Dimension(50, 32767));
+        mainJoueurPanel1 = new vue.ui.presentation.components.MainJoueurPanel();
+        filler2MainJ1 = new javax.swing.Box.Filler(new java.awt.Dimension(100, 0), new java.awt.Dimension(100, 2),
+                new java.awt.Dimension(500, 32767));
+        timerPanel1 = new vue.ui.presentation.components.TimerPanel();
         panelJoueur2 = new javax.swing.JPanel();
         panelInfosJ2 = new javax.swing.JPanel();
-        jaugeDePopularitePanel2 = new boundary.presentation.components.JaugeDePopularitePanel();
-        jaugeDeViePanel2 = new boundary.presentation.components.JaugeDeViePanel();
-        profilJoueurPanel2 = new boundary.presentation.components.ProfilJoueurPanel();
+        jaugeDePopularitePanel2 = new vue.ui.presentation.components.JaugeDePopularitePanel();
+        jaugeDeViePanel2 = new vue.ui.presentation.components.JaugeDeViePanel();
+        profilJoueurPanel2 = new vue.ui.presentation.components.ProfilJoueurPanel();
         panelMainJ2 = new javax.swing.JPanel();
-        filler1MainJ2 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 32767));
-        mainJoueurPanel2 = new boundary.presentation.components.MainJoueurPanel();
-        filler2MainJ2 = new javax.swing.Box.Filler(new java.awt.Dimension(100, 0), new java.awt.Dimension(100, 0), new java.awt.Dimension(100, 32767));
-        descriptionPanel1 = new boundary.presentation.components.DescriptionPanel();
+        filler1MainJ2 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 0),
+                new java.awt.Dimension(50, 32767));
+        mainJoueurPanel2 = new vue.ui.presentation.components.MainJoueurPanel();
+        filler2MainJ2 = new javax.swing.Box.Filler(new java.awt.Dimension(100, 0), new java.awt.Dimension(100, 0),
+                new java.awt.Dimension(100, 32767));
+        descriptionPanel1 = new vue.ui.presentation.components.DescriptionPanel();
         jPanel2 = new javax.swing.JPanel();
         backgroundLabel = new javax.swing.JLabel();
 
@@ -244,13 +267,11 @@ public class Plateau extends javax.swing.JFrame {
         javax.swing.GroupLayout jaugeDePopularitePanel1Layout = new javax.swing.GroupLayout(jaugeDePopularitePanel1);
         jaugeDePopularitePanel1.setLayout(jaugeDePopularitePanel1Layout);
         jaugeDePopularitePanel1Layout.setHorizontalGroup(
-            jaugeDePopularitePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 117, Short.MAX_VALUE)
-        );
+                jaugeDePopularitePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 117, Short.MAX_VALUE));
         jaugeDePopularitePanel1Layout.setVerticalGroup(
-            jaugeDePopularitePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
+                jaugeDePopularitePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 120, Short.MAX_VALUE));
 
         panelInfosJ1.add(jaugeDePopularitePanel1, java.awt.BorderLayout.EAST);
 
@@ -284,13 +305,11 @@ public class Plateau extends javax.swing.JFrame {
         javax.swing.GroupLayout jaugeDePopularitePanel2Layout = new javax.swing.GroupLayout(jaugeDePopularitePanel2);
         jaugeDePopularitePanel2.setLayout(jaugeDePopularitePanel2Layout);
         jaugeDePopularitePanel2Layout.setHorizontalGroup(
-            jaugeDePopularitePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+                jaugeDePopularitePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 100, Short.MAX_VALUE));
         jaugeDePopularitePanel2Layout.setVerticalGroup(
-            jaugeDePopularitePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 125, Short.MAX_VALUE)
-        );
+                jaugeDePopularitePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 125, Short.MAX_VALUE));
 
         panelInfosJ2.add(jaugeDePopularitePanel2, java.awt.BorderLayout.EAST);
 
@@ -332,44 +351,45 @@ public class Plateau extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1620, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(backgroundLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 1620, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(backgroundLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))));
         jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1140, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(backgroundLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 1140, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(backgroundLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))));
 
         getContentPane().add(jPanel2);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+    private void formMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_formMousePressed
         System.out.println("boundary.presentation.Plateau.formMousePressed()");
-    }//GEN-LAST:event_formMousePressed
+    }// GEN-LAST:event_formMousePressed
 
-    private void descriptionPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descriptionPanel1MousePressed
+    private void descriptionPanel1MousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_descriptionPanel1MousePressed
         // TODO add your handling code here:
-        //pour l'instant le code est dans un event mousePressed mais l'idée
-        //serait d'appeler la fonction losqu'une carte est jouée
+        // pour l'instant le code est dans un event mousePressed mais l'idée
+        // serait d'appeler la fonction losqu'une carte est jouée
         descriptionPanel1.setDescription("une description");
-    }//GEN-LAST:event_descriptionPanel1MousePressed
-
+    }// GEN-LAST:event_descriptionPanel1MousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundLabel;
-    private boundary.presentation.components.DescriptionPanel descriptionPanel1;
+    private vue.ui.presentation.components.DescriptionPanel descriptionPanel1;
     private javax.swing.Box.Filler filler1MainJ1;
     private javax.swing.Box.Filler filler1MainJ2;
     private javax.swing.Box.Filler filler2MainJ1;
@@ -381,12 +401,12 @@ public class Plateau extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private boundary.presentation.components.JaugeDePopularitePanel jaugeDePopularitePanel1;
-    private boundary.presentation.components.JaugeDePopularitePanel jaugeDePopularitePanel2;
-    private boundary.presentation.components.JaugeDeViePanel jaugeDeViePanel1;
-    private boundary.presentation.components.JaugeDeViePanel jaugeDeViePanel2;
-    private boundary.presentation.components.MainJoueurPanel mainJoueurPanel1;
-    private boundary.presentation.components.MainJoueurPanel mainJoueurPanel2;
+    private vue.ui.presentation.components.JaugeDePopularitePanel jaugeDePopularitePanel1;
+    private vue.ui.presentation.components.JaugeDePopularitePanel jaugeDePopularitePanel2;
+    private vue.ui.presentation.components.JaugeDeViePanel jaugeDeViePanel1;
+    private vue.ui.presentation.components.JaugeDeViePanel jaugeDeViePanel2;
+    private vue.ui.presentation.components.MainJoueurPanel mainJoueurPanel1;
+    private vue.ui.presentation.components.MainJoueurPanel mainJoueurPanel2;
     private javax.swing.JPanel panelCommun;
     private javax.swing.JPanel panelInfosJ1;
     private javax.swing.JPanel panelInfosJ2;
@@ -398,11 +418,11 @@ public class Plateau extends javax.swing.JFrame {
     private javax.swing.JPanel panelZoneAction;
     private javax.swing.JPanel panelZoneAction1;
     private javax.swing.JPanel panelZonesPopularite;
-    private boundary.presentation.components.Pioche pioche1;
-    private boundary.presentation.components.ProfilJoueurPanel profilJoueurPanel1;
-    private boundary.presentation.components.ProfilJoueurPanel profilJoueurPanel2;
-    private boundary.presentation.components.TimerPanel timerPanel1;
-    private boundary.presentation.components.ZonePopularitePanel zonePopularitePanel1;
-    private boundary.presentation.components.ZonePopularitePanel zonePopularitePanel2;
+    private vue.ui.presentation.components.Pioche pioche1;
+    private vue.ui.presentation.components.ProfilJoueurPanel profilJoueurPanel1;
+    private vue.ui.presentation.components.ProfilJoueurPanel profilJoueurPanel2;
+    private vue.ui.presentation.components.TimerPanel timerPanel1;
+    private vue.ui.presentation.components.ZonePopularitePanel zonePopularitePanel1;
+    private vue.ui.presentation.components.ZonePopularitePanel zonePopularitePanel2;
     // End of variables declaration//GEN-END:variables
 }
