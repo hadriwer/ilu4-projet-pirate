@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package boundary.presentation.components;
+package vue.ui.presentation.components;
 
-import boundary.AdaptateurDuNoyauFonctionnel;
+import vue.ui.dialog.AdaptateurDuNoyauFonctionnel;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
