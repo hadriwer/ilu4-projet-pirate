@@ -2,6 +2,8 @@
 import noyauFonctionnel.controller.ControlJouerCarte;
 import noyauFonctionnel.controller.ControlPioche;
 import noyauFonctionnel.entity.Jeu;
+import vue.ui.dialog.AdaptateurDuNoyauFonctionnel;
+import vue.ui.dialog.MainDialog;
 
 
 /**
@@ -18,10 +20,15 @@ public class Main {
         //testFonctionnel.TestUnitaire.main(args);
         Jeu jeu = new Jeu();
         
-        ControlJouerCarte controlJouerCarte = new ControlJouerCarte(jeu);
-        ControlPioche controlPiocherCarte = new ControlPioche(jeu);
+        // Pour la partie présentation (IHM)
         
-        System.out.println(controlJouerCarte);
-        System.out.println(controlPiocherCarte);
+        AdaptateurDuNoyauFonctionnel noyau = new AdaptateurDuNoyauFonctionnel(jeu);
+        MainDialog dialog = new MainDialog(noyau);
+      
+        dialog.main();
+        
+        // Pour la partie Boundary
+        
+        // TODO
     }
 }

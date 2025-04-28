@@ -59,14 +59,12 @@ public class MainDialog {
      /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        AdaptateurDuNoyauFonctionnel jeu = new AdaptateurDuNoyauFonctionnel();
-        MainDialog dialog = new MainDialog(jeu);
+    public void main() {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                dialog.initDialog();
+                initDialog();
             }
         });
     }

@@ -18,8 +18,7 @@ public class AdaptateurDuNoyauFonctionnel {
     private ControlPioche controlPiocherCarte;
     private ControlJoueur controlJoueur;
     
-    public AdaptateurDuNoyauFonctionnel() {
-        this.jeu = new Jeu();
+    public AdaptateurDuNoyauFonctionnel(Jeu jeu) {
         this.controlJeu = new ControlJeu(jeu);
         this.controlJouerCarte = new ControlJouerCarte(jeu);
         this.controlPiocherCarte = new ControlPioche(jeu);
