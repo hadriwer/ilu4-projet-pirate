@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import noyauFonctionnel.entity.cartes.Carte;
-import noyauFonctionnel.entity.cartes.CarteFactory;
+import util.CarteFactory;
 import noyauFonctionnel.entity.cartes.ConfigurationCarte;
 
 public class Pioche {

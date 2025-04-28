@@ -1,4 +1,7 @@
-package noyauFonctionnel.entity.cartes;
+package util;
+
+import noyauFonctionnel.entity.cartes.ConfigurationCarte;
+import noyauFonctionnel.entity.cartes.Popularite;
 
 /**
  *
@@ -6,6 +9,10 @@ package noyauFonctionnel.entity.cartes;
  */
 
 public class CarteFactory {
+    private CarteFactory() {
+        throw new IllegalStateException("Utility class");
+    }
+    
     public static ConfigurationCarte[] creerCartes() {
         ConfigurationCarte[] cartes = new ConfigurationCarte[] {
             new ConfigurationCarte(new Popularite("Main de fer", 

@@ -17,10 +17,14 @@ public class Joueur {
     private int indicePopularite;
     private int indiceVie;
     private MainJoueur mainJoueur;
+    public static final int MAXVIE = 5;
+    public static final int MINVIE = 0;
+    public static final int MAXPOP = 5;
+    public static final int MINPOP = 0;
     
     public Joueur(String nom, List<Carte> mainJoueur) {
-        this.indicePopularite = 0;
-        this.indiceVie = 5;
+        this.indicePopularite = MINPOP;
+        this.indiceVie = MAXVIE;
         this.nom = nom;
         this.mainJoueur = new MainJoueur(mainJoueur);        
     }
@@ -42,37 +46,35 @@ public class Joueur {
     }
     
     public void perdreVie(int vie){
-        if (indiceVie - vie >= 0){
-            this.indiceVie += vie;
+        if (indiceVie - vie >= MINVIE){
+            this.indiceVie -= vie;
         }
         else {
-            this.indiceVie = 0;
+            this.indiceVie = MINVIE;
         }
     }
     
     public void gagnerPop(int popularite){
-        if (indicePopularite + popularite <= 5) {
+        if (indicePopularite + popularite <= MAXPOP) {
             this.indicePopularite += popularite;
         }
         else{
-            this.indicePopularite = 5;
+            this.indicePopularite = MAXPOP;
         }
     }
     
     public boolean aGagne(){
-        return this.indicePopularite == 5;
+        return this.indicePopularite == MAXPOP;
     }
     
     public boolean aPerdu(){
-        return this.indiceVie == 0;
+        return this.indiceVie == MINVIE;
     }
     
     @Override
     public String toString(){
-        return "Joueur : "+this.getNom()+ "\n" + 
-                "Vie : " + this.indiceVie + "\n" +
-                "Popularité : "+this.indicePopularite + "\n" +
-                this.mainJoueur.toString();
+        return "Joueur[nom="+this.getNom() + ", vie=" + this.indiceVie + 
+                ", popularite="+this.indicePopularite + ", contenu de la main=" + this.mainJoueur.toString() + "]";
     }
     
     public void prendreCarte(Carte carte){
@@ -86,10 +88,6 @@ public class Joueur {
             this.mainJoueur = new ArrayList<>(mainJoueur);
         }
         
-        public List<Carte> getMain(){
-            return this.mainJoueur;
-        }
-        
         public void prendreCarte(Carte carte){
             this.mainJoueur.add(carte);
         }
@@ -98,7 +96,7 @@ public class Joueur {
             if (this.mainJoueur.contains(carte)){
                 this.mainJoueur.remove(carte);
             }
-        }  
+        }
         
         public List<Carte> getCartes() {
             return mainJoueur;
@@ -106,10 +104,17 @@ public class Joueur {
         
         @Override
         public String toString(){
-            String cartes = "Contenu de la main du joueur :";
-            for (Carte c : this.getMain()){
-                cartes += c.toString()+" ";
+            String cartes = "Main";
+            
+            if (this.getCartes().isEmpty()) {
+                return cartes + " vide";
             }
+            cartes += "[";
+            
+            for (Carte c : this.getCartes()){
+                cartes += c.toString() + " ";
+            }
+            
             cartes += "]";
             return cartes;
         }
