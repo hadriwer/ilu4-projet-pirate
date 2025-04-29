@@ -1,4 +1,5 @@
 
+import boundary.MainConsole;
 import noyauFonctionnel.controller.ControlJouerCarte;
 import noyauFonctionnel.controller.ControlPioche;
 import noyauFonctionnel.entity.Jeu;
@@ -25,9 +26,12 @@ public class Main {
         AdaptateurDuNoyauFonctionnel noyau = new AdaptateurDuNoyauFonctionnel(jeu);
         MainDialog dialog = new MainDialog(noyau);
       
-        dialog.main();
+        // dialog.main();
         
         // Pour la partie Boundary
+        
+        MainConsole boundary = new MainConsole(jeu);
+        boundary.lancerJeu();
         
         // TODO
     }
