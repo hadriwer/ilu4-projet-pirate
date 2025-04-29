@@ -6,8 +6,10 @@ package vue.ui.presentation;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import noyauFonctionnel.entity.cartes.Carte;
 
 /**
@@ -111,6 +113,10 @@ public class CartePanel extends javax.swing.JPanel {
 
         posMouseX = evt.getX();
         posMouseY = evt.getY();
+
+        Plateau plateau = (Plateau) SwingUtilities.getWindowAncestor(this);
+        DragAndDrop dragManager = (DragAndDrop) plateau.getGlassPane();
+        dragManager.startDrag(this, new Point(posMouseX, posMouseY));
 
     }//GEN-LAST:event_jPanel1MousePressed
 

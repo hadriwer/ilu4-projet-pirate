@@ -11,6 +11,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 import util.EnumJoueur;
 import vue.ui.presentation.components.TimerPanel;
 import vue.ui.presentation.components.ViePanel;
@@ -30,6 +31,11 @@ public class Plateau extends javax.swing.JFrame {
     public Plateau(AdaptateurDuNoyauFonctionnel noyau) {
         this.noyau = noyau;
         initComponents();
+        
+        DragAndDrop glassPane = new DragAndDrop(this);
+        setGlassPane(glassPane);
+        glassPane.setVisible(true);
+        
         backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
         setImage();
         setResizable(false);
@@ -145,6 +151,22 @@ public class Plateau extends javax.swing.JFrame {
     public TimerPanel getTimerPanel() {
         return timerPanel1;
     }
+    
+    public JPanel getMainJoueurPanel1() {
+        return mainJoueurPanel1;
+    }
+
+    public JPanel getMainJoueurPanel2() {
+        return mainJoueurPanel2;
+    }
+
+    public JPanel getZonePopularitePanel1() {
+        return zonePopularitePanel1;
+    }
+
+    public JPanel getZonePopularitePanel2() {
+        return zonePopularitePanel2;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -195,7 +217,6 @@ public class Plateau extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 720));
-        setPreferredSize(new java.awt.Dimension(640, 360));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
