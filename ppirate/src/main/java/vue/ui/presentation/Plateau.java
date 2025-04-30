@@ -175,6 +175,8 @@ public class Plateau extends javax.swing.JFrame {
         jaugeDePopularitePanel1 = new vue.ui.presentation.components.JaugeDePopularitePanel();
         jaugeDeViePanel1 = new vue.ui.presentation.components.JaugeDeViePanel();
         profilJoueurPanel1 = new vue.ui.presentation.components.ProfilJoueurPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         panelMainJ1 = new javax.swing.JPanel();
         filler1MainJ1 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 32767));
         mainJoueurPanel1 = new vue.ui.presentation.components.MainJoueurPanel();
@@ -185,6 +187,8 @@ public class Plateau extends javax.swing.JFrame {
         jaugeDePopularitePanel2 = new vue.ui.presentation.components.JaugeDePopularitePanel();
         jaugeDeViePanel2 = new vue.ui.presentation.components.JaugeDeViePanel();
         profilJoueurPanel2 = new vue.ui.presentation.components.ProfilJoueurPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         panelMainJ2 = new javax.swing.JPanel();
         filler1MainJ2 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 32767));
         mainJoueurPanel2 = new vue.ui.presentation.components.MainJoueurPanel();
@@ -275,6 +279,16 @@ public class Plateau extends javax.swing.JFrame {
         profilJoueurPanel1.setOpaque(false);
         panelInfosJ1.add(profilJoueurPanel1, java.awt.BorderLayout.CENTER);
 
+        jPanel3.setOpaque(false);
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("JACK SPARROW");
+        jPanel3.add(jLabel1);
+
+        panelInfosJ1.add(jPanel3, java.awt.BorderLayout.SOUTH);
+
         panelJoueur1.add(panelInfosJ1, java.awt.BorderLayout.WEST);
 
         panelMainJ1.setOpaque(false);
@@ -315,6 +329,16 @@ public class Plateau extends javax.swing.JFrame {
         profilJoueurPanel2.setOpaque(false);
         panelInfosJ2.add(profilJoueurPanel2, java.awt.BorderLayout.CENTER);
 
+        jPanel4.setOpaque(false);
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("JACK SPARROW");
+        jPanel4.add(jLabel2);
+
+        panelInfosJ2.add(jPanel4, java.awt.BorderLayout.NORTH);
+
         panelJoueur2.add(panelInfosJ2, java.awt.BorderLayout.WEST);
 
         panelMainJ2.setOpaque(false);
@@ -346,21 +370,17 @@ public class Plateau extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1620, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(backgroundLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(backgroundLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1140, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(backgroundLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(backgroundLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2);
@@ -390,9 +410,13 @@ public class Plateau extends javax.swing.JFrame {
     private javax.swing.Box.Filler fillerPioche2;
     private javax.swing.Box.Filler fillerZoneAction1;
     private javax.swing.Box.Filler fillerZoneAction2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private vue.ui.presentation.components.JaugeDePopularitePanel jaugeDePopularitePanel1;
     private vue.ui.presentation.components.JaugeDePopularitePanel jaugeDePopularitePanel2;
     private vue.ui.presentation.components.JaugeDeViePanel jaugeDeViePanel1;

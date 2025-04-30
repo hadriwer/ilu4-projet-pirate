@@ -4,6 +4,7 @@
  */
 package vue.ui.dialog;
 
+import javax.swing.JOptionPane;
 import vue.ui.presentation.Plateau;
 import vue.ui.presentation.components.TimerPanel;
 import javax.swing.Timer;
@@ -19,9 +20,19 @@ public class MainDialog {
     public MainDialog(AdaptateurDuNoyauFonctionnel noyau) {
         this.adaptateurNoyau = noyau;
         this.numTour = 0;
+        this.initDialog();
     }
     
     public void initDialog() {
+        //String joueur1 = demanderNom("joueur 1");
+        //if (joueur1 == null) System.exit(0);
+
+        //String joueur2 = demanderNom("joueur 2");
+        //if (joueur2 == null) System.exit(0);
+
+        System.out.println("Joueur 1 : " + joueur1);
+        System.out.println("Joueur 2 : " + joueur2);
+    
         Plateau vuePlateau = new Plateau(adaptateurNoyau);
         TimerPanel timerPanel = vuePlateau.getTimerPanel();
         vuePlateau.setVisible(true);
@@ -54,6 +65,15 @@ public class MainDialog {
             timerPanel.restartTimer();
         });
         boucleJeu.start();
+    }
+    
+    private String demanderNom(String label) {
+        while (true) {
+            String nom = JOptionPane.showInputDialog(null, "Nom de " + label + " :", "Inscription", JOptionPane.PLAIN_MESSAGE);
+            if (nom == null) return null;
+            if (!nom.trim().isEmpty()) return nom.trim();
+            JOptionPane.showMessageDialog(null, "Votre nom ne peut pas être vide");
+        }
     }
     
      /**
