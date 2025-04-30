@@ -108,10 +108,9 @@ public class DragAndDrop extends javax.swing.JPanel {
                 ciblePanel.repaint();
             } else {
                 this.remove(carteEnCours);
-                ancienParent.add(carteEnCours);
-                carteEnCours.setLocation(positionRelative);
-                ancienParent.revalidate();
-                ancienParent.repaint();
+                ancienParent.add(carteEnCours);  // ← remettre dans la main
+                ancienParent.revalidate();       // ← recalcul du layout
+                ancienParent.repaint(); 
             }
         }
 

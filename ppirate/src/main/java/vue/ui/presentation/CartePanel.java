@@ -79,13 +79,8 @@ public class CartePanel extends javax.swing.JPanel {
 
         setRequestFocusEnabled(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(null));
         jPanel1.setPreferredSize(new java.awt.Dimension(80, 120));
-        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jPanel1MouseDragged(evt);
-            }
-        });
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jPanel1MousePressed(evt);
@@ -119,19 +114,6 @@ public class CartePanel extends javax.swing.JPanel {
         dragManager.startDrag(this, new Point(posMouseX, posMouseY));
 
     }//GEN-LAST:event_jPanel1MousePressed
-
-    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
-        if (drag) {
-            int tempPosX = evt.getX() - posMouseX;
-            int tempPosY = evt.getY() - posMouseY;
-            
-            newPosX = getX() + tempPosX;
-            newPosY = getY() + tempPosY;
-            
-            this.setLocation(newPosX, newPosY);
-            repaint();                   
-        }
-    }//GEN-LAST:event_jPanel1MouseDragged
 
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
         drag = false;
