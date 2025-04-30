@@ -104,18 +104,17 @@ public class Joueur {
         
         @Override
         public String toString(){
-            String cartes = "Main";
-            
+            String cartes = "";
             if (this.getCartes().isEmpty()) {
                 return cartes + " vide";
             }
-            cartes += "[";
+            cartes += "(\n";
             
             for (Carte c : this.getCartes()){
-                cartes += c.toString() + " ";
+                cartes += c.toString() + "\n";
             }
             
-            cartes += "]";
+            cartes += ")";
             return cartes;
         }
     }

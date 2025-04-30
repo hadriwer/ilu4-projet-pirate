@@ -133,4 +133,22 @@ public class Jeu {
     public boolean getTourDeJeur() {
         return tourDeJeu;
     }
+    
+    @Override
+    public String toString(){
+        String result = "";
+        if (!this.tourDeJeu){
+            result += this.joueur2.toString() +"\nZone de Popularité J2: [";
+            for (Carte c : this.zonePopulariteJ2){
+                result += c.toString() +" ";  
+            }
+        }else{
+            result += this.joueur1.toString() +"\nZone de Popularité J1: [";
+            for (Carte c : this.zonePopulariteJ1){
+                result += c.toString() +" ";  
+            } 
+        }
+        result += "]\nZone d'action : "+ (this.zoneAction.isEmpty() ? "vide" : this.zoneAction.getLast());
+        return result;
+    }
 }

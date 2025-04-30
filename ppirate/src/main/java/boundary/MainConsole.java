@@ -27,44 +27,12 @@ public class MainConsole {
         this.j2 = jeu.getJoueur2();
     }
     
-    public void afficherMainJoueur() {
-        System.out.print("Main Joueur " + j1.getNom() +" : ");
-        j1.getMainJoueur().getCartes().forEach(carte -> {
-            System.out.print("\n\t" + carte );
-        }); 
-        System.out.println();
-        System.out.print("Main Joueur "+ j2.getNom()+" : ");
-        j2.getMainJoueur().getCartes().forEach(carte -> {
-            System.out.print("\n\t" + carte );
-        });
-        System.out.println("");
-    }
-    
-    public void afficherJeu() {
-        System.out.println("######################################################################################");
-        System.out.println("Joueur "+ j1.getNom() +" : " + j1.getIndiceVie() + " pv, "+ j1.getIndicePopularite()+" indice de popularité.");
-        System.out.println("Joueur "+ j2.getNom() +" : " + j2.getIndiceVie() + " pv, "+ j2.getIndicePopularite()+" indice de popularité.");
-        
-        afficherMainJoueur();
-        
-        System.out.print("Zone de Popularite du Joueur 1 : ");
-        jeu.getZonePopulariteJ1().forEach(carte -> {
-            System.out.print("\n\t" + carte );
-        });
-        System.out.println("");
-        System.out.print("Zone de Popularite du Joueur 2 : ");
-        jeu.getZonePopulariteJ2().forEach(carte -> {
-            System.out.print("\n\t" + carte );
-        });
-        System.out.println("");
-        
-        System.out.println("######################################################################################");
-    }
-    
     public void lancerJeu() {
         System.out.println("Début du jeu !");
         while (!jeu.verifierFinPartie()) {
-            afficherJeu();
+            System.out.println("######################################################################################");
+            System.out.println(jeu.toString());
+            System.out.println("######################################################################################");
             
             Joueur current = jeu.donnerTourDeJoueur();
             System.out.println("\nC'est au joueur " + current.getNom() + " de jouer."); 
