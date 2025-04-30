@@ -16,8 +16,8 @@ import noyauFonctionnel.entity.cartes.Popularite;
  */
 public class Jeu {
     private static final int NOMBRE_CARTE = 4;
-    private final Joueur joueur1;
-    private final Joueur joueur2;
+    private Joueur joueur1;
+    private Joueur joueur2;
     private boolean tourDeJeu;
     private final Pioche pioche;
     private int compteNombreJeu;
@@ -129,6 +129,14 @@ public class Jeu {
     public Joueur getJoueur2() {
         return joueur2;
     }
+    
+    public void instancierJoueur1(String nom) {
+        joueur1 = new Joueur(nom, pioche.distribuer(NOMBRE_CARTE));
+    }
+    
+    public void instancierJoueur2(String nom) {
+        joueur2 = new Joueur(nom, pioche.distribuer(NOMBRE_CARTE));
+    }    
     
     public boolean getTourDeJeur() {
         return tourDeJeu;
