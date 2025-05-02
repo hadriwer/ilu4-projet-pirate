@@ -101,7 +101,7 @@ public class DragAndDrop extends javax.swing.JPanel {
 
         if (ciblePanel != null) {
             Point cible = SwingUtilities.convertPoint(this, pointRelachee, ciblePanel);
-            if (ciblePanel.getBounds().contains(cible)) {
+            if (new Rectangle(0,0,ciblePanel.getWidth(),ciblePanel.getHeight()).contains(cible)) {
                 this.remove(carteEnCours);
                 carteEnCours.setLocation(cible.x - offset.x, cible.y - offset.y);
                 ciblePanel.add(carteEnCours);
