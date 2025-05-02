@@ -64,7 +64,6 @@ public class DescriptionPanel extends javax.swing.JPanel {
 
         descriptionLabel.setForeground(new java.awt.Color(255, 255, 255));
         descriptionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        descriptionLabel.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

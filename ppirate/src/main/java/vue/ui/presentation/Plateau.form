@@ -11,9 +11,6 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
-  <Events>
-    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="formMousePressed"/>
-  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -72,11 +69,11 @@
                 <Property name="rows" type="int" value="2"/>
               </Layout>
               <SubComponents>
-                <Container class="vue.ui.presentation.components.ZonePopularitePanel" name="zonePopularitePanel1">
+                <Container class="vue.ui.presentation.components.ZonePopularitePanel" name="zonePopulariteJoueur2">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
                 </Container>
-                <Container class="vue.ui.presentation.components.ZonePopularitePanel" name="zonePopularitePanel2">
+                <Container class="vue.ui.presentation.components.ZonePopularitePanel" name="zonePopulariteJoueur1">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
                 </Container>
@@ -458,9 +455,6 @@
                       <Dimension value="[219, 113]"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="descriptionPanel1MousePressed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>

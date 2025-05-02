@@ -42,14 +42,17 @@ public class CartePanel extends javax.swing.JPanel {
     }
     
     public void initUI() {
-        jLabel1.setText(carte.getNom());
-        jLabel2.setText(carte.getDescription());
+        NomCarteLabel.setText(carte.getNom());
+        DescriptionLabel.setText(carte.getDescription());
     }
     
     private void removeInteractivity() {
-        for (java.awt.event.MouseMotionListener mml : jPanel1.getMouseMotionListeners()) {
-            jPanel1.removeMouseMotionListener(mml);
-        }
+        for (java.awt.event.MouseMotionListener mml : this.getMouseMotionListeners()) {
+            this.removeMouseMotionListener(mml);
+        }/*
+        for (java.awt.event.MouseListener ml : this.getMouseListeners()) {
+            this.removeMouseListener(ml);
+        }*/
     }
     
     @Override
@@ -72,53 +75,44 @@ public class CartePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        NomCarteLabel = new javax.swing.JLabel();
+        DescriptionLabel = new javax.swing.JLabel();
+        Effet1Label = new javax.swing.JLabel();
+        Effet2Label = new javax.swing.JLabel();
 
+        setMinimumSize(new java.awt.Dimension(80, 120));
+        setPreferredSize(new java.awt.Dimension(80, 120));
         setRequestFocusEnabled(false);
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(null));
-        jPanel1.setPreferredSize(new java.awt.Dimension(80, 120));
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel1MousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jPanel1MouseReleased(evt);
+                formMousePressed(evt);
             }
         });
 
-        jLabel1.setText("Nom Carte");
-        jPanel1.add(jLabel1);
+        NomCarteLabel.setText("Nom Carte");
+        add(NomCarteLabel);
 
-        jLabel2.setText("- Effet 1 ");
-        jPanel1.add(jLabel2);
+        DescriptionLabel.setText("Description");
+        add(DescriptionLabel);
 
-        jLabel3.setText("- Effet 2");
-        jPanel1.add(jLabel3);
+        Effet1Label.setText("Effet1");
+        add(Effet1Label);
 
-        add(jPanel1);
+        Effet2Label.setText("Effet2");
+        add(Effet2Label);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        drag=true;
+        posMouseX=evt.getX();
+        posMouseY=evt.getY();
         
-        drag = true;
-
-        posMouseX = evt.getX();
-        posMouseY = evt.getY();
-
         Plateau plateau = (Plateau) SwingUtilities.getWindowAncestor(this);
         DragAndDrop dragManager = (DragAndDrop) plateau.getGlassPane();
-        dragManager.startDrag(this, new Point(posMouseX, posMouseY));
+        dragManager.startDrag(this, new Point(posMouseX,posMouseY));
+    }//GEN-LAST:event_formMousePressed
 
-    }//GEN-LAST:event_jPanel1MousePressed
-
-    private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
-        drag = false;
-    }//GEN-LAST:event_jPanel1MouseReleased
-    
+        
     public int getPosX() {
         return posX;
     }  
@@ -135,7 +129,6 @@ public class CartePanel extends javax.swing.JPanel {
         return dimY;
     }
     
-    
     // Vérifie si un clic est à l'intérieur de la carte.
     public boolean clicIn(int pX, int pY) {
         boolean dansLargeur = pX >= posX && pX <= posX + dimX;
@@ -145,9 +138,9 @@ public class CartePanel extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel DescriptionLabel;
+    private javax.swing.JLabel Effet1Label;
+    private javax.swing.JLabel Effet2Label;
+    private javax.swing.JLabel NomCarteLabel;
     // End of variables declaration//GEN-END:variables
 }

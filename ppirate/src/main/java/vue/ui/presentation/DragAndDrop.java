@@ -33,9 +33,11 @@ public class DragAndDrop extends javax.swing.JPanel {
         enableEvents(AWTEvent.MOUSE_EVENT_MASK | AWTEvent.MOUSE_MOTION_EVENT_MASK);
     }
 
-    @Override
+    
+        @Override
     protected void processMouseEvent(MouseEvent e) {
         if (carteEnCours != null) {
+            System.out.println("On es dans processMouseEvent");
             if (e.getID() == MouseEvent.MOUSE_RELEASED) {
                 dropCarte(e.getPoint());
             }
@@ -59,7 +61,8 @@ public class DragAndDrop extends javax.swing.JPanel {
             redispatchMouseEvent(e);
         }
     }
-
+    
+    
     private void redispatchMouseEvent(MouseEvent e) {
         // Transformer les coordonnées pour trouver le composant cible
         Component comp = plateau.getContentPane().findComponentAt(e.getPoint());
@@ -69,7 +72,6 @@ public class DragAndDrop extends javax.swing.JPanel {
                                               compPoint.x, compPoint.y, e.getClickCount(), e.isPopupTrigger(), e.getButton()));
         }
     }
-
     public void startDrag(CartePanel carte, Point startPoint) {
         this.carteEnCours = carte;
         this.offset = startPoint;
@@ -88,14 +90,13 @@ public class DragAndDrop extends javax.swing.JPanel {
     }
 
     private void dropCarte(Point pointRelachee) {
-        JPanel ciblePanel;
+        JPanel ciblePanel=null;
 
         if (ancienParent == plateau.getMainJoueurPanel1()) {
-            ciblePanel = plateau.getZonePopularitePanel2();
-        } else if (ancienParent == plateau.getMainJoueurPanel2()) {
-            ciblePanel = plateau.getZonePopularitePanel1();
-        } else {
-            ciblePanel = null;
+            ciblePanel = plateau.getZonePopulariteJoueur1();
+        }
+        if (ancienParent == plateau.getMainJoueurPanel2()) {
+            ciblePanel = plateau.getZonePopulariteJoueur2();
         }
 
         if (ciblePanel != null) {
@@ -112,8 +113,9 @@ public class DragAndDrop extends javax.swing.JPanel {
                 ancienParent.revalidate();       // ← recalcul du layout
                 ancienParent.repaint(); 
             }
+        }else{
+            System.out.println("La cible est nulle!");
         }
-
         carteEnCours = null;
         repaint();
     }
