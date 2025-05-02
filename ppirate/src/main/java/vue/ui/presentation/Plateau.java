@@ -224,9 +224,9 @@ public class Plateau extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
 
-        jPanel1.setOpaque(false);
         jPanel1.setMaximumSize(new java.awt.Dimension(1080, 720));
         jPanel1.setMinimumSize(new java.awt.Dimension(1080, 720));
+        jPanel1.setOpaque(false);
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         panelCommun.setOpaque(false);
@@ -357,6 +357,8 @@ public class Plateau extends javax.swing.JFrame {
         jPanel1.add(panelJoueur2, java.awt.BorderLayout.NORTH);
 
         getContentPane().add(jPanel1);
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(1080, 720));
 
         backgroundLabel.setMaximumSize(new java.awt.Dimension(1080, 720));
         backgroundLabel.setMinimumSize(new java.awt.Dimension(1080, 720));
