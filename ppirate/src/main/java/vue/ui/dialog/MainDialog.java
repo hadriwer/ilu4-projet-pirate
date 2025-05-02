@@ -20,7 +20,6 @@ public class MainDialog {
     public MainDialog(AdaptateurDuNoyauFonctionnel noyau) {
         this.adaptateurNoyau = noyau;
         this.numTour = 0;
-        this.initDialog();
     }
     
     public void initDialog() {
@@ -30,8 +29,8 @@ public class MainDialog {
         //String joueur2 = demanderNom("joueur 2");
         //if (joueur2 == null) System.exit(0);
 
-        System.out.println("Joueur 1 : " + joueur1);
-        System.out.println("Joueur 2 : " + joueur2);
+        // System.out.println("Joueur 1 : " + joueur1);
+        // System.out.println("Joueur 2 : " + joueur2);
     
         Plateau vuePlateau = new Plateau(adaptateurNoyau);
         TimerPanel timerPanel = vuePlateau.getTimerPanel();
