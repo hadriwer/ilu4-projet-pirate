@@ -32,9 +32,6 @@ public class Plateau extends javax.swing.JFrame {
         this.noyau = noyau;
         initComponents();
         
-        DragAndDrop glassPane = new DragAndDrop(this);
-        setGlassPane(glassPane);
-        glassPane.setVisible(true);
         
         backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
         setImage();
@@ -169,7 +166,9 @@ public class Plateau extends javax.swing.JFrame {
     }
     
     public void setDescription(String description){
+        System.out.println("On entre dans setDescription");
         descriptionPanel1.setDescription(description);
+        repaint();
     }
 
     /**

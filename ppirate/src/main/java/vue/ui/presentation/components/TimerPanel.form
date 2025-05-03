@@ -25,7 +25,7 @@
                   <Component id="nomTimer" max="32767" attributes="0"/>
                   <Component id="timerTxt" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="43" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
