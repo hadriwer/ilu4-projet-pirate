@@ -2,6 +2,7 @@ package util;
 
 import noyauFonctionnel.entity.cartes.Attaque;
 import noyauFonctionnel.entity.cartes.ConfigurationCarte;
+import noyauFonctionnel.entity.cartes.Protection;
 import noyauFonctionnel.entity.cartes.Popularite;
 
 /**
@@ -70,7 +71,37 @@ public class CarteFactory {
                     "Les lancers de grappin abîment le vaisseau de votre adversaire,"
                             +" lui faisant perdre un point de vie.", 1, 0), 4),
             
-            
+            new ConfigurationCarte(new Protection("Nez de fer", 
+                    "Vos nombreuses années au service de la piraterie vous ont donné"
+                            +" le don de sentir la poudre à des kilomètres à la ronde."
+                            +" Vous savez empêcher un pirate de vous faire sauter."
+                            ),4),
+            new ConfigurationCarte(new Protection("Escrime de jeunesse", 
+                    "Vous étiez minot avant d’être pirate et vous souvenez encore"+
+                            " de vos leçons d’escrime. Votre adversaire ne peut vous"
+                            +" toucher avec un sabre, il devra tenter autre chose."
+                            ),4),
+            new ConfigurationCarte(new Protection("Equipage efficace", 
+                    "Vous êtes béni d’un équipage très performant qui empêche à"
+                            +" quiconque de monter à bord. Les abordages ne prennent"+
+                            " pas contre vous."
+                            ),4),
+            new ConfigurationCarte(new Protection("Chapeau bas", 
+                    "L’air marin vous donne toujours froid au crâne et vous vous"
+                            +" pavanez toujours par conséquent avec un tricorne"
+                            +" de plus sous votre premier. Aucun coup à la tête"
+                            +" ne saura vous atteindre." 
+                            ),4),
+            new ConfigurationCarte(new Protection("Navire insubmersible", 
+                    "Vous avez parer votre fier vaisseau des dernières technologies"
+                            +" existantes contre les boulets de canon. Pas un"
+                            +" n’éventra votre navire." 
+                            ),4),
+            new ConfigurationCarte(new Protection("Charisme intimidant", 
+                    "Votre réputation de pirate sanguinaire intimide l’équipage"
+                            +" de votre adversaire, les faisant trembler lors de"
+                            +" leurs lancements de grappins. Pas un n’effleure donc votre navire."
+                            ),4),
         };
         
         return cartes;
