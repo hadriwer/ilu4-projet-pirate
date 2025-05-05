@@ -7,6 +7,7 @@ package vue.ui.presentation;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 import util.EnumJoueur;
 import vue.ui.dialog.MainDialog;
 import vue.ui.presentation.components.TimerPanel;
@@ -27,6 +28,8 @@ public class Plateau extends javax.swing.JFrame {
     public Plateau(MainDialog dialog) {
         this.dialog = dialog;
         initComponents();
+        
+        
         backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
         setImage();
         setResizable(false);
@@ -49,25 +52,25 @@ public class Plateau extends javax.swing.JFrame {
     }
 
     public void afficherCarteZonePopularite() {
-        zonePopularitePanel1.removeAll();
-        zonePopularitePanel2.removeAll();
+        zonePopulariteJoueur2.removeAll();
+        zonePopulariteJoueur1.removeAll();
 
         dialog.getAdaptateurNoyau().getControlJeu().getZonePopulariteJ1().forEach(carte -> {
             System.out.println("Carte ajoutée dans zone Popularité du joueur 1 : " + carte);
             CartePanel c = new CartePanel(carte, false);
-            zonePopularitePanel1.add(c);
+            zonePopulariteJoueur2.add(c);
         });
 
         dialog.getAdaptateurNoyau().getControlJeu().getZonePopulariteJ2().forEach(carte -> {
             System.out.println("Carte ajoutée dans zone Popularité du joueur 2 : " + carte);
             CartePanel c = new CartePanel(carte, false);
-            zonePopularitePanel2.add(c);
+            zonePopulariteJoueur1.add(c);
         });
 
-        zonePopularitePanel1.revalidate();
-        zonePopularitePanel1.repaint();
-        zonePopularitePanel2.revalidate();
-        zonePopularitePanel2.repaint();
+        zonePopulariteJoueur2.revalidate();
+        zonePopulariteJoueur2.repaint();
+        zonePopulariteJoueur1.revalidate();
+        zonePopulariteJoueur1.repaint();
     }
     
     public final void updatePlateau() {
@@ -137,6 +140,28 @@ public class Plateau extends javax.swing.JFrame {
     public TimerPanel getTimerPanel() {
         return timerPanel1;
     }
+    
+    public JPanel getMainJoueurPanel1() {
+        return mainJoueurPanel1;
+    }
+
+    public JPanel getMainJoueurPanel2() {
+        return mainJoueurPanel2;
+    }
+
+    public JPanel getZonePopulariteJoueur2() {
+        return zonePopulariteJoueur2;
+    }
+
+    public JPanel getZonePopulariteJoueur1() {
+        return zonePopulariteJoueur1;
+    }
+    
+    public void setDescription(String description){
+        System.out.println("On entre dans setDescription");
+        descriptionPanel1.setDescription(description);
+        repaint();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -151,8 +176,8 @@ public class Plateau extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         panelCommun = new javax.swing.JPanel();
         panelZonesPopularite = new javax.swing.JPanel();
-        zonePopularitePanel1 = new vue.ui.presentation.components.ZonePopularitePanel();
-        zonePopularitePanel2 = new vue.ui.presentation.components.ZonePopularitePanel();
+        zonePopulariteJoueur2 = new vue.ui.presentation.components.ZonePopularitePanel();
+        zonePopulariteJoueur1 = new vue.ui.presentation.components.ZonePopularitePanel();
         panelZoneAction = new javax.swing.JPanel();
         fillerZoneAction1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 150), new java.awt.Dimension(32767, 50));
         panelZoneAction1 = new javax.swing.JPanel();
@@ -191,17 +216,11 @@ public class Plateau extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 720));
-        setPreferredSize(new java.awt.Dimension(640, 360));
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                formMousePressed(evt);
-            }
-        });
         getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
 
-        jPanel1.setOpaque(false);
         jPanel1.setMaximumSize(new java.awt.Dimension(1080, 720));
         jPanel1.setMinimumSize(new java.awt.Dimension(1080, 720));
+        jPanel1.setOpaque(false);
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         panelCommun.setOpaque(false);
@@ -210,8 +229,8 @@ public class Plateau extends javax.swing.JFrame {
         panelZonesPopularite.setBorder(javax.swing.BorderFactory.createEmptyBorder(50, 50, 50, 50));
         panelZonesPopularite.setOpaque(false);
         panelZonesPopularite.setLayout(new java.awt.GridLayout(2, 0));
-        panelZonesPopularite.add(zonePopularitePanel1);
-        panelZonesPopularite.add(zonePopularitePanel2);
+        panelZonesPopularite.add(zonePopulariteJoueur2);
+        panelZonesPopularite.add(zonePopulariteJoueur1);
 
         panelCommun.add(panelZonesPopularite, java.awt.BorderLayout.CENTER);
 
@@ -340,11 +359,6 @@ public class Plateau extends javax.swing.JFrame {
         panelMainJ2.add(filler2MainJ2);
 
         descriptionPanel1.setPreferredSize(new java.awt.Dimension(219, 113));
-        descriptionPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                descriptionPanel1MousePressed(evt);
-            }
-        });
         panelMainJ2.add(descriptionPanel1);
 
         panelJoueur2.add(panelMainJ2, java.awt.BorderLayout.CENTER);
@@ -352,6 +366,8 @@ public class Plateau extends javax.swing.JFrame {
         jPanel1.add(panelJoueur2, java.awt.BorderLayout.NORTH);
 
         getContentPane().add(jPanel1);
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(1080, 720));
 
         backgroundLabel.setMaximumSize(new java.awt.Dimension(1080, 720));
         backgroundLabel.setMinimumSize(new java.awt.Dimension(1080, 720));
@@ -380,7 +396,7 @@ public class Plateau extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_formMousePressed
+    /*private void formMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_formMousePressed
         System.out.println("vue.ui.presentation.Plateau.formMousePressed()");
     }// GEN-LAST:event_formMousePressed
 
@@ -388,8 +404,7 @@ public class Plateau extends javax.swing.JFrame {
         // TODO add your handling code here:
         // pour l'instant le code est dans un event mousePressed mais l'idée
         // serait d'appeler la fonction losqu'une carte est jouée
-        descriptionPanel1.setDescription("une description");
-    }// GEN-LAST:event_descriptionPanel1MousePressed
+    }// GEN-LAST:event_descriptionPanel1MousePressed*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundLabel;
@@ -430,7 +445,7 @@ public class Plateau extends javax.swing.JFrame {
     private vue.ui.presentation.components.ProfilJoueurPanel profilJoueurPanel1;
     private vue.ui.presentation.components.ProfilJoueurPanel profilJoueurPanel2;
     private vue.ui.presentation.components.TimerPanel timerPanel1;
-    private vue.ui.presentation.components.ZonePopularitePanel zonePopularitePanel1;
-    private vue.ui.presentation.components.ZonePopularitePanel zonePopularitePanel2;
+    private vue.ui.presentation.components.ZonePopularitePanel zonePopulariteJoueur1;
+    private vue.ui.presentation.components.ZonePopularitePanel zonePopulariteJoueur2;
     // End of variables declaration//GEN-END:variables
 }

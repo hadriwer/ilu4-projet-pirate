@@ -6,24 +6,26 @@ package vue.ui.presentation;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.MouseAdapter;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.PointerInfo;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import noyauFonctionnel.entity.cartes.Carte;
 
 /**
  *
- * @author Antoine
+ * @author Antoine, Mathéo, Solène
  */
 public class CartePanel extends javax.swing.JPanel {
     
     //Attributs pour l'IHM
-    private int posX, posY; // Position 
-    private int dimX, dimY; // Dimension
-    private int newPosX, newPosY; // Position nouvelles
-    private boolean drag = false; // indique si on est entrain de déplacer la carte
-    private int posMouseX; // Distance horizontale entre le clic et le coin gauche de la carte
-    private int posMouseY; // Distance verticale entre le clic et le coin haut de la carte
     private Carte carte;
+    private JPanel ancienParent;
+    private Plateau plateau;
+    private JPanel glassPane;
+    
+    
     
     /**
      * Creates new form CartePanel
@@ -41,13 +43,16 @@ public class CartePanel extends javax.swing.JPanel {
     }
     
     public void initUI() {
-        jLabel1.setText(carte.getNom());
-        jLabel2.setText(carte.getDescription());
+        NomCarteLabel.setText(carte.getNom());
+        DescriptionLabel.setText(carte.getDescription());
     }
     
     private void removeInteractivity() {
-        for (java.awt.event.MouseMotionListener mml : jPanel1.getMouseMotionListeners()) {
-            jPanel1.removeMouseMotionListener(mml);
+        for (java.awt.event.MouseMotionListener mml : this.getMouseMotionListeners()) {
+            this.removeMouseMotionListener(mml);
+        }
+        for (java.awt.event.MouseListener ml : this.getMouseListeners()) {
+            this.removeMouseListener(ml);
         }
     }
     
@@ -71,96 +76,120 @@ public class CartePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        NomCarteLabel = new javax.swing.JLabel();
+        DescriptionLabel = new javax.swing.JLabel();
+        Effet1Label = new javax.swing.JLabel();
+        Effet2Label = new javax.swing.JLabel();
 
+        setMinimumSize(new java.awt.Dimension(80, 120));
+        setPreferredSize(new java.awt.Dimension(80, 120));
         setRequestFocusEnabled(false);
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.setPreferredSize(new java.awt.Dimension(80, 120));
-        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jPanel1MouseDragged(evt);
+                formMouseDragged(evt);
             }
         });
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel1MousePressed(evt);
+                formMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jPanel1MouseReleased(evt);
+                formMouseReleased(evt);
             }
         });
 
-        jLabel1.setText("Nom Carte");
-        jPanel1.add(jLabel1);
+        NomCarteLabel.setText("Nom Carte");
+        add(NomCarteLabel);
 
-        jLabel2.setText("- Effet 1 ");
-        jPanel1.add(jLabel2);
+        DescriptionLabel.setText("Description");
+        add(DescriptionLabel);
 
-        jLabel3.setText("- Effet 2");
-        jPanel1.add(jLabel3);
+        Effet1Label.setText("Effet1");
+        add(Effet1Label);
 
-        add(jPanel1);
+        Effet2Label.setText("Effet2");
+        add(Effet2Label);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        // récupération du plateau
+        this.plateau=(Plateau) SwingUtilities.getWindowAncestor(this);
+        this.glassPane = (JPanel) plateau.getGlassPane();
+        this.glassPane.setVisible(true);
         
-        drag = true;
+        plateau.setDescription(this.getName()); //ne fonctionne pas encore
+        
+        ancienParent=(JPanel) this.getParent();        
+        
+        //récupération de la position absolue de la souris
+        PointerInfo pointerInfo=MouseInfo.getPointerInfo();
+        Point cursorLocation=pointerInfo.getLocation();
+        SwingUtilities.convertPointFromScreen(cursorLocation, glassPane);
+        
+        //on enlève la carte de la main du joueur
+        ancienParent.remove(this);
+        ancienParent.revalidate();
+        ancienParent.repaint();
+        
+        //et on l'ajoute au glassPane
+        glassPane.add(this);
+        this.setLocation(cursorLocation.x - getWidth()/2,cursorLocation.y - getHeight()/2);
+        glassPane.revalidate();
+        glassPane.repaint();
+    }//GEN-LAST:event_formMousePressed
 
-        posMouseX = evt.getX();
-        posMouseY = evt.getY();
+    private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
+        //récupération de la cible
+        JPanel ciblePanel=null;
 
-    }//GEN-LAST:event_jPanel1MousePressed
-
-    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
-        if (drag) {
-            int tempPosX = evt.getX() - posMouseX;
-            int tempPosY = evt.getY() - posMouseY;
-            
-            newPosX = getX() + tempPosX;
-            newPosY = getY() + tempPosY;
-            
-            this.setLocation(newPosX, newPosY);
-            repaint();                   
+        if (ancienParent == plateau.getMainJoueurPanel1()) {
+            ciblePanel = plateau.getZonePopulariteJoueur1();
         }
-    }//GEN-LAST:event_jPanel1MouseDragged
+        if (ancienParent == plateau.getMainJoueurPanel2()) {
+            ciblePanel = plateau.getZonePopulariteJoueur2();
+        }
+        
+        //récupération de la position absolue de la souris
+        PointerInfo pointerInfo = MouseInfo.getPointerInfo();
+        Point cursorLocation = pointerInfo.getLocation();
+        Point cible = SwingUtilities.convertPoint(glassPane, cursorLocation, ciblePanel);
+        
+        //on enlève la carte du glassPane
+        glassPane.remove(this);
+        glassPane.revalidate();
+        glassPane.repaint();
+        
+        //si la carte est amenée sur la cible on la pose
+        if (ciblePanel.contains(cible)) { 
+            ciblePanel.add(this);
+            ciblePanel.revalidate();
+            ciblePanel.repaint();
+        } else { //sinon on la remet dans la main du joueur
+            ancienParent.add(this);  // ← remettre dans la main
+            ancienParent.revalidate();       // ← recalcul du layout
+            ancienParent.repaint();
+        }
+    }//GEN-LAST:event_formMouseReleased
 
-    private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
-        drag = false;
-    }//GEN-LAST:event_jPanel1MouseReleased
-    
-    public int getPosX() {
-        return posX;
-    }  
-    
-    public int getPosY() {
-        return posY;
-    }
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        //récupération de la position absolue de la sourie par rapport à l'écran
+        PointerInfo pointerInfo=MouseInfo.getPointerInfo();
+        Point cursorLocation=pointerInfo.getLocation();
+        SwingUtilities.convertPointFromScreen(cursorLocation,glassPane);
+        int x= cursorLocation.x;
+        int y= cursorLocation.y;
+        
+        //déplacer la carte et la centrer sur le curseur
+        this.setLocation(x - this.getWidth()/2,y - this.getHeight()/2);
+        glassPane.repaint();
+    }//GEN-LAST:event_formMouseDragged
 
-    public int getDimX() {
-        return dimX;
-    }
-
-    public int getDimY() {
-        return dimY;
-    }
-    
-    
-    // Vérifie si un clic est à l'intérieur de la carte.
-    public boolean clicIn(int pX, int pY) {
-        boolean dansLargeur = pX >= posX && pX <= posX + dimX;
-        boolean dansHauteur = pY >= posY && pY <= posY + dimY;
-        return dansLargeur && dansHauteur;
-    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel DescriptionLabel;
+    private javax.swing.JLabel Effet1Label;
+    private javax.swing.JLabel Effet2Label;
+    private javax.swing.JLabel NomCarteLabel;
     // End of variables declaration//GEN-END:variables
 }
