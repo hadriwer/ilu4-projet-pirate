@@ -51,17 +51,12 @@ public class MainDialog {
             if (adaptateurNoyau.getControlJeu().verifierFinPartie()) {
                 // TODO logique de fin de partie (arrêter le timer)
             }
-            // TODO drag and drop
             System.out.println("Une carte a été choisie.");
-            
-            // adaptateurNoyau.getControlJeu().appliquerEffetCarte(/*carte*/);
             System.out.println("On applique les effets de la carte choisie");
-            
-            // adaptateurNoyau.getControlJeu().deposerCarte(/*carte*/);
             System.out.println("carte déposée de sa zone");
             
-            // adaptateurNoyau.getControlJeu().joueurPrendreCarte(adaptateurNoyau.getControlPioche().piocher());
-            // vuePlateau.updateMainJoueur();
+            adaptateurNoyau.getControlJeu().joueurPrendreCarte(adaptateurNoyau.getControlJeu().piocher());
+            vuePlateau.updateMainJoueur();
             System.out.println("On pioche une nouvelle carte.");
             
             adaptateurNoyau.getControlJeu().changerJoueur();

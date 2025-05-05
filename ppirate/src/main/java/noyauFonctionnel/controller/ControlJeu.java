@@ -68,4 +68,44 @@ public class ControlJeu {
     public boolean isZonePopulariteEmpty() {
         return getZoneAction().isEmpty();
     }
+    
+    public Joueur.MainJoueur getMainJoueur1() {
+        return jeu.getJoueur1().getMainJoueur();
+    }
+    
+    public Joueur.MainJoueur getMainJoueur2() {
+        return jeu.getJoueur2().getMainJoueur();
+    }
+    
+    public boolean isMainJoueur1Empty() {
+        return getMainJoueur1().getCartes().isEmpty();
+    }
+    
+    public boolean isMainJoueur2Empty() {
+        return getMainJoueur2().getCartes().isEmpty();
+    }
+    
+    public int getPointDeVieJ1() {
+        return jeu.getJoueur1().getIndiceVie();
+    }
+    
+    public int getPointDeVieJ2() {
+        return jeu.getJoueur2().getIndiceVie();
+    }
+    
+    public int getIndicePopulariteJ1() {
+        return jeu.getJoueur1().getIndicePopularite();
+    }
+    
+    public int getIndicePopulariteJ2() {
+        return jeu.getJoueur2().getIndicePopularite();
+    }
+    
+    public boolean isPiocheEmpty() {
+        return jeu.getPioche().isEmpty();
+    }
+    
+    public Carte piocher() {
+        return jeu.getPioche().piocher();
+    }
 }

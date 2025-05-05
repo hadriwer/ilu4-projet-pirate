@@ -12,6 +12,7 @@ import java.awt.PointerInfo;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import noyauFonctionnel.entity.cartes.Carte;
+import vue.ui.dialog.MainDialog;
 
 /**
  *
@@ -20,6 +21,7 @@ import noyauFonctionnel.entity.cartes.Carte;
 public class CartePanel extends javax.swing.JPanel {
     
     //Attributs pour l'IHM
+    private MainDialog dialog;
     private Carte carte;
     private JPanel ancienParent;
     private Plateau plateau;
@@ -32,8 +34,9 @@ public class CartePanel extends javax.swing.JPanel {
      * @param carte
      * @param interactif
      */
-    public CartePanel(Carte carte, boolean interactif) {
+    public CartePanel(Carte carte, boolean interactif, MainDialog dialog) {
         this.carte = carte;
+        this.dialog = dialog;
         initComponents();
         initUI();
         this.setSize(new java.awt.Dimension(100, 130));
@@ -164,6 +167,9 @@ public class CartePanel extends javax.swing.JPanel {
             ciblePanel.add(this);
             ciblePanel.revalidate();
             ciblePanel.repaint();
+            dialog.getAdaptateurNoyau().getControlJeu().deposerCarte(carte);
+            dialog.getAdaptateurNoyau().getControlJeu().appliquerEffetCarte(carte);
+            
         } else { //sinon on la remet dans la main du joueur
             ancienParent.add(this);  // ← remettre dans la main
             ancienParent.revalidate();       // ← recalcul du layout

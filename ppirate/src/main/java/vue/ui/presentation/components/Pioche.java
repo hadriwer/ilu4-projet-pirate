@@ -66,7 +66,7 @@ public class Pioche extends javax.swing.JPanel {
         int height = 100;
         int arc = 30;
         
-        if (noyau.getControlPioche().isPiocheEmpty()) {
+        if (noyau.getControlJeu().isPiocheEmpty()) {
             // faire la pioche vide
             g2d.setColor(new Color(200, 200, 200)); // gris clair
             g2d.fillRoundRect(x, y, width, height, arc, arc);
