@@ -10,6 +10,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import util.EnumJoueur;
 import vue.ui.dialog.MainDialog;
+import vue.ui.presentation.components.JaugeDePopularitePanel;
+import vue.ui.presentation.components.JaugeDeViePanel;
 import vue.ui.presentation.components.TimerPanel;
 import vue.ui.presentation.components.ViePanel;
 
@@ -33,11 +35,6 @@ public class Plateau extends javax.swing.JFrame {
         setResizable(false);
         profilJoueurPanel1.setJoueur(EnumJoueur.JACK_LE_BORGNE);
         profilJoueurPanel2.setJoueur(EnumJoueur.BILL_JAMBE_DE_BOIS);
-
-        afficherCarteZonePopularite();
-
-        // Set Adaptateur Noyau Fonctionnel
-        pioche1.setAdaptateur(dialog.getAdaptateurNoyau());
     }
 
     public void setImage() {
@@ -48,93 +45,23 @@ public class Plateau extends javax.swing.JFrame {
         ImageIcon typeIcon = new ImageIcon(imageEchelle);
         backgroundLabel.setIcon(typeIcon);
     }
-
-    public void afficherCarteZonePopularite() {
-        zonePopulariteJoueur2.removeAll();
-        zonePopulariteJoueur1.removeAll();
-
-        dialog.getAdaptateurNoyau().getControlJeu().getZonePopulariteJ1().forEach(carte -> {
-            System.out.println("Carte ajoutée dans zone Popularité du joueur 1 : " + carte);
-            CartePanel c = new CartePanel(carte, false, dialog);
-            zonePopulariteJoueur2.add(c);
-        });
-
-        dialog.getAdaptateurNoyau().getControlJeu().getZonePopulariteJ2().forEach(carte -> {
-            System.out.println("Carte ajoutée dans zone Popularité du joueur 2 : " + carte);
-            CartePanel c = new CartePanel(carte, false, dialog);
-            zonePopulariteJoueur1.add(c);
-        });
-
-        zonePopulariteJoueur2.revalidate();
-        zonePopulariteJoueur2.repaint();
-        zonePopulariteJoueur1.revalidate();
-        zonePopulariteJoueur1.repaint();
+    
+    public JaugeDeViePanel getJaugeVieJ1() {
+        return jaugeDeViePanel1;
     }
     
-    public final void updatePlateau() {
-        afficherCarteZonePopularite();
-        updateJaugeVie();
-        updatePopularite();
-        updateMainJoueur();
-        updateZoneAction();
-    } 
-
-    public void updateMainJoueur() {
-        mainJoueurPanel1.removeAll();
-        mainJoueurPanel2.removeAll();
-        boolean tourDeJeu = dialog.getAdaptateurNoyau().getControlJeu().getTourDeJeu();
-
-        dialog.getAdaptateurNoyau().getControlJeu().getMainJoueur1().getCartes().forEach(carte -> {
-            CartePanel c = new CartePanel(carte, tourDeJeu, dialog);
-            mainJoueurPanel1.add(c);
-        });
- 
-        dialog.getAdaptateurNoyau().getControlJeu().getMainJoueur2().getCartes().forEach(carte -> {
-            CartePanel c = new CartePanel(carte, !tourDeJeu, dialog);
-            mainJoueurPanel2.add(c);
-        });
-
-        mainJoueurPanel1.revalidate();
-        mainJoueurPanel1.repaint();
-        mainJoueurPanel2.revalidate();
-        mainJoueurPanel2.repaint();
+    public JaugeDeViePanel getJaugeVieJ2() {
+        return jaugeDeViePanel2;
     }
     
-    public void updateJaugeVie() {
-        int vie_j1 = dialog.getAdaptateurNoyau().getControlJeu().getPointDeVieJ1();
-        int vie_j2 = dialog.getAdaptateurNoyau().getControlJeu().getPointDeVieJ2();
-
-        for (int i = 0; i < 5; i++) {
-            if (i <= vie_j1) {
-                ViePanel vies = (ViePanel) jaugeDeViePanel1.getComponent(i);
-                vies.setPleine(true);
-            }
-            if (i <= vie_j2) {
-                ViePanel vies = (ViePanel) jaugeDeViePanel2.getComponent(i);
-                vies.setPleine(true);
-            }
-        }
+    public JaugeDePopularitePanel getJaugePopJ1() {
+        return jaugeDePopularitePanel1;
     }
     
-    public void updatePopularite() {
-        int pop_j1 = dialog.getAdaptateurNoyau().getControlJeu().getIndicePopulariteJ1();
-        int pop_j2 = dialog.getAdaptateurNoyau().getControlJeu().getIndicePopulariteJ2();
-
-        jaugeDePopularitePanel1.setNiveau(pop_j1);
-        jaugeDePopularitePanel2.setNiveau(pop_j2);
+    public JaugeDePopularitePanel getJaugePopJ2() {
+        return jaugeDePopularitePanel2;
     }
-
-    public void updateZoneAction() {
-        if (!dialog.getAdaptateurNoyau().getControlJeu().getZoneAction().isEmpty()) {
-            System.out.println("zone action rempli");
-            panelZoneAction1.removeAll();
-            CartePanel premCarte = new CartePanel(dialog.getAdaptateurNoyau().getControlJeu().getZoneAction().getFirst(), false, dialog);
-            panelZoneAction1.add(premCarte);
-        }
-        panelZoneAction1.revalidate();
-        panelZoneAction1.repaint();
-    }
-    
+     
     public TimerPanel getTimerPanel() {
         return timerPanel1;
     }
@@ -155,9 +82,14 @@ public class Plateau extends javax.swing.JFrame {
         return zonePopulariteJoueur1;
     }
     
+    public JPanel getZoneAction() {
+        return panelZoneAction1;
+    }
+    
     public void setDescription(String description){
         System.out.println("On entre dans setDescription");
-        descriptionPanel1.setDescription(description);
+        String htmlDescription = "<html><body style='width:100px'>" + description + "</body></html>";
+        descriptionPanel1.setDescription(htmlDescription);
         repaint();
     }
 
@@ -183,7 +115,7 @@ public class Plateau extends javax.swing.JFrame {
         fillerZoneAction2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
         panelPioche = new javax.swing.JPanel();
         fillerPioche1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 150), new java.awt.Dimension(32767, 50));
-        pioche1 = new vue.ui.presentation.components.Pioche();
+        pioche1 = new vue.ui.presentation.components.Pioche(dialog);
         fillerPioche2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
         panelJoueur1 = new javax.swing.JPanel();
         panelInfosJ1 = new javax.swing.JPanel();
@@ -196,7 +128,7 @@ public class Plateau extends javax.swing.JFrame {
         filler1MainJ1 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 32767));
         mainJoueurPanel1 = new vue.ui.presentation.components.MainJoueurPanel();
         filler2MainJ1 = new javax.swing.Box.Filler(new java.awt.Dimension(100, 0), new java.awt.Dimension(100, 2), new java.awt.Dimension(500, 32767));
-        timerPanel1 = new vue.ui.presentation.components.TimerPanel();
+        timerPanel1 = timerPanel1 = new vue.ui.presentation.components.TimerPanel(dialog);
         panelJoueur2 = new javax.swing.JPanel();
         panelInfosJ2 = new javax.swing.JPanel();
         jaugeDePopularitePanel2 = new vue.ui.presentation.components.JaugeDePopularitePanel();

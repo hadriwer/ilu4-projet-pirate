@@ -4,7 +4,6 @@
  */
 package vue.ui.presentation.components;
 
-import vue.ui.dialog.AdaptateurDuNoyauFonctionnel;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -12,18 +11,21 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import vue.ui.dialog.MainDialog;
 
 /**
  *
  * @author wer
  */
 public class Pioche extends javax.swing.JPanel {
-    private AdaptateurDuNoyauFonctionnel noyau;
+    private MainDialog dialog;
 
     /**
      * Creates new form PanelPioche
+     * @param dialog
      */
-    public Pioche() {
+    public Pioche(MainDialog dialog) {
+        this.dialog = dialog;
         initComponents();
     }
 
@@ -66,7 +68,7 @@ public class Pioche extends javax.swing.JPanel {
         int height = 100;
         int arc = 30;
         
-        if (noyau.getControlJeu().isPiocheEmpty()) {
+        if (dialog.getAdaptateurNoyau().getControlJeu().isPiocheEmpty()) {
             // faire la pioche vide
             g2d.setColor(new Color(200, 200, 200)); // gris clair
             g2d.fillRoundRect(x, y, width, height, arc, arc);
@@ -91,10 +93,6 @@ public class Pioche extends javax.swing.JPanel {
             g2d.setFont(new Font("Serif", Font.BOLD, 24));
             g2d.drawString("Pioche", x + 10, y + height / 2);
         }
-    }
-    
-    public void setAdaptateur(AdaptateurDuNoyauFonctionnel noyau) {
-        this.noyau = noyau;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

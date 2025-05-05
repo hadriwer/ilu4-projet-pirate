@@ -36,7 +36,6 @@ public class Jeu {
         this.zoneAction = new ArrayList<>();
         this.zonePopulariteJ1 = new ArrayList<>();
         this.zonePopulariteJ2 = new ArrayList<>();
-        zoneAction.add(pioche.piocher());
     }
     
     public Joueur donnerTourDeJoueur() {
@@ -85,10 +84,10 @@ public class Jeu {
                 if (tourDeJeu) {
                     // Joueur 1 qui joue donc joueur2 qui subit sur une Attaque
                     joueur1.perdreVie(a.getSelfDegats());
-                    joueur2.perdreVie(a.getSelfDegats());
+                    joueur2.perdreVie(a.getActionVie());
                 }
                 else {
-                    joueur1.perdreVie(a.getSelfDegats());
+                    joueur1.perdreVie(a.getActionVie());
                     joueur2.perdreVie(a.getSelfDegats());
                 }
             }

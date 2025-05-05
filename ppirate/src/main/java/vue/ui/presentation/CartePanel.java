@@ -11,7 +11,9 @@ import java.awt.Point;
 import java.awt.PointerInfo;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import noyauFonctionnel.entity.cartes.Attaque;
 import noyauFonctionnel.entity.cartes.Carte;
+import noyauFonctionnel.entity.cartes.Popularite;
 import vue.ui.dialog.MainDialog;
 
 /**
@@ -39,7 +41,7 @@ public class CartePanel extends javax.swing.JPanel {
         this.dialog = dialog;
         initComponents();
         initUI();
-        this.setSize(new java.awt.Dimension(100, 130));
+        this.setSize(new java.awt.Dimension(100, 250));
         if (!interactif) {
             removeInteractivity();
         }
@@ -47,7 +49,21 @@ public class CartePanel extends javax.swing.JPanel {
     
     public void initUI() {
         NomCarteLabel.setText(carte.getNom());
-        DescriptionLabel.setText(carte.getDescription());
+        // DescriptionLabel.setText(carte.getDescription());
+        switch (carte) {
+            case Popularite c -> {
+                Effet1Label.setText("Point de pop : " + c.getPointDepPop());
+                Effet2Label.setText("Self dégat : \n" + String.valueOf(c.getSelfDegats()));
+            }
+            case Attaque c -> {
+                Effet1Label.setText("Action Vie : \n" + String.valueOf(c.getActionVie()));
+                Effet2Label.setText("Self dégat : \n" + String.valueOf(c.getSelfDegats()));
+            }
+            default -> {
+                Effet1Label.setText("");
+                Effet2Label.setText("");
+            }
+        }
     }
     
     private void removeInteractivity() {
@@ -85,7 +101,7 @@ public class CartePanel extends javax.swing.JPanel {
         Effet2Label = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(80, 120));
-        setPreferredSize(new java.awt.Dimension(80, 120));
+        setPreferredSize(new java.awt.Dimension(100, 120));
         setRequestFocusEnabled(false);
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -120,7 +136,7 @@ public class CartePanel extends javax.swing.JPanel {
         this.glassPane = (JPanel) plateau.getGlassPane();
         this.glassPane.setVisible(true);
         
-        plateau.setDescription(this.getName()); //ne fonctionne pas encore
+        dialog.getPlateau().setDescription(carte.getDescription()); //ne fonctionne pas encore
         
         ancienParent=(JPanel) this.getParent();        
         
@@ -167,10 +183,36 @@ public class CartePanel extends javax.swing.JPanel {
             ciblePanel.add(this);
             ciblePanel.revalidate();
             ciblePanel.repaint();
-            dialog.getAdaptateurNoyau().getControlJeu().deposerCarte(carte);
-            dialog.getAdaptateurNoyau().getControlJeu().appliquerEffetCarte(carte);
             
-        } else { //sinon on la remet dans la main du joueur
+            // Logique du jeu 
+            
+            dialog.getAdaptateurNoyau().getControlJeu().deposerCarte(carte);
+            System.out.println("Une carte a été choisie.");
+            dialog.getAdaptateurNoyau().getControlJeu().donnerTourDeJoueur().getMainJoueur().getCartes().remove(carte);
+            System.out.println("Carte supprimé du joueur courant.");
+            dialog.getAdaptateurNoyau().getControlJeu().appliquerEffetCarte(carte);
+            dialog.updateJaugeVie();
+            System.out.println("On applique les effets de la carte choisie");
+            
+            System.out.println("PV JOUEUR1 = " + dialog.getAdaptateurNoyau().getControlJeu().getPointDeVieJ1());
+            
+            if (dialog.getAdaptateurNoyau().getControlJeu().verifierFinPartie()) {
+                System.out.println("j'ai fini le jeu");
+                dialog.getPlateau().getTimerPanel().stop();
+                // TODO fin du jeu
+            } else {
+                dialog.getPlateau().getTimerPanel().stop();
+                dialog.getAdaptateurNoyau().getControlJeu().joueurPrendreCarte(dialog.getAdaptateurNoyau().getControlJeu().piocher());
+                dialog.updateMainJoueur();
+                System.out.println("On pioche une nouvelle carte.");
+
+                dialog.getAdaptateurNoyau().getControlJeu().changerJoueur();
+                System.out.println("On change de joueur.\n");
+                dialog.updatePlateau();
+                dialog.getPlateau().getTimerPanel().restartTimer();
+            }            
+        }
+        else { //sinon on la remet dans la main du joueur
             ancienParent.add(this);  // ← remettre dans la main
             ancienParent.revalidate();       // ← recalcul du layout
             ancienParent.repaint();

@@ -157,6 +157,9 @@
                   <Dimension value="[100, 26]"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
+              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                   <BorderConstraints direction="East"/>
@@ -185,6 +188,9 @@
                   </AuxValues>
                 </Component>
                 <Component class="vue.ui.presentation.components.Pioche" name="pioche1">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new vue.ui.presentation.components.Pioche(dialog);"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.Box$Filler" name="fillerPioche2">
                   <Properties>
@@ -354,6 +360,9 @@
                   </AuxValues>
                 </Component>
                 <Component class="vue.ui.presentation.components.TimerPanel" name="timerPanel1">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="timerPanel1 = new vue.ui.presentation.components.TimerPanel(dialog);"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>

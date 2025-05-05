@@ -18,8 +18,8 @@ public class JaugeDeViePanel extends javax.swing.JPanel {
         vie1.setPleine(true);
         vie2.setPleine(true);
         vie3.setPleine(true);
-        vie4.setPleine(false);
-        vie5.setPleine(false);
+        vie4.setPleine(true);
+        vie5.setPleine(true);
     }
 
     /**

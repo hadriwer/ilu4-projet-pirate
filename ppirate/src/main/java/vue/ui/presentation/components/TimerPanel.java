@@ -10,12 +10,14 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.RoundRectangle2D;
+import vue.ui.dialog.MainDialog;
 
 /**
  *
  * @author David Marquet
  */
 public class TimerPanel extends javax.swing.JPanel {
+    private MainDialog dialog;
 
     /**
      * Creates new form TimerPanel
@@ -26,12 +28,20 @@ public class TimerPanel extends javax.swing.JPanel {
     private float opacite;
     private static final int BORDURE = 15;
     
-    public TimerPanel() {
+    public TimerPanel(MainDialog dialog) {
+        this.dialog = dialog;
         this.opacite = 0.5f;
         initComponents();
         this.timer = new javax.swing.Timer(1000, (e) -> { timerEventHandler(e); });
-        timer.start();
         this.decompte = TEMPS;
+    }
+    
+    public void stop() {
+        timer.stop();
+    }
+    
+    public void start() {
+        timer.start();
     }
     
     @Override
@@ -52,9 +62,13 @@ public class TimerPanel extends javax.swing.JPanel {
         if (this.decompte < 0){
             timerTxt.setText(String.valueOf("Temps écoulé"));
             timer.stop();
-            // TODO  : action associé quand le temps est écoulé
-        }else{
-           timerTxt.setText(String.valueOf(this.decompte)); 
+            dialog.changerJoueur();
+            System.out.println("On change de joueur car le temps est écoulé.");
+            dialog.updatePlateau();
+            restartTimer();
+        }
+        else{
+           timerTxt.setText(String.valueOf(this.decompte));
         }
         repaint();
     }
@@ -75,6 +89,10 @@ public class TimerPanel extends javax.swing.JPanel {
     
     public int getDecompte() {
         return decompte;
+    }
+    
+    public javax.swing.Timer getTimer() {
+        return timer;
     }
 
     /**

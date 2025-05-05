@@ -35,9 +35,6 @@ public class ViePanel extends javax.swing.JPanel {
         repaint();
     }
     
-    
-    
-    
     private Path2D createHeartPath(float x, float y, float width, float height) {
         float beX = x + width / 2;  // bottom endpoint X
         float beY = y + height;     // bottom endpoint Y
