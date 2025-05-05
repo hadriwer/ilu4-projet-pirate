@@ -26,7 +26,7 @@ public class Main {
         AdaptateurDuNoyauFonctionnel noyau = new AdaptateurDuNoyauFonctionnel(jeu);
         MainDialog dialog = new MainDialog(noyau);
       
-        dialog.main();
+        dialog.lancerApp();
         
         // Pour la partie Boundary
         MainConsole boundary = new MainConsole(new ControlJeu(jeu), new ControlChoisirNomJoueur(jeu));

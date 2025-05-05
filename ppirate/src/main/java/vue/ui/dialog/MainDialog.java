@@ -11,6 +11,7 @@ import vue.ui.presentation.components.TimerPanel;
 import javax.swing.Timer;
 import noyauFonctionnel.controller.ControlJeu;
 import vue.ui.presentation.CartePanel;
+import vue.ui.presentation.ChoixNom;
 import vue.ui.presentation.components.ViePanel;
 
 /**
@@ -21,6 +22,8 @@ public class MainDialog {
     private AdaptateurDuNoyauFonctionnel adaptateurNoyau;
     private int numTour;
     private Plateau vuePlateau;
+    private ChoixNom vueAccueil;
+
     
     public MainDialog(AdaptateurDuNoyauFonctionnel noyau) {
         this.adaptateurNoyau = noyau;
@@ -123,24 +126,34 @@ public class MainDialog {
         return vuePlateau;
     }
     
-    public void initDialog() {
-        vuePlateau = new Plateau(this);
-        vuePlateau.setLocationRelativeTo(null);
-        vuePlateau.setVisible(true);
-        updatePlateau();
+    public void submitNomsJoueurs(String nomJoueur1, String nomJoueur2) {
+        if (nomJoueur1.isEmpty() || nomJoueur2.isEmpty()) {
+            vueAccueil.getErreurLabel().setText("Un des deux pseudos est non renseigné !");
+        } else {
+            vuePlateau = new Plateau(this);
+            vuePlateau.setLocationRelativeTo(null);
+            vuePlateau.setVisible(true);
+            updatePlateau();
         
-        vuePlateau.getTimerPanel().getTimer().start();
+            vuePlateau.getTimerPanel().getTimer().start();
+        }
+    }
+    
+    public void initAccueil() {
+        vueAccueil = new ChoixNom(this);
+        vueAccueil.setLocationRelativeTo(null);
+        vueAccueil.setVisible(true);
     }
     
      /**
      * @param args the command line arguments
      */
-    public void main() {
+    public void lancerApp() {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                initDialog();
+                initAccueil();
             }
         });
     }

@@ -22,8 +22,8 @@ public class ChoixNom extends javax.swing.JFrame {
      * 
      * @param dialog
      */
-    public ChoixNom() {
-        //this.dialog = dialog;
+    public ChoixNom(MainDialog dialog) {
+        this.dialog = dialog;
         initComponents();
         backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
         setImage();
@@ -59,6 +59,10 @@ public class ChoixNom extends javax.swing.JFrame {
         ImageIcon typeIcon = new ImageIcon(imageEchelle);
         backgroundLabel.setIcon(typeIcon);
     }
+    
+    public javax.swing.JLabel getErreurLabel() {
+        return this.labelErreur;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -82,7 +86,7 @@ public class ChoixNom extends javax.swing.JFrame {
         pirate2nomLabel = new javax.swing.JLabel();
         pirate2Field = new vue.ui.presentation.components.CustomJTextField();
         startPanel = new javax.swing.JPanel();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        labelErreur = new javax.swing.JLabel();
         startButton = new vue.ui.presentation.components.CustomJButton();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         backgroundPanel = new javax.swing.JPanel();
@@ -155,7 +159,10 @@ public class ChoixNom extends javax.swing.JFrame {
 
         startPanel.setOpaque(false);
         startPanel.setLayout(new java.awt.GridLayout(3, 0));
-        startPanel.add(filler1);
+
+        labelErreur.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        labelErreur.setForeground(new java.awt.Color(255, 51, 51));
+        startPanel.add(labelErreur);
 
         startButton.setText("");
         startButton.addActionListener(new java.awt.event.ActionListener() {
@@ -212,7 +219,7 @@ public class ChoixNom extends javax.swing.JFrame {
     }//GEN-LAST:event_pirate1FieldActionPerformed
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-        // TODO add your handling code here:
+        dialog.submitNomsJoueurs(pirate1Field.getText(), pirate2Field.getText());
     }//GEN-LAST:event_startButtonActionPerformed
 
     /*private void formMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_formMousePressed
@@ -228,8 +235,8 @@ public class ChoixNom extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundLabel;
     private javax.swing.JPanel backgroundPanel;
-    private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
+    private javax.swing.JLabel labelErreur;
     private javax.swing.JLabel logoLabel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel panelDroiteField;
