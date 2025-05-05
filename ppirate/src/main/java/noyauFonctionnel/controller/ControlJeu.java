@@ -108,4 +108,20 @@ public class ControlJeu {
     public Carte piocher() {
         return jeu.getPioche().piocher();
     }
+    
+    public String afficherJeu(){
+        return jeu.toString();
+    }
+    
+    public Joueur giveJoueurGagnant(){
+        return jeu.giveJoueurGagnant();
+    }
+    
+    public Joueur getJoueur1(){
+        return jeu.getJoueur1();
+    }
+    
+    public Joueur getJoueur2(){
+        return jeu.getJoueur2();
+    }
 }

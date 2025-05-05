@@ -1,5 +1,7 @@
 
 import boundary.MainConsole;
+import noyauFonctionnel.controller.ControlChoisirNomJoueur;
+import noyauFonctionnel.controller.ControlJeu;
 import noyauFonctionnel.entity.Jeu;
 import vue.ui.dialog.AdaptateurDuNoyauFonctionnel;
 import vue.ui.dialog.MainDialog;
@@ -24,12 +26,11 @@ public class Main {
         AdaptateurDuNoyauFonctionnel noyau = new AdaptateurDuNoyauFonctionnel(jeu);
         MainDialog dialog = new MainDialog(noyau);
       
-        dialog.main();
+        //dialog.main();
         
         // Pour la partie Boundary
-        
-        MainConsole boundary = new MainConsole(jeu);
-        // boundary.lancerJeu();
+        MainConsole boundary = new MainConsole(new ControlJeu(jeu), new ControlChoisirNomJoueur(jeu));
+        boundary.lancerJeu();
         
         // TODO
     }
