@@ -19,15 +19,11 @@ public class ControlPioche {
         this.jeu = jeu;
     }
     
-    public Pioche getPiocheJeu(){
-        return jeu.getPioche();
-    }
-    
     public boolean isPiocheEmpty() {
-        return getPiocheJeu().isEmpty();
+        return jeu.getPioche().isEmpty();
     }
     
     public Carte piocher() {
-        return getPiocheJeu().piocher();
+        return jeu.getPioche().piocher();
     }
 }

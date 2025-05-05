@@ -1,5 +1,6 @@
 package noyauFonctionnel.entity;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,11 +18,11 @@ public class Pioche {
         
         ConfigurationCarte[] configurations = CarteFactory.creerCartes();
         
-        for (ConfigurationCarte configuration : configurations) {
+        Arrays.stream(configurations).forEach(configuration -> {
             for (int x = 0; x < configuration.getNbExemplaires(); x++) {
                 pioche.add(configuration.getCarte().clone());
             }
-        }
+        });
         
         Collections.shuffle(pioche);
     }

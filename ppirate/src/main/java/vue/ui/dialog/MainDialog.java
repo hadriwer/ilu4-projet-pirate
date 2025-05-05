@@ -4,10 +4,12 @@
  */
 package vue.ui.dialog;
 
+import java.io.ObjectInputStream;
 import javax.swing.JOptionPane;
 import vue.ui.presentation.Plateau;
 import vue.ui.presentation.components.TimerPanel;
 import javax.swing.Timer;
+import noyauFonctionnel.controller.ControlJeu;
 
 /**
  *
@@ -22,6 +24,10 @@ public class MainDialog {
         this.numTour = 0;
     }
     
+    public AdaptateurDuNoyauFonctionnel getAdaptateurNoyau() {
+        return adaptateurNoyau;
+    }
+    
     public void initDialog() {
         //String joueur1 = demanderNom("joueur 1");
         //if (joueur1 == null) System.exit(0);
@@ -32,7 +38,7 @@ public class MainDialog {
         // System.out.println("Joueur 1 : " + joueur1);
         // System.out.println("Joueur 2 : " + joueur2);
     
-        Plateau vuePlateau = new Plateau(adaptateurNoyau);
+        Plateau vuePlateau = new Plateau(this);
         TimerPanel timerPanel = vuePlateau.getTimerPanel();
         vuePlateau.setVisible(true);
         vuePlateau.updatePlateau();

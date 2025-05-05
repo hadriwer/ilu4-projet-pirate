@@ -28,6 +28,7 @@ public class CartePanel extends javax.swing.JPanel {
     /**
      * Creates new form CartePanel
      * @param carte
+     * @param interactif
      */
     public CartePanel(Carte carte, boolean interactif) {
         this.carte = carte;

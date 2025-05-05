@@ -12,7 +12,6 @@ import noyauFonctionnel.entity.Jeu;
  * @author wer
  */
 public class AdaptateurDuNoyauFonctionnel {
-    private Jeu jeu;
     private ControlJeu controlJeu;
     private ControlJouerCarte controlJouerCarte;
     private ControlPioche controlPiocherCarte;

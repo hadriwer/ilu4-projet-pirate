@@ -12,6 +12,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import util.EnumJoueur;
+import vue.ui.dialog.MainDialog;
 import vue.ui.presentation.components.TimerPanel;
 import vue.ui.presentation.components.ViePanel;
 
@@ -21,14 +22,16 @@ import vue.ui.presentation.components.ViePanel;
  */
 public class Plateau extends javax.swing.JFrame {
     private AdaptateurDuNoyauFonctionnel noyau;
+    private MainDialog dialog;
 
     /**
      * Creates new form Plateau
      * 
-     * @param noyau
+     * @param dialog
      */
-    public Plateau(AdaptateurDuNoyauFonctionnel noyau) {
-        this.noyau = noyau;
+    public Plateau(MainDialog dialog) {
+        this.dialog = dialog;
+        this.noyau = dialog.getAdaptateurNoyau();
         initComponents();
         backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
         setImage();
@@ -56,7 +59,6 @@ public class Plateau extends javax.swing.JFrame {
     }
 
     public void afficherCarteZonePopularite() {
-        System.out.println("IN");
         zonePopularitePanel1.removeAll();
         zonePopularitePanel2.removeAll();
 
