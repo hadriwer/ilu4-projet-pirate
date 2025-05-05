@@ -4,10 +4,6 @@
  */
 package vue.ui.presentation;
 
-import vue.ui.dialog.AdaptateurDuNoyauFonctionnel;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
@@ -21,7 +17,6 @@ import vue.ui.presentation.components.ViePanel;
  * @author ember
  */
 public class Plateau extends javax.swing.JFrame {
-    private AdaptateurDuNoyauFonctionnel noyau;
     private MainDialog dialog;
 
     /**
@@ -31,7 +26,6 @@ public class Plateau extends javax.swing.JFrame {
      */
     public Plateau(MainDialog dialog) {
         this.dialog = dialog;
-        this.noyau = dialog.getAdaptateurNoyau();
         initComponents();
         backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
         setImage();
@@ -42,7 +36,7 @@ public class Plateau extends javax.swing.JFrame {
         afficherCarteZonePopularite();
 
         // Set Adaptateur Noyau Fonctionnel
-        pioche1.setAdaptateur(noyau);
+        pioche1.setAdaptateur(dialog.getAdaptateurNoyau());
     }
 
     public void setImage() {
@@ -54,21 +48,17 @@ public class Plateau extends javax.swing.JFrame {
         backgroundLabel.setIcon(typeIcon);
     }
 
-    public AdaptateurDuNoyauFonctionnel getAdaptateurNoyau() {
-        return noyau;
-    }
-
     public void afficherCarteZonePopularite() {
         zonePopularitePanel1.removeAll();
         zonePopularitePanel2.removeAll();
 
-        noyau.getControlJeu().getZonePopulariteJ1().forEach(carte -> {
+        dialog.getAdaptateurNoyau().getControlJeu().getZonePopulariteJ1().forEach(carte -> {
             System.out.println("Carte ajoutée dans zone Popularité du joueur 1 : " + carte);
             CartePanel c = new CartePanel(carte, false);
             zonePopularitePanel1.add(c);
         });
 
-        noyau.getControlJeu().getZonePopulariteJ2().forEach(carte -> {
+        dialog.getAdaptateurNoyau().getControlJeu().getZonePopulariteJ2().forEach(carte -> {
             System.out.println("Carte ajoutée dans zone Popularité du joueur 2 : " + carte);
             CartePanel c = new CartePanel(carte, false);
             zonePopularitePanel2.add(c);
@@ -91,14 +81,14 @@ public class Plateau extends javax.swing.JFrame {
     public void updateMainJoueur() {
         mainJoueurPanel1.removeAll();
         mainJoueurPanel2.removeAll();
-        boolean tourDeJeu = noyau.getControlJeu().getTourDeJeu();
+        boolean tourDeJeu = dialog.getAdaptateurNoyau().getControlJeu().getTourDeJeu();
 
-        noyau.getControlJoueur().getMainJoueur1().getCartes().forEach(carte -> {
+        dialog.getAdaptateurNoyau().getControlJoueur().getMainJoueur1().getCartes().forEach(carte -> {
             CartePanel c = new CartePanel(carte, tourDeJeu);
             mainJoueurPanel1.add(c);
         });
  
-        noyau.getControlJoueur().getMainJoueur2().getCartes().forEach(carte -> {
+        dialog.getAdaptateurNoyau().getControlJoueur().getMainJoueur2().getCartes().forEach(carte -> {
             CartePanel c = new CartePanel(carte, !tourDeJeu);
             mainJoueurPanel2.add(c);
         });
@@ -110,8 +100,8 @@ public class Plateau extends javax.swing.JFrame {
     }
     
     public void updateJaugeVie() {
-        int vie_j1 = noyau.getControlJoueur().getPointDeVieJ1();
-        int vie_j2 = noyau.getControlJoueur().getPointDeVieJ2();
+        int vie_j1 = dialog.getAdaptateurNoyau().getControlJoueur().getPointDeVieJ1();
+        int vie_j2 = dialog.getAdaptateurNoyau().getControlJoueur().getPointDeVieJ2();
 
         for (int i = 0; i < 5; i++) {
             if (i <= vie_j1) {
@@ -126,18 +116,18 @@ public class Plateau extends javax.swing.JFrame {
     }
     
     public void updatePopularite() {
-        int pop_j1 = noyau.getControlJoueur().getIndicePopulariteJ1();
-        int pop_j2 = noyau.getControlJoueur().getIndicePopulariteJ2();
+        int pop_j1 = dialog.getAdaptateurNoyau().getControlJoueur().getIndicePopulariteJ1();
+        int pop_j2 = dialog.getAdaptateurNoyau().getControlJoueur().getIndicePopulariteJ2();
 
         jaugeDePopularitePanel1.setNiveau(pop_j1);
         jaugeDePopularitePanel2.setNiveau(pop_j2);
     }
 
     public void updateZoneAction() {
-        if (!noyau.getControlJeu().getZoneAction().isEmpty()) {
+        if (!dialog.getAdaptateurNoyau().getControlJeu().getZoneAction().isEmpty()) {
             System.out.println("zone action rempli");
             panelZoneAction1.removeAll();
-            CartePanel premCarte = new CartePanel(noyau.getControlJeu().getZoneAction().getFirst(), false);
+            CartePanel premCarte = new CartePanel(dialog.getAdaptateurNoyau().getControlJeu().getZoneAction().getFirst(), false);
             panelZoneAction1.add(premCarte);
         }
         panelZoneAction1.revalidate();
