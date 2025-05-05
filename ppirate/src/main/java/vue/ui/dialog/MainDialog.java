@@ -134,6 +134,9 @@ public class MainDialog {
             vuePlateau.setLocationRelativeTo(null);
             vuePlateau.setVisible(true);
             updatePlateau();
+            
+            vuePlateau.getLabelJ1().setText(nomJoueur1);
+            vuePlateau.getLabelJ2().setText(nomJoueur2);
         
             vuePlateau.getTimerPanel().getTimer().start();
         }

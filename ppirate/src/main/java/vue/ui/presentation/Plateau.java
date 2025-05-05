@@ -46,6 +46,14 @@ public class Plateau extends javax.swing.JFrame {
         backgroundLabel.setIcon(typeIcon);
     }
     
+    public javax.swing.JLabel getLabelJ1() {
+        return jLabel1;
+    }
+    
+    public javax.swing.JLabel getLabelJ2() {
+        return jLabel2;
+    }
+    
     public JaugeDeViePanel getJaugeVieJ1() {
         return jaugeDeViePanel1;
     }
