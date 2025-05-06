@@ -79,29 +79,11 @@ public class Jeu {
     }
     
     public void appliquerEffetCarte(Carte carte) {
-        switch (carte) {
-            case Attaque a -> {
-                if (tourDeJeu) {
-                    // Joueur 1 qui joue donc joueur2 qui subit sur une Attaque
-                    joueur1.perdreVie(a.getSelfDegats());
-                    joueur2.perdreVie(a.getActionVie());
-                }
-                else {
-                    joueur1.perdreVie(a.getActionVie());
-                    joueur2.perdreVie(a.getSelfDegats());
-                }
-            }
-            case Popularite p -> {
-                if (tourDeJeu) {
-                    joueur1.gagnerPop(p.getPointDepPop());
-                    joueur1.perdreVie(p.getSelfDegats());
-                }
-                else {
-                    joueur2.gagnerPop(p.getPointDepPop());
-                    joueur2.perdreVie(p.getSelfDegats());
-                }
-            }
-            default -> throw new IllegalStateException("Aucune des cartes connues");
+        if (tourDeJeu) {
+            carte.apply(joueur1, joueur2);
+        }
+        else {
+            carte.apply(joueur2, joueur1);
         }
     }
     

@@ -5,6 +5,7 @@
 package noyauFonctionnel.entity.cartes;
 
 import java.util.Objects;
+import noyauFonctionnel.entity.Joueur;
 
 /**
  *
@@ -26,5 +27,9 @@ public class Protection extends Carte{
     public int hashCode() {
         return Objects.hash(super.hashCode());
     }
-    
+
+    @Override
+    public void apply(Joueur self, Joueur cible) {
+        ;
+    }   
 }

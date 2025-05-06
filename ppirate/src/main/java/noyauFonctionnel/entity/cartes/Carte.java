@@ -2,7 +2,7 @@ package noyauFonctionnel.entity.cartes;
 
 import java.util.Objects;
 
-public abstract class Carte implements Cloneable {
+public abstract class Carte implements Cloneable, EffetCarte {
     private final String nom;
     private final String description;
     

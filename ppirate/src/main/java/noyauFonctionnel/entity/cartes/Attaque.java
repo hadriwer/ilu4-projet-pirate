@@ -1,6 +1,7 @@
 package noyauFonctionnel.entity.cartes;
 
 import java.util.Objects;
+import noyauFonctionnel.entity.Joueur;
 
 public class Attaque extends Carte {
     private final int actionVie;
@@ -37,5 +38,11 @@ public class Attaque extends Carte {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), actionVie, selfDegats);
+    }
+
+    @Override
+    public void apply(Joueur self, Joueur cible) {
+        self.perdreVie(selfDegats);
+        cible.perdreVie(actionVie);
     }
 }

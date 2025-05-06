@@ -20,14 +20,12 @@ import vue.ui.presentation.components.ViePanel;
  */
 public class MainDialog {
     private AdaptateurDuNoyauFonctionnel adaptateurNoyau;
-    private int numTour;
     private Plateau vuePlateau;
     private ChoixNom vueAccueil;
 
     
     public MainDialog(AdaptateurDuNoyauFonctionnel noyau) {
         this.adaptateurNoyau = noyau;
-        this.numTour = 0;
     }
     
     public AdaptateurDuNoyauFonctionnel getAdaptateurNoyau() {
@@ -37,7 +35,6 @@ public class MainDialog {
     public void changerJoueur() {
         adaptateurNoyau.getControlJeu().changerJoueur();
     }
-    
     
     public void afficherCarteZonePopularite() {
         vuePlateau.getZonePopulariteJoueur1().removeAll();
@@ -148,9 +145,6 @@ public class MainDialog {
         vueAccueil.setVisible(true);
     }
     
-     /**
-     * @param args the command line arguments
-     */
     public void lancerApp() {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
