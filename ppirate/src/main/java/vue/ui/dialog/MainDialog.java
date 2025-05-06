@@ -127,6 +127,8 @@ public class MainDialog {
         if (nomJoueur1.isEmpty() || nomJoueur2.isEmpty()) {
             vueAccueil.getErreurLabel().setText("Un des deux pseudos est non renseigné !");
         } else {
+            vueAccueil.setVisible(false);
+            vueAccueil.dispose();
             vuePlateau = new Plateau(this);
             vuePlateau.setLocationRelativeTo(null);
             vuePlateau.setVisible(true);

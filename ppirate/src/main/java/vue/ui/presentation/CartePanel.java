@@ -136,7 +136,7 @@ public class CartePanel extends javax.swing.JPanel {
         this.glassPane = (JPanel) plateau.getGlassPane();
         this.glassPane.setVisible(true);
         
-        dialog.getPlateau().setDescription(carte.getDescription()); //ne fonctionne pas encore
+        plateau.setDescription(carte.getDescription()); //ne fonctionne pas encore
         
         ancienParent=(JPanel) this.getParent();        
         
