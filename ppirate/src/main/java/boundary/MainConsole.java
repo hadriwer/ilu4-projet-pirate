@@ -38,7 +38,7 @@ public class MainConsole {
             System.out.println(controllerJeu.afficherJeu());
             System.out.println("######################################################################################");
             
-            Joueur current = controllerJeu.donnerTourDeJoueur();
+            Joueur current = controllerJeu.getTourDeJeu() ? j1 : j2;
             System.out.println("\nC'est au joueur " + current.getNom() + " de jouer."); 
             
             System.out.println("Choisissez une carte mettre un index entre 1 et 4");
