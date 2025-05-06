@@ -78,6 +78,24 @@ public class Jeu {
         }
     }
     
+    public void joueurPrendreCarte(Carte carte) {
+        if (tourDeJeu) {
+            joueur1.prendreCarte(carte);
+        }
+        else {
+            joueur2.prendreCarte(carte);
+        }
+    }
+    
+    public void removeCarteMainJoueur(Carte carte) {
+        if (tourDeJeu) {
+            joueur1.getMainJoueur().getCartes().remove(carte);
+        }
+        else {
+            joueur2.getMainJoueur().getCartes().remove(carte);
+        }
+    }
+    
     public void appliquerEffetCarte(Carte carte) {
         if (tourDeJeu) {
             carte.apply(joueur1, joueur2);

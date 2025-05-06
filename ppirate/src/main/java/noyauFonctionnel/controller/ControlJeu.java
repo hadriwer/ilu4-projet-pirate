@@ -25,16 +25,16 @@ public class ControlJeu {
         return jeu.getTourDeJeur();
     }
     
+    public void removeCarteMainJoueur(Carte carte) {
+        jeu.removeCarteMainJoueur(carte);
+    }
+    
     public boolean verifierFinPartie() {
         return jeu.verifierFinPartie();
     }
     
-    public Joueur donnerTourDeJoueur() { // TODO pas bon
-        return jeu.donnerTourDeJoueur();
-    }
-    
     public void joueurPrendreCarte(Carte carte) {
-        donnerTourDeJoueur().prendreCarte(carte);
+        jeu.joueurPrendreCarte(carte);
     }
     
     public void changerJoueur() {

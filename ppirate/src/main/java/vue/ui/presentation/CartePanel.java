@@ -193,7 +193,7 @@ public class CartePanel extends javax.swing.JPanel {
             dialog.getAdaptateurNoyau().getControlJeu().deposerCarte(carte);
             dialog.afficherCarteZonePopularite();
             System.out.println("Une carte a été choisie.");
-            dialog.getAdaptateurNoyau().getControlJeu().donnerTourDeJoueur().getMainJoueur().getCartes().remove(carte);
+            dialog.getAdaptateurNoyau().getControlJeu().removeCarteMainJoueur(carte);
             dialog.updateMainJoueur();
             System.out.println("Carte supprimé du joueur courant.");
             dialog.getAdaptateurNoyau().getControlJeu().appliquerEffetCarte(carte);
