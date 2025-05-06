@@ -169,9 +169,12 @@ public class CartePanel extends javax.swing.JPanel {
         }
         
         //récupération de la position absolue de la souris
-        PointerInfo pointerInfo = MouseInfo.getPointerInfo();
-        Point cursorLocation = pointerInfo.getLocation();
-        Point cible = SwingUtilities.convertPoint(glassPane, cursorLocation, ciblePanel);
+        // PointerInfo pointerInfo = MouseInfo.getPointerInfo();
+        // Point cursorLocation = pointerInfo.getLocation();
+        // Point cible = SwingUtilities.convertPoint(glassPane, cursorLocation, ciblePanel);
+
+        Point cursorLocation = MouseInfo.getPointerInfo().getLocation();
+        SwingUtilities.convertPointFromScreen(cursorLocation, ciblePanel);
         
         //on enlève la carte du glassPane
         glassPane.remove(this);
@@ -179,7 +182,8 @@ public class CartePanel extends javax.swing.JPanel {
         glassPane.repaint();
         
         //si la carte est amenée sur la cible on la pose
-        if (ciblePanel.contains(cible)) { 
+        if (ciblePanel != null && ciblePanel.contains(cursorLocation)) { 
+            dialog.getPlateau().getTimerPanel().stop();
             ciblePanel.add(this);
             ciblePanel.revalidate();
             ciblePanel.repaint();
@@ -187,8 +191,10 @@ public class CartePanel extends javax.swing.JPanel {
             // Logique du jeu 
             
             dialog.getAdaptateurNoyau().getControlJeu().deposerCarte(carte);
+            dialog.afficherCarteZonePopularite();
             System.out.println("Une carte a été choisie.");
             dialog.getAdaptateurNoyau().getControlJeu().donnerTourDeJoueur().getMainJoueur().getCartes().remove(carte);
+            dialog.updateMainJoueur();
             System.out.println("Carte supprimé du joueur courant.");
             dialog.getAdaptateurNoyau().getControlJeu().appliquerEffetCarte(carte);
             dialog.updateJaugeVie();
@@ -201,7 +207,6 @@ public class CartePanel extends javax.swing.JPanel {
                 dialog.getPlateau().getTimerPanel().stop();
                 // TODO fin du jeu
             } else {
-                dialog.getPlateau().getTimerPanel().stop();
                 dialog.getAdaptateurNoyau().getControlJeu().joueurPrendreCarte(dialog.getAdaptateurNoyau().getControlJeu().piocher());
                 dialog.updateMainJoueur();
                 System.out.println("On pioche une nouvelle carte.");
@@ -213,6 +218,7 @@ public class CartePanel extends javax.swing.JPanel {
             }            
         }
         else { //sinon on la remet dans la main du joueur
+            System.out.println("Problème de cible.");
             ancienParent.add(this);  // ← remettre dans la main
             ancienParent.revalidate();       // ← recalcul du layout
             ancienParent.repaint();
