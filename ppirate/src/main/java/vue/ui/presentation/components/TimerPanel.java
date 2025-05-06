@@ -28,12 +28,15 @@ public class TimerPanel extends javax.swing.JPanel {
     private float opacite;
     private static final int BORDURE = 15;
     
-    public TimerPanel(MainDialog dialog) {
-        this.dialog = dialog;
+    public TimerPanel() {
         this.opacite = 0.5f;
         initComponents();
         this.timer = new javax.swing.Timer(1000, (e) -> { timerEventHandler(e); });
         this.decompte = TEMPS;
+    }
+    
+    public void setDialog(MainDialog dialog) {
+        this.dialog = dialog;
     }
     
     public void stop() {

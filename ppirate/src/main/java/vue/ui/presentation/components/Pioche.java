@@ -22,11 +22,13 @@ public class Pioche extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelPioche
-     * @param dialog
      */
-    public Pioche(MainDialog dialog) {
-        this.dialog = dialog;
+    public Pioche() {
         initComponents();
+    }
+    
+    public void setDialogue(MainDialog dialog) {
+        this.dialog = dialog;
     }
 
     /**

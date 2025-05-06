@@ -95,14 +95,13 @@ public class ChoixNom extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(480, 320));
         setMinimumSize(new java.awt.Dimension(480, 320));
-        setPreferredSize(new java.awt.Dimension(480, 320));
         getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
 
         mainPanel.setMaximumSize(new java.awt.Dimension(480, 320));
         mainPanel.setMinimumSize(new java.awt.Dimension(480, 320));
         mainPanel.setOpaque(false);
         mainPanel.setPreferredSize(new java.awt.Dimension(480, 320));
-        mainPanel.setLayout(new java.awt.GridLayout());
+        mainPanel.setLayout(new java.awt.GridLayout(1, 0));
 
         panelGaucheLogo.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         panelGaucheLogo.setOpaque(false);
@@ -164,7 +163,6 @@ public class ChoixNom extends javax.swing.JFrame {
         labelErreur.setForeground(new java.awt.Color(255, 51, 51));
         startPanel.add(labelErreur);
 
-        startButton.setText("");
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startButtonActionPerformed(evt);
