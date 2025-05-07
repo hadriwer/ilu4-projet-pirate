@@ -112,7 +112,7 @@ public class MainDialog {
         if (!adaptateurNoyau.getControlJeu().getZoneAction().isEmpty()) {
             System.out.println("zone action rempli");
             vuePlateau.getZoneAction().removeAll();
-            CartePanel premCarte = new CartePanel(adaptateurNoyau.getControlJeu().getZoneAction().getFirst(), false, this);
+            CartePanel premCarte = new CartePanel(adaptateurNoyau.getControlJeu().getZoneAction().getLast(), false, this);
             vuePlateau.getZoneAction().add(premCarte);
         }
         vuePlateau.getZoneAction().revalidate();
@@ -127,6 +127,8 @@ public class MainDialog {
         if (nomJoueur1.isEmpty() || nomJoueur2.isEmpty()) {
             vueAccueil.getErreurLabel().setText("Un des deux pseudos est non renseigné !");
         } else {
+            vueAccueil.setVisible(false);
+            vueAccueil.dispose();
             vuePlateau = new Plateau(this);
             vuePlateau.setLocationRelativeTo(null);
             vuePlateau.setVisible(true);

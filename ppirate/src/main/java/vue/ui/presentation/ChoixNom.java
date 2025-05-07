@@ -16,7 +16,8 @@ import vue.ui.dialog.MainDialog;
  */
 public class ChoixNom extends javax.swing.JFrame {
     private MainDialog dialog;
-
+    
+    
     /**
      * Creates new form Plateau
      * 
@@ -127,12 +128,6 @@ public class ChoixNom extends javax.swing.JFrame {
         pirate1nom.setForeground(new java.awt.Color(204, 204, 204));
         pirate1nom.setText("Pirate n°1:");
         pirate1Panel.add(pirate1nom, java.awt.BorderLayout.CENTER);
-
-        pirate1Field.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pirate1FieldActionPerformed(evt);
-            }
-        });
         pirate1Panel.add(pirate1Field, java.awt.BorderLayout.SOUTH);
 
         pirate1et2Panel.add(pirate1Panel);
@@ -144,12 +139,6 @@ public class ChoixNom extends javax.swing.JFrame {
         pirate2nomLabel.setForeground(new java.awt.Color(204, 204, 204));
         pirate2nomLabel.setText("Pirate n°2:");
         pirate2Panel.add(pirate2nomLabel, java.awt.BorderLayout.CENTER);
-
-        pirate2Field.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pirate2FieldActionPerformed(evt);
-            }
-        });
         pirate2Panel.add(pirate2Field, java.awt.BorderLayout.SOUTH);
 
         pirate1et2Panel.add(pirate2Panel);
@@ -208,27 +197,10 @@ public class ChoixNom extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pirate2FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pirate2FieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pirate2FieldActionPerformed
-
-    private void pirate1FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pirate1FieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pirate1FieldActionPerformed
-
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         dialog.submitNomsJoueurs(pirate1Field.getText(), pirate2Field.getText());
     }//GEN-LAST:event_startButtonActionPerformed
 
-    /*private void formMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_formMousePressed
-        System.out.println("vue.ui.presentation.Plateau.formMousePressed()");
-    }// GEN-LAST:event_formMousePressed
-
-    private void descriptionPanel1MousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_descriptionPanel1MousePressed
-        // TODO add your handling code here:
-        // pour l'instant le code est dans un event mousePressed mais l'idée
-        // serait d'appeler la fonction losqu'une carte est jouée
-    }// GEN-LAST:event_descriptionPanel1MousePressed*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundLabel;

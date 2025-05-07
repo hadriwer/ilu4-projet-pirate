@@ -25,6 +25,7 @@ public class DescriptionPanel extends javax.swing.JPanel {
     public DescriptionPanel() {
         this.opacite = 0.5f;
         initComponents();
+        jScrollPane.getViewport().setOpaque(false);
     }
     
     @Override
@@ -34,14 +35,18 @@ public class DescriptionPanel extends javax.swing.JPanel {
         g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,this.opacite)); // baisse l'opacité du panel
         g2d.setColor(Color.BLACK);
         g2d.fill(new RoundRectangle2D.Float(0,0,getWidth(),getHeight(),BORDURE,BORDURE));
-        
         g2d.dispose();
         
-        super.paintComponent(g);;
+        super.paintComponent(g);
     }
     
     public void setDescription(String description){
+        System.out.println("On arrive là un jour? C'est une question");
         descriptionLabel.setText(description);
+    }
+    
+    public void setTitre(String titre){
+        jLabel1.setText(titre);
     }
 
     /**
@@ -54,39 +59,41 @@ public class DescriptionPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane = new javax.swing.JScrollPane();
         descriptionLabel = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(100, 200));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(219, 113));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Description");
+
+        jScrollPane.setBorder(null);
+        jScrollPane.setOpaque(false);
 
         descriptionLabel.setForeground(new java.awt.Color(255, 255, 255));
         descriptionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jScrollPane.setViewportView(descriptionLabel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 23, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(0, 24, Short.MAX_VALUE))
-                    .addComponent(descriptionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(descriptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -94,5 +101,6 @@ public class DescriptionPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel descriptionLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane;
     // End of variables declaration//GEN-END:variables
 }
