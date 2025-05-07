@@ -41,7 +41,12 @@ public class DescriptionPanel extends javax.swing.JPanel {
     }
     
     public void setDescription(String description){
+        System.out.println("On arrive là un jour? C'est une question");
         descriptionLabel.setText(description);
+    }
+    
+    public void setTitre(String titre){
+        jLabel1.setText(titre);
     }
 
     /**
@@ -62,6 +67,7 @@ public class DescriptionPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(219, 113));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Description");
 
         jScrollPane.setBorder(null);

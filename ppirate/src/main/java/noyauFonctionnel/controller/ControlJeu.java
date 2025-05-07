@@ -22,7 +22,7 @@ public class ControlJeu {
     }
     
     public boolean getTourDeJeu() {
-        return jeu.getTourDeJeur();
+        return jeu.getTourDeJeu();
     }
     
     public void removeCarteMainJoueur(Carte carte) {

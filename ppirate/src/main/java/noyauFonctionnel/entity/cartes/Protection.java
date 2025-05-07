@@ -12,24 +12,27 @@ import noyauFonctionnel.entity.Joueur;
  * @author Solène
  */
 public class Protection extends Carte{
+    private Attaque attaqueBloque;
     
-    public Protection(String nom, String description) {
+    public Protection(String nom, String description, Attaque attaqueBloque) {
         super(nom, description);
+        effet = (self, cible) -> {
+            self.getCarteProtegeJoueur().add(attaqueBloque);
+        };
+        this.attaqueBloque = attaqueBloque;
     }
     
     @Override
     public String toString() {
         return "Protection[nom=" + this.getNom() + "";
     }
-
-
+    
+    public boolean bloque(Attaque attaque) {
+        return attaqueBloque.equals(attaque);
+    }
+    
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode());
-    }
-
-    @Override
-    public void apply(Joueur self, Joueur cible) {
-        ;
-    }   
+    }  
 }

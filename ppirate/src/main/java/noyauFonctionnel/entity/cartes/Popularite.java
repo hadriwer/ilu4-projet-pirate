@@ -1,7 +1,6 @@
 package noyauFonctionnel.entity.cartes;
 
 import java.util.Objects;
-import noyauFonctionnel.entity.Joueur;
 
 public class Popularite extends Carte {
     private final int pointDePop;
@@ -9,6 +8,7 @@ public class Popularite extends Carte {
     
     public Popularite(String nom, String description, int pointDePop, int selfDegats) {
         super(nom, description);
+        effet = (self, cible) -> {self.gagnerPop(pointDePop); self.perdreVie(selfDegats);};
         this.pointDePop = pointDePop;
         this.selfDegats = selfDegats;
     }
@@ -38,11 +38,5 @@ public class Popularite extends Carte {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), pointDePop, selfDegats);
-    }
-
-    @Override
-    public void apply(Joueur self, Joueur cible) {
-        self.gagnerPop(pointDePop);
-        self.perdreVie(selfDegats);
     }
 }

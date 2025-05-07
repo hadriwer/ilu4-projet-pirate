@@ -22,8 +22,10 @@ public class Pioche extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelPioche
+     * @param dialog
      */
-    public Pioche() {
+    public Pioche(MainDialog dialog) {
+        this.dialog = dialog;
         initComponents();
         setLayout(null);
         nbCartesTxt.setBounds(20, 5, getWidth(), 30);
@@ -36,10 +38,6 @@ public class Pioche extends javax.swing.JPanel {
             }
         });
         }
-    
-    public void setDialogue(MainDialog dialog) {
-        this.dialog = dialog;
-    }
     
     public void setNbCartes(int nb){
         nbCartesTxt.setText(String.valueOf(nb));

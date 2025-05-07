@@ -112,7 +112,7 @@ public class MainDialog {
         if (!adaptateurNoyau.getControlJeu().getZoneAction().isEmpty()) {
             System.out.println("zone action rempli");
             vuePlateau.getZoneAction().removeAll();
-            CartePanel premCarte = new CartePanel(adaptateurNoyau.getControlJeu().getZoneAction().getFirst(), false, this);
+            CartePanel premCarte = new CartePanel(adaptateurNoyau.getControlJeu().getZoneAction().getLast(), false, this);
             vuePlateau.getZoneAction().add(premCarte);
         }
         vuePlateau.getZoneAction().revalidate();
@@ -138,6 +138,8 @@ public class MainDialog {
             vuePlateau.getLabelJ2().setText(nomJoueur2);
         
             vuePlateau.getTimerPanel().getTimer().start();
+            getAdaptateurNoyau().getControlChoisirNomJoueur().setNomJoueur1(nomJoueur1);
+            getAdaptateurNoyau().getControlChoisirNomJoueur().setNomJoueur2(nomJoueur2);
         }
     }
     

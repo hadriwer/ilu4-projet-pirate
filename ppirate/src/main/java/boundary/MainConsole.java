@@ -33,29 +33,48 @@ public class MainConsole {
     
     public void lancerJeu() {
         System.out.println("Début du jeu !");
-        while (!controllerJeu.verifierFinPartie()) {
+        String nomJ1;
+        do {
+            System.out.print("Joueur 1, entrez votre nom : ");
+            nomJ1 = scanner.nextLine();
+        } while (nomJ1.trim().isEmpty());
+
+        j1.setNom(nomJ1);
+
+        String nomJ2;
+        do {
+            System.out.print("Joueur 2, Entrez votre nom : ");
+            nomJ2 = scanner.nextLine();
+        } while (nomJ2.trim().isEmpty());
+
+        j2.setNom(nomJ2);
+        
+        while (!controllerJeu.verifierFinPartie()) {            
             System.out.println("######################################################################################");
             System.out.println(controllerJeu.afficherJeu());
             System.out.println("######################################################################################");
             
             Joueur current = controllerJeu.getTourDeJeu() ? j1 : j2;
-            System.out.println("\nC'est au joueur " + current.getNom() + " de jouer."); 
             
-            System.out.println("Choisissez une carte mettre un index entre 1 et 4");
-            int index_carte = -1;
-            while (index_carte < 1 || index_carte > 4) {
+            System.out.println("\nTour de joueur " + current.getNom());
+            
+            int indexCarte = -1;
+            do {
+                System.out.print("Choisissez une carte (index entre 1 et 4) : ");
+
                 if (scanner.hasNextInt()) {
-                    index_carte = scanner.nextInt();
-                }
-                else {
+                    indexCarte = scanner.nextInt();
+                } else {
+                    System.out.println("Entrée invalide. Veuillez entrer un entier.");
                     scanner.next();
                 }
-            }
-            Carte carte_choisie = current.getMainJoueur().getCartes().get(index_carte - 1);
+            } while (indexCarte < 1 || indexCarte > 4);
+
+            Carte carteChoisie = current.getMainJoueur().getCartes().get(indexCarte - 1);
             
-            controllerJeu.deposerCarte(carte_choisie);
-            controllerJeu.appliquerEffetCarte(carte_choisie);
-            current.getMainJoueur().getCartes().remove(carte_choisie);
+            controllerJeu.deposerCarte(carteChoisie);
+            controllerJeu.appliquerEffetCarte(carteChoisie);
+            current.getMainJoueur().getCartes().remove(carteChoisie);
             current.getMainJoueur().prendreCarte(controllerJeu.piocher());
             
             System.out.println("On change de Joueur.");
