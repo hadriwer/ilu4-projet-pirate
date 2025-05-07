@@ -25,10 +25,24 @@ public class Pioche extends javax.swing.JPanel {
      */
     public Pioche() {
         initComponents();
-    }
+        setLayout(null);
+        nbCartesTxt.setBounds(20, 5, getWidth(), 30);
+        nbCartesTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            @Override
+            public void componentResized(java.awt.event.ComponentEvent e) {
+                nbCartesTxt.setBounds(0, 35, getWidth(), 30);
+            }
+        });
+        }
     
     public void setDialogue(MainDialog dialog) {
         this.dialog = dialog;
+    }
+    
+    public void setNbCartes(int nb){
+        nbCartesTxt.setText(String.valueOf(nb));
     }
 
     /**
@@ -40,63 +54,61 @@ public class Pioche extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        nbCartesTxt = new javax.swing.JLabel();
+
         setMaximumSize(new java.awt.Dimension(300, 300));
         setMinimumSize(new java.awt.Dimension(300, 300));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(300, 300));
+
+        nbCartesTxt.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        nbCartesTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nbCartesTxt.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(nbCartesTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(139, 139, 139)
+                .addComponent(nbCartesTxt)
+                .addContainerGap(129, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     @Override
     protected void paintComponent(Graphics g) {
-        super.repaint();
+        super.paintComponent(g);
         Graphics2D g2d = (Graphics2D)g;
-        
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        
         int x = 0;
         int y = 0;
         int width = 100;
-        int height = 100;
+        int height = 110;
         int arc = 30;
-        
-        if (dialog.getAdaptateurNoyau().getControlJeu().isPiocheEmpty()) {
-            // faire la pioche vide
-            g2d.setColor(new Color(200, 200, 200)); // gris clair
-            g2d.fillRoundRect(x, y, width, height, arc, arc);
-            g2d.setColor(Color.DARK_GRAY);
-            g2d.setStroke(new BasicStroke(3));
-            g2d.drawRoundRect(x, y, width, height, arc, arc);
-
-            g2d.setFont(new Font("Serif", Font.BOLD, 24));
-            g2d.drawString("Vide", x + 45, y + height / 2);
-        }
-        else {
             // afficher le dos d'une carte
             GradientPaint gradient = new GradientPaint(x, y, new Color(150, 0, 0), x + width, y + height, new Color(255, 50, 50));
             g2d.setPaint(gradient);
             g2d.fillRoundRect(x, y, width, height, arc, arc);
 
             g2d.setColor(Color.WHITE);
-            g2d.setStroke(new BasicStroke(3));
+            g2d.setStroke(new BasicStroke(4));
             g2d.drawRoundRect(x, y, width, height, arc, arc);
             
-            g2d.setColor(Color.black);
-            g2d.setFont(new Font("Serif", Font.BOLD, 24));
-            g2d.drawString("Pioche", x + 10, y + height / 2);
+            //g2d.setColor(Color.black);
+            //g2d.setFont(new Font("Serif", Font.BOLD, 24));
+            //g2d.drawString("Pioche", x + 10, y + height / 2);
+            super.paintComponent(g);
         }
-    }
+    
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel nbCartesTxt;
     // End of variables declaration//GEN-END:variables
 }

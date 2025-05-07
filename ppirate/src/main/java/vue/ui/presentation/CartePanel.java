@@ -45,6 +45,7 @@ public class CartePanel extends javax.swing.JPanel {
         if (!interactif) {
             removeInteractivity();
         }
+        this.dialog.updateNbCartes();
     }
     
     public void initUI() {
@@ -209,6 +210,7 @@ public class CartePanel extends javax.swing.JPanel {
             } else {
                 dialog.getAdaptateurNoyau().getControlJeu().joueurPrendreCarte(dialog.getAdaptateurNoyau().getControlJeu().piocher());
                 dialog.updateMainJoueur();
+                dialog.updateNbCartes();
                 System.out.println("On pioche une nouvelle carte.");
 
                 dialog.getAdaptateurNoyau().getControlJeu().changerJoueur();

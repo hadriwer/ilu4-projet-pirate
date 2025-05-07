@@ -124,4 +124,8 @@ public class ControlJeu {
     public Joueur getJoueur2(){
         return jeu.getJoueur2();
     }
+    
+    public int getNbCartesRestantes(){
+        return jeu.getPioche().nbCartesRestantes();
+    }
 }

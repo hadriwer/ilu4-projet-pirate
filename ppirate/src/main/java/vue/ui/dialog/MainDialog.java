@@ -156,4 +156,10 @@ public class MainDialog {
             }
         });
     }
+    
+    public void updateNbCartes(){
+        int nbCartes = adaptateurNoyau.getControlJeu().getNbCartesRestantes();
+        vuePlateau.getPioche().setNbCartes(nbCartes);
+        
+    }
 }

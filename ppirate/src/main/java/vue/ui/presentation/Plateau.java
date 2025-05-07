@@ -14,6 +14,7 @@ import vue.ui.presentation.components.JaugeDePopularitePanel;
 import vue.ui.presentation.components.JaugeDeViePanel;
 import vue.ui.presentation.components.TimerPanel;
 import vue.ui.presentation.components.ViePanel;
+import vue.ui.presentation.components.Pioche;
 
 /**
  *
@@ -74,6 +75,10 @@ public class Plateau extends javax.swing.JFrame {
      
     public TimerPanel getTimerPanel() {
         return timerPanel1;
+    }
+    
+    public Pioche getPioche(){
+        return pioche1;
     }
     
     public JPanel getMainJoueurPanel1() {
