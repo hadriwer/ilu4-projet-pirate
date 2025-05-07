@@ -6,6 +6,7 @@ package noyauFonctionnel.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import noyauFonctionnel.entity.cartes.Attaque;
 import noyauFonctionnel.entity.cartes.Carte;
 
 /**
@@ -21,12 +22,22 @@ public class Joueur {
     public static final int MINVIE = 0;
     public static final int MAXPOP = 5;
     public static final int MINPOP = 0;
+    public List<Attaque> carteProtegeJoueur;
     
     public Joueur(List<Carte> mainJoueur) {
         this.indicePopularite = MINPOP;
         this.indiceVie = MAXVIE;
         this.nom = nom;
-        this.mainJoueur = new MainJoueur(mainJoueur);        
+        this.mainJoueur = new MainJoueur(mainJoueur);
+        this.carteProtegeJoueur = new ArrayList<>();
+    }
+    
+    public boolean peutAttaquer(Attaque attaque) {
+        return !carteProtegeJoueur.stream().anyMatch(carte -> carte.equals(attaque));
+    }
+    
+    public List<Attaque> getCarteProtegeJoueur() {
+        return carteProtegeJoueur;
     }
     
     public void setNom(String nom) {
