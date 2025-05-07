@@ -1,10 +1,12 @@
 package noyauFonctionnel.entity.cartes;
 
 import java.util.Objects;
+import noyauFonctionnel.entity.Joueur;
 
-public abstract class Carte implements Cloneable, EffetCarte {
+public abstract class Carte implements Cloneable {
     private final String nom;
     private final String description;
+    protected EffetCarte effet;
     
     public Carte(String nom, String description) {
         this.nom = nom;
@@ -17,6 +19,10 @@ public abstract class Carte implements Cloneable, EffetCarte {
     
     public String getDescription() {
         return description;
+    }
+    
+    public void apply(Joueur self, Joueur cible) {
+        effet.apply(self, cible);
     }
     
     @Override
