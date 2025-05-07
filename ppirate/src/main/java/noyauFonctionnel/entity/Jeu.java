@@ -9,6 +9,7 @@ import java.util.List;
 import noyauFonctionnel.entity.cartes.Attaque;
 import noyauFonctionnel.entity.cartes.Carte;
 import noyauFonctionnel.entity.cartes.Popularite;
+import noyauFonctionnel.entity.cartes.Protection;
 
 /**
  *
@@ -50,7 +51,7 @@ public class Jeu {
         if (carte instanceof Attaque) {
             zoneAction.add(carte);
         }
-        else if (carte instanceof Popularite) {
+        else if (carte instanceof Popularite || carte instanceof Protection) {
             if (tourDeJeu) {
                 zonePopulariteJ1.add(carte);
             }
