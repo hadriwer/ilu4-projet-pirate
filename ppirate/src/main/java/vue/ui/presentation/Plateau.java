@@ -107,6 +107,10 @@ public class Plateau extends javax.swing.JFrame {
         descriptionPanel1.setTitre(titre);
         repaint();
     }
+    
+    public void setTour(String nomJoueur){
+        timerPanel1.setTour(nomJoueur);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

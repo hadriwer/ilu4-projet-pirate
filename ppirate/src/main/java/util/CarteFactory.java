@@ -117,7 +117,7 @@ public class CarteFactory {
             new ConfigurationCarte(equipageEfficace, 1),
             new ConfigurationCarte(chapeauBas, 1),
             new ConfigurationCarte(navireInsubmersible, 1),
-            new ConfigurationCarte(charismeIntimidant, 1)
-        };
+            new ConfigurationCarte(charismeIntimidant, 1)};
+            
     }
 }

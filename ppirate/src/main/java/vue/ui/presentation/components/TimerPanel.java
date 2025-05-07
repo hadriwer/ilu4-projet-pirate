@@ -60,7 +60,7 @@ public class TimerPanel extends javax.swing.JPanel {
     private void timerEventHandler(java.awt.event.ActionEvent e) {
         this.decompte --;
         if (this.decompte < 0){
-            timerTxt.setText(String.valueOf("Temps écoulé"));
+            timerTxt.setText("<html><body style='text-align:center'>"+String.valueOf("Temps écoulé")+"</body></html>");
             timer.stop();
             dialog.handleChangerJoueur();
             System.out.println("On change de joueur car le temps est écoulé.");
@@ -68,7 +68,7 @@ public class TimerPanel extends javax.swing.JPanel {
             restartTimer();
         }
         else{
-           timerTxt.setText(String.valueOf(this.decompte));
+           timerTxt.setText("<html><body style='text-align:center'>"+String.valueOf(this.decompte)+"</body></html>");
         }
         repaint();
     }
@@ -94,6 +94,10 @@ public class TimerPanel extends javax.swing.JPanel {
     public javax.swing.Timer getTimer() {
         return timer;
     }
+    
+    public void setTour(String nomJoueur){
+        tourLabel.setText("<html><body style='width:185px;text-align:center'>" +"Tour de "+ nomJoueur + "</body></html>");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -106,28 +110,32 @@ public class TimerPanel extends javax.swing.JPanel {
 
         nomTimer = new javax.swing.JLabel();
         timerTxt = new javax.swing.JLabel();
+        tourLabel = new javax.swing.JLabel();
 
         setOpaque(false);
 
-        nomTimer.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nomTimer.setFont(new java.awt.Font("Segoe Script", 0, 18)); // NOI18N
         nomTimer.setForeground(new java.awt.Color(255, 255, 255));
-        nomTimer.setText("TEMPS DU TOUR");
+        nomTimer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nomTimer.setText("<html><body style='text-align:center'>TEMPS RESTANT</body></html>");
 
-        timerTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        timerTxt.setFont(new java.awt.Font("Segoe Script", 0, 18)); // NOI18N
         timerTxt.setForeground(new java.awt.Color(255, 255, 255));
         timerTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         timerTxt.setText(String.valueOf(TEMPS));
+
+        tourLabel.setFont(new java.awt.Font("Segoe Script", 0, 18)); // NOI18N
+        tourLabel.setForeground(new java.awt.Color(255, 255, 255));
+        tourLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tourLabel.setText("Tour de");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(nomTimer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(timerTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(43, 43, 43))
+            .addComponent(tourLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(timerTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(nomTimer, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,7 +144,9 @@ public class TimerPanel extends javax.swing.JPanel {
                 .addComponent(nomTimer)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(timerTxt)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tourLabel)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -144,5 +154,6 @@ public class TimerPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel nomTimer;
     private javax.swing.JLabel timerTxt;
+    private javax.swing.JLabel tourLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,10 +13,7 @@ import java.awt.Point;
 import java.awt.PointerInfo;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import noyauFonctionnel.entity.cartes.Attaque;
-import noyauFonctionnel.entity.cartes.Carte;
-import noyauFonctionnel.entity.cartes.Popularite;
-import noyauFonctionnel.entity.cartes.Protection;
+import util.EnumCarte;
 import vue.ui.dialog.MainDialog;
 
 /**
@@ -27,10 +24,16 @@ public class CartePanel extends javax.swing.JPanel {
     
     //Attributs pour l'IHM
     private MainDialog dialog;
-    private Carte carte;
     private JPanel ancienParent;
     private Plateau plateau;
     private JPanel glassPane;
+    private int idCarte;
+    private EnumCarte type;
+    private String nom;
+    private String description;
+    private int pointPopularite;
+    private int selfDegat;
+    private int actionVie;
     
     
     
@@ -39,8 +42,7 @@ public class CartePanel extends javax.swing.JPanel {
      * @param carte
      * @param interactif
      */
-    public CartePanel(Carte carte, boolean interactif, MainDialog dialog) {
-        this.carte = carte;
+    public CartePanel(boolean interactif, MainDialog dialog) {
         this.dialog = dialog;
         initComponents();
         initUI();
@@ -52,16 +54,22 @@ public class CartePanel extends javax.swing.JPanel {
     }
     
     public void initUI() {
-        String htmlDescription = "<html><body style='width:58px;text-align:center'>" + carte.getNom() + "</body></html>";
+        String htmlDescription = "<html><body style='width:58px;text-align:center'>" + nom + "</body></html>";
         NomCarteLabel.setText(htmlDescription);
-        switch (carte) {
-            case Popularite c -> {
-                Effet1Label.setText("Point de pop : " + c.getPointDepPop());
-                Effet2Label.setText("Self dégat : \n" + String.valueOf(c.getSelfDegats()));
+        switch (type) {
+            case EnumCarte.POPULARITE -> {
+                Effet1Label.setText("Point de pop : " + pointPopularite);
+                Effet2Label.setText("Self dégat : \n" + String.valueOf(selfDegat));
             }
-            case Attaque c -> {
-                Effet1Label.setText("Action Vie : \n" + String.valueOf(c.getActionVie()));
-                Effet2Label.setText("Self dégat : \n" + String.valueOf(c.getSelfDegats()));
+            case EnumCarte.ATTAQUE -> {
+                Effet1Label.setText("Action Vie : \n" + String.valueOf(actionVie));
+                Effet2Label.setText("Self dégat : \n" + String.valueOf(selfDegat));
+            }
+            case EnumCarte.PROTECTION -> {
+                Effet1Label.setText("L'effet de cette carte protection est");
+            }
+            case EnumCarte.VOL -> {
+                
             }
             default -> {
                 Effet1Label.setText("");
@@ -87,15 +95,24 @@ public class CartePanel extends javax.swing.JPanel {
         g2d.setColor(Color.WHITE);
         g2d.fillRoundRect(0,0,getWidth(),getHeight(),20,20);
         
-        if (carte instanceof Popularite){
-            g2d.setColor(new Color(74,240,74)); //vert
+        switch (type) {
+            case EnumCarte.POPULARITE -> {
+                g2d.setColor(new Color(74,240,74)); //vert
+            }
+            case EnumCarte.ATTAQUE -> {
+                g2d.setColor(new Color(240,74,74)); //rouge
+            }
+            case EnumCarte.PROTECTION -> {
+                g2d.setColor(new Color(74,74,240)); //bleu
+            }
+            case EnumCarte.VOL -> {
+                g2d.setColor(Color.BLACK);
+            }
+            default -> {
+                System.err.println("Le type n'est pas connu");
+            }
         }
-        if (carte instanceof Attaque){
-            g2d.setColor(new Color(240,74,74)); //rouge
-        }
-        if (carte instanceof Protection){
-            g2d.setColor(new Color(74,74,240)); //bleu
-        }
+        
         g2d.setStroke(new BasicStroke(4,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND));
         g2d.drawRoundRect(0,0,getWidth(),getHeight(),20,20);        
     }
@@ -150,7 +167,7 @@ public class CartePanel extends javax.swing.JPanel {
         this.glassPane = (JPanel) plateau.getGlassPane();
         this.glassPane.setVisible(true);
         
-        plateau.setDescription(carte.getNom(),carte.getDescription());
+        plateau.setDescription(nom,description);
         
         ancienParent=(JPanel) this.getParent();        
         
@@ -204,13 +221,13 @@ public class CartePanel extends javax.swing.JPanel {
             
             // Logique du jeu 
             
-            dialog.handleDeposerCarte(carte);
+            dialog.handleDeposerCarte(idCarte);
             dialog.updateCarteZonePopularite();
             System.out.println("Une carte a été choisie.");
-            dialog.handleRemoveCarteMainJoueur(carte);
+            dialog.handleRemoveCarteMainJoueur(idCarte);
             dialog.updateMainJoueur();
             System.out.println("Carte supprimé du joueur courant.");
-            dialog.handleAppliquerEffetCarte(carte);
+            dialog.handleAppliquerEffetCarte(idCarte);
             dialog.updateJaugeVie();
             dialog.updatePopularite();
             System.out.println("On applique les effets de la carte choisie");

@@ -165,6 +165,7 @@ public class MainDialog {
             
             vuePlateau.getLabelJ1().setText(nomJoueur1);
             vuePlateau.getLabelJ2().setText(nomJoueur2);
+            vuePlateau.setTour(nomJoueur1);
         
             vuePlateau.getTimerPanel().getTimer().start();
             getAdaptateurNoyau().getControlChoisirNomJoueur().setNomJoueur1(nomJoueur1);

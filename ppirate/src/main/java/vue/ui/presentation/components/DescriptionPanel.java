@@ -41,7 +41,6 @@ public class DescriptionPanel extends javax.swing.JPanel {
     }
     
     public void setDescription(String description){
-        System.out.println("On arrive là un jour? C'est une question");
         descriptionLabel.setText(description);
     }
     
