@@ -27,7 +27,6 @@ public class Joueur {
     public Joueur(List<Carte> mainJoueur) {
         this.indicePopularite = MINPOP;
         this.indiceVie = MAXVIE;
-        this.nom = nom;
         this.mainJoueur = new MainJoueur(mainJoueur);
         this.carteProtegeJoueur = new ArrayList<>();
     }
