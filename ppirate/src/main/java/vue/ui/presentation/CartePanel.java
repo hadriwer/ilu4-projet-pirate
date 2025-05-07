@@ -204,32 +204,33 @@ public class CartePanel extends javax.swing.JPanel {
             
             // Logique du jeu 
             
-            dialog.getAdaptateurNoyau().getControlJeu().deposerCarte(carte);
-            dialog.afficherCarteZonePopularite();
+            dialog.handleDeposerCarte(carte);
+            dialog.updateCarteZonePopularite();
             System.out.println("Une carte a été choisie.");
-            dialog.getAdaptateurNoyau().getControlJeu().removeCarteMainJoueur(carte);
+            dialog.handleRemoveCarteMainJoueur(carte);
             dialog.updateMainJoueur();
             System.out.println("Carte supprimé du joueur courant.");
-            dialog.getAdaptateurNoyau().getControlJeu().appliquerEffetCarte(carte);
+            dialog.handleAppliquerEffetCarte(carte);
             dialog.updateJaugeVie();
+            dialog.updatePopularite();
             System.out.println("On applique les effets de la carte choisie");
             
             System.out.println("PV JOUEUR1 = " + dialog.getAdaptateurNoyau().getControlJeu().getPointDeVieJ1());
             
-            if (dialog.getAdaptateurNoyau().getControlJeu().verifierFinPartie()) {
+            if (dialog.handleVerifierFinDePartie()) {
                 System.out.println("j'ai fini le jeu");
-                dialog.getPlateau().getTimerPanel().stop();
+                dialog.stopTimer();
                 // TODO fin du jeu
             } else {
-                dialog.getAdaptateurNoyau().getControlJeu().joueurPrendreCarte(dialog.getAdaptateurNoyau().getControlJeu().piocher());
+                dialog.handleJoueurPioche();
                 dialog.updateMainJoueur();
                 dialog.updateNbCartes();
                 System.out.println("On pioche une nouvelle carte.");
 
-                dialog.getAdaptateurNoyau().getControlJeu().changerJoueur();
+                dialog.handleChangerJoueur();
                 System.out.println("On change de joueur.\n");
                 dialog.updatePlateau();
-                dialog.getPlateau().getTimerPanel().restartTimer();
+                dialog.restartTimer();
             }            
         }
         else { //sinon on la remet dans la main du joueur

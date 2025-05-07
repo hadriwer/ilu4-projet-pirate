@@ -10,6 +10,7 @@ import vue.ui.presentation.Plateau;
 import vue.ui.presentation.components.TimerPanel;
 import javax.swing.Timer;
 import noyauFonctionnel.controller.ControlJeu;
+import noyauFonctionnel.entity.cartes.Carte;
 import vue.ui.presentation.CartePanel;
 import vue.ui.presentation.ChoixNom;
 import vue.ui.presentation.components.ViePanel;
@@ -32,11 +33,39 @@ public class MainDialog {
         return adaptateurNoyau;
     }
     
-    public void changerJoueur() {
+    public void stopTimer() {
+        vuePlateau.getTimerPanel().stop();
+    }
+    
+    public void restartTimer() {
+        vuePlateau.getTimerPanel().restartTimer();
+    }
+    
+    public boolean handleVerifierFinDePartie() {
+        return adaptateurNoyau.getControlJeu().verifierFinPartie();
+    }
+    
+    public void handleDeposerCarte(Carte carte) {
+        adaptateurNoyau.getControlJeu().deposerCarte(carte);
+    }
+    
+    public void handleRemoveCarteMainJoueur(Carte carte) {
+        adaptateurNoyau.getControlJeu().removeCarteMainJoueur(carte);
+    }
+    
+    public void handleAppliquerEffetCarte(Carte carte) {
+        adaptateurNoyau.getControlJeu().appliquerEffetCarte(carte);
+    }
+    
+    public void handleJoueurPioche() {
+        adaptateurNoyau.getControlJeu().joueurPrendreCarte(adaptateurNoyau.getControlJeu().piocher());
+    }
+    
+    public void handleChangerJoueur() {
         adaptateurNoyau.getControlJeu().changerJoueur();
     }
     
-    public void afficherCarteZonePopularite() {
+    public void updateCarteZonePopularite() {
         vuePlateau.getZonePopulariteJoueur1().removeAll();
         vuePlateau.getZonePopulariteJoueur2().removeAll();
 
@@ -59,7 +88,7 @@ public class MainDialog {
     }
     
     public final void updatePlateau() {
-        afficherCarteZonePopularite();
+        updateCarteZonePopularite();
         updateJaugeVie();
         updatePopularite();
         updateMainJoueur();
@@ -161,7 +190,6 @@ public class MainDialog {
     
     public void updateNbCartes(){
         int nbCartes = adaptateurNoyau.getControlJeu().getNbCartesRestantes();
-        vuePlateau.getPioche().setNbCartes(nbCartes);
-        
+        vuePlateau.getPioche().setNbCartes(nbCartes);    
     }
 }

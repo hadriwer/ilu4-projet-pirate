@@ -62,7 +62,7 @@ public class TimerPanel extends javax.swing.JPanel {
         if (this.decompte < 0){
             timerTxt.setText(String.valueOf("Temps écoulé"));
             timer.stop();
-            dialog.changerJoueur();
+            dialog.handleChangerJoueur();
             System.out.println("On change de joueur car le temps est écoulé.");
             dialog.updatePlateau();
             restartTimer();
