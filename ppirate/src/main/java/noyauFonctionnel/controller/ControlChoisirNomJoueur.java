@@ -13,11 +13,11 @@ public class ControlChoisirNomJoueur {
         this.jeu = jeu;
     }
     
-    public void initierJoueur1(String nom) {
-        jeu.instancierJoueur1(nom);
+    public void setNomJoueur1(String nom) {
+        jeu.setJoueur1Nom(nom);
     }
     
-    public void initierJoueur2(String nom) {
-        jeu.instancierJoueur2(nom);
+    public void setNomJoueur2(String nom) {
+        jeu.setJoueur1Nom(nom);
     }
 }

@@ -13,12 +13,18 @@ import noyauFonctionnel.entity.Jeu;
  */
 public class AdaptateurDuNoyauFonctionnel {
     private ControlJeu controlJeu;
+    private ControlChoisirNomJoueur controlChoisirNomJoueur;
     
     public AdaptateurDuNoyauFonctionnel(Jeu jeu) {
         this.controlJeu = new ControlJeu(jeu);
+        this.controlChoisirNomJoueur = new ControlChoisirNomJoueur(jeu);
     }
 
     public ControlJeu getControlJeu() {
         return controlJeu;
+    }
+    
+    public ControlChoisirNomJoueur getControlChoisirNomJoueur() {
+        return controlChoisirNomJoueur;
     }
 }

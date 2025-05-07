@@ -16,17 +16,21 @@ public class Joueur {
     private String nom;
     private int indicePopularite;
     private int indiceVie;
-    private MainJoueur mainJoueur;
+    private final MainJoueur mainJoueur;
     public static final int MAXVIE = 5;
     public static final int MINVIE = 0;
     public static final int MAXPOP = 5;
     public static final int MINPOP = 0;
     
-    public Joueur(String nom, List<Carte> mainJoueur) {
+    public Joueur(List<Carte> mainJoueur) {
         this.indicePopularite = MINPOP;
         this.indiceVie = MAXVIE;
         this.nom = nom;
         this.mainJoueur = new MainJoueur(mainJoueur);        
+    }
+    
+    public void setNom(String nom) {
+        this.nom = nom;
     }
     
     public int getIndicePopularite(){

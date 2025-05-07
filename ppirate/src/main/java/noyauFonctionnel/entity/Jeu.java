@@ -28,9 +28,9 @@ public class Jeu {
     private List<Carte> zoneAction;
     
     public Jeu() {
-        pioche = new Pioche();
-        joueur1 = new Joueur("Jack Sparrow", pioche.distribuer(NOMBRE_CARTE));
-        joueur2 = new Joueur("Barbe Noire", pioche.distribuer(NOMBRE_CARTE));
+        this.pioche = new Pioche();
+        this.joueur1 = new Joueur(pioche.distribuer(NOMBRE_CARTE));
+        this.joueur2 = new Joueur(pioche.distribuer(NOMBRE_CARTE));
         this.tourDeJeu = true;
         this.compteNombreJeu = 1;
         this.zoneAction = new ArrayList<>();
@@ -129,15 +129,15 @@ public class Jeu {
         return joueur2;
     }
     
-    public void instancierJoueur1(String nom) {
-        joueur1 = new Joueur(nom, pioche.distribuer(NOMBRE_CARTE));
+    public void setJoueur1Nom(String nom) {
+        joueur1.setNom(nom);
     }
     
-    public void instancierJoueur2(String nom) {
-        joueur2 = new Joueur(nom, pioche.distribuer(NOMBRE_CARTE));
+    public void setJoueur2Nom(String nom) {
+        joueur2.setNom(nom);
     }    
     
-    public boolean getTourDeJeur() {
+    public boolean getTourDeJeu() {
         return tourDeJeu;
     }
     
