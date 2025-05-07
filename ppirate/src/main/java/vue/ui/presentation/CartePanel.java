@@ -4,8 +4,10 @@
  */
 package vue.ui.presentation;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.PointerInfo;
@@ -14,6 +16,7 @@ import javax.swing.SwingUtilities;
 import noyauFonctionnel.entity.cartes.Attaque;
 import noyauFonctionnel.entity.cartes.Carte;
 import noyauFonctionnel.entity.cartes.Popularite;
+import noyauFonctionnel.entity.cartes.Protection;
 import vue.ui.dialog.MainDialog;
 
 /**
@@ -48,8 +51,8 @@ public class CartePanel extends javax.swing.JPanel {
     }
     
     public void initUI() {
-        NomCarteLabel.setText(carte.getNom());
-        // DescriptionLabel.setText(carte.getDescription());
+        String htmlDescription = "<html><body style='width:58px;text-align:center'>" + carte.getNom() + "</body></html>";
+        NomCarteLabel.setText(htmlDescription);
         switch (carte) {
             case Popularite c -> {
                 Effet1Label.setText("Point de pop : " + c.getPointDepPop());
@@ -77,13 +80,23 @@ public class CartePanel extends javax.swing.JPanel {
     
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-    
-        g.setColor(Color.LIGHT_GRAY);
-        g.fillRect(0, 0, getWidth(), getHeight());
-
-        g.setColor(Color.RED);
-        g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
+        //super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g.create();
+        
+        g2d.setColor(Color.WHITE);
+        g2d.fillRoundRect(0,0,getWidth(),getHeight(),20,20);
+        
+        if (carte instanceof Popularite){
+            g2d.setColor(new Color(74,240,74)); //vert
+        }
+        if (carte instanceof Attaque){
+            g2d.setColor(new Color(240,74,74)); //rouge
+        }
+        if (carte instanceof Protection){
+            g2d.setColor(new Color(74,74,240)); //bleu
+        }
+        g2d.setStroke(new BasicStroke(4,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND));
+        g2d.drawRoundRect(0,0,getWidth(),getHeight(),20,20);        
     }
         
     /**
@@ -96,7 +109,6 @@ public class CartePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         NomCarteLabel = new javax.swing.JLabel();
-        DescriptionLabel = new javax.swing.JLabel();
         Effet1Label = new javax.swing.JLabel();
         Effet2Label = new javax.swing.JLabel();
 
@@ -117,15 +129,16 @@ public class CartePanel extends javax.swing.JPanel {
             }
         });
 
+        NomCarteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NomCarteLabel.setText("Nom Carte");
+        NomCarteLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         add(NomCarteLabel);
 
-        DescriptionLabel.setText("Description");
-        add(DescriptionLabel);
-
+        Effet1Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Effet1Label.setText("Effet1");
         add(Effet1Label);
 
+        Effet2Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Effet2Label.setText("Effet2");
         add(Effet2Label);
     }// </editor-fold>//GEN-END:initComponents
@@ -136,7 +149,7 @@ public class CartePanel extends javax.swing.JPanel {
         this.glassPane = (JPanel) plateau.getGlassPane();
         this.glassPane.setVisible(true);
         
-        plateau.setDescription(carte.getDescription()); //ne fonctionne pas encore
+        plateau.setDescription(carte.getNom(),carte.getDescription());
         
         ancienParent=(JPanel) this.getParent();        
         
@@ -241,7 +254,6 @@ public class CartePanel extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel DescriptionLabel;
     private javax.swing.JLabel Effet1Label;
     private javax.swing.JLabel Effet2Label;
     private javax.swing.JLabel NomCarteLabel;

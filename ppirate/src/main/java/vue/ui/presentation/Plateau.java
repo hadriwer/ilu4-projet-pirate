@@ -96,10 +96,10 @@ public class Plateau extends javax.swing.JFrame {
         return panelZoneAction1;
     }
     
-    public void setDescription(String description){
-        System.out.println("On entre dans setDescription");
-        String htmlDescription = "<html><body style='width:100px'>" + description + "</body></html>";
+    public void setDescription(String titre, String description){
+        String htmlDescription = "<html><body style='width:100px;text-align:center'>"+description + "</body></html>";
         descriptionPanel1.setDescription(htmlDescription);
+        descriptionPanel1.setTitre(titre);
         repaint();
     }
 

@@ -112,7 +112,7 @@ public class MainDialog {
         if (!adaptateurNoyau.getControlJeu().getZoneAction().isEmpty()) {
             System.out.println("zone action rempli");
             vuePlateau.getZoneAction().removeAll();
-            CartePanel premCarte = new CartePanel(adaptateurNoyau.getControlJeu().getZoneAction().getFirst(), false, this);
+            CartePanel premCarte = new CartePanel(adaptateurNoyau.getControlJeu().getZoneAction().getLast(), false, this);
             vuePlateau.getZoneAction().add(premCarte);
         }
         vuePlateau.getZoneAction().revalidate();

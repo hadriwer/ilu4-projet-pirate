@@ -32,21 +32,20 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="NomCarteLabel">
       <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Nom Carte"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="DescriptionLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Description"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="Effet1Label">
       <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Effet1"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="Effet2Label">
       <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Effet2"/>
       </Properties>
     </Component>
