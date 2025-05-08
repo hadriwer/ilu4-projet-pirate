@@ -9,9 +9,10 @@ public class Popularite extends Carte {
     
     public Popularite(int id, String nom, String description, int pointDePop, int selfDegats) {
         super(id, nom, description);
-        effet = (self, cible) -> {self.gagnerPop(pointDePop); self.perdreVie(selfDegats);};
         this.pointDePop = pointDePop;
         this.selfDegats = selfDegats;
+        
+        setEffet((self, cible) -> {self.gagnerPop(pointDePop); self.perdreVie(selfDegats);});
     }
 
     public int getPointDePop() {

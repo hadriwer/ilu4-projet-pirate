@@ -9,14 +9,15 @@ public class Attaque extends Carte {
     
     public Attaque(int id, String nom, String description, int actionVie, int selfDegats) {
         super(id, nom, description);
-        effet = (self,cible) -> {
+        this.actionVie = actionVie;
+        this.selfDegats = selfDegats;
+        
+        setEffet((self,cible) -> {
             if (cible.peutAttaquer(this)) {
                 self.perdreVie(selfDegats);
                 cible.perdreVie(actionVie);
             }
-        };
-        this.actionVie = actionVie;
-        this.selfDegats = selfDegats;
+        });
     }
 
     public int getActionVie() {

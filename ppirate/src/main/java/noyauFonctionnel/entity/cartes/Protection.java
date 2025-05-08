@@ -5,7 +5,6 @@
 package noyauFonctionnel.entity.cartes;
 
 import java.util.Objects;
-import noyauFonctionnel.entity.Joueur;
 import util.EnumCarte;
 
 /**
@@ -17,10 +16,11 @@ public class Protection extends Carte{
     
     public Protection(int id, String nom, String description, Attaque attaqueBloque) {
         super(id, nom, description);
-        effet = (self, cible) -> {
-            self.getCarteProtegeJoueur().add(attaqueBloque);
-        };
         this.attaqueBloque = attaqueBloque;
+        
+        setEffet((self, cible) -> {
+            self.getCarteProtegeJoueur().add(attaqueBloque);
+        });
     }
     
     @Override

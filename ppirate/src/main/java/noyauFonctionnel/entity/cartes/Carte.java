@@ -8,7 +8,7 @@ public abstract class Carte implements Cloneable {
     protected int id;
     protected final String nom;
     protected final String description;
-    protected EffetCarte effet;
+    private EffetCarte effet;
     
     
     public Carte(int id, String nom, String description) {
@@ -18,6 +18,10 @@ public abstract class Carte implements Cloneable {
     }
 
     public abstract EnumCarte getType(); 
+    
+    public void setEffet(EffetCarte effet) {
+        this.effet = effet;
+    }
     
     public int getId() {
         return id;
