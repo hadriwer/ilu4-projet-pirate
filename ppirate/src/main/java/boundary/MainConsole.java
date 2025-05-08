@@ -3,7 +3,6 @@ package boundary;
 import java.util.Scanner;
 import noyauFonctionnel.controller.ControlChoisirNomJoueur;
 import noyauFonctionnel.controller.ControlJeu;
-import noyauFonctionnel.entity.Jeu;
 import noyauFonctionnel.entity.Joueur;
 import noyauFonctionnel.entity.cartes.Carte;
 

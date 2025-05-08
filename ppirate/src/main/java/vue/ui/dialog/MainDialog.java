@@ -87,15 +87,15 @@ public class MainDialog {
         List<Integer> listCarteZP1= adaptateurNoyau.getZonePopulariteJ1();
         List<Integer> listCarteZP2= adaptateurNoyau.getZonePopulariteJ2();
         
-        for (Integer idCarte: listCarteZP1){
+        listCarteZP1.forEach(idCarte -> {
             CartePanel c=extractCardPanel(idCarte, false);
             vuePlateau.getZonePopulariteJoueur1().add(c);
-        }
+        });
         
-        for (Integer idCarte: listCarteZP2){
+        listCarteZP2.forEach(idCarte -> {
             CartePanel c=extractCardPanel(idCarte, false);
             vuePlateau.getZonePopulariteJoueur2().add(c);
-        }
+        });
 
         vuePlateau.getZonePopulariteJoueur1().revalidate();
         vuePlateau.getZonePopulariteJoueur1().repaint();
@@ -121,16 +121,15 @@ public class MainDialog {
         // true si c'est le tour du joueur 1
         boolean tourJoueur1 = adaptateurNoyau.getTourDeJeu();
         
-        for (Integer idCarte: listCarteMJ1){
+        listCarteMJ1.forEach(idCarte -> {
             CartePanel c=extractCardPanel(idCarte, tourJoueur1);
             vuePlateau.getMainJoueurPanel1().add(c);
-        }
+        });
         
-        for (Integer idCarte: listCarteMJ2){
+        listCarteMJ2.forEach(idCarte -> {
             CartePanel c=extractCardPanel(idCarte, !tourJoueur1);
             vuePlateau.getMainJoueurPanel2().add(c);
-        }
-       
+        });
 
         vuePlateau.getMainJoueurPanel1().revalidate();
         vuePlateau.getMainJoueurPanel1().repaint();
