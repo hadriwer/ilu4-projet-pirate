@@ -1,5 +1,6 @@
 package boundary;
 
+import java.util.List;
 import java.util.Scanner;
 import noyauFonctionnel.controller.ControlChoisirNomJoueur;
 import noyauFonctionnel.controller.ControlJeu;
@@ -69,12 +70,16 @@ public class MainConsole {
                 }
             } while (indexCarte < 1 || indexCarte > 4);
 
-            Carte carteChoisie = current.getMainJoueur().getCartes().get(indexCarte - 1);
+            List<Integer> mainJoueurCurr = controllerJeu.getTourDeJeu() ? controllerJeu.getMainJoueur1() : controllerJeu.getMainJoueur2();
+            System.out.println("mainJoueurCurr = " + mainJoueurCurr);
+            int carteChoisie = mainJoueurCurr.get(indexCarte);
+            System.out.println("carte choisie = " + carteChoisie);
             
-            controllerJeu.deposerCarte(carteChoisie);
+            controllerJeu.deposerCarte(carteChoisie);   
             controllerJeu.appliquerEffetCarte(carteChoisie);
-            current.getMainJoueur().getCartes().remove(carteChoisie);
-            current.getMainJoueur().prendreCarte(controllerJeu.piocher());
+            System.out.println("ici");
+            controllerJeu.removeCarteMainJoueur(carteChoisie);
+            controllerJeu.joueurPrendreCarte(controllerJeu.piocher());
             
             System.out.println("On change de Joueur.");
             controllerJeu.changerJoueur();

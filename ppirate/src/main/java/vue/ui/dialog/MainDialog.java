@@ -202,7 +202,6 @@ public class MainDialog {
     }
     
     public void lancerApp() {
-        
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {

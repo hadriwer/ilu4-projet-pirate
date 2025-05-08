@@ -1,4 +1,5 @@
 
+import boundary.MainConsole;
 import noyauFonctionnel.controller.ControlCarte;
 import noyauFonctionnel.controller.ControlChoisirNomJoueur;
 import noyauFonctionnel.controller.ControlJeu;
@@ -18,27 +19,40 @@ import vue.ui.dialog.MainDialog;
  *
  * @author wer
  */
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //testFonctionnel.TestUnitaire.main(args);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Choisissez le mode de jeu :");
+        System.out.println("1. Console (boundary)");
+        System.out.println("2. Interface graphique (vue)");
+        System.out.print("Votre choix (1 ou 2) : ");
+
+        String choix = scanner.nextLine();
+
+        // Initialisation commune
         DictionnaireCarte dictionnaireCarte = new DictionnaireCarte();
         Pioche pioche = new Pioche(dictionnaireCarte);
         Jeu jeu = new Jeu(pioche);
-        
-        ControlJeu controlJeu=new ControlJeu(jeu, dictionnaireCarte);
-        ControlChoisirNomJoueur controlChoisirNomJoueur=new ControlChoisirNomJoueur(jeu);
-        ControlCarte controlCarte=new ControlCarte(dictionnaireCarte);
-        
-        // Pour la partie présentation (IHM)
-        AdaptateurDuNoyauFonctionnel noyau = new AdaptateurDuNoyauFonctionnel(controlJeu,controlChoisirNomJoueur,controlCarte);
-        MainDialog dialog = new MainDialog(noyau);
-      
-        dialog.lancerApp();
-        
-        // Pour la partie Boundary
-        //MainConsole boundary = new MainConsole(new ControlJeu(jeu, dictionnaireCarte), new ControlChoisirNomJoueur(jeu));
-        // boundary.lancerJeu();
-        
-        // TODO
+
+        ControlJeu controlJeu = new ControlJeu(jeu, dictionnaireCarte);
+        ControlChoisirNomJoueur controlChoisirNomJoueur = new ControlChoisirNomJoueur(jeu);
+        ControlCarte controlCarte = new ControlCarte(dictionnaireCarte);
+
+        if (choix.equals("1")) {
+            // Lancement en console
+            MainConsole boundary = new MainConsole(controlJeu, controlChoisirNomJoueur);
+            boundary.lancerJeu();
+        } else if (choix.equals("2")) {
+            // Lancement en IHM
+            AdaptateurDuNoyauFonctionnel noyau = new AdaptateurDuNoyauFonctionnel(controlJeu, controlChoisirNomJoueur, controlCarte);
+            MainDialog dialog = new MainDialog(noyau);
+            dialog.lancerApp();
+        } else {
+            System.out.println("Choix invalide. Veuillez relancer le programme et choisir 1 ou 2.");
+        }
+
+        scanner.close();
     }
 }
