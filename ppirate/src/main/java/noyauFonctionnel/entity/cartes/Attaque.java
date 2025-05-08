@@ -1,13 +1,14 @@
 package noyauFonctionnel.entity.cartes;
 
 import java.util.Objects;
+import util.EnumCarte;
 
 public class Attaque extends Carte {
     private final int actionVie;
     private final int selfDegats;
     
-    public Attaque(String nom, String description, int actionVie, int selfDegats) {
-        super(nom, description);
+    public Attaque(int id, String nom, String description, int actionVie, int selfDegats) {
+        super(id, nom, description);
         effet = (self,cible) -> {
             if (cible.peutAttaquer(this)) {
                 self.perdreVie(selfDegats);
@@ -44,4 +45,15 @@ public class Attaque extends Carte {
     public int hashCode() {
         return Objects.hash(super.hashCode(), actionVie, selfDegats);
     }
+    
+    @Override
+    public Attaque clone() {
+        return new Attaque(id, nom, description, actionVie, selfDegats);
+    }
+
+    @Override
+    public EnumCarte getType() {
+        return EnumCarte.ATTAQUE;
+    }
+    
 }

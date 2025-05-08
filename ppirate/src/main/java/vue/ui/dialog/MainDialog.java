@@ -4,13 +4,11 @@
  */
 package vue.ui.dialog;
 
-import java.io.ObjectInputStream;
-import javax.swing.JOptionPane;
+import java.util.List;
+import util.EnumCarte;
+import static util.EnumCarte.ATTAQUE;
+import static util.EnumCarte.POPULARITE;
 import vue.ui.presentation.Plateau;
-import vue.ui.presentation.components.TimerPanel;
-import javax.swing.Timer;
-import noyauFonctionnel.controller.ControlJeu;
-import noyauFonctionnel.entity.cartes.Carte;
 import vue.ui.presentation.CartePanel;
 import vue.ui.presentation.ChoixNom;
 import vue.ui.presentation.components.ViePanel;
@@ -29,10 +27,6 @@ public class MainDialog {
         this.adaptateurNoyau = noyau;
     }
     
-    public AdaptateurDuNoyauFonctionnel getAdaptateurNoyau() {
-        return adaptateurNoyau;
-    }
-    
     public void stopTimer() {
         vuePlateau.getTimerPanel().stop();
     }
@@ -42,49 +36,71 @@ public class MainDialog {
     }
     
     public boolean handleVerifierFinDePartie() {
-        return adaptateurNoyau.getControlJeu().verifierFinPartie();
+        return adaptateurNoyau.verifierFinPartie();
     }
     
-    public void handleDeposerCarte(Carte carte) {
-        adaptateurNoyau.getControlJeu().deposerCarte(carte);
+    public void handleDeposerCarte(int idCarte) {
+        adaptateurNoyau.deposerCarte(idCarte);
     }
     
-    public void handleRemoveCarteMainJoueur(Carte carte) {
-        adaptateurNoyau.getControlJeu().removeCarteMainJoueur(carte);
+    public void handleRemoveCarteMainJoueur(int idCarte) {
+        adaptateurNoyau.removeCarteMainJoueur(idCarte);
     }
     
-    public void handleAppliquerEffetCarte(Carte carte) {
-        adaptateurNoyau.getControlJeu().appliquerEffetCarte(carte);
+    public void handleAppliquerEffetCarte(int idCarte) {
+        adaptateurNoyau.appliquerEffetCarte(idCarte);
     }
     
     public void handleJoueurPioche() {
-        adaptateurNoyau.getControlJeu().joueurPrendreCarte(adaptateurNoyau.getControlJeu().piocher());
+        int idCarte= adaptateurNoyau.piocher();
+        adaptateurNoyau.joueurPrendreCarte(idCarte);
     }
     
     public void handleChangerJoueur() {
-        adaptateurNoyau.getControlJeu().changerJoueur();
+        adaptateurNoyau.changerJoueur();
+    }
+    
+    public CartePanel extractCardPanel(int idCarte, boolean enabled){
+        EnumCarte type = adaptateurNoyau.getType(idCarte);
+        String nom = adaptateurNoyau.getNom(idCarte);
+        String description = adaptateurNoyau.getDescription(idCarte);
+        CartePanel c = new CartePanel(this, idCarte, type, nom, description);
+        c.setEnabled(enabled);
+        switch (type) {
+            case ATTAQUE -> {
+                c.setActionVie(adaptateurNoyau.getActionVie(idCarte));
+                c.setSelfDegat(adaptateurNoyau.getSelfDegat(idCarte));
+            }
+            case POPULARITE -> {
+                c.setPointPopularite(adaptateurNoyau.getPointPopularite(idCarte));
+            }
+            default -> {
+            }
+        }
+        return c;
     }
     
     public void updateCarteZonePopularite() {
         vuePlateau.getZonePopulariteJoueur1().removeAll();
         vuePlateau.getZonePopulariteJoueur2().removeAll();
 
-        adaptateurNoyau.getControlJeu().getZonePopulariteJ1().forEach(carte -> {
-            System.out.println("Carte ajoutée dans zone Popularité du joueur 1 : " + carte);
-            CartePanel c = new CartePanel(carte, false, this);
-            vuePlateau.getZonePopulariteJoueur1().add(c);
-        });
-
-        adaptateurNoyau.getControlJeu().getZonePopulariteJ2().forEach(carte -> {
-            System.out.println("Carte ajoutée dans zone Popularité du joueur 2 : " + carte);
-            CartePanel c = new CartePanel(carte, false, this);
-            vuePlateau.getZonePopulariteJoueur2().add(c);
-        });
+        List<Integer> listCarteZP1= adaptateurNoyau.getZonePopulariteJ1();
+        List<Integer> listCarteZP2= adaptateurNoyau.getZonePopulariteJ2();
         
-        vuePlateau.getZonePopulariteJoueur2().revalidate();
-        vuePlateau.getZonePopulariteJoueur2().repaint();
+        for (Integer idCarte: listCarteZP1){
+            CartePanel c=extractCardPanel(idCarte, false);
+            vuePlateau.getZonePopulariteJoueur1().add(c);
+        }
+        
+        for (Integer idCarte: listCarteZP2){
+            CartePanel c=extractCardPanel(idCarte, false);
+            vuePlateau.getZonePopulariteJoueur2().add(c);
+        }
+
         vuePlateau.getZonePopulariteJoueur1().revalidate();
         vuePlateau.getZonePopulariteJoueur1().repaint();
+        vuePlateau.getZonePopulariteJoueur2().revalidate();
+        vuePlateau.getZonePopulariteJoueur2().repaint();
     }
     
     public final void updatePlateau() {
@@ -98,17 +114,23 @@ public class MainDialog {
     public void updateMainJoueur() {
         vuePlateau.getMainJoueurPanel1().removeAll();
         vuePlateau.getMainJoueurPanel2().removeAll();
-        boolean tourDeJeu = adaptateurNoyau.getControlJeu().getTourDeJeu();
 
-        adaptateurNoyau.getControlJeu().getMainJoueur1().getCartes().forEach(carte -> {
-            CartePanel c = new CartePanel(carte, tourDeJeu, this);
+        List<Integer> listCarteMJ1= adaptateurNoyau.getMainJoueur1();
+        List<Integer> listCarteMJ2= adaptateurNoyau.getMainJoueur2();
+        
+        // true si c'est le tour du joueur 1
+        boolean tourJoueur1 = adaptateurNoyau.getTourDeJeu();
+        
+        for (Integer idCarte: listCarteMJ1){
+            CartePanel c=extractCardPanel(idCarte, tourJoueur1);
             vuePlateau.getMainJoueurPanel1().add(c);
-        });
- 
-        adaptateurNoyau.getControlJeu().getMainJoueur2().getCartes().forEach(carte -> {
-            CartePanel c = new CartePanel(carte, !tourDeJeu, this);
+        }
+        
+        for (Integer idCarte: listCarteMJ2){
+            CartePanel c=extractCardPanel(idCarte, !tourJoueur1);
             vuePlateau.getMainJoueurPanel2().add(c);
-        });
+        }
+       
 
         vuePlateau.getMainJoueurPanel1().revalidate();
         vuePlateau.getMainJoueurPanel1().repaint();
@@ -117,8 +139,8 @@ public class MainDialog {
     }
     
     public void updateJaugeVie() {
-        int vie_j1 = adaptateurNoyau.getControlJeu().getPointDeVieJ1();
-        int vie_j2 = adaptateurNoyau.getControlJeu().getPointDeVieJ2();
+        int vie_j1 = adaptateurNoyau.getPointDeVieJ1();
+        int vie_j2 = adaptateurNoyau.getPointDeVieJ2();
 
         for (int i = 0; i < 5; i++) {
             ViePanel viesJ1 = (ViePanel) vuePlateau.getJaugeVieJ1().getComponent(i);
@@ -130,19 +152,20 @@ public class MainDialog {
     }
     
     public void updatePopularite() {
-        int pop_j1 = adaptateurNoyau.getControlJeu().getIndicePopulariteJ1();
-        int pop_j2 = adaptateurNoyau.getControlJeu().getIndicePopulariteJ2();
+        int pop_j1 = adaptateurNoyau.getIndicePopulariteJ1();
+        int pop_j2 = adaptateurNoyau.getIndicePopulariteJ2();
 
         vuePlateau.getJaugePopJ1().setNiveau(pop_j1);
         vuePlateau.getJaugePopJ2().setNiveau(pop_j2);
     }
 
     public void updateZoneAction() {
-        if (!adaptateurNoyau.getControlJeu().getZoneAction().isEmpty()) {
+        if (!adaptateurNoyau.getZoneAction().isEmpty()) {
             System.out.println("zone action rempli");
             vuePlateau.getZoneAction().removeAll();
-            CartePanel premCarte = new CartePanel(adaptateurNoyau.getControlJeu().getZoneAction().getLast(), false, this);
-            vuePlateau.getZoneAction().add(premCarte);
+            List<Integer> listZoneAction= adaptateurNoyau.getZoneAction();
+            CartePanel c=extractCardPanel(listZoneAction.getLast(), false);
+            vuePlateau.getZoneAction().add(c);
         }
         vuePlateau.getZoneAction().revalidate();
         vuePlateau.getZoneAction().repaint();
@@ -168,8 +191,8 @@ public class MainDialog {
             vuePlateau.setTour(nomJoueur1);
         
             vuePlateau.getTimerPanel().getTimer().start();
-            getAdaptateurNoyau().getControlChoisirNomJoueur().setNomJoueur1(nomJoueur1);
-            getAdaptateurNoyau().getControlChoisirNomJoueur().setNomJoueur2(nomJoueur2);
+            adaptateurNoyau.setNomJoueur1(nomJoueur1);
+            adaptateurNoyau.setNomJoueur2(nomJoueur2);
         }
     }
     
@@ -190,7 +213,7 @@ public class MainDialog {
     }
     
     public void updateNbCartes(){
-        int nbCartes = adaptateurNoyau.getControlJeu().getNbCartesRestantes();
+        int nbCartes = adaptateurNoyau.getNbCartesRestantes();
         vuePlateau.getPioche().setNbCartes(nbCartes);    
     }
 }

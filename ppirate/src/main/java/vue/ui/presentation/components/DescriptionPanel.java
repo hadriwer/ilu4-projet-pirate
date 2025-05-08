@@ -45,7 +45,7 @@ public class DescriptionPanel extends javax.swing.JPanel {
     }
     
     public void setTitre(String titre){
-        jLabel1.setText(titre);
+        titreLabel.setText(titre);
     }
 
     /**
@@ -57,7 +57,7 @@ public class DescriptionPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        titreLabel = new javax.swing.JLabel();
         jScrollPane = new javax.swing.JScrollPane();
         descriptionLabel = new javax.swing.JLabel();
 
@@ -65,9 +65,9 @@ public class DescriptionPanel extends javax.swing.JPanel {
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(219, 113));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Description");
+        titreLabel.setForeground(new java.awt.Color(255, 255, 255));
+        titreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titreLabel.setText("Description");
 
         jScrollPane.setBorder(null);
         jScrollPane.setOpaque(false);
@@ -82,7 +82,7 @@ public class DescriptionPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(titreLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -90,7 +90,7 @@ public class DescriptionPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(titreLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane))
         );
@@ -99,7 +99,7 @@ public class DescriptionPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel descriptionLabel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane;
+    private javax.swing.JLabel titreLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -28,8 +28,8 @@ public class Jeu {
     private List<Carte> zonePopulariteJ2;
     private List<Carte> zoneAction;
     
-    public Jeu() {
-        this.pioche = new Pioche();
+    public Jeu(Pioche pioche) {
+        this.pioche = pioche;
         this.joueur1 = new Joueur(pioche.distribuer(NOMBRE_CARTE));
         this.joueur2 = new Joueur(pioche.distribuer(NOMBRE_CARTE));
         this.tourDeJeu = true;

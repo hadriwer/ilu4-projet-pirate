@@ -6,11 +6,14 @@ package vue.ui.presentation;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.PointerInfo;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import util.EnumCarte;
@@ -33,50 +36,47 @@ public class CartePanel extends javax.swing.JPanel {
     private String description;
     private int pointPopularite;
     private int selfDegat;
-    private int actionVie;
-    
+    private int actionVie; 
     
     
     /**
      * Creates new form CartePanel
-     * @param carte
-     * @param interactif
+     * @param dialog
+     * @param idCarte
+     * @param type
+     * @param nom
+     * @param description
      */
-    public CartePanel(boolean interactif, MainDialog dialog) {
+    public CartePanel(MainDialog dialog, int idCarte, EnumCarte type, String nom, String description) {
         this.dialog = dialog;
+        this.idCarte=idCarte;
+        this.type=type;
+        this.nom=nom;
+        this.description=description;
         initComponents();
-        initUI();
-        this.setSize(new java.awt.Dimension(100, 250));
-        if (!interactif) {
-            removeInteractivity();
-        }
+        String htmlNom = "<html><body style='width:58px;text-align:center'>" + nom + "</body></html>";
+        NomCarteLabel.setText(htmlNom);
         this.dialog.updateNbCartes();
     }
     
-    public void initUI() {
-        String htmlDescription = "<html><body style='width:58px;text-align:center'>" + nom + "</body></html>";
-        NomCarteLabel.setText(htmlDescription);
-        switch (type) {
-            case EnumCarte.POPULARITE -> {
-                Effet1Label.setText("Point de pop : " + pointPopularite);
-                Effet2Label.setText("Self dégat : \n" + String.valueOf(selfDegat));
-            }
-            case EnumCarte.ATTAQUE -> {
-                Effet1Label.setText("Action Vie : \n" + String.valueOf(actionVie));
-                Effet2Label.setText("Self dégat : \n" + String.valueOf(selfDegat));
-            }
-            case EnumCarte.PROTECTION -> {
-                Effet1Label.setText("L'effet de cette carte protection est");
-            }
-            case EnumCarte.VOL -> {
-                
-            }
-            default -> {
-                Effet1Label.setText("");
-                Effet2Label.setText("");
-            }
-        }
+    public void setPointPopularite(int pointPopularite) {
+        this.pointPopularite = pointPopularite;
+        Effet1Label.setText("Point de pop : " + pointPopularite);
+        repaint();
     }
+
+    public void setSelfDegat(int selfDegat) {
+        this.selfDegat = selfDegat;
+        Effet2Label.setText("Self dégat : " + selfDegat);
+        repaint();
+    }
+
+    public void setActionVie(int actionVie) {
+        this.actionVie = actionVie;
+        Effet1Label.setText("Action Vie : " + actionVie);
+        repaint();
+    }
+    
     
     private void removeInteractivity() {
         for (java.awt.event.MouseMotionListener mml : this.getMouseMotionListeners()) {
@@ -96,16 +96,16 @@ public class CartePanel extends javax.swing.JPanel {
         g2d.fillRoundRect(0,0,getWidth(),getHeight(),20,20);
         
         switch (type) {
-            case EnumCarte.POPULARITE -> {
+            case POPULARITE -> {
                 g2d.setColor(new Color(74,240,74)); //vert
             }
-            case EnumCarte.ATTAQUE -> {
+            case ATTAQUE -> {
                 g2d.setColor(new Color(240,74,74)); //rouge
             }
-            case EnumCarte.PROTECTION -> {
+            case PROTECTION -> {
                 g2d.setColor(new Color(74,74,240)); //bleu
             }
-            case EnumCarte.VOL -> {
+            case VOL -> {
                 g2d.setColor(Color.BLACK);
             }
             default -> {
@@ -153,42 +153,45 @@ public class CartePanel extends javax.swing.JPanel {
         add(NomCarteLabel);
 
         Effet1Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Effet1Label.setText("Effet1");
         add(Effet1Label);
 
         Effet2Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Effet2Label.setText("Effet2");
         add(Effet2Label);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        if (!isEnabled()) return;
+            
         // récupération du plateau
-        this.plateau=(Plateau) SwingUtilities.getWindowAncestor(this);
+        System.out.println("On est dans formMousePressed");
+        this.plateau = (Plateau) SwingUtilities.getWindowAncestor(this);
         this.glassPane = (JPanel) plateau.getGlassPane();
         this.glassPane.setVisible(true);
-        
-        plateau.setDescription(nom,description);
-        
-        ancienParent=(JPanel) this.getParent();        
-        
+
+        plateau.setDescription(nom, description);
+
+        ancienParent = (JPanel) this.getParent();
+
         //récupération de la position absolue de la souris
-        PointerInfo pointerInfo=MouseInfo.getPointerInfo();
-        Point cursorLocation=pointerInfo.getLocation();
+        PointerInfo pointerInfo = MouseInfo.getPointerInfo();
+        Point cursorLocation = pointerInfo.getLocation();
         SwingUtilities.convertPointFromScreen(cursorLocation, glassPane);
-        
+
         //on enlève la carte de la main du joueur
         ancienParent.remove(this);
         ancienParent.revalidate();
         ancienParent.repaint();
-        
+
         //et on l'ajoute au glassPane
         glassPane.add(this);
-        this.setLocation(cursorLocation.x - getWidth()/2,cursorLocation.y - getHeight()/2);
+        this.setLocation(cursorLocation.x - getWidth() / 2, cursorLocation.y - getHeight() / 2);
         glassPane.revalidate();
         glassPane.repaint();
     }//GEN-LAST:event_formMousePressed
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
+        if (!isEnabled()) return;
+        
         //récupération de la cible
         JPanel ciblePanel=null;
 
@@ -232,7 +235,7 @@ public class CartePanel extends javax.swing.JPanel {
             dialog.updatePopularite();
             System.out.println("On applique les effets de la carte choisie");
             
-            System.out.println("PV JOUEUR1 = " + dialog.getAdaptateurNoyau().getControlJeu().getPointDeVieJ1());
+            //System.out.println("PV JOUEUR1 = " + dialog.getAdaptateurNoyau().getControlJeu().getPointDeVieJ1());
             
             if (dialog.handleVerifierFinDePartie()) {
                 System.out.println("j'ai fini le jeu");
@@ -259,6 +262,8 @@ public class CartePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_formMouseReleased
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        if (!isEnabled()) return;
+
         //récupération de la position absolue de la sourie par rapport à l'écran
         PointerInfo pointerInfo=MouseInfo.getPointerInfo();
         Point cursorLocation=pointerInfo.getLocation();

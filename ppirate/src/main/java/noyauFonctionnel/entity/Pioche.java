@@ -11,9 +11,10 @@ import util.CarteFactory;
 import noyauFonctionnel.entity.cartes.ConfigurationCarte;
 
 public class Pioche {
+    
     private final List<Carte> pioche;
     
-    public Pioche() {
+    public Pioche(DictionnaireCarte dictionnaireCarte) {
         pioche = new LinkedList<>();
         
         ConfigurationCarte[] configurations = CarteFactory.creerCartes();
@@ -25,6 +26,7 @@ public class Pioche {
         });
         
         Collections.shuffle(pioche);
+        dictionnaireCarte.setCartes(pioche.toArray(new Carte[0]));
     }
     
     public boolean isEmpty() {

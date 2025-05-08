@@ -40,13 +40,11 @@
     <Component class="javax.swing.JLabel" name="Effet1Label">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Effet1"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="Effet2Label">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Effet2"/>
       </Properties>
     </Component>
   </SubComponents>

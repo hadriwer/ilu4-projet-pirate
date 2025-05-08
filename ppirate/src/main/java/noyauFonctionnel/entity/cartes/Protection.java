@@ -6,6 +6,7 @@ package noyauFonctionnel.entity.cartes;
 
 import java.util.Objects;
 import noyauFonctionnel.entity.Joueur;
+import util.EnumCarte;
 
 /**
  *
@@ -14,8 +15,8 @@ import noyauFonctionnel.entity.Joueur;
 public class Protection extends Carte{
     private Attaque attaqueBloque;
     
-    public Protection(String nom, String description, Attaque attaqueBloque) {
-        super(nom, description);
+    public Protection(int id, String nom, String description, Attaque attaqueBloque) {
+        super(id, nom, description);
         effet = (self, cible) -> {
             self.getCarteProtegeJoueur().add(attaqueBloque);
         };
@@ -34,5 +35,16 @@ public class Protection extends Carte{
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode());
-    }  
+    }
+    
+    @Override
+    public Protection clone() {
+        return new Protection(id, nom, description, attaqueBloque);
+    }
+
+    @Override
+    public EnumCarte getType() {
+        return EnumCarte.PROTECTION;
+    }
+    
 }

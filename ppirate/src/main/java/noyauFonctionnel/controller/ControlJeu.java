@@ -5,6 +5,7 @@
 package noyauFonctionnel.controller;
 
 import java.util.List;
+import noyauFonctionnel.entity.DictionnaireCarte;
 import noyauFonctionnel.entity.Jeu;
 import noyauFonctionnel.entity.Joueur;
 import noyauFonctionnel.entity.Pioche;
@@ -16,49 +17,51 @@ import noyauFonctionnel.entity.cartes.Carte;
  */
 public class ControlJeu {
     private Jeu jeu;
+    private DictionnaireCarte dictionnaireCarte;
     
-    public ControlJeu(Jeu jeu) {
+    public ControlJeu(Jeu jeu, DictionnaireCarte dictionnaireCarte) {
         this.jeu = jeu;
+        this.dictionnaireCarte=dictionnaireCarte;
     }
     
     public boolean getTourDeJeu() {
         return jeu.getTourDeJeu();
     }
     
-    public void removeCarteMainJoueur(Carte carte) {
-        jeu.removeCarteMainJoueur(carte);
+    public void removeCarteMainJoueur(int idCarte) {
+        jeu.removeCarteMainJoueur(dictionnaireCarte.getCarte(idCarte));
     }
     
     public boolean verifierFinPartie() {
         return jeu.verifierFinPartie();
     }
     
-    public void joueurPrendreCarte(Carte carte) {
-        jeu.joueurPrendreCarte(carte);
+    public void joueurPrendreCarte(int idCarte) {
+        jeu.joueurPrendreCarte(dictionnaireCarte.getCarte(idCarte));
     }
     
     public void changerJoueur() {
         jeu.changerJoueur();
     }
     
-    public void appliquerEffetCarte(Carte carte) {
-        jeu.appliquerEffetCarte(carte);
+    public void appliquerEffetCarte(int idCarte) {
+        jeu.appliquerEffetCarte(dictionnaireCarte.getCarte(idCarte));
     }
     
-    public void deposerCarte(Carte carte) {
-        jeu.deposerCarte(carte);
+    public void deposerCarte(int idCarte) {
+        jeu.deposerCarte(dictionnaireCarte.getCarte(idCarte));
     }
     
-    public List<Carte> getZoneAction() {
-        return jeu.getZoneAction();
+    public List<Integer> getZoneAction() {
+        return jeu.getZoneAction().stream().map(c -> c.getId()).toList();
     }
     
-    public List<Carte> getZonePopulariteJ1() {
-        return jeu.getZonePopulariteJ1();
+    public List<Integer> getZonePopulariteJ1() {
+        return jeu.getZonePopulariteJ1().stream().map(c -> c.getId()).toList();
     }
     
-    public List<Carte> getZonePopulariteJ2() {
-        return jeu.getZonePopulariteJ2();
+    public List<Integer> getZonePopulariteJ2() {
+        return jeu.getZonePopulariteJ2().stream().map(c -> c.getId()).toList();
     }
     
     public boolean isZoneActionEmpty() {
@@ -69,20 +72,20 @@ public class ControlJeu {
         return getZoneAction().isEmpty();
     }
     
-    public Joueur.MainJoueur getMainJoueur1() {
-        return jeu.getJoueur1().getMainJoueur();
+    public List<Integer> getMainJoueur1() {
+        return jeu.getJoueur1().getMainJoueur().getCartes().stream().map(c -> c.getId()).toList();
     }
     
-    public Joueur.MainJoueur getMainJoueur2() {
-        return jeu.getJoueur2().getMainJoueur();
+    public List<Integer> getMainJoueur2() {
+        return jeu.getJoueur2().getMainJoueur().getCartes().stream().map(c -> c.getId()).toList();
     }
     
     public boolean isMainJoueur1Empty() {
-        return getMainJoueur1().getCartes().isEmpty();
+        return getMainJoueur1().isEmpty();
     }
     
     public boolean isMainJoueur2Empty() {
-        return getMainJoueur2().getCartes().isEmpty();
+        return getMainJoueur2().isEmpty();
     }
     
     public int getPointDeVieJ1() {
@@ -105,8 +108,8 @@ public class ControlJeu {
         return jeu.getPioche().isEmpty();
     }
     
-    public Carte piocher() {
-        return jeu.getPioche().piocher();
+    public int piocher() {
+        return jeu.getPioche().piocher().getId();
     }
     
     public String afficherJeu(){

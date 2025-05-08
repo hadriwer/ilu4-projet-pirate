@@ -2,16 +2,30 @@ package noyauFonctionnel.entity.cartes;
 
 import java.util.Objects;
 import noyauFonctionnel.entity.Joueur;
+import util.EnumCarte;
 
 public abstract class Carte implements Cloneable {
-    private final String nom;
-    private final String description;
+    protected int id;
+    protected final String nom;
+    protected final String description;
     protected EffetCarte effet;
     
-    public Carte(String nom, String description) {
+    
+    public Carte(int id, String nom, String description) {
+        this.id = id;
         this.nom = nom;
         this.description = description;
-    }    
+    }
+
+    public abstract EnumCarte getType(); 
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
     public String getNom() {
        return nom;
@@ -39,14 +53,6 @@ public abstract class Carte implements Cloneable {
         return this.nom.equals(c.getNom()) && this.description.equals(c.getDescription());
     }
     
-    @Override
-    public Carte clone() {
-        try {
-            // tous les attributs de Carte sont immuables (2 string), pas besoin
-            // de les re cloner en plus, leur référence sera changée dans tous les cas
-            return (Carte) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
-    }
+    public abstract Carte clone();
+    
 }
