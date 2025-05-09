@@ -120,6 +120,11 @@ public class MainDialog {
         
         // true si c'est le tour du joueur 1
         boolean tourJoueur1 = adaptateurNoyau.getTourDeJeu();
+        if (tourJoueur1){
+            vuePlateau.setTour(adaptateurNoyau.getNomJoueur1());
+        }else{
+            vuePlateau.setTour(adaptateurNoyau.getNomJoueur2());
+        }
         
         listCarteMJ1.forEach(idCarte -> {
             CartePanel c=extractCardPanel(idCarte, tourJoueur1);

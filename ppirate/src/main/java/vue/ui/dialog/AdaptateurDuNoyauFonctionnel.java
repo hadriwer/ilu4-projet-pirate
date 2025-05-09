@@ -90,6 +90,14 @@ public class AdaptateurDuNoyauFonctionnel {
         controlChoisirNomJoueur.setNomJoueur2(nomJoueur2);
     }
     
+    public String getNomJoueur1(){
+        return controlChoisirNomJoueur.getNomJoueur1();
+    }
+    
+    public String getNomJoueur2(){
+        return controlChoisirNomJoueur.getNomJoueur2();
+    }
+    
     public int getNbCartesRestantes(){
         return controlJeu.getNbCartesRestantes();
     }

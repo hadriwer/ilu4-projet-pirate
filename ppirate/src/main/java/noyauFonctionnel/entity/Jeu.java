@@ -136,7 +136,15 @@ public class Jeu {
     
     public void setJoueur2Nom(String nom) {
         joueur2.setNom(nom);
-    }    
+    } 
+    
+    public String getJoueur1Nom() {
+        return joueur1.getNom();
+    }
+    
+    public String getJoueur2Nom() {
+        return joueur2.getNom();
+    }
     
     public boolean getTourDeJeu() {
         return tourDeJeu;
