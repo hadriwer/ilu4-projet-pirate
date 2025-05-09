@@ -22,12 +22,12 @@ public class JoueurTest {
     @BeforeEach
     void setUp() {
         // Cartes et joueur de tests
-        carteTest1 = new Popularite("Carte1", "desc1", 1, 1);
-        carteTest2 = new Popularite("Carte2", "desc2", 0, 0);
+        carteTest1 = new Popularite(1,"Carte1", "desc1", 1, 1);
+        carteTest2 = new Popularite(2,"Carte2", "desc2", 0, 0);
         List<Carte> cartes = new ArrayList<>();
         cartes.add(carteTest1);
-        instanceMainNonVide = new Joueur("Jack", cartes);
-        instanceMainVide = new Joueur("Jack", new ArrayList<>());
+        instanceMainNonVide = new Joueur(cartes);
+        instanceMainVide = new Joueur(new ArrayList<>());
     }
     
     /**
@@ -182,7 +182,7 @@ public class JoueurTest {
     @Test
     public void testPrendreCarte() {
         instanceMainVide.prendreCarte(carteTest2);
-        assertTrue(instanceMainVide.getMainJoueur().getCartes().contains(new Popularite("Carte2", "desc2", 0, 0)));
+        assertTrue(instanceMainVide.getMainJoueur().getCartes().contains(new Popularite(3,"Carte2", "desc2", 0, 0)));
     }
     
     /**
@@ -201,7 +201,7 @@ public class JoueurTest {
     @Test
     public void testGetMainJoueurGetCartesAvecMainNonVide() {
         List<Carte> expResult = new ArrayList<>();
-        expResult.add(new Popularite("Carte1", "desc1", 1, 1));
+        expResult.add(new Popularite(4,"Carte1", "desc1", 1, 1));
         List<Carte> result = instanceMainNonVide.getMainJoueur().getCartes();
         assertEquals(expResult, result);
     }
@@ -232,7 +232,7 @@ public class JoueurTest {
     @Test
     public void testGetMainJoueurPrendreCarte() {
         instanceMainVide.getMainJoueur().prendreCarte(carteTest2);
-        assertTrue(instanceMainVide.getMainJoueur().getCartes().contains(new Popularite("Carte2", "desc2", 0, 0)));
+        assertTrue(instanceMainVide.getMainJoueur().getCartes().contains(new Popularite(5,"Carte2", "desc2", 0, 0)));
     }
     
     /**
