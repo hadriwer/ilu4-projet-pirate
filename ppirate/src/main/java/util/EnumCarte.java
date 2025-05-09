@@ -12,5 +12,6 @@ public enum EnumCarte {
     POPULARITE,
     ATTAQUE,
     PROTECTION,
-    VOL
+    VOL,
+    GAIN_VIE
 }

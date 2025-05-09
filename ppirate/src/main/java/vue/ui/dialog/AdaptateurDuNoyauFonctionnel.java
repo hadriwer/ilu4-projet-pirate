@@ -82,6 +82,10 @@ public class AdaptateurDuNoyauFonctionnel {
         return controlCarte.getActionVie(idCarte);       
     }
     
+    public int getGainVie(int idCarte) {
+        return controlCarte.getGainVie(idCarte);
+    }
+    
     public void setNomJoueur1(String nomJoueur1){
         controlChoisirNomJoueur.setNomJoueur1(nomJoueur1);
     }

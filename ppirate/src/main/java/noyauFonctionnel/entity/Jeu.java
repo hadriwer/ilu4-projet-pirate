@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import noyauFonctionnel.entity.cartes.Attaque;
 import noyauFonctionnel.entity.cartes.Carte;
+import noyauFonctionnel.entity.cartes.GainVie;
 import noyauFonctionnel.entity.cartes.Popularite;
 import noyauFonctionnel.entity.cartes.Protection;
 
@@ -48,7 +49,7 @@ public class Jeu {
     }
     
     public void deposerCarte(Carte carte) {
-        if (carte instanceof Attaque) {
+        if (carte instanceof Attaque || carte instanceof GainVie) {
             zoneAction.add(carte);
         }
         else if (carte instanceof Popularite || carte instanceof Protection) {

@@ -6,6 +6,7 @@ package noyauFonctionnel.controller;
 
 import noyauFonctionnel.entity.DictionnaireCarte;
 import noyauFonctionnel.entity.cartes.Attaque;
+import noyauFonctionnel.entity.cartes.GainVie;
 import noyauFonctionnel.entity.cartes.Popularite;
 import util.EnumCarte;
 
@@ -53,8 +54,15 @@ public class ControlCarte {
             return ((Attaque) dictionnaireCarte.getCarte(idCarte)).getActionVie();
         }else{
             throw new IllegalArgumentException("idCarte invalide!");
+        }            
+    }
+    
+    public int getGainVie(int idCarte) {
+        if (dictionnaireCarte.getCarte(idCarte).getType() == EnumCarte.GAIN_VIE) {
+            return ((GainVie) dictionnaireCarte.getCarte(idCarte)).getGainVie();
+        }else{
+            throw new IllegalArgumentException("idCarte invalide!");
         }
-            
     }
     
 }
