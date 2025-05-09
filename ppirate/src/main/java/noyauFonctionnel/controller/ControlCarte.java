@@ -42,7 +42,7 @@ public class ControlCarte {
     }
     public int getSelfDegat(int idCarte){
         if (dictionnaireCarte.getCarte(idCarte).getType() == EnumCarte.POPULARITE){
-            return ((Popularite) dictionnaireCarte.getCarte(idCarte)).getPointDePop();
+            return ((Popularite) dictionnaireCarte.getCarte(idCarte)).getSelfDegats();
         }
         if (dictionnaireCarte.getCarte(idCarte).getType() == EnumCarte.ATTAQUE){
             return ((Attaque) dictionnaireCarte.getCarte(idCarte)).getSelfDegats();
