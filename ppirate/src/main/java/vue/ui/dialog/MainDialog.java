@@ -73,6 +73,10 @@ public class MainDialog {
             }
             case POPULARITE -> {
                 c.setPointPopularite(adaptateurNoyau.getPointPopularite(idCarte));
+                c.setSelfDegat(adaptateurNoyau.getSelfDegat(idCarte));
+            }
+            case GAIN_VIE -> {
+                c.setGainVie(adaptateurNoyau.getGainVie(idCarte));
             }
             default -> {
             }

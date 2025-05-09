@@ -74,6 +74,11 @@ public class CartePanel extends javax.swing.JPanel {
         repaint();
     }
     
+    public void setGainVie(int gainVie) {
+        this.actionVie = gainVie;
+        Effet1Label.setText("Gain Vie : " + gainVie);
+        repaint();
+    }
     
     private void removeInteractivity() {
         for (java.awt.event.MouseMotionListener mml : this.getMouseMotionListeners()) {
@@ -104,6 +109,9 @@ public class CartePanel extends javax.swing.JPanel {
             }
             case ECHANGE -> {
                 g2d.setColor(Color.BLACK);
+            }
+            case GAIN_VIE -> {
+                g2d.setColor(Color.PINK);
             }
             default -> {
                 System.err.println("Le type n'est pas connu");

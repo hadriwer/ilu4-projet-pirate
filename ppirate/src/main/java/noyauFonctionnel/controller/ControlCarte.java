@@ -6,6 +6,7 @@ package noyauFonctionnel.controller;
 
 import noyauFonctionnel.entity.DictionnaireCarte;
 import noyauFonctionnel.entity.cartes.Attaque;
+import noyauFonctionnel.entity.cartes.GainVie;
 import noyauFonctionnel.entity.cartes.Popularite;
 import util.EnumCarte;
 
@@ -41,7 +42,7 @@ public class ControlCarte {
     }
     public int getSelfDegat(int idCarte){
         if (dictionnaireCarte.getCarte(idCarte).getType() == EnumCarte.POPULARITE){
-            return ((Popularite) dictionnaireCarte.getCarte(idCarte)).getPointDePop();
+            return ((Popularite) dictionnaireCarte.getCarte(idCarte)).getSelfDegats();
         }
         if (dictionnaireCarte.getCarte(idCarte).getType() == EnumCarte.ATTAQUE){
             return ((Attaque) dictionnaireCarte.getCarte(idCarte)).getSelfDegats();
@@ -53,8 +54,15 @@ public class ControlCarte {
             return ((Attaque) dictionnaireCarte.getCarte(idCarte)).getActionVie();
         }else{
             throw new IllegalArgumentException("idCarte invalide!");
+        }            
+    }
+    
+    public int getGainVie(int idCarte) {
+        if (dictionnaireCarte.getCarte(idCarte).getType() == EnumCarte.GAIN_VIE) {
+            return ((GainVie) dictionnaireCarte.getCarte(idCarte)).getGainVie();
+        }else{
+            throw new IllegalArgumentException("idCarte invalide!");
         }
-            
     }
     
 }

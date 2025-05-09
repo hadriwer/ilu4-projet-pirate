@@ -77,6 +77,15 @@ public class Joueur {
         }
     }
     
+    public void gagnerVie(int vie) {
+        if (indiceVie + vie <= MAXVIE) {
+            this.indiceVie += vie;
+        }
+        else {
+            this.indiceVie = MAXVIE;
+        }
+    }
+    
     public void gagnerPop(int popularite){
         if (indicePopularite + popularite <= MAXPOP) {
             this.indicePopularite += popularite;

@@ -2,6 +2,7 @@ package util;
 
 import noyauFonctionnel.entity.cartes.Attaque;
 import noyauFonctionnel.entity.cartes.ConfigurationCarte;
+import noyauFonctionnel.entity.cartes.GainVie;
 import noyauFonctionnel.entity.cartes.Protection;
 import noyauFonctionnel.entity.cartes.Popularite;
 import noyauFonctionnel.entity.cartes.Echange;
@@ -98,6 +99,8 @@ public class CarteFactory {
         
         // Cartes d'échange
         Echange EchangeButin = new Echange(0, "Echange de Butin","Vous envoyez un de vos matelot faire un échange de trésor aléatoire avec l'ennemi");
+        GainVie repasFestif = new GainVie(0, "Repas Festif",
+                "Après vous être rempli l'estomac vous vous santez tout de suite mieux. Vous gagnez 2 pv.", 2);
 
         // Assemblage
         return new ConfigurationCarte[] {
@@ -123,7 +126,10 @@ public class CarteFactory {
             new ConfigurationCarte(navireInsubmersible, 1),
             new ConfigurationCarte(charismeIntimidant, 1),
             
-            new ConfigurationCarte(EchangeButin,1)
+            new ConfigurationCarte(EchangeButin,1),
+            
+            new ConfigurationCarte(repasFestif, 10)
+        
         };
             
     }
