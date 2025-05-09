@@ -25,7 +25,7 @@ public class Protection extends Carte{
     
     @Override
     public String toString() {
-        return "Protection[nom=" + this.getNom() + "";
+        return "Protection[nom=" + this.getNom() + "attaque bloquée="+this.attaqueBloque.getNom()+"]";
     }
     
     public boolean bloque(Attaque attaque) {

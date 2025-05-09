@@ -6,6 +6,7 @@ package noyauFonctionnel.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import noyauFonctionnel.entity.cartes.Attaque;
 import noyauFonctionnel.entity.cartes.Carte;
 
@@ -33,6 +34,14 @@ public class Joueur {
     
     public boolean peutAttaquer(Attaque attaque) {
         return !carteProtegeJoueur.stream().anyMatch(carte -> carte.equals(attaque));
+    }
+    
+    public Carte carteHasard(){
+        Random randomNum = new Random();
+        int nb = randomNum.nextInt(3);
+        Carte c = this.mainJoueur.getCartes().get(nb);
+        this.mainJoueur.getCartes().remove(nb);
+        return c;
     }
     
     public List<Attaque> getCarteProtegeJoueur() {

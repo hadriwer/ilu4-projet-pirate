@@ -4,6 +4,7 @@ import noyauFonctionnel.entity.cartes.Attaque;
 import noyauFonctionnel.entity.cartes.ConfigurationCarte;
 import noyauFonctionnel.entity.cartes.Protection;
 import noyauFonctionnel.entity.cartes.Popularite;
+import noyauFonctionnel.entity.cartes.Echange;
 
 /**
  *
@@ -94,6 +95,9 @@ public class CarteFactory {
         Protection charismeIntimidant = new Protection(0,"Charisme intimidant", 
             "Votre réputation de pirate sanguinaire intimide l’équipage de votre adversaire, les faisant trembler lors de leurs lancements de grappins. Pas un n’effleure donc votre navire.", 
             lancerDeGrappin);
+        
+        // Cartes d'échange
+        Echange EchangeButin = new Echange(0, "Echange de Butin","Vous envoyez un de vos matelot faire un échange de trésor aléatoire avec l'ennemi");
 
         // Assemblage
         return new ConfigurationCarte[] {
@@ -117,7 +121,10 @@ public class CarteFactory {
             new ConfigurationCarte(equipageEfficace, 1),
             new ConfigurationCarte(chapeauBas, 1),
             new ConfigurationCarte(navireInsubmersible, 1),
-            new ConfigurationCarte(charismeIntimidant, 1)};
+            new ConfigurationCarte(charismeIntimidant, 1),
+            
+            new ConfigurationCarte(EchangeButin,1)
+        };
             
     }
 }

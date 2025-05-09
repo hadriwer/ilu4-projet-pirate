@@ -102,7 +102,7 @@ public class CartePanel extends javax.swing.JPanel {
             case PROTECTION -> {
                 g2d.setColor(new Color(74,74,240)); //bleu
             }
-            case VOL -> {
+            case ECHANGE -> {
                 g2d.setColor(Color.BLACK);
             }
             default -> {
