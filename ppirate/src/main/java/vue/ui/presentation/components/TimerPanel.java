@@ -60,7 +60,7 @@ public class TimerPanel extends javax.swing.JPanel {
     private void timerEventHandler(java.awt.event.ActionEvent e) {
         this.decompte --;
         if (this.decompte < 0){
-            timerTxt.setText("<html><body style='text-align:center'>"+String.valueOf("Temps écoulé")+"</body></html>");
+            timerTxt.setText("<html><body style='text-align:center'>Temps écoulé</body></html>");
             timer.stop();
             dialog.handleChangerJoueur();
             System.out.println("On change de joueur car le temps est écoulé.");
@@ -68,7 +68,7 @@ public class TimerPanel extends javax.swing.JPanel {
             restartTimer();
         }
         else{
-           timerTxt.setText("<html><body style='text-align:center'>"+String.valueOf(this.decompte)+"</body></html>");
+           timerTxt.setText("<html><body style='text-align:center'>"+this.decompte+"</body></html>");
         }
         repaint();
     }

@@ -6,14 +6,11 @@ package vue.ui.presentation;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.PointerInfo;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import util.EnumCarte;
@@ -161,12 +158,12 @@ public class CartePanel extends javax.swing.JPanel {
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         if (!isEnabled()) return;
-            
+                   
         // récupération du plateau
-        System.out.println("On est dans formMousePressed");
         this.plateau = (Plateau) SwingUtilities.getWindowAncestor(this);
         this.glassPane = (JPanel) plateau.getGlassPane();
         this.glassPane.setVisible(true);
+        this.glassPane.setLayout(null);
 
         plateau.setDescription(nom, description);
 
@@ -183,6 +180,7 @@ public class CartePanel extends javax.swing.JPanel {
         ancienParent.repaint();
 
         //et on l'ajoute au glassPane
+        
         glassPane.add(this);
         this.setLocation(cursorLocation.x - getWidth() / 2, cursorLocation.y - getHeight() / 2);
         glassPane.revalidate();
@@ -191,7 +189,7 @@ public class CartePanel extends javax.swing.JPanel {
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
         if (!isEnabled()) return;
-        
+                
         //récupération de la cible
         JPanel ciblePanel=null;
 
@@ -203,9 +201,9 @@ public class CartePanel extends javax.swing.JPanel {
         }
         
         //récupération de la position absolue de la souris
-        // PointerInfo pointerInfo = MouseInfo.getPointerInfo();
-        // Point cursorLocation = pointerInfo.getLocation();
-        // Point cible = SwingUtilities.convertPoint(glassPane, cursorLocation, ciblePanel);
+        //PointerInfo pointerInfo = MouseInfo.getPointerInfo();
+        //Point cursorLocation = pointerInfo.getLocation();
+        //Point cible = SwingUtilities.convertPoint(glassPane, cursorLocation, ciblePanel);
 
         Point cursorLocation = MouseInfo.getPointerInfo().getLocation();
         SwingUtilities.convertPointFromScreen(cursorLocation, ciblePanel);
@@ -217,7 +215,8 @@ public class CartePanel extends javax.swing.JPanel {
         
         //si la carte est amenée sur la cible on la pose
         if (ciblePanel != null && ciblePanel.contains(cursorLocation)) { 
-            dialog.getPlateau().getTimerPanel().stop();
+            //dialog.getPlateau().getTimerPanel().stop();
+            dialog.stopTimer();
             ciblePanel.add(this);
             ciblePanel.revalidate();
             ciblePanel.repaint();
@@ -263,7 +262,7 @@ public class CartePanel extends javax.swing.JPanel {
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         if (!isEnabled()) return;
-
+        
         //récupération de la position absolue de la sourie par rapport à l'écran
         PointerInfo pointerInfo=MouseInfo.getPointerInfo();
         Point cursorLocation=pointerInfo.getLocation();

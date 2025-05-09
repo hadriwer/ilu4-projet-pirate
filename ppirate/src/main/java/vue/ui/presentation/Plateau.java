@@ -361,15 +361,6 @@ public class Plateau extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /*private void formMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_formMousePressed
-        System.out.println("vue.ui.presentation.Plateau.formMousePressed()");
-    }// GEN-LAST:event_formMousePressed
-
-    private void descriptionPanel1MousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_descriptionPanel1MousePressed
-        // TODO add your handling code here:
-        // pour l'instant le code est dans un event mousePressed mais l'idée
-        // serait d'appeler la fonction losqu'une carte est jouée
-    }// GEN-LAST:event_descriptionPanel1MousePressed*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundLabel;
