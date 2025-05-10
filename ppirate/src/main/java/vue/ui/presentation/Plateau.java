@@ -22,6 +22,7 @@ import vue.ui.presentation.components.Pioche;
  */
 public class Plateau extends javax.swing.JFrame {
     private MainDialog dialog;
+       // Ajout TEMPORAIRE pour corriger le problème du Designer
 
     /**
      * Creates new form Plateau
@@ -30,7 +31,10 @@ public class Plateau extends javax.swing.JFrame {
      */
     public Plateau(MainDialog dialog) {
         this.dialog = dialog;
+        // Ajout TEMPORAIRE pour corriger le problème du Designer
+
         initComponents();
+        timerPanel1.setDialog(dialog);
         //this.timerPanel1.setDialog(dialog);
         //this.pioche1.setDialogue(dialog);
         backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
@@ -134,7 +138,7 @@ public class Plateau extends javax.swing.JFrame {
         fillerZoneAction2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
         panelPioche = new javax.swing.JPanel();
         fillerPioche1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 150), new java.awt.Dimension(32767, 50));
-        pioche1 = new vue.ui.presentation.components.Pioche(dialog);
+        pioche1 = new vue.ui.presentation.components.Pioche();
         fillerPioche2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
         panelJoueur1 = new javax.swing.JPanel();
         panelInfosJ1 = new javax.swing.JPanel();
@@ -147,7 +151,7 @@ public class Plateau extends javax.swing.JFrame {
         filler1MainJ1 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 32767));
         mainJoueurPanel1 = new vue.ui.presentation.components.MainJoueurPanel();
         filler2MainJ1 = new javax.swing.Box.Filler(new java.awt.Dimension(100, 0), new java.awt.Dimension(100, 2), new java.awt.Dimension(500, 32767));
-        timerPanel1 = timerPanel1 = new vue.ui.presentation.components.TimerPanel(dialog);
+        timerPanel1 = new vue.ui.presentation.components.TimerPanel();
         panelJoueur2 = new javax.swing.JPanel();
         panelInfosJ2 = new javax.swing.JPanel();
         jaugeDePopularitePanel2 = new vue.ui.presentation.components.JaugeDePopularitePanel();
@@ -232,7 +236,7 @@ public class Plateau extends javax.swing.JFrame {
         );
         jaugeDePopularitePanel1Layout.setVerticalGroup(
             jaugeDePopularitePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
+            .addGap(0, 130, Short.MAX_VALUE)
         );
 
         panelInfosJ1.add(jaugeDePopularitePanel1, java.awt.BorderLayout.EAST);
@@ -260,6 +264,9 @@ public class Plateau extends javax.swing.JFrame {
         panelMainJ1.add(filler1MainJ1);
         panelMainJ1.add(mainJoueurPanel1);
         panelMainJ1.add(filler2MainJ1);
+
+        timerPanel1.setMinimumSize(new java.awt.Dimension(100, 200));
+        timerPanel1.setPreferredSize(new java.awt.Dimension(219, 113));
         panelMainJ1.add(timerPanel1);
 
         panelJoueur1.add(panelMainJ1, java.awt.BorderLayout.CENTER);
@@ -310,8 +317,6 @@ public class Plateau extends javax.swing.JFrame {
         panelMainJ2.add(filler1MainJ2);
         panelMainJ2.add(mainJoueurPanel2);
         panelMainJ2.add(filler2MainJ2);
-
-        descriptionPanel1.setPreferredSize(new java.awt.Dimension(219, 113));
         panelMainJ2.add(descriptionPanel1);
 
         panelJoueur2.add(panelMainJ2, java.awt.BorderLayout.CENTER);

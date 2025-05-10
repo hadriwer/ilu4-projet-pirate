@@ -28,12 +28,15 @@ public class TimerPanel extends javax.swing.JPanel {
     private float opacite;
     private static final int BORDURE = 15;
     
-    public TimerPanel(MainDialog dialog) {
-        this.dialog = dialog;
+    public TimerPanel() {
         this.opacite = 0.5f;
         initComponents();
         this.timer = new javax.swing.Timer(1000, (e) -> { timerEventHandler(e); });
         this.decompte = TEMPS;
+    }
+    
+    public void setDialog(MainDialog dialog){
+        this.dialog = dialog;
     }
     
     public void stop() {
@@ -60,7 +63,7 @@ public class TimerPanel extends javax.swing.JPanel {
     private void timerEventHandler(java.awt.event.ActionEvent e) {
         this.decompte --;
         if (this.decompte < 0){
-            timerTxt.setText("<html><body style='text-align:center'>Temps écoulé</body></html>");
+            timerTxt.setText("Fin du tour");
             timer.stop();
             dialog.handleChangerJoueur();
             System.out.println("On change de joueur car le temps est écoulé.");
@@ -68,7 +71,7 @@ public class TimerPanel extends javax.swing.JPanel {
             restartTimer();
         }
         else{
-           timerTxt.setText("<html><body style='text-align:center'>"+this.decompte+"</body></html>");
+           timerTxt.setText(String.valueOf(this.decompte));
         }
         repaint();
     }
@@ -112,19 +115,21 @@ public class TimerPanel extends javax.swing.JPanel {
         timerTxt = new javax.swing.JLabel();
         tourLabel = new javax.swing.JLabel();
 
+        setMaximumSize(new java.awt.Dimension(100, 200));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(100, 200));
 
-        nomTimer.setFont(new java.awt.Font("Segoe Script", 0, 18)); // NOI18N
+        nomTimer.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nomTimer.setForeground(new java.awt.Color(255, 255, 255));
         nomTimer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nomTimer.setText("<html><body style='text-align:center'>TEMPS RESTANT</body></html>");
 
-        timerTxt.setFont(new java.awt.Font("Segoe Script", 0, 18)); // NOI18N
+        timerTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         timerTxt.setForeground(new java.awt.Color(255, 255, 255));
         timerTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         timerTxt.setText(String.valueOf(TEMPS));
 
-        tourLabel.setFont(new java.awt.Font("Segoe Script", 0, 18)); // NOI18N
+        tourLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tourLabel.setForeground(new java.awt.Color(255, 255, 255));
         tourLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tourLabel.setText("Tour de");

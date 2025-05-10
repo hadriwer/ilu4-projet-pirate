@@ -69,11 +69,15 @@ public class MainDialog {
         switch (type) {
             case ATTAQUE -> {
                 c.setActionVie(adaptateurNoyau.getActionVie(idCarte));
-                c.setSelfDegat(adaptateurNoyau.getSelfDegat(idCarte));
+                if (adaptateurNoyau.getSelfDegat(idCarte) != 0){
+                    c.setSelfDegat(adaptateurNoyau.getSelfDegat(idCarte));
+                }
             }
             case POPULARITE -> {
                 c.setPointPopularite(adaptateurNoyau.getPointPopularite(idCarte));
-                c.setSelfDegat(adaptateurNoyau.getSelfDegat(idCarte));
+                if (adaptateurNoyau.getSelfDegat(idCarte) != 0){
+                    c.setSelfDegat(adaptateurNoyau.getSelfDegat(idCarte));
+                }
             }
             case GAIN_VIE -> {
                 c.setGainVie(adaptateurNoyau.getGainVie(idCarte));

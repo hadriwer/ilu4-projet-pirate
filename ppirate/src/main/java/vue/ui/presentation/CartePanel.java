@@ -58,25 +58,25 @@ public class CartePanel extends javax.swing.JPanel {
     
     public void setPointPopularite(int pointPopularite) {
         this.pointPopularite = pointPopularite;
-        Effet1Label.setText("Point de pop : " + pointPopularite);
+        Effet1Label.setText("Popularité : + " + pointPopularite);
         repaint();
     }
 
     public void setSelfDegat(int selfDegat) {
         this.selfDegat = selfDegat;
-        Effet2Label.setText("Self dégat : " + selfDegat);
+        Effet2Label.setText("Blessure : -" + selfDegat+" vie");
         repaint();
     }
 
     public void setActionVie(int actionVie) {
         this.actionVie = actionVie;
-        Effet1Label.setText("Action Vie : " + actionVie);
+        Effet1Label.setText("Dégats : " + actionVie+" vie(s)");
         repaint();
     }
     
     public void setGainVie(int gainVie) {
         this.actionVie = gainVie;
-        Effet1Label.setText("Gain Vie : " + gainVie);
+        Effet1Label.setText("Santé : +" + gainVie+" vie(s)");
         repaint();
     }
     

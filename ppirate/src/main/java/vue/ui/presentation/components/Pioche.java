@@ -18,14 +18,11 @@ import vue.ui.dialog.MainDialog;
  * @author wer
  */
 public class Pioche extends javax.swing.JPanel {
-    private MainDialog dialog;
 
     /**
      * Creates new form PanelPioche
-     * @param dialog
      */
-    public Pioche(MainDialog dialog) {
-        this.dialog = dialog;
+    public Pioche() {
         initComponents();
         setLayout(null);
         nbCartesTxt.setBounds(20, 5, getWidth(), 30);
