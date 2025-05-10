@@ -53,16 +53,13 @@ public class Jeu {
         if (carte instanceof Attaque || carte instanceof Echange || carte instanceof GainVie) {
             zoneAction.add(carte);
         }
-        else if (carte instanceof Popularite || carte instanceof Protection) {
+        else {
             if (tourDeJeu) {
                 zonePopulariteJ1.add(carte);
             }
             else{
                 zonePopulariteJ2.add(carte);
             }
-        }
-        else {
-            throw new IllegalStateException("Aucune des cartes connues");
         }
     }
     
@@ -76,9 +73,11 @@ public class Jeu {
     public Joueur giveJoueurGagnant() {
         if (joueur1.aGagne() || joueur2.aPerdu()) {
             return joueur1;
-        } else {
+        } else if (joueur2.aGagne() || joueur1.aPerdu()) {
             return joueur2;
-        }
+        } 
+        
+        return null;
     }
     
     public void joueurPrendreCarte(Carte carte) {
