@@ -4,6 +4,7 @@
  */
 package vue.ui.presentation;
 
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
@@ -35,15 +36,25 @@ public class ChoixNom extends javax.swing.JFrame {
         pirate2Field.setBorder(new EmptyBorder(10, 10, 10, 10));
         pirate1Field.setBorder(new EmptyBorder(10, 10, 10, 10));
         
-        BufferedImage image = ChargeurImage.chargerImage("presentation/logo.png");
-        Image imageEchelle;
-        imageEchelle = image.getScaledInstance(logoLabel.getWidth(), logoLabel.getHeight(),
-                Image.SCALE_SMOOTH);
+        BufferedImage icon = ChargeurImage.chargerImage("presentation/icon_ppirate.png");
+        Image iconResize = icon.getScaledInstance(64, 64, Image.SCALE_SMOOTH);
+        this.setIconImage(iconResize);
+
+        
+        BufferedImage image = ChargeurImage.chargerImage("presentation/logo_ppirate.png");
+
+        int taille = 250;
+
+        Image imageEchelle = image.getScaledInstance(taille, taille, Image.SCALE_SMOOTH);
         ImageIcon typeIcon = new ImageIcon(imageEchelle);
         logoLabel.setIcon(typeIcon);
-        
+        logoLabel.setPreferredSize(new Dimension(taille, taille));
+        logoLabel.setMinimumSize(new Dimension(taille, taille));
+        logoLabel.setMaximumSize(new Dimension(taille, taille));
+
         startButton.setText("LANCER LE JEU");
         startButton.setBorder(new EmptyBorder(10, 10, 10, 10));
+
         
         BufferedImage image2 = ChargeurImage.chargerImage("presentation/enter_game.png");
         Image imageEchelle2;
@@ -110,6 +121,10 @@ public class ChoixNom extends javax.swing.JFrame {
 
         logoLabel.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         logoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        logoLabel.setMaximumSize(new java.awt.Dimension(1000, 1000));
+        logoLabel.setMinimumSize(new java.awt.Dimension(1000, 1000));
+        logoLabel.setName(""); // NOI18N
+        logoLabel.setPreferredSize(new java.awt.Dimension(1000, 1000));
         panelGaucheLogo.add(logoLabel, java.awt.BorderLayout.CENTER);
 
         mainPanel.add(panelGaucheLogo);

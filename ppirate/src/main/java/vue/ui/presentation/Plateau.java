@@ -51,6 +51,10 @@ public class Plateau extends javax.swing.JFrame {
                 Image.SCALE_SMOOTH);
         ImageIcon typeIcon = new ImageIcon(imageEchelle);
         backgroundLabel.setIcon(typeIcon);
+        
+        BufferedImage icon = ChargeurImage.chargerImage("presentation/icon_ppirate.png");
+        Image iconResize = icon.getScaledInstance(64, 64, Image.SCALE_SMOOTH);
+        this.setIconImage(iconResize);
     }
     
     public javax.swing.JLabel getLabelJ1() {
