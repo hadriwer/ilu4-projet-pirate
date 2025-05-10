@@ -23,6 +23,10 @@ public class Protection extends Carte{
         });
     }
     
+    public String getNomAttaqueBloque() {
+        return attaqueBloque.getNom();
+    }
+    
     @Override
     public String toString() {
         return "Protection[nom=" + this.getNom() + "attaque bloquée="+this.attaqueBloque.getNom()+"]";

@@ -8,6 +8,7 @@ import noyauFonctionnel.entity.DictionnaireCarte;
 import noyauFonctionnel.entity.cartes.Attaque;
 import noyauFonctionnel.entity.cartes.GainVie;
 import noyauFonctionnel.entity.cartes.Popularite;
+import noyauFonctionnel.entity.cartes.Protection;
 import util.EnumCarte;
 
 /**
@@ -25,6 +26,10 @@ public class ControlCarte {
     
     public EnumCarte getType(int idCarte){
         return dictionnaireCarte.getCarte(idCarte).getType();
+    }
+    
+    public String getNomAttaqueBloque(int idCarte) {
+        return ((Protection) dictionnaireCarte.getCarte(idCarte)).getNomAttaqueBloque();
     }
     
     public String getNom(int IdCarte){

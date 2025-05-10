@@ -66,6 +66,10 @@ public class AdaptateurDuNoyauFonctionnel {
         return controlCarte.getType(idCarte);
     }
     
+    public String getNomAttaqueBloque(int idCarte) {
+        return controlCarte.getNomAttaqueBloque(idCarte);
+    }
+    
     public String getNom(int IdCarte){
         return controlCarte.getNom(IdCarte);
     }
