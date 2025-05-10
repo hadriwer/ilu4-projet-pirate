@@ -32,6 +32,84 @@ public class Joueur {
         this.carteProtegeJoueur = new ArrayList<>();
     }
     
+    
+    public String getNom(){
+        return this.nom;
+    }
+    
+    
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+    
+    
+    public int getIndicePopularite(){
+        return this.indicePopularite;
+    }
+    
+    
+    public int getIndiceVie(){
+        return this.indiceVie;
+    }
+    
+    
+    public MainJoueur getMainJoueur(){
+        return this.mainJoueur;
+    }
+    
+    
+    public void perdreVie(int vie){
+        if (indiceVie - vie >= MINVIE){
+            this.indiceVie -= vie;
+        }
+        else {
+            this.indiceVie = MINVIE;
+        }
+    }
+    
+    
+    public void gagnerVie(int vie) {
+        if (indiceVie + vie <= MAXVIE) {
+            this.indiceVie += vie;
+        }
+        else {
+            this.indiceVie = MAXVIE;
+        }
+    }
+    
+    
+    public void gagnerPop(int popularite){
+        if (indicePopularite + popularite <= MAXPOP) {
+            this.indicePopularite += popularite;
+        }
+        else{
+            this.indicePopularite = MAXPOP;
+        }
+    }
+    
+    
+    public boolean aGagne(){
+        return this.indicePopularite == MAXPOP;
+    }
+    
+    
+    public boolean aPerdu(){
+        return this.indiceVie == MINVIE;
+    }
+    
+    
+    @Override
+    public String toString(){
+        return "Joueur[nom="+this.getNom() + ", vie=" + this.indiceVie + 
+                ", popularite="+this.indicePopularite + ", contenu de la main=" + this.mainJoueur.toString() + "]";
+    }
+    
+    
+    public void prendreCarte(Carte carte){
+        mainJoueur.prendreCarte(carte);
+    }
+    
+    
     public boolean peutAttaquer(Attaque attaque) {
         return !carteProtegeJoueur.stream().anyMatch(carte -> carte.equals(attaque));
     }
@@ -46,71 +124,6 @@ public class Joueur {
     
     public List<Attaque> getCarteProtegeJoueur() {
         return carteProtegeJoueur;
-    }
-    
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-    
-    public int getIndicePopularite(){
-        return this.indicePopularite;
-    }
-    
-    public int getIndiceVie(){
-        return this.indiceVie;
-    }
-    
-    public String getNom(){
-        return this.nom;
-    }
-    
-    public MainJoueur getMainJoueur(){
-        return this.mainJoueur;
-    }
-    
-    public void perdreVie(int vie){
-        if (indiceVie - vie >= MINVIE){
-            this.indiceVie -= vie;
-        }
-        else {
-            this.indiceVie = MINVIE;
-        }
-    }
-    
-    public void gagnerVie(int vie) {
-        if (indiceVie + vie <= MAXVIE) {
-            this.indiceVie += vie;
-        }
-        else {
-            this.indiceVie = MAXVIE;
-        }
-    }
-    
-    public void gagnerPop(int popularite){
-        if (indicePopularite + popularite <= MAXPOP) {
-            this.indicePopularite += popularite;
-        }
-        else{
-            this.indicePopularite = MAXPOP;
-        }
-    }
-    
-    public boolean aGagne(){
-        return this.indicePopularite == MAXPOP;
-    }
-    
-    public boolean aPerdu(){
-        return this.indiceVie == MINVIE;
-    }
-    
-    @Override
-    public String toString(){
-        return "Joueur[nom="+this.getNom() + ", vie=" + this.indiceVie + 
-                ", popularite="+this.indicePopularite + ", contenu de la main=" + this.mainJoueur.toString() + "]";
-    }
-    
-    public void prendreCarte(Carte carte){
-        mainJoueur.prendreCarte(carte);
     }
     
     public class MainJoueur {
