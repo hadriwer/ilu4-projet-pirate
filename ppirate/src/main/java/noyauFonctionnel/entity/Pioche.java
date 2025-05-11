@@ -42,10 +42,7 @@ public class Pioche {
                 .mapToObj(t -> piocher())
                 .collect(Collectors.toList());
     }
-    
-    public List<Carte> getPioche() {
-        return pioche;
-    }
+   
     
     public int nbCartesRestantes(){
         return pioche.size();

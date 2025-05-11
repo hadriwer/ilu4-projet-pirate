@@ -2,9 +2,6 @@ package noyauFonctionnel.entity;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,21 +16,17 @@ class JeuTest {
     private Echange carteEchange;
     private GainVie carteGainVie;
     private Protection carteProtection;
+    private DictionnaireCarte dictCarte;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         carteAttaque = new Attaque(1, "Attaque", "desc", 2, 0);
         cartePopularite = new Popularite(2,"Popularite", "desc", 1, 1);
         carteEchange = new Echange(3, "Echange", "desc");
         carteGainVie = new GainVie(4, "GainVie", "desc", 2);
         carteProtection = new Protection(5, "Protection", "desc", carteAttaque);
-        
-        List<Carte> cartes = new ArrayList<>();
-        for (int i = 0; i < 10; i++) 
-            cartes.add(cartePopularite);
 
-        DictionnaireCarte dictCarte = new DictionnaireCarte();
-        dictCarte.setCartes(cartes.toArray(new Carte[0]));
+        dictCarte = new DictionnaireCarte();
         
         pioche = new Pioche(dictCarte);
      
@@ -222,7 +215,7 @@ class JeuTest {
     
     
     @Test
-    void testToString() {
+    public void testToString() {
     	// tour de J1
     	jeu.deposerCarte(cartePopularite);
         jeu.toString();
@@ -233,7 +226,5 @@ class JeuTest {
         jeu.deposerCarte(carteAttaque);
         jeu.toString();
     }
-
     
-
 }

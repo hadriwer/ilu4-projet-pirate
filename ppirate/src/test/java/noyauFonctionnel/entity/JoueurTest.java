@@ -193,10 +193,9 @@ public class JoueurTest {
     }
 
     @Test
-    void testMainJoueurJouerCarteInexistante() {
+    public void testMainJoueurJouerCarteInexistante() {
         joueurMainVide.getMainJoueur().jouerCarte(popularite1);
         assertTrue(joueurMainPleine.getMainJoueur().getCartes().contains(popularite1));
     }
     
-
 }
