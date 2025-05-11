@@ -1,7 +1,6 @@
 package noyauFonctionnel.entity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import noyauFonctionnel.entity.cartes.Attaque;
@@ -152,7 +151,6 @@ public class JoueurTest {
         		+ "Popularite[nom=Carte1, gain=1, auto-degat=1]\n"
         		+ "Popularite[nom=Carte1, gain=1, auto-degat=1]\n"
         		+ ")]";
-        System.out.println(joueurMainPleine.toString());
         assertEquals(expResult, joueurMainPleine.toString());
     }
     
