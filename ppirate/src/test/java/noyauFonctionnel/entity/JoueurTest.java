@@ -176,7 +176,6 @@ public class JoueurTest {
     
     @Test
     public void testCarteHasard() {
-    	
     	int tailleAvant = joueurMainPleine.getMainJoueur().getCartes().size();
         Carte c = joueurMainPleine.carteHasard();
         assertNotNull(c);
