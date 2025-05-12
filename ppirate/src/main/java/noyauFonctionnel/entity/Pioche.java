@@ -1,14 +1,13 @@
 package noyauFonctionnel.entity;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import noyauFonctionnel.entity.cartes.Carte;
 import util.CarteFactory;
-import noyauFonctionnel.entity.cartes.ConfigurationCarte;
 
 public class Pioche {
     
@@ -17,11 +16,11 @@ public class Pioche {
     public Pioche(DictionnaireCarte dictionnaireCarte) {
         pioche = new LinkedList<>();
         
-        ConfigurationCarte[] configurations = CarteFactory.creerCartes();
+        Map<Carte, Integer> configuration = CarteFactory.creerCartes();
         
-        Arrays.stream(configurations).forEach(configuration -> {
-            for (int x = 0; x < configuration.getNbExemplaires(); x++) {
-                pioche.add(configuration.getCarte().clone());
+        configuration.entrySet().stream().forEach(entry -> {
+            for (int i = 0; i < entry.getValue(); i++) {
+                pioche.add(entry.getKey().clone());
             }
         });
         
