@@ -20,7 +20,7 @@ public class Pioche {
         
         configuration.entrySet().stream().forEach(entry -> {
             for (int i = 0; i < entry.getValue(); i++) {
-                pioche.add(entry.getKey().clone());
+                pioche.add(entry.getKey().clone()); 
             }
         });
         

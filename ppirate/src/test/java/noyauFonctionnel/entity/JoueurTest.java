@@ -27,7 +27,7 @@ public class JoueurTest {
         
         List<Carte> cartes = new ArrayList<>();
         
-        for (int i = 0; i <5; i++)
+        for (int i = 0; i <4; i++)
         	cartes.add(popularite1);
         
         joueurMainPleine = new Joueur(cartes);
@@ -149,7 +149,6 @@ public class JoueurTest {
         		+ "Popularite[nom=Carte1, gain=1, auto-degat=1]\n"
         		+ "Popularite[nom=Carte1, gain=1, auto-degat=1]\n"
         		+ "Popularite[nom=Carte1, gain=1, auto-degat=1]\n"
-        		+ "Popularite[nom=Carte1, gain=1, auto-degat=1]\n"
         		+ ")]";
         assertEquals(expResult, joueurMainPleine.toString());
     }
@@ -187,7 +186,7 @@ public class JoueurTest {
     
     @Test
     public void testMainJoueurJouerCarteExistante() {
-    	for (int i = 0; i<5; i++)
+    	for (int i = 0; i<4; i++)
     	joueurMainPleine.getMainJoueur().jouerCarte(popularite1);
         assertFalse(joueurMainPleine.getMainJoueur().getCartes().contains(popularite1));
     }
