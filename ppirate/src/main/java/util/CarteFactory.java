@@ -1,7 +1,10 @@
 package util;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import noyauFonctionnel.entity.cartes.Attaque;
-import noyauFonctionnel.entity.cartes.ConfigurationCarte;
+import noyauFonctionnel.entity.cartes.Carte;
 import noyauFonctionnel.entity.cartes.GainVie;
 import noyauFonctionnel.entity.cartes.Protection;
 import noyauFonctionnel.entity.cartes.Popularite;
@@ -17,7 +20,7 @@ public class CarteFactory {
         throw new IllegalStateException("Utility class");
     }
     
-    public static ConfigurationCarte[] creerCartes() {
+    public static Map<Carte, Integer> creerCartes() {
         // Cartes de popularité
         Popularite mainDeFer = new Popularite(0,"Main de fer", 
             "À la suite d'un bras de fer devant les membres d'équipage vous gagnez deux points de popularité, mais votre effort vous coûte un point de vie.", 
@@ -103,34 +106,34 @@ public class CarteFactory {
                 "Après vous être rempli l'estomac vous vous santez tout de suite mieux. Vous gagnez 2 pv.", 2);
 
         // Assemblage
-        return new ConfigurationCarte[] {
-            new ConfigurationCarte(mainDeFer, 4),
-            new ConfigurationCarte(abordageReussi, 4),
-            new ConfigurationCarte(discoursInspirant, 4),
-            new ConfigurationCarte(grandeDescente, 4),
-            new ConfigurationCarte(revolteSimultanee, 4),
-            new ConfigurationCarte(butinInestimable, 4),
-            new ConfigurationCarte(ventEnPoupe, 4),
-
-            new ConfigurationCarte(bombeArtisanale, 4),
-            new ConfigurationCarte(coupDeSabre, 4),
-            new ConfigurationCarte(abordage, 4),
-            new ConfigurationCarte(bouteilleCassee, 4),
-            new ConfigurationCarte(salveDeCanon, 4),
-            new ConfigurationCarte(lancerDeGrappin, 4),
-
-            new ConfigurationCarte(nezDeFer, 1),
-            new ConfigurationCarte(escrimeDeJeunesse, 1),
-            new ConfigurationCarte(equipageEfficace, 1),
-            new ConfigurationCarte(chapeauBas, 1),
-            new ConfigurationCarte(navireInsubmersible, 1),
-            new ConfigurationCarte(charismeIntimidant, 1),
-            
-            new ConfigurationCarte(EchangeButin,1),
-            
-            new ConfigurationCarte(repasFestif, 10)
+        Map<Carte, Integer> configuration = new HashMap<Carte, Integer>();
         
-        };
+        configuration.put(mainDeFer, 4);
+        configuration.put(abordageReussi, 4);
+        configuration.put(discoursInspirant, 4);
+        configuration.put(grandeDescente, 4);
+        configuration.put(revolteSimultanee, 4);
+        configuration.put(butinInestimable, 4);
+        configuration.put(ventEnPoupe, 4);
+
+        configuration.put(bombeArtisanale, 4);
+        configuration.put(coupDeSabre, 4);
+        configuration.put(abordage, 4);
+        configuration.put(bouteilleCassee, 4);
+        configuration.put(salveDeCanon, 4);
+        configuration.put(lancerDeGrappin, 4);
+
+        configuration.put(nezDeFer, 1);
+        configuration.put(escrimeDeJeunesse, 1);
+        configuration.put(equipageEfficace, 1);
+        configuration.put(chapeauBas, 1);
+        configuration.put(navireInsubmersible, 1);
+        configuration.put(charismeIntimidant, 1);
+
+        configuration.put(EchangeButin, 1);
+        configuration.put(repasFestif, 10);
+        
+        return configuration;
             
     }
 }

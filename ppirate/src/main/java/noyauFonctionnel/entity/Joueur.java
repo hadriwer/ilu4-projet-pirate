@@ -32,41 +32,31 @@ public class Joueur {
         this.carteProtegeJoueur = new ArrayList<>();
     }
     
-    public boolean peutAttaquer(Attaque attaque) {
-        return !carteProtegeJoueur.stream().anyMatch(carte -> carte.equals(attaque));
-    }
-    
-    public Carte carteHasard(){
-        Random randomNum = new Random();
-        int nb = randomNum.nextInt(3);
-        Carte c = this.mainJoueur.getCartes().get(nb);
-        this.mainJoueur.getCartes().remove(nb);
-        return c;
-    }
-    
-    public List<Attaque> getCarteProtegeJoueur() {
-        return carteProtegeJoueur;
-    }
-    
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-    
-    public int getIndicePopularite(){
-        return this.indicePopularite;
-    }
-    
-    public int getIndiceVie(){
-        return this.indiceVie;
-    }
     
     public String getNom(){
         return this.nom;
     }
     
+    
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+    
+    
+    public int getIndicePopularite(){
+        return this.indicePopularite;
+    }
+    
+    
+    public int getIndiceVie(){
+        return this.indiceVie;
+    }
+    
+    
     public MainJoueur getMainJoueur(){
         return this.mainJoueur;
     }
+    
     
     public void perdreVie(int vie){
         if (indiceVie - vie >= MINVIE){
@@ -77,6 +67,7 @@ public class Joueur {
         }
     }
     
+    
     public void gagnerVie(int vie) {
         if (indiceVie + vie <= MAXVIE) {
             this.indiceVie += vie;
@@ -85,6 +76,7 @@ public class Joueur {
             this.indiceVie = MAXVIE;
         }
     }
+    
     
     public void gagnerPop(int popularite){
         if (indicePopularite + popularite <= MAXPOP) {
@@ -95,13 +87,16 @@ public class Joueur {
         }
     }
     
+    
     public boolean aGagne(){
         return this.indicePopularite == MAXPOP;
     }
     
+    
     public boolean aPerdu(){
         return this.indiceVie == MINVIE;
     }
+    
     
     @Override
     public String toString(){
@@ -109,8 +104,26 @@ public class Joueur {
                 ", popularite="+this.indicePopularite + ", contenu de la main=" + this.mainJoueur.toString() + "]";
     }
     
+    
     public void prendreCarte(Carte carte){
         mainJoueur.prendreCarte(carte);
+    }
+    
+    
+    public boolean peutAttaquer(Attaque attaque) {
+        return !carteProtegeJoueur.stream().anyMatch(carte -> carte.equals(attaque));
+    }
+    
+    public Carte carteHasard(){
+        Random randomNum = new Random();
+        int nb = randomNum.nextInt(4);
+        Carte c = this.mainJoueur.getCartes().get(nb);
+        this.mainJoueur.getCartes().remove(nb);
+        return c;
+    }
+    
+    public List<Attaque> getCarteProtegeJoueur() {
+        return carteProtegeJoueur;
     }
     
     public class MainJoueur {
