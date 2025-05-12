@@ -9,6 +9,9 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 import vue.ui.dialog.MainDialog;
 
 /**
@@ -27,6 +30,28 @@ public class ChoixNom extends javax.swing.JFrame {
     public ChoixNom(MainDialog dialog) {
         this.dialog = dialog;
         initComponents();
+        // bloquer les pseudos à 10 caractères
+        this.pirate1Field.setDocument(new PlainDocument(){
+            @Override
+            public void insertString(int offs, String str, AttributeSet a) throws BadLocationException{
+                if (str != null){
+                    if ((getLength()+str.length())<= 10){
+                        super.insertString(offs,str,a);
+                    }
+                }
+            }
+        });
+        this.pirate2Field.setDocument(new PlainDocument(){
+            @Override
+            public void insertString(int offs, String str, AttributeSet a) throws BadLocationException{
+                if (str != null){
+                    if ((getLength()+str.length())<= 10){
+                        super.insertString(offs,str,a);
+                    }
+                }
+            }
+        });
+        
         backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
         setImage();
         setResizable(false);
