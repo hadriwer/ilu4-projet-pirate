@@ -174,7 +174,6 @@ public class Plateau extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1080, 720));
         setMinimumSize(new java.awt.Dimension(1080, 720));
         getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
 
@@ -200,7 +199,7 @@ public class Plateau extends javax.swing.JFrame {
         panelZoneAction.setLayout(new java.awt.GridLayout(3, 0));
         panelZoneAction.add(fillerZoneAction1);
 
-        panelZoneAction1.setBackground(new java.awt.Color(204, 255, 102));
+        panelZoneAction1.setBackground(new java.awt.Color(102, 102, 102));
         panelZoneAction1.setPreferredSize(new java.awt.Dimension(100, 26));
         panelZoneAction1.setLayout(new javax.swing.BoxLayout(panelZoneAction1, javax.swing.BoxLayout.LINE_AXIS));
 

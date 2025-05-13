@@ -12,7 +12,10 @@ import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.RoundRectangle2D;
+import javax.swing.event.EventListenerList;
 import vue.ui.dialog.MainDialog;
+import vue.ui.presentation.TimeOutEvent;
+import vue.ui.presentation.TimeOutListener;
 
 /**
  *
@@ -37,6 +40,7 @@ public class TimerPanel extends javax.swing.JPanel {
         this.timer = new javax.swing.Timer(1000, (e) -> { timerEventHandler(e); });
         this.decompte = TEMPS;
         this.duree = TEMPS;
+        listenerList = new EventListenerList();
     }
     
     public void setDialog(MainDialog dialog){
@@ -49,6 +53,14 @@ public class TimerPanel extends javax.swing.JPanel {
     
     public void start() {
         timer.start();
+    }
+    
+    public void addTimeModelListener(TimeOutListener listener) {
+        listenerList.add(TimeOutListener.class, listener);
+    }
+
+    public void removeTimeModelListener(TimeOutListener listener) {
+        listenerList.remove(TimeOutListener.class, listener);
     }
     
     @Override
@@ -81,7 +93,17 @@ public class TimerPanel extends javax.swing.JPanel {
     
     private void timerEventHandler(java.awt.event.ActionEvent e) {
         this.decompte --;
+        if (this.decompte == 1) {
+            TimeOutEvent event = new TimeOutEvent(this); // si le décompte est fini on prévient la carte
+            for (TimeOutListener listener : listenerList.getListeners(TimeOutListener.class)) {
+                listener.timeOut(event);
+            }
+        }
         if (this.decompte < 0){
+            TimeOutEvent event = new TimeOutEvent(this); // si le décompte est fini on prévient la carte
+            for (TimeOutListener listener : listenerList.getListeners(TimeOutListener.class)) {
+                listener.timeOut(event);
+            }
             timerTxt.setText("Fin du tour");
             timer.stop();
             dialog.handleChangerJoueur();

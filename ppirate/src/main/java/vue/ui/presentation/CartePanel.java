@@ -11,6 +11,9 @@ import java.awt.Graphics2D;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.PointerInfo;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentListener;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import util.EnumCarte;
@@ -20,7 +23,7 @@ import vue.ui.dialog.MainDialog;
  *
  * @author Antoine, Mathéo, Solène
  */
-public class CartePanel extends javax.swing.JPanel {
+public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
     
     //Attributs pour l'IHM
     private MainDialog dialog;
@@ -44,7 +47,7 @@ public class CartePanel extends javax.swing.JPanel {
      * @param nom
      * @param description
      */
-    public CartePanel(MainDialog dialog, int idCarte, EnumCarte type, String nom, String description) {
+    public CartePanel(MainDialog dialog, int idCarte, EnumCarte type, String nom, String description){
         this.dialog = dialog;
         this.idCarte=idCarte;
         this.type=type;
@@ -166,7 +169,7 @@ public class CartePanel extends javax.swing.JPanel {
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         if (!isEnabled()) return;
-                   
+        
         // récupération du plateau
         this.plateau = (Plateau) SwingUtilities.getWindowAncestor(this);
         this.glassPane = (JPanel) plateau.getGlassPane();
@@ -174,7 +177,9 @@ public class CartePanel extends javax.swing.JPanel {
         this.glassPane.setLayout(null);
 
         plateau.setDescription(nom, description);
-
+        
+        plateau.getTimerPanel().addTimeModelListener(this); // on ajoute la carte actuelle comme un listener
+        
         ancienParent = (JPanel) this.getParent();
 
         //récupération de la position absolue de la souris
@@ -197,7 +202,9 @@ public class CartePanel extends javax.swing.JPanel {
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
         if (!isEnabled()) return;
-                
+        
+        plateau.getTimerPanel().removeTimeModelListener(this); //on n'écoute plus le décompte si la carte est posée
+        
         //récupération de la cible
         JPanel ciblePanel=null;
 
@@ -223,7 +230,6 @@ public class CartePanel extends javax.swing.JPanel {
         
         //si la carte est amenée sur la cible on la pose
         if (ciblePanel != null && ciblePanel.contains(cursorLocation)) { 
-            //dialog.getPlateau().getTimerPanel().stop();
             dialog.stopTimer();
             ciblePanel.add(this);
             ciblePanel.revalidate();
@@ -290,4 +296,10 @@ public class CartePanel extends javax.swing.JPanel {
     private javax.swing.JLabel Effet2Label;
     private javax.swing.JLabel NomCarteLabel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void timeOut(TimeOutEvent event) {
+        System.out.println("L'évènement timeOut est appelé!");
+        formMouseReleased(null); //la méthode n'utilisant jamais l'évènement
+    }
 }
