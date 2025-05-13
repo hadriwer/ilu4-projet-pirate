@@ -10,6 +10,7 @@ import noyauFonctionnel.entity.Jeu;
 import noyauFonctionnel.entity.Joueur;
 import noyauFonctionnel.entity.Pioche;
 import noyauFonctionnel.entity.cartes.Attaque;
+import noyauFonctionnel.entity.cartes.Carte;
 import noyauFonctionnel.entity.cartes.Echange;
 import noyauFonctionnel.entity.cartes.GainVie;
 import noyauFonctionnel.entity.cartes.Popularite;
@@ -48,6 +49,8 @@ class scenarioDeTests {
         
         j1 = jeu.getJoueur1();
         j2 = jeu.getJoueur2();
+        
+        
     }
 	
 	
@@ -149,5 +152,67 @@ class scenarioDeTests {
     }
 	
 	
+	@Test
+	public void echangeCarte() {
+		// code de setEffet de la carte echange pour récuperer les cartes
+		Carte c1 = j1.carteHasard(); 
+        Carte c2 = j2.carteHasard(); 
+         
+        j1.getMainJoueur().prendreCarte(c2);
+        j2.getMainJoueur().prendreCarte(c1);
+        
+        // On verifie que l'echange a ete fait
+        assertTrue(j1.getMainJoueur().getCartes().contains(c2));
+        assertTrue(j2.getMainJoueur().getCartes().contains(c1));
+	}
 	
+	
+	@Test
+	public void initialisationJeu() {
+	    assertEquals(4, jeu.getJoueur1().getMainJoueur().getCartes().size());
+	    assertEquals(4, jeu.getJoueur2().getMainJoueur().getCartes().size());
+	    assertTrue(jeu.getZoneAction().isEmpty());
+	    assertTrue(jeu.getZonePopulariteJ1().isEmpty());
+	    assertTrue(jeu.getZonePopulariteJ2().isEmpty());
+	}
+	
+	
+	@Test
+	public void changerJoueur() {
+		// Avant changement
+	    boolean tourInitial = jeu.getTourDeJeu();
+	    assertEquals("Jack", jeu.donnerTourDeJoueur().getNom());
+	    assertEquals(tourInitial, jeu.getTourDeJeu());
+	    
+	    // Après changement 
+	    jeu.changerJoueur();
+	    assertEquals("Paul", jeu.donnerTourDeJoueur().getNom());
+	    assertNotEquals(tourInitial, jeu.getTourDeJeu());
+	}
+	
+	
+	@Test
+	public void deposerCarteAction() {
+	    jeu.deposerCarte(carteAttaque);
+
+	    assertTrue(jeu.getZoneAction().contains(carteAttaque));
+	}
+	
+	
+	@Test
+	public void deposerCartePopulariteJ1() {
+	    jeu.deposerCarte(cartePopularite);
+
+	    assertTrue(jeu.getZonePopulariteJ1().contains(cartePopularite));
+	}
+	
+	
+	@Test
+	void ajouterEtRetirerCarteMain() {
+	    jeu.joueurPrendreCarte(carteAttaque);
+	    assertTrue(jeu.donnerTourDeJoueur().getMainJoueur().getCartes().contains(carteAttaque));
+
+	    jeu.removeCarteMainJoueur(carteAttaque);
+	    assertFalse(jeu.donnerTourDeJoueur().getMainJoueur().getCartes().contains(carteAttaque));
+	}
 }
