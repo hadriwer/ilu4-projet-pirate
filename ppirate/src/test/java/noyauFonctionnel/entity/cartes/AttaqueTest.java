@@ -52,7 +52,7 @@ class AttaqueTest {
     	assertTrue(carteAttaque.equals(carteAttaque));
     	
     	// cas même attributs
-        Attaque memeAttaque = new Attaque(1, "Attaque", "desc", 2, 0);
+        Attaque memeAttaque = new Attaque(2, "Attaque", "desc", 2, 0);
         assertTrue(carteAttaque.equals(memeAttaque));
     }
     
@@ -70,11 +70,11 @@ class AttaqueTest {
         assertFalse(carteAttaque.equals(attaqueDiff1));
         
         // cas effet selfDegat différent
-        Attaque attaqueDiff2 = new Attaque(1, "Attaque", "desc", 2, 1);
+        Attaque attaqueDiff2 = new Attaque(3, "Attaque", "desc", 2, 1);
         assertFalse(carteAttaque.equals(attaqueDiff2));
         
         // cas effet actionVie différent
-        Attaque attaqueDiff3 = new Attaque(1, "Attaque", "desc", 1, 0);
+        Attaque attaqueDiff3 = new Attaque(4, "Attaque", "desc", 1, 0);
         assertFalse(carteAttaque.equals(attaqueDiff3));
         
     }
@@ -82,7 +82,7 @@ class AttaqueTest {
     
     @Test
     public void testHashCode() {
-        Attaque memeAttaque = new Attaque(1, "Attaque", "desc", 2, 0);
+        Attaque memeAttaque = new Attaque(2, "Attaque", "desc", 2, 0);
         assertEquals(carteAttaque.hashCode(), memeAttaque.hashCode());
     }
     
