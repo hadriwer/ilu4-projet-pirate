@@ -8,7 +8,9 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.RenderingHints;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.RoundRectangle2D;
 import vue.ui.dialog.MainDialog;
 
@@ -24,6 +26,7 @@ public class TimerPanel extends javax.swing.JPanel {
      */
     javax.swing.Timer timer;
     private int decompte;
+    private int duree;
     private static final int TEMPS = 10;
     private float opacite;
     private static final int BORDURE = 15;
@@ -33,6 +36,7 @@ public class TimerPanel extends javax.swing.JPanel {
         initComponents();
         this.timer = new javax.swing.Timer(1000, (e) -> { timerEventHandler(e); });
         this.decompte = TEMPS;
+        this.duree = TEMPS;
     }
     
     public void setDialog(MainDialog dialog){
@@ -49,15 +53,30 @@ public class TimerPanel extends javax.swing.JPanel {
     
     @Override
     protected void paintComponent(Graphics g){
+        super.paintComponent(g);
+        
+        // fond global du composant
         Graphics2D g2d = (Graphics2D) g.create();
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,this.opacite)); // baisse l'opacité du panel
+        
         g2d.setColor(Color.BLACK);
         g2d.fill(new RoundRectangle2D.Float(0,0,getWidth(),getHeight(),BORDURE,BORDURE));
         
-        g2d.dispose();
+        // fond rond timer
+        int padding = 100;
+        int diametre = Math.min(getWidth(), getHeight()-padding);
+        int x = (getWidth() - diametre)/2;
+        int y = (getHeight() - diametre)/2;
+        g2d.setColor(Color.GRAY);
+        g2d.fillOval(x, y, diametre, diametre);
         
-        super.paintComponent(g);
+        //temps qui défile
+        g2d.setColor(Color.RED);
+        int arcAngle =  (360/this.duree) * (this.duree - this.decompte);
+        g2d.fillArc(x,y,diametre, diametre, 90, arcAngle);
+        
+        g2d.dispose();
     }
     
     private void timerEventHandler(java.awt.event.ActionEvent e) {
@@ -99,7 +118,7 @@ public class TimerPanel extends javax.swing.JPanel {
     }
     
     public void setTour(String nomJoueur){
-        tourLabel.setText("<html><body style='width:185px;text-align:center'>" +"Tour de "+ nomJoueur + "</body></html>");
+        tourLabel.setText("Tour de "+ nomJoueur);
     }
 
     /**
@@ -118,41 +137,25 @@ public class TimerPanel extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(100, 200));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(100, 200));
+        setLayout(new java.awt.GridLayout(3, 0));
 
-        nomTimer.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nomTimer.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         nomTimer.setForeground(new java.awt.Color(255, 255, 255));
         nomTimer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nomTimer.setText("<html><body style='text-align:center'>TEMPS RESTANT</body></html>");
+        nomTimer.setText("TEMPS DU TOUR");
+        add(nomTimer);
 
         timerTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         timerTxt.setForeground(new java.awt.Color(255, 255, 255));
         timerTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         timerTxt.setText(String.valueOf(TEMPS));
+        add(timerTxt);
 
         tourLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tourLabel.setForeground(new java.awt.Color(255, 255, 255));
         tourLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        tourLabel.setText("Tour de");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tourLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(timerTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(nomTimer, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(nomTimer)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(timerTxt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tourLabel)
-                .addContainerGap())
-        );
+        tourLabel.setText("Tour de Joueur");
+        add(tourLabel);
     }// </editor-fold>//GEN-END:initComponents
 
 
