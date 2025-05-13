@@ -100,7 +100,7 @@ class PopulariteTest {
     
     
     @Test
-    public void testEffetAppliqueSiNonProtege() {
+    public void testEffetApplique() {
         
     	cartePopularite.apply(j1, j2);
 
