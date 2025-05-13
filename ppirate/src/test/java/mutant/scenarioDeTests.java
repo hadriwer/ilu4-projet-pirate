@@ -32,7 +32,7 @@ class scenarioDeTests {
 	@BeforeEach
     public void setUp() {
         carteAttaque = new Attaque(1, "Attaque", "desc", 2, 1);
-        cartePopularite = new Popularite(2,"Popularite", "desc", 1, 1);
+        cartePopularite = new Popularite(2,"Popularite", "desc", 2, 1);
         carteEchange = new Echange(3, "Echange", "desc");
         carteGainVie = new GainVie(4, "GainVie", "desc", 2);
         carteProtection = new Protection(5, "Protection", "desc", carteAttaque);
@@ -72,28 +72,9 @@ class scenarioDeTests {
 	public void attaqueSousProtection() {
         j2.getCarteProtegeJoueur().add(carteAttaque);
         carteAttaque.apply(j1, j2);
+        assertFalse(j2.peutAttaquer(carteAttaque));
         assertEquals(5, j1.getIndiceVie());
         assertEquals(5, j2.getIndiceVie());
-    }
-	
-	
-	@Test 
-	public void victoireJ1AttaqueDeJ1SurJ2() {
-		j2.perdreVie(3);
-		carteAttaque.apply(j1, j2);
-        assertTrue(jeu.verifierFinPartie());
-        assertEquals("Jack", jeu.giveJoueurGagnant().getNom());
-        assertTrue(j1.aGagne()); 
-    }
-	
-	
-	@Test
-	public void victoireJ2AttaqueDeJ1SurJ2() {
-		j1.perdreVie(4);
-		carteAttaque.apply(j1, j2);
-        assertTrue(jeu.verifierFinPartie());
-        assertEquals("Paul", jeu.giveJoueurGagnant().getNom());
-        assertTrue(j2.aGagne()); 
     }
 	
 	
@@ -103,6 +84,69 @@ class scenarioDeTests {
 		carteAttaque.apply(j1, j2);
 		assertEquals(0, j2.getIndiceVie());
 	}
+	
+	@Test 
+	public void victoireJ1AttaqueDeJ1SurJ2() {
+		j2.perdreVie(3);
+		carteAttaque.apply(j1, j2);
+        assertTrue(jeu.verifierFinPartie());
+        assertEquals("Jack", jeu.giveJoueurGagnant().getNom());
+        assertTrue(j2.aPerdu()); 
+    }
+	
+	
+	@Test
+	public void victoireJ2AttaqueDeJ1SurJ2() {
+		j1.perdreVie(4);
+		carteAttaque.apply(j1, j2);
+        assertTrue(jeu.verifierFinPartie());
+        assertEquals("Paul", jeu.giveJoueurGagnant().getNom());
+        assertTrue(j1.aPerdu()); 
+    }
+	
+	
+	@Test
+	public void populariteSimple() {
+		cartePopularite.apply(j1, j2);
+        assertEquals(4, j1.getIndiceVie());
+        assertEquals(2, j1.getIndicePopularite());
+	}
+	
+	
+	@Test 
+	public void populariteSansEffet() {
+        Popularite pop = new Popularite(1, "vide", "rien", 0, 0);
+        pop.apply(j1, j2);
+        assertEquals(5, j1.getIndiceVie());
+        assertEquals(0, j1.getIndicePopularite());
+    }
+	
+	
+	@Test
+	public void populariteDepassant5() {
+		j1.gagnerPop(4);
+		cartePopularite.apply(j1, j2);
+		assertEquals(5, j1.getIndicePopularite());
+	}
+	
+	@Test 
+	public void victoireJ1GainPop() {
+		j1.gagnerPop(3);
+		cartePopularite.apply(j1, j2);
+        assertTrue(jeu.verifierFinPartie());
+        assertEquals("Jack", jeu.giveJoueurGagnant().getNom());
+        assertTrue(j1.aGagne()); 
+    }
+	
+	
+	@Test
+	public void victoireJ2SuicideDeJ1AvecPop() {
+		j1.perdreVie(4);
+		cartePopularite.apply(j1, j2);
+        assertTrue(jeu.verifierFinPartie());
+        assertEquals("Paul", jeu.giveJoueurGagnant().getNom());
+        assertTrue(j1.aPerdu()); 
+    }
 	
 	
 	
