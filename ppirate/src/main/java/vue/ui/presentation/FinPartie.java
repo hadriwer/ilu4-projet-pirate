@@ -4,19 +4,54 @@
  */
 package vue.ui.presentation;
 
-import javax.swing.JFrame;
+import java.awt.BorderLayout;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import util.EnumJoueur;
+import vue.ui.dialog.MainDialog;
+
+
 
 /**
  *
  * @author wer
  */
 public class FinPartie extends javax.swing.JDialog {
+    private javax.swing.JFrame parent;
+    private MainDialog dialog;
     /**
      * Creates new form FinPartie
+     * @param parent
+     * @param modal
+     * @param dialog
      */
-    public FinPartie(java.awt.Frame parent, boolean modal) {
+    public FinPartie(javax.swing.JFrame parent, boolean modal, MainDialog dialog) {
         super(parent, modal);
         initComponents();
+        this.parent = parent;
+        this.dialog = dialog;
+        setImage();
+        setLocationRelativeTo(parent);
+        setJoueurGagnant();
+    }
+    
+    private void setJoueurGagnant() {
+        if (dialog.handleJoueur1Gagne()) {
+            jLabel4.setText(dialog.getPlateau().getLabelJ1().getText());
+        }
+        else {
+            jLabel4.setText(dialog.getPlateau().getLabelJ2().getText());
+        }
+    }
+    
+    private void setImage(){
+        BufferedImage image=ChargeurImage.chargerImage("presentation/plateau_background.png");
+        Image imageEchelle;
+        imageEchelle = image.getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon typeIcon=new ImageIcon(imageEchelle);
+        jLabel1.setIcon(typeIcon);
     }
 
     /**
@@ -28,21 +63,39 @@ public class FinPartie extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Fin du Jeu");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Suruma", 0, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("gagne la partie");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Suruma", 0, 48)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("COMMENT");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        parent.setVisible(false);
+        parent.dispose();
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -64,5 +117,8 @@ public class FinPartie extends javax.swing.JDialog {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

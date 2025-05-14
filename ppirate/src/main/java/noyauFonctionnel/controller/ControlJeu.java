@@ -116,6 +116,10 @@ public class ControlJeu {
         return jeu.toString();
     }
     
+    public boolean joueur1gagne() {
+        return jeu.getJoueur1().aGagne();
+    }
+    
     public Joueur giveJoueurGagnant(){
         return jeu.giveJoueurGagnant();
     }

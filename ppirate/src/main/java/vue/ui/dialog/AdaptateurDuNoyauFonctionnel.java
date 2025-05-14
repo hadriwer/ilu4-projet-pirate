@@ -26,6 +26,10 @@ public class AdaptateurDuNoyauFonctionnel {
         this.controlCarte = controlCarte;
     }
     
+    public boolean joueur1gagne() {
+        return controlJeu.joueur1gagne();
+    }
+    
     public int getPointDeVieJ1(){
         return controlJeu.getPointDeVieJ1();
     }

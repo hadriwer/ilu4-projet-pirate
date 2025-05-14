@@ -40,6 +40,10 @@ public class MainDialog {
         vuePlateau.getTimerPanel().restartTimer();
     }
     
+    public boolean handleJoueur1Gagne() {
+        return adaptateurNoyau.joueur1gagne();
+    }
+    
     public boolean handleVerifierFinDePartie() {
         return adaptateurNoyau.verifierFinPartie();
     }
@@ -66,7 +70,8 @@ public class MainDialog {
     }
     
     public void handleTerminerJeu() {
-        JDialog fenetreFin = new FinPartie(vuePlateau, true);
+        JDialog fenetreFin = new FinPartie(vuePlateau, true, this);
+        vuePlateau.setVisible(false);
         fenetreFin.setVisible(true);
     }
     
