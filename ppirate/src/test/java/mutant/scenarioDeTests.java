@@ -155,8 +155,8 @@ class scenarioDeTests {
 	@Test
 	public void echangeCarte() {
 		// code de setEffet de la carte echange pour récuperer les cartes
-		Carte c1 = j1.carteHasard(); 
-        Carte c2 = j2.carteHasard(); 
+		Carte c1 = j1.carteHasard(j1.getMainJoueur().getCartes().size()); 
+        Carte c2 = j2.carteHasard(j1.getMainJoueur().getCartes().size()); 
          
         j1.getMainJoueur().prendreCarte(c2);
         j2.getMainJoueur().prendreCarte(c1);
