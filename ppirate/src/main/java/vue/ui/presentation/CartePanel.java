@@ -37,6 +37,7 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
     private int pointPopularite;
     private int selfDegat;
     private int actionVie; 
+    private String protection;
     
     
     /**
@@ -80,6 +81,12 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
     public void setGainVie(int gainVie) {
         this.actionVie = gainVie;
         Effet1Label.setText("Santé : +" + gainVie+" vie(s)");
+        repaint();
+    }
+    
+    public void setProtection(String protection) {
+        this.protection = protection;
+        Effet1Label.setText("<html><body style='width:58px;text-align:center'>Protège de la carte\n" + protection + "</body></html>");
         repaint();
     }
     
@@ -302,5 +309,6 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
     public void timeOut(TimeOutEvent event) {
         System.out.println("L'évènement timeOut est appelé!");
         formMouseReleased(null); //la méthode n'utilisant jamais l'évènement
+        this.setEnabled(false); //la carte est posé on la désactive pour ne pas pouvoir la rejouer dans la seconde qui reste
     }
 }

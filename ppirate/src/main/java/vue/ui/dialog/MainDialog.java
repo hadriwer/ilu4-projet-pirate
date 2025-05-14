@@ -93,7 +93,8 @@ public class MainDialog {
                 c.setGainVie(adaptateurNoyau.getGainVie(idCarte));
             }
             case PROTECTION -> {
-                c.setToolTipText("Protège de : " + "\"" + adaptateurNoyau.getNomAttaqueBloque(idCarte) + "\"");
+                c.setProtection(adaptateurNoyau.getNomAttaqueBloque(idCarte));
+                c.setToolTipText("Protège de " + "\"" + adaptateurNoyau.getNomAttaqueBloque(idCarte) + "\"");
             }
             default -> {
             }

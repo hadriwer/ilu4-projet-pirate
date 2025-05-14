@@ -100,10 +100,19 @@ public class CarteFactory {
             "Votre réputation de pirate sanguinaire intimide l’équipage de votre adversaire, les faisant trembler lors de leurs lancements de grappins. Pas un n’effleure donc votre navire.", 
             lancerDeGrappin);
         
-        // Cartes d'échange
+        // Carte d'échange
         Echange EchangeButin = new Echange(0, "Echange de Butin","Vous envoyez un de vos matelot faire un échange de trésor aléatoire avec l'ennemi");
+        
+        
+        // Cartes gain de vie
         GainVie repasFestif = new GainVie(0, "Repas Festif",
-                "Après vous être rempli l'estomac vous vous santez tout de suite mieux. Vous gagnez 2 pv.", 2);
+                "Après vous être rempli l'estomac vous vous sentez tout de suite mieux. Vous gagnez deux points de vie.", 2);
+        
+        GainVie eauDeVie = new GainVie(0, "Eau de Vie",
+                "La modération est la clé. Vous êtes un pirate, boire de la gnôle vous redonne un point de vie.", 1);
+        
+        GainVie merDesinfectante = new GainVie(0, "Mer Désinfectante",
+                "Votre très chère mer désinfecte et accélère la guérison de vos blessure", 3);
 
         // Assemblage
         Map<Carte, Integer> configuration = new HashMap<Carte, Integer>();
@@ -131,7 +140,10 @@ public class CarteFactory {
         configuration.put(charismeIntimidant, 1);
 
         configuration.put(EchangeButin, 1);
-        configuration.put(repasFestif, 10);
+        
+        configuration.put(repasFestif, 4);
+        configuration.put(eauDeVie, 4);
+        configuration.put(merDesinfectante, 2);
         
         return configuration;
             
