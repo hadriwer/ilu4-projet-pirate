@@ -12,6 +12,7 @@ import noyauFonctionnel.entity.cartes.GainVie;
 import noyauFonctionnel.entity.cartes.Popularite;
 import noyauFonctionnel.entity.cartes.Protection;
 import noyauFonctionnel.entity.cartes.Echange;
+import util.EnumCarte;
 
 /**
  *
@@ -44,7 +45,7 @@ public class Jeu {
     }
     
     public void deposerCarte(Carte carte) {
-        if (carte instanceof Attaque || carte instanceof Echange || carte instanceof GainVie) {
+        if (carte.getType() == EnumCarte.ATTAQUE || carte.getType() == EnumCarte.ECHANGE || carte.getType() == EnumCarte.GAIN_VIE) {
             zoneAction.add(carte);
         }
         else {
