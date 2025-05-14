@@ -28,11 +28,6 @@ public class Echange extends Carte {
     public String toString() {
         return "Echange[nom=" + this.getNom() + "]";
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode());
-    }
     
     @Override
     public Echange clone() {

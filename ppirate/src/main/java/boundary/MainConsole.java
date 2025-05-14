@@ -38,8 +38,8 @@ public class MainConsole {
             System.out.print("Joueur 1, entrez votre nom : ");
             nomJ1 = scanner.nextLine();
         } while (nomJ1.trim().isEmpty());
-
-        j1.setNom(nomJ1);
+        
+        controllerNom.setNomJoueur1(nomJ1);
 
         String nomJ2;
         do {
@@ -47,7 +47,7 @@ public class MainConsole {
             nomJ2 = scanner.nextLine();
         } while (nomJ2.trim().isEmpty());
 
-        j2.setNom(nomJ2);
+        controllerNom.setNomJoueur2(nomJ2);
         
         while (!controllerJeu.verifierFinPartie()) {            
             System.out.println("######################################################################################");
@@ -72,7 +72,7 @@ public class MainConsole {
 
             List<Integer> mainJoueurCurr = controllerJeu.getTourDeJeu() ? controllerJeu.getMainJoueur1() : controllerJeu.getMainJoueur2();
             System.out.println("mainJoueurCurr = " + mainJoueurCurr);
-            int carteChoisie = mainJoueurCurr.get(indexCarte);
+            int carteChoisie = mainJoueurCurr.get(indexCarte - 1);
             System.out.println("carte choisie = " + carteChoisie);
             
             controllerJeu.deposerCarte(carteChoisie);   

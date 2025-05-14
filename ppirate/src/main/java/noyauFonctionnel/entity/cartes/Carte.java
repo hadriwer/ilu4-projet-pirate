@@ -11,7 +11,7 @@ public abstract class Carte implements Cloneable {
     private EffetCarte effet;
     
     
-    public Carte(int id, String nom, String description) {
+    protected Carte(int id, String nom, String description) {
         this.id = id;
         this.nom = nom;
         this.description = description;
