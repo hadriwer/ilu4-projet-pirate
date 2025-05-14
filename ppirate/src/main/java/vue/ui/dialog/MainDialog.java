@@ -4,11 +4,8 @@
  */
 package vue.ui.dialog;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.List;
 import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 import util.EnumCarte;
 import static util.EnumCarte.ATTAQUE;
 import static util.EnumCarte.POPULARITE;
@@ -192,7 +189,6 @@ public class MainDialog {
 
     public void updateZoneAction() {
         if (!adaptateurNoyau.getZoneAction().isEmpty()) {
-            System.out.println("zone action rempli");
             vuePlateau.getZoneAction().removeAll();
             List<Integer> listZoneAction= adaptateurNoyau.getZoneAction();
             CartePanel c=extractCardPanel(listZoneAction.getLast(), false);

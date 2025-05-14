@@ -11,9 +11,6 @@ import java.awt.Graphics2D;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.PointerInfo;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ComponentListener;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import util.EnumCarte;
@@ -101,7 +98,6 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
     
     @Override
     protected void paintComponent(Graphics g) {
-        //super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
         
         g2d.setColor(Color.WHITE);
@@ -246,36 +242,26 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
             
             dialog.handleDeposerCarte(idCarte);
             dialog.updateCarteZonePopularite();
-            System.out.println("Une carte a été choisie.");
             dialog.handleRemoveCarteMainJoueur(idCarte);
             dialog.updateMainJoueur();
-            System.out.println("Carte supprimé du joueur courant.");
             dialog.handleAppliquerEffetCarte(idCarte);
             dialog.updateJaugeVie();
             dialog.updatePopularite();
-            System.out.println("On applique les effets de la carte choisie");
-            
-            //System.out.println("PV JOUEUR1 = " + dialog.getAdaptateurNoyau().getControlJeu().getPointDeVieJ1());
-            
+                        
             if (dialog.handleVerifierFinDePartie()) {
-                System.out.println("j'ai fini le jeu");
                 dialog.stopTimer();
-                // TODO fin du jeu
                 dialog.handleTerminerJeu();
             } else {
                 dialog.handleJoueurPioche();
                 dialog.updateMainJoueur();
                 dialog.updateNbCartes();
-                System.out.println("On pioche une nouvelle carte.");
 
                 dialog.handleChangerJoueur();
-                System.out.println("On change de joueur.\n");
                 dialog.updatePlateau();
                 dialog.restartTimer();
             }            
         }
         else { //sinon on la remet dans la main du joueur
-            System.out.println("Problème de cible.");
             ancienParent.add(this);  // ← remettre dans la main
             ancienParent.revalidate();       // ← recalcul du layout
             ancienParent.repaint();
@@ -307,7 +293,6 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
 
     @Override
     public void timeOut(TimeOutEvent event) {
-        System.out.println("L'évènement timeOut est appelé!");
         formMouseReleased(null); //la méthode n'utilisant jamais l'évènement
         this.setEnabled(false); //la carte est posé on la désactive pour ne pas pouvoir la rejouer dans la seconde qui reste
     }

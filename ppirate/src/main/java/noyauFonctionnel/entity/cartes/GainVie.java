@@ -30,6 +30,11 @@ public class GainVie extends Carte {
     public EnumCarte getType() {
         return EnumCarte.GAIN_VIE;
     }
+    
+    @Override
+    public String toString() {
+        return "GainVie[nom=" + this.getNom() + ", gain de vie=" + gainVie +"]";
+    }
 
     @Override
     public Carte clone() {

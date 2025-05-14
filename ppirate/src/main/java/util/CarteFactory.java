@@ -122,7 +122,7 @@ public class CarteFactory {
         configuration.put(discoursInspirant, 4);
         configuration.put(grandeDescente, 4);
         configuration.put(revolteSimultanee, 4);
-        configuration.put(butinInestimable, 4);
+        configuration.put(butinInestimable, 2);
         configuration.put(ventEnPoupe, 4);
 
         configuration.put(bombeArtisanale, 4);

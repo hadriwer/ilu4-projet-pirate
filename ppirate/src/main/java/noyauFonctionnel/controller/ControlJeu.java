@@ -120,18 +120,6 @@ public class ControlJeu {
         return jeu.getJoueur1().aGagne();
     }
     
-    public Joueur giveJoueurGagnant(){
-        return jeu.giveJoueurGagnant();
-    }
-    
-    public Joueur getJoueur1(){
-        return jeu.getJoueur1();
-    }
-    
-    public Joueur getJoueur2(){
-        return jeu.getJoueur2();
-    }
-    
     public int getNbCartesRestantes(){
         return jeu.getPioche().nbCartesRestantes();
     }

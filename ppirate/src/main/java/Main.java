@@ -40,14 +40,15 @@ public class Main {
         ControlChoisirNomJoueur controlChoisirNomJoueur = new ControlChoisirNomJoueur(jeu);
         ControlCarte controlCarte = new ControlCarte(dictionnaireCarte);
 
+        AdaptateurDuNoyauFonctionnel adaptateurNoyau = new AdaptateurDuNoyauFonctionnel(controlJeu, controlChoisirNomJoueur, controlCarte);
+        
         if (choix.equals("1")) {
             // Lancement en console
-            MainConsole boundary = new MainConsole(controlJeu, controlChoisirNomJoueur);
+            MainConsole boundary = new MainConsole(adaptateurNoyau);
             boundary.lancerJeu();
         } else if (choix.equals("2")) {
             // Lancement en IHM
-            AdaptateurDuNoyauFonctionnel noyau = new AdaptateurDuNoyauFonctionnel(controlJeu, controlChoisirNomJoueur, controlCarte);
-            MainDialog dialog = new MainDialog(noyau);
+            MainDialog dialog = new MainDialog(adaptateurNoyau);
             dialog.lancerApp();
         } else {
             System.out.println("Choix invalide. Veuillez relancer le programme et choisir 1 ou 2.");

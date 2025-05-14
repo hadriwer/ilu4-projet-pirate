@@ -1,12 +1,10 @@
 package boundary;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
-import noyauFonctionnel.controller.ControlChoisirNomJoueur;
-import noyauFonctionnel.controller.ControlJeu;
-import noyauFonctionnel.entity.Joueur;
-import noyauFonctionnel.entity.cartes.Carte;
-
+import util.EnumCarte;
+import vue.ui.dialog.AdaptateurDuNoyauFonctionnel;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -14,21 +12,118 @@ import noyauFonctionnel.entity.cartes.Carte;
 
 /**
  *
- * @author wer
+ * @author wer, Solène
  */
 public class MainConsole {
     private Scanner scanner;
-    private Joueur j1;
-    private Joueur j2;
-    private ControlJeu controllerJeu;
-    private ControlChoisirNomJoueur controllerNom;
+    private int j1;
+    private int j2;
+    private AdaptateurDuNoyauFonctionnel adaptateur;
     
-    public MainConsole(ControlJeu controllerJeu, ControlChoisirNomJoueur controllerNom) {  
-        this.controllerJeu = controllerJeu;
-        this.controllerNom = controllerNom;
+    public MainConsole(AdaptateurDuNoyauFonctionnel adaptateur) {  
+        this.adaptateur=adaptateur;
         this.scanner = new Scanner(System.in);
-        this.j1 = controllerJeu.getJoueur1();
-        this.j2 = controllerJeu.getJoueur2();
+    }
+    
+    public String carteString(int id){
+        StringBuilder result = new StringBuilder();
+        EnumCarte type = adaptateur.getType(id);
+        result.append(type);
+        result.append(" : {nom : ");
+        result.append(adaptateur.getNom(id));
+        switch (type){
+            case POPULARITE -> {
+                result.append(", ");
+                result.append("pointPop : ");
+                result.append(adaptateur.getPointPopularite(id));
+                int selfDegats = adaptateur.getSelfDegat(id);
+                if (selfDegats > 0) {
+                    result.append(", selfDegats : ");
+                    result.append(selfDegats);
+                }
+            }
+            case ATTAQUE -> {
+                result.append(", ");
+                result.append("actionVie : ");
+                result.append(adaptateur.getActionVie(id));
+                int selfDegats = adaptateur.getSelfDegat(id);
+                if (selfDegats > 0) {
+                    result.append(", selfDegats : ");
+                    result.append(selfDegats);
+                }
+            }
+            case PROTECTION -> {
+                result.append(", ");
+                result.append("attaqueBloquee : ");
+                result.append(adaptateur.getNomAttaqueBloque(id));
+            }
+            case ECHANGE -> {
+                // pad d'information additionelles
+            }
+            case GAIN_VIE -> {
+                result.append(", ");
+                result.append("gainVie : ");
+                result.append(adaptateur.getGainVie(id));
+            }
+            default -> throw new AssertionError(type.name());
+        }
+        result.append('}');
+        return result.toString();
+    }
+    
+    private void printListeCarte(List<Integer> liste) {
+        Iterator<Integer> it = liste.iterator();
+        System.out.print("[");
+        if (it.hasNext()) {
+            System.out.print(carteString(it.next()));
+        }
+        while (it.hasNext()) {
+            System.out.print(", ");
+            System.out.print(carteString(it.next()));
+        }
+        System.out.print(']');
+    }
+    
+    private void afficherJeu(String nomJoueur1, String nomJoueur2) {
+        System.out.println("#################################################");
+        
+        int pvJoueur1 = adaptateur.getPointDeVieJ1();
+        int pvJoueur2 = adaptateur.getPointDeVieJ2();
+        
+        int popJoueur1 = adaptateur.getIndicePopulariteJ1();
+        int popJoueur2 = adaptateur.getIndicePopulariteJ2();
+        
+        List<Integer> mainJoueur1 = adaptateur.getMainJoueur1();
+        List<Integer> mainJoueur2 = adaptateur.getMainJoueur2();
+        
+        List<Integer> zonePopJoueur1 = adaptateur.getZonePopulariteJ1();
+        List<Integer> zonePopJoueur2 = adaptateur.getZonePopulariteJ2();
+        
+        List<Integer> action = adaptateur.getZoneAction();
+        
+        System.out.println(nomJoueur1 + " a "+pvJoueur1+" point de vie et "+popJoueur1+" point de popularite");
+        System.out.print("Sa zone de popularité est composé de ");
+        printListeCarte(zonePopJoueur1);
+        System.out.println();
+        System.out.print("Il a dans la main ");
+        printListeCarte(mainJoueur1);
+        System.out.println();
+        
+        
+        System.out.println("---------------------------------------------------");
+        
+        System.out.println(nomJoueur2 + " a "+pvJoueur2+" point de vie et "+popJoueur2+" point de popularite");
+        System.out.print("Sa zone de popularité est composé de ");
+        printListeCarte(zonePopJoueur2);
+        System.out.println();
+        System.out.print("Il a dans la main ");
+        printListeCarte(mainJoueur2);
+        System.out.println();
+        
+        System.out.print("La zone action est composé de ");
+        printListeCarte(action);
+        System.out.println();
+        System.out.println("#################################################");
     }
     
     public void lancerJeu() {
@@ -39,7 +134,7 @@ public class MainConsole {
             nomJ1 = scanner.nextLine();
         } while (nomJ1.trim().isEmpty());
         
-        controllerNom.setNomJoueur1(nomJ1);
+        adaptateur.setNomJoueur1(nomJ1);
 
         String nomJ2;
         do {
@@ -47,16 +142,13 @@ public class MainConsole {
             nomJ2 = scanner.nextLine();
         } while (nomJ2.trim().isEmpty());
 
-        controllerNom.setNomJoueur2(nomJ2);
+        adaptateur.setNomJoueur2(nomJ2);
         
-        while (!controllerJeu.verifierFinPartie()) {            
-            System.out.println("######################################################################################");
-            System.out.println(controllerJeu.afficherJeu());
-            System.out.println("######################################################################################");
+        while (!adaptateur.verifierFinPartie()) {            
+            afficherJeu(nomJ1,nomJ2);
             
-            Joueur current = controllerJeu.getTourDeJeu() ? j1 : j2;
             
-            System.out.println("\nTour de joueur " + current.getNom());
+            System.out.println("Tour de joueur " + (adaptateur.getTourDeJeu() ? nomJ1 : nomJ2));
             
             int indexCarte = -1;
             do {
@@ -70,22 +162,21 @@ public class MainConsole {
                 }
             } while (indexCarte < 1 || indexCarte > 4);
 
-            List<Integer> mainJoueurCurr = controllerJeu.getTourDeJeu() ? controllerJeu.getMainJoueur1() : controllerJeu.getMainJoueur2();
-            System.out.println("mainJoueurCurr = " + mainJoueurCurr);
+            List<Integer> mainJoueurCurr = adaptateur.getTourDeJeu() ? adaptateur.getMainJoueur1() : adaptateur.getMainJoueur2();
             int carteChoisie = mainJoueurCurr.get(indexCarte - 1);
-            System.out.println("carte choisie = " + carteChoisie);
             
-            controllerJeu.deposerCarte(carteChoisie);   
-            controllerJeu.appliquerEffetCarte(carteChoisie);
-            System.out.println("ici");
-            controllerJeu.removeCarteMainJoueur(carteChoisie);
-            controllerJeu.joueurPrendreCarte(controllerJeu.piocher());
-            
+            adaptateur.deposerCarte(carteChoisie);   
+            adaptateur.appliquerEffetCarte(carteChoisie);
+            adaptateur.removeCarteMainJoueur(carteChoisie);
+            System.out.println("Votre carte est posée");
+            int cartePiochee=adaptateur.piocher();
+            adaptateur.joueurPrendreCarte(cartePiochee);
+            System.out.println("Vous piochez la carte "+mainJoueurCurr.get(3).toString());
+                        
             System.out.println("On change de Joueur.");
-            controllerJeu.changerJoueur();
+            adaptateur.changerJoueur();
         }
-        Joueur joueurGagnant = controllerJeu.giveJoueurGagnant();
-        System.out.println("\nOn a un gagnant ! Le joueur "+ joueurGagnant.getNom() + " a gagné !!!");
+        System.out.println("\nOn a un gagnant ! Le joueur "+ (adaptateur.joueur1gagne() ? nomJ1 : nomJ2) + " a gagné !!!");
         scanner.close();
     }
 }

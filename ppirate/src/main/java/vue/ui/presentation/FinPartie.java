@@ -4,12 +4,9 @@
  */
 package vue.ui.presentation;
 
-import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import util.EnumJoueur;
 import vue.ui.dialog.MainDialog;
 
 

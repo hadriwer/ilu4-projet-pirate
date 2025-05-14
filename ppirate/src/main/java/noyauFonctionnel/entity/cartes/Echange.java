@@ -4,7 +4,6 @@
  */
 package noyauFonctionnel.entity.cartes;
 
-import java.util.Objects;
 import util.EnumCarte;
 
 /**
