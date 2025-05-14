@@ -6,6 +6,7 @@ package vue.ui.presentation;
 
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.border.EmptyBorder;
@@ -86,6 +87,9 @@ public class ChoixNom extends javax.swing.JFrame {
         imageEchelle2 = image2.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         ImageIcon typeIcon2 = new ImageIcon(imageEchelle2);
         CustomJButtonStart.setIcon(typeIcon2);
+        
+        CustomJTextFieldPirate1Field.addActionListener(e -> CustomJButtonStart.doClick());
+        CustomJTextFieldPirate2Field.addActionListener(e -> CustomJButtonStart.doClick());
     }
 
     public void setImage() {
@@ -236,7 +240,7 @@ public class ChoixNom extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+ 
     private void CustomJButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomJButtonStartActionPerformed
         dialog.submitNomsJoueurs(CustomJTextFieldPirate1Field.getText(), CustomJTextFieldPirate2Field.getText());
     }//GEN-LAST:event_CustomJButtonStartActionPerformed
