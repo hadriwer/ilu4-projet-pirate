@@ -254,6 +254,7 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
                 System.out.println("j'ai fini le jeu");
                 dialog.stopTimer();
                 // TODO fin du jeu
+                dialog.handleTerminerJeu();
             } else {
                 dialog.handleJoueurPioche();
                 dialog.updateMainJoueur();
