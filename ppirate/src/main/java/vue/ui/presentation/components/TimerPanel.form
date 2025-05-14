@@ -28,7 +28,7 @@
     <Property name="rows" type="int" value="3"/>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="nomTimer">
+    <Component class="javax.swing.JLabel" name="jLabelNom">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
@@ -40,7 +40,7 @@
         <Property name="text" type="java.lang.String" value="TEMPS DU TOUR"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="timerTxt">
+    <Component class="javax.swing.JLabel" name="jLabelTimer">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>
@@ -54,7 +54,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="tourLabel">
+    <Component class="javax.swing.JLabel" name="jLabelTour">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>

@@ -15,11 +15,11 @@ public class JaugeDeViePanel extends javax.swing.JPanel {
      */
     public JaugeDeViePanel() {
         initComponents();
-        vie1.setPleine(true);
-        vie2.setPleine(true);
-        vie3.setPleine(true);
-        vie4.setPleine(true);
-        vie5.setPleine(true);
+        viePanel1.setPleine(true);
+        viePanel2.setPleine(true);
+        viePanel3.setPleine(true);
+        viePanel4.setPleine(true);
+        viePanel5.setPleine(true);
     }
 
     /**
@@ -29,81 +29,91 @@ public class JaugeDeViePanel extends javax.swing.JPanel {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        vie1 = new vue.ui.presentation.components.ViePanel();
-        vie2 = new vue.ui.presentation.components.ViePanel();
-        vie3 = new vue.ui.presentation.components.ViePanel();
-        vie4 = new vue.ui.presentation.components.ViePanel();
-        vie5 = new vue.ui.presentation.components.ViePanel();
+        viePanel1 = new vue.ui.presentation.components.ViePanel();
+        viePanel2 = new vue.ui.presentation.components.ViePanel();
+        viePanel3 = new vue.ui.presentation.components.ViePanel();
+        viePanel4 = new vue.ui.presentation.components.ViePanel();
+        viePanel5 = new vue.ui.presentation.components.ViePanel();
 
         setMaximumSize(new java.awt.Dimension(150, 30));
         setMinimumSize(new java.awt.Dimension(150, 30));
         setPreferredSize(new java.awt.Dimension(150, 30));
         setLayout(new java.awt.GridLayout(1, 5));
 
-        javax.swing.GroupLayout vie1Layout = new javax.swing.GroupLayout(vie1);
-        vie1.setLayout(vie1Layout);
-        vie1Layout.setHorizontalGroup(
-                vie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE));
-        vie1Layout.setVerticalGroup(
-                vie1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE));
+        javax.swing.GroupLayout viePanel1Layout = new javax.swing.GroupLayout(viePanel1);
+        viePanel1.setLayout(viePanel1Layout);
+        viePanel1Layout.setHorizontalGroup(
+            viePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        viePanel1Layout.setVerticalGroup(
+            viePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
-        add(vie1);
+        add(viePanel1);
 
-        javax.swing.GroupLayout vie2Layout = new javax.swing.GroupLayout(vie2);
-        vie2.setLayout(vie2Layout);
-        vie2Layout.setHorizontalGroup(
-                vie2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE));
-        vie2Layout.setVerticalGroup(
-                vie2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE));
+        javax.swing.GroupLayout viePanel2Layout = new javax.swing.GroupLayout(viePanel2);
+        viePanel2.setLayout(viePanel2Layout);
+        viePanel2Layout.setHorizontalGroup(
+            viePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        viePanel2Layout.setVerticalGroup(
+            viePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
-        add(vie2);
+        add(viePanel2);
 
-        javax.swing.GroupLayout vie3Layout = new javax.swing.GroupLayout(vie3);
-        vie3.setLayout(vie3Layout);
-        vie3Layout.setHorizontalGroup(
-                vie3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE));
-        vie3Layout.setVerticalGroup(
-                vie3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE));
+        javax.swing.GroupLayout viePanel3Layout = new javax.swing.GroupLayout(viePanel3);
+        viePanel3.setLayout(viePanel3Layout);
+        viePanel3Layout.setHorizontalGroup(
+            viePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        viePanel3Layout.setVerticalGroup(
+            viePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
-        add(vie3);
+        add(viePanel3);
 
-        javax.swing.GroupLayout vie4Layout = new javax.swing.GroupLayout(vie4);
-        vie4.setLayout(vie4Layout);
-        vie4Layout.setHorizontalGroup(
-                vie4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE));
-        vie4Layout.setVerticalGroup(
-                vie4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE));
+        javax.swing.GroupLayout viePanel4Layout = new javax.swing.GroupLayout(viePanel4);
+        viePanel4.setLayout(viePanel4Layout);
+        viePanel4Layout.setHorizontalGroup(
+            viePanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        viePanel4Layout.setVerticalGroup(
+            viePanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
-        add(vie4);
+        add(viePanel4);
 
-        javax.swing.GroupLayout vie5Layout = new javax.swing.GroupLayout(vie5);
-        vie5.setLayout(vie5Layout);
-        vie5Layout.setHorizontalGroup(
-                vie5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE));
-        vie5Layout.setVerticalGroup(
-                vie5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE));
+        javax.swing.GroupLayout viePanel5Layout = new javax.swing.GroupLayout(viePanel5);
+        viePanel5.setLayout(viePanel5Layout);
+        viePanel5Layout.setHorizontalGroup(
+            viePanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        viePanel5Layout.setVerticalGroup(
+            viePanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
-        add(vie5);
+        add(viePanel5);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private vue.ui.presentation.components.ViePanel vie1;
-    private vue.ui.presentation.components.ViePanel vie2;
-    private vue.ui.presentation.components.ViePanel vie3;
-    private vue.ui.presentation.components.ViePanel vie4;
-    private vue.ui.presentation.components.ViePanel vie5;
+    private vue.ui.presentation.components.ViePanel viePanel1;
+    private vue.ui.presentation.components.ViePanel viePanel2;
+    private vue.ui.presentation.components.ViePanel viePanel3;
+    private vue.ui.presentation.components.ViePanel viePanel4;
+    private vue.ui.presentation.components.ViePanel viePanel5;
     // End of variables declaration//GEN-END:variables
 }

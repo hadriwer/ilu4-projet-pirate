@@ -56,37 +56,37 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
         this.description=description;
         initComponents();
         String htmlNom = "<html><body style='width:58px;text-align:center'>" + nom + "</body></html>";
-        NomCarteLabel.setText(htmlNom);
+        jLabelNom.setText(htmlNom);
         this.dialog.updateNbCartes();
     }
     
     public void setPointPopularite(int pointPopularite) {
         this.pointPopularite = pointPopularite;
-        Effet1Label.setText("Popularité : + " + pointPopularite);
+        jLabelEffet1.setText("Popularité : + " + pointPopularite);
         repaint();
     }
 
     public void setSelfDegat(int selfDegat) {
         this.selfDegat = selfDegat;
-        Effet2Label.setText("Blessure : -" + selfDegat+" vie");
+        jLabelEffet2.setText("Blessure : -" + selfDegat+" vie");
         repaint();
     }
 
     public void setActionVie(int actionVie) {
         this.actionVie = actionVie;
-        Effet1Label.setText("Dégats : " + actionVie+" vie(s)");
+        jLabelEffet1.setText("Dégats : " + actionVie+" vie(s)");
         repaint();
     }
     
     public void setGainVie(int gainVie) {
         this.actionVie = gainVie;
-        Effet1Label.setText("Santé : +" + gainVie+" vie(s)");
+        jLabelEffet1.setText("Santé : +" + gainVie+" vie(s)");
         repaint();
     }
     
     public void setProtection(String protection) {
         this.protection = protection;
-        Effet1Label.setText("<html><body style='width:58px;text-align:center'>Protège de la carte\n" + protection + "</body></html>");
+        jLabelEffet1.setText("<html><body style='width:58px;text-align:center'>Protège de la carte\n" + protection + "</body></html>");
         repaint();
     }
     
@@ -141,9 +141,9 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        NomCarteLabel = new javax.swing.JLabel();
-        Effet1Label = new javax.swing.JLabel();
-        Effet2Label = new javax.swing.JLabel();
+        jLabelNom = new javax.swing.JLabel();
+        jLabelEffet1 = new javax.swing.JLabel();
+        jLabelEffet2 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(80, 120));
         setPreferredSize(new java.awt.Dimension(100, 120));
@@ -162,16 +162,16 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
             }
         });
 
-        NomCarteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        NomCarteLabel.setText("Nom Carte");
-        NomCarteLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(NomCarteLabel);
+        jLabelNom.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNom.setText("Nom Carte");
+        jLabelNom.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        add(jLabelNom);
 
-        Effet1Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(Effet1Label);
+        jLabelEffet1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add(jLabelEffet1);
 
-        Effet2Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(Effet2Label);
+        jLabelEffet2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add(jLabelEffet2);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
@@ -300,9 +300,9 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Effet1Label;
-    private javax.swing.JLabel Effet2Label;
-    private javax.swing.JLabel NomCarteLabel;
+    private javax.swing.JLabel jLabelEffet1;
+    private javax.swing.JLabel jLabelEffet2;
+    private javax.swing.JLabel jLabelNom;
     // End of variables declaration//GEN-END:variables
 
     @Override

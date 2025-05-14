@@ -38,9 +38,9 @@ public class ProfilJoueurPanel extends javax.swing.JPanel {
     public void setImage(EnumJoueur joueur){
         BufferedImage image=ChargeurImage.chargerImage("presentation/"+joueur.toString().toLowerCase()+"_joueur.png");
         Image imageEchelle;
-        imageEchelle = image.getScaledInstance(iconLabel.getWidth(), iconLabel.getHeight(), Image.SCALE_SMOOTH);
+        imageEchelle = image.getScaledInstance(jLabelIcon.getWidth(), jLabelIcon.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon typeIcon=new ImageIcon(imageEchelle);
-        iconLabel.setIcon(typeIcon);
+        jLabelIcon.setIcon(typeIcon);
     }
     
     
@@ -53,26 +53,26 @@ public class ProfilJoueurPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        iconLabel = new javax.swing.JLabel();
+        jLabelIcon = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(130, 130));
 
-        iconLabel.setPreferredSize(new java.awt.Dimension(280, 280));
+        jLabelIcon.setPreferredSize(new java.awt.Dimension(280, 280));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(iconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+            .addComponent(jLabelIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(iconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+            .addComponent(jLabelIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel iconLabel;
+    private javax.swing.JLabel jLabelIcon;
     // End of variables declaration//GEN-END:variables
 }

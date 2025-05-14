@@ -30,7 +30,7 @@
     <Property name="rows" type="int" value="1"/>
   </Layout>
   <SubComponents>
-    <Container class="UI.presentation.components.ViePanel" name="vie1">
+    <Container class="vue.ui.presentation.components.ViePanel" name="viePanel1">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -45,7 +45,7 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Container class="UI.presentation.components.ViePanel" name="vie2">
+    <Container class="vue.ui.presentation.components.ViePanel" name="viePanel2">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -60,7 +60,7 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Container class="UI.presentation.components.ViePanel" name="vie3">
+    <Container class="vue.ui.presentation.components.ViePanel" name="viePanel3">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -75,7 +75,7 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Container class="UI.presentation.components.ViePanel" name="vie4">
+    <Container class="vue.ui.presentation.components.ViePanel" name="viePanel4">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -90,7 +90,7 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Container class="UI.presentation.components.ViePanel" name="vie5">
+    <Container class="vue.ui.presentation.components.ViePanel" name="viePanel5">
 
       <Layout>
         <DimensionLayout dim="0">

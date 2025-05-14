@@ -25,7 +25,7 @@ public class DescriptionPanel extends javax.swing.JPanel {
     public DescriptionPanel() {
         this.opacite = 0.5f;
         initComponents();
-        jScrollPane.getViewport().setOpaque(false);
+        jScrollPaneDescription.getViewport().setOpaque(false);
     }
     
     @Override
@@ -41,11 +41,11 @@ public class DescriptionPanel extends javax.swing.JPanel {
     }
     
     public void setDescription(String description){
-        descriptionLabel.setText(description);
+        jLabelDescription.setText(description);
     }
     
     public void setTitre(String titre){
-        titreLabel.setText(titre);
+        jLabelTitre.setText(titre);
     }
 
     /**
@@ -57,24 +57,24 @@ public class DescriptionPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        titreLabel = new javax.swing.JLabel();
-        jScrollPane = new javax.swing.JScrollPane();
-        descriptionLabel = new javax.swing.JLabel();
+        jLabelTitre = new javax.swing.JLabel();
+        jScrollPaneDescription = new javax.swing.JScrollPane();
+        jLabelDescription = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(100, 200));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(219, 113));
 
-        titreLabel.setForeground(new java.awt.Color(255, 255, 255));
-        titreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titreLabel.setText("Description");
+        jLabelTitre.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTitre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTitre.setText("Description");
 
-        jScrollPane.setBorder(null);
-        jScrollPane.setOpaque(false);
+        jScrollPaneDescription.setBorder(null);
+        jScrollPaneDescription.setOpaque(false);
 
-        descriptionLabel.setForeground(new java.awt.Color(255, 255, 255));
-        descriptionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jScrollPane.setViewportView(descriptionLabel);
+        jLabelDescription.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelDescription.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jScrollPaneDescription.setViewportView(jLabelDescription);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -82,24 +82,24 @@ public class DescriptionPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(titreLabel)
+                .addComponent(jLabelTitre)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPaneDescription, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(titreLabel)
+                .addComponent(jLabelTitre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane))
+                .addComponent(jScrollPaneDescription))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel descriptionLabel;
-    private javax.swing.JScrollPane jScrollPane;
-    private javax.swing.JLabel titreLabel;
+    private javax.swing.JLabel jLabelDescription;
+    private javax.swing.JLabel jLabelTitre;
+    private javax.swing.JScrollPane jScrollPaneDescription;
     // End of variables declaration//GEN-END:variables
 }

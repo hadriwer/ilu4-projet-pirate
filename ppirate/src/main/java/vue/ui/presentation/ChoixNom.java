@@ -31,7 +31,7 @@ public class ChoixNom extends javax.swing.JFrame {
         this.dialog = dialog;
         initComponents();
         // bloquer les pseudos à 10 caractères
-        this.pirate1Field.setDocument(new PlainDocument(){
+        this.CustomJTextFieldPirate1Field.setDocument(new PlainDocument(){
             @Override
             public void insertString(int offs, String str, AttributeSet a) throws BadLocationException{
                 if (str != null){
@@ -41,7 +41,7 @@ public class ChoixNom extends javax.swing.JFrame {
                 }
             }
         });
-        this.pirate2Field.setDocument(new PlainDocument(){
+        this.CustomJTextFieldPirate2Field.setDocument(new PlainDocument(){
             @Override
             public void insertString(int offs, String str, AttributeSet a) throws BadLocationException{
                 if (str != null){
@@ -52,14 +52,14 @@ public class ChoixNom extends javax.swing.JFrame {
             }
         });
         
-        backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
+        jLabelBackground.setBounds(0, 0, getWidth(), getHeight());
         setImage();
         setResizable(false);
         
-        pirate2Field.setPlaceholder("Jack Sparrow");
-        pirate1Field.setPlaceholder("Barbe noire");
-        pirate2Field.setBorder(new EmptyBorder(10, 10, 10, 10));
-        pirate1Field.setBorder(new EmptyBorder(10, 10, 10, 10));
+        CustomJTextFieldPirate2Field.setPlaceholder("Jack Sparrow");
+        CustomJTextFieldPirate1Field.setPlaceholder("Barbe noire");
+        CustomJTextFieldPirate2Field.setBorder(new EmptyBorder(10, 10, 10, 10));
+        CustomJTextFieldPirate1Field.setBorder(new EmptyBorder(10, 10, 10, 10));
         
         BufferedImage icon = ChargeurImage.chargerImage("presentation/icon_ppirate.png");
         Image iconResize = icon.getScaledInstance(64, 64, Image.SCALE_SMOOTH);
@@ -72,33 +72,33 @@ public class ChoixNom extends javax.swing.JFrame {
 
         Image imageEchelle = image.getScaledInstance(taille, taille, Image.SCALE_SMOOTH);
         ImageIcon typeIcon = new ImageIcon(imageEchelle);
-        logoLabel.setIcon(typeIcon);
-        logoLabel.setPreferredSize(new Dimension(taille, taille));
-        logoLabel.setMinimumSize(new Dimension(taille, taille));
-        logoLabel.setMaximumSize(new Dimension(taille, taille));
+        jLabelLogo.setIcon(typeIcon);
+        jLabelLogo.setPreferredSize(new Dimension(taille, taille));
+        jLabelLogo.setMinimumSize(new Dimension(taille, taille));
+        jLabelLogo.setMaximumSize(new Dimension(taille, taille));
 
-        startButton.setText("LANCER LE JEU");
-        startButton.setBorder(new EmptyBorder(10, 10, 10, 10));
+        CustomJButtonStart.setText("LANCER LE JEU");
+        CustomJButtonStart.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         
         BufferedImage image2 = ChargeurImage.chargerImage("presentation/enter_game.png");
         Image imageEchelle2;
         imageEchelle2 = image2.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         ImageIcon typeIcon2 = new ImageIcon(imageEchelle2);
-        startButton.setIcon(typeIcon2);
+        CustomJButtonStart.setIcon(typeIcon2);
     }
 
     public void setImage() {
         BufferedImage image = ChargeurImage.chargerImage("presentation/plateau_background.png");
         Image imageEchelle;
-        imageEchelle = image.getScaledInstance(backgroundLabel.getWidth(), backgroundLabel.getHeight(),
+        imageEchelle = image.getScaledInstance(jLabelBackground.getWidth(), jLabelBackground.getHeight(),
                 Image.SCALE_SMOOTH);
         ImageIcon typeIcon = new ImageIcon(imageEchelle);
-        backgroundLabel.setIcon(typeIcon);
+        jLabelBackground.setIcon(typeIcon);
     }
     
     public javax.swing.JLabel getErreurLabel() {
-        return this.labelErreur;
+        return this.jLabelErreur;
     }
 
     /**
@@ -111,154 +111,154 @@ public class ChoixNom extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        mainPanel = new javax.swing.JPanel();
-        panelGaucheLogo = new javax.swing.JPanel();
-        logoLabel = new javax.swing.JLabel();
-        panelDroiteField = new javax.swing.JPanel();
-        pirate1et2Panel = new javax.swing.JPanel();
-        pirate1Panel = new javax.swing.JPanel();
-        pirate1nom = new javax.swing.JLabel();
-        pirate1Field = new vue.ui.presentation.components.CustomJTextField();
-        pirate2Panel = new javax.swing.JPanel();
-        pirate2nomLabel = new javax.swing.JLabel();
-        pirate2Field = new vue.ui.presentation.components.CustomJTextField();
-        startPanel = new javax.swing.JPanel();
-        labelErreur = new javax.swing.JLabel();
-        startButton = new vue.ui.presentation.components.CustomJButton();
+        jPanelMain = new javax.swing.JPanel();
+        jPanelGaucheLogo = new javax.swing.JPanel();
+        jLabelLogo = new javax.swing.JLabel();
+        jPanelDroiteField = new javax.swing.JPanel();
+        jPanelZoneNom = new javax.swing.JPanel();
+        jPanelZonePirate1 = new javax.swing.JPanel();
+        jLabelPirate1Nom = new javax.swing.JLabel();
+        CustomJTextFieldPirate1Field = new vue.ui.presentation.components.CustomJTextField();
+        jPanelZonePirate2 = new javax.swing.JPanel();
+        jLabelPirate2Nom = new javax.swing.JLabel();
+        CustomJTextFieldPirate2Field = new vue.ui.presentation.components.CustomJTextField();
+        jPanelStart = new javax.swing.JPanel();
+        jLabelErreur = new javax.swing.JLabel();
+        CustomJButtonStart = new vue.ui.presentation.components.CustomJButton();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
-        backgroundPanel = new javax.swing.JPanel();
-        backgroundLabel = new javax.swing.JLabel();
+        jPanelBackground = new javax.swing.JPanel();
+        jLabelBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(480, 320));
         setMinimumSize(new java.awt.Dimension(480, 320));
         getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
 
-        mainPanel.setMaximumSize(new java.awt.Dimension(480, 320));
-        mainPanel.setMinimumSize(new java.awt.Dimension(480, 320));
-        mainPanel.setOpaque(false);
-        mainPanel.setPreferredSize(new java.awt.Dimension(480, 320));
-        mainPanel.setLayout(new java.awt.GridLayout(1, 0));
+        jPanelMain.setMaximumSize(new java.awt.Dimension(480, 320));
+        jPanelMain.setMinimumSize(new java.awt.Dimension(480, 320));
+        jPanelMain.setOpaque(false);
+        jPanelMain.setPreferredSize(new java.awt.Dimension(480, 320));
+        jPanelMain.setLayout(new java.awt.GridLayout(1, 0));
 
-        panelGaucheLogo.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        panelGaucheLogo.setOpaque(false);
-        panelGaucheLogo.setLayout(new java.awt.BorderLayout());
+        jPanelGaucheLogo.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        jPanelGaucheLogo.setOpaque(false);
+        jPanelGaucheLogo.setLayout(new java.awt.BorderLayout());
 
-        logoLabel.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        logoLabel.setForeground(new java.awt.Color(255, 255, 255));
-        logoLabel.setMaximumSize(new java.awt.Dimension(1000, 1000));
-        logoLabel.setMinimumSize(new java.awt.Dimension(1000, 1000));
-        logoLabel.setName(""); // NOI18N
-        logoLabel.setPreferredSize(new java.awt.Dimension(1000, 1000));
-        panelGaucheLogo.add(logoLabel, java.awt.BorderLayout.CENTER);
+        jLabelLogo.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabelLogo.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelLogo.setMaximumSize(new java.awt.Dimension(1000, 1000));
+        jLabelLogo.setMinimumSize(new java.awt.Dimension(1000, 1000));
+        jLabelLogo.setName(""); // NOI18N
+        jLabelLogo.setPreferredSize(new java.awt.Dimension(1000, 1000));
+        jPanelGaucheLogo.add(jLabelLogo, java.awt.BorderLayout.CENTER);
 
-        mainPanel.add(panelGaucheLogo);
+        jPanelMain.add(jPanelGaucheLogo);
 
-        panelDroiteField.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 10, 20, 10));
-        panelDroiteField.setOpaque(false);
-        panelDroiteField.setLayout(new java.awt.GridLayout(2, 0));
+        jPanelDroiteField.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 10, 20, 10));
+        jPanelDroiteField.setOpaque(false);
+        jPanelDroiteField.setLayout(new java.awt.GridLayout(2, 0));
 
-        pirate1et2Panel.setOpaque(false);
-        pirate1et2Panel.setLayout(new java.awt.GridLayout(2, 0));
+        jPanelZoneNom.setOpaque(false);
+        jPanelZoneNom.setLayout(new java.awt.GridLayout(2, 0));
 
-        pirate1Panel.setOpaque(false);
-        pirate1Panel.setLayout(new java.awt.BorderLayout());
+        jPanelZonePirate1.setOpaque(false);
+        jPanelZonePirate1.setLayout(new java.awt.BorderLayout());
 
-        pirate1nom.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        pirate1nom.setForeground(new java.awt.Color(204, 204, 204));
-        pirate1nom.setText("Pirate n°1:");
-        pirate1Panel.add(pirate1nom, java.awt.BorderLayout.CENTER);
-        pirate1Panel.add(pirate1Field, java.awt.BorderLayout.SOUTH);
+        jLabelPirate1Nom.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabelPirate1Nom.setForeground(new java.awt.Color(204, 204, 204));
+        jLabelPirate1Nom.setText("Pirate n°1:");
+        jPanelZonePirate1.add(jLabelPirate1Nom, java.awt.BorderLayout.CENTER);
+        jPanelZonePirate1.add(CustomJTextFieldPirate1Field, java.awt.BorderLayout.SOUTH);
 
-        pirate1et2Panel.add(pirate1Panel);
+        jPanelZoneNom.add(jPanelZonePirate1);
 
-        pirate2Panel.setOpaque(false);
-        pirate2Panel.setLayout(new java.awt.BorderLayout());
+        jPanelZonePirate2.setOpaque(false);
+        jPanelZonePirate2.setLayout(new java.awt.BorderLayout());
 
-        pirate2nomLabel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        pirate2nomLabel.setForeground(new java.awt.Color(204, 204, 204));
-        pirate2nomLabel.setText("Pirate n°2:");
-        pirate2Panel.add(pirate2nomLabel, java.awt.BorderLayout.CENTER);
-        pirate2Panel.add(pirate2Field, java.awt.BorderLayout.SOUTH);
+        jLabelPirate2Nom.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabelPirate2Nom.setForeground(new java.awt.Color(204, 204, 204));
+        jLabelPirate2Nom.setText("Pirate n°2:");
+        jPanelZonePirate2.add(jLabelPirate2Nom, java.awt.BorderLayout.CENTER);
+        jPanelZonePirate2.add(CustomJTextFieldPirate2Field, java.awt.BorderLayout.SOUTH);
 
-        pirate1et2Panel.add(pirate2Panel);
+        jPanelZoneNom.add(jPanelZonePirate2);
 
-        panelDroiteField.add(pirate1et2Panel);
+        jPanelDroiteField.add(jPanelZoneNom);
 
-        startPanel.setOpaque(false);
-        startPanel.setLayout(new java.awt.GridLayout(3, 0));
+        jPanelStart.setOpaque(false);
+        jPanelStart.setLayout(new java.awt.GridLayout(3, 0));
 
-        labelErreur.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        labelErreur.setForeground(new java.awt.Color(255, 51, 51));
-        startPanel.add(labelErreur);
+        jLabelErreur.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabelErreur.setForeground(new java.awt.Color(255, 51, 51));
+        jPanelStart.add(jLabelErreur);
 
-        startButton.addActionListener(new java.awt.event.ActionListener() {
+        CustomJButtonStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startButtonActionPerformed(evt);
+                CustomJButtonStartActionPerformed(evt);
             }
         });
-        startPanel.add(startButton);
-        startPanel.add(filler2);
+        jPanelStart.add(CustomJButtonStart);
+        jPanelStart.add(filler2);
 
-        panelDroiteField.add(startPanel);
+        jPanelDroiteField.add(jPanelStart);
 
-        mainPanel.add(panelDroiteField);
+        jPanelMain.add(jPanelDroiteField);
 
-        getContentPane().add(mainPanel);
+        getContentPane().add(jPanelMain);
 
-        backgroundPanel.setMaximumSize(new java.awt.Dimension(480, 320));
-        backgroundPanel.setMinimumSize(new java.awt.Dimension(480, 320));
-        backgroundPanel.setPreferredSize(new java.awt.Dimension(480, 320));
+        jPanelBackground.setMaximumSize(new java.awt.Dimension(480, 320));
+        jPanelBackground.setMinimumSize(new java.awt.Dimension(480, 320));
+        jPanelBackground.setPreferredSize(new java.awt.Dimension(480, 320));
 
-        backgroundLabel.setMaximumSize(new java.awt.Dimension(480, 320));
-        backgroundLabel.setMinimumSize(new java.awt.Dimension(480, 320));
-        backgroundLabel.setOpaque(true);
-        backgroundLabel.setPreferredSize(new java.awt.Dimension(480, 320));
+        jLabelBackground.setMaximumSize(new java.awt.Dimension(480, 320));
+        jLabelBackground.setMinimumSize(new java.awt.Dimension(480, 320));
+        jLabelBackground.setOpaque(true);
+        jLabelBackground.setPreferredSize(new java.awt.Dimension(480, 320));
 
-        javax.swing.GroupLayout backgroundPanelLayout = new javax.swing.GroupLayout(backgroundPanel);
-        backgroundPanel.setLayout(backgroundPanelLayout);
-        backgroundPanelLayout.setHorizontalGroup(
-            backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(backgroundPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelBackgroundLayout = new javax.swing.GroupLayout(jPanelBackground);
+        jPanelBackground.setLayout(jPanelBackgroundLayout);
+        jPanelBackgroundLayout.setHorizontalGroup(
+            jPanelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBackgroundLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(backgroundLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        backgroundPanelLayout.setVerticalGroup(
-            backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(backgroundPanelLayout.createSequentialGroup()
+        jPanelBackgroundLayout.setVerticalGroup(
+            jPanelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBackgroundLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(backgroundLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        getContentPane().add(backgroundPanel);
+        getContentPane().add(jPanelBackground);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-        dialog.submitNomsJoueurs(pirate1Field.getText(), pirate2Field.getText());
-    }//GEN-LAST:event_startButtonActionPerformed
+    private void CustomJButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomJButtonStartActionPerformed
+        dialog.submitNomsJoueurs(CustomJTextFieldPirate1Field.getText(), CustomJTextFieldPirate2Field.getText());
+    }//GEN-LAST:event_CustomJButtonStartActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel backgroundLabel;
-    private javax.swing.JPanel backgroundPanel;
+    private vue.ui.presentation.components.CustomJButton CustomJButtonStart;
+    private vue.ui.presentation.components.CustomJTextField CustomJTextFieldPirate1Field;
+    private vue.ui.presentation.components.CustomJTextField CustomJTextFieldPirate2Field;
     private javax.swing.Box.Filler filler2;
-    private javax.swing.JLabel labelErreur;
-    private javax.swing.JLabel logoLabel;
-    private javax.swing.JPanel mainPanel;
-    private javax.swing.JPanel panelDroiteField;
-    private javax.swing.JPanel panelGaucheLogo;
-    private vue.ui.presentation.components.CustomJTextField pirate1Field;
-    private javax.swing.JPanel pirate1Panel;
-    private javax.swing.JPanel pirate1et2Panel;
-    private javax.swing.JLabel pirate1nom;
-    private vue.ui.presentation.components.CustomJTextField pirate2Field;
-    private javax.swing.JPanel pirate2Panel;
-    private javax.swing.JLabel pirate2nomLabel;
-    private vue.ui.presentation.components.CustomJButton startButton;
-    private javax.swing.JPanel startPanel;
+    private javax.swing.JLabel jLabelBackground;
+    private javax.swing.JLabel jLabelErreur;
+    private javax.swing.JLabel jLabelLogo;
+    private javax.swing.JLabel jLabelPirate1Nom;
+    private javax.swing.JLabel jLabelPirate2Nom;
+    private javax.swing.JPanel jPanelBackground;
+    private javax.swing.JPanel jPanelDroiteField;
+    private javax.swing.JPanel jPanelGaucheLogo;
+    private javax.swing.JPanel jPanelMain;
+    private javax.swing.JPanel jPanelStart;
+    private javax.swing.JPanel jPanelZoneNom;
+    private javax.swing.JPanel jPanelZonePirate1;
+    private javax.swing.JPanel jPanelZonePirate2;
     // End of variables declaration//GEN-END:variables
 }

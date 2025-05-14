@@ -30,19 +30,19 @@
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="NomCarteLabel">
+    <Component class="javax.swing.JLabel" name="jLabelNom">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Nom Carte"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="Effet1Label">
+    <Component class="javax.swing.JLabel" name="jLabelEffet1">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="Effet2Label">
+    <Component class="javax.swing.JLabel" name="jLabelEffet2">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>

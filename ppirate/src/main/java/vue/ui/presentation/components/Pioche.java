@@ -25,19 +25,19 @@ public class Pioche extends javax.swing.JPanel {
     public Pioche() {
         initComponents();
         setLayout(null);
-        nbCartesTxt.setBounds(20, 5, getWidth(), 30);
-        nbCartesTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNbCarte.setBounds(20, 5, getWidth(), 30);
+        jLabelNbCarte.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         
         addComponentListener(new java.awt.event.ComponentAdapter() {
             @Override
             public void componentResized(java.awt.event.ComponentEvent e) {
-                nbCartesTxt.setBounds(0, 35, getWidth(), 30);
+                jLabelNbCarte.setBounds(0, 35, getWidth(), 30);
             }
         });
         }
     
     public void setNbCartes(int nb){
-        nbCartesTxt.setText(String.valueOf(nb));
+        jLabelNbCarte.setText(String.valueOf(nb));
     }
 
     /**
@@ -49,29 +49,28 @@ public class Pioche extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        nbCartesTxt = new javax.swing.JLabel();
+        jLabelNbCarte = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(300, 300));
         setMinimumSize(new java.awt.Dimension(300, 300));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(300, 300));
 
-        nbCartesTxt.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        nbCartesTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nbCartesTxt.setText("jLabel1");
+        jLabelNbCarte.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabelNbCarte.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(nbCartesTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(jLabelNbCarte, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(139, 139, 139)
-                .addComponent(nbCartesTxt)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addComponent(jLabelNbCarte)
+                .addContainerGap(161, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -104,6 +103,6 @@ public class Pioche extends javax.swing.JPanel {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel nbCartesTxt;
+    private javax.swing.JLabel jLabelNbCarte;
     // End of variables declaration//GEN-END:variables
 }

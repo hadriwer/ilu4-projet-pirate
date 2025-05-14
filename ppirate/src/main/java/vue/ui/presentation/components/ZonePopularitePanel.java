@@ -36,7 +36,7 @@ public class ZonePopularitePanel extends javax.swing.JPanel {
         g2d.setColor(Color.BLACK);
         g2d.fill(new RoundRectangle2D.Float(0,0,getWidth(),getHeight(),BORDURE,BORDURE));
         
-        g2d.dispose();
+        //g2d.dispose();
     }
 
     /**
