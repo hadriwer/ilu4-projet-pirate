@@ -40,6 +40,10 @@ public class MainDialog {
         vuePlateau.getTimerPanel().restartTimer();
     }
     
+    public boolean handleJoueur1Gagne() {
+        return adaptateurNoyau.joueur1gagne();
+    }
+    
     public boolean handleVerifierFinDePartie() {
         return adaptateurNoyau.verifierFinPartie();
     }
@@ -66,7 +70,8 @@ public class MainDialog {
     }
     
     public void handleTerminerJeu() {
-        JDialog fenetreFin = new FinPartie(vuePlateau, true);
+        JDialog fenetreFin = new FinPartie(vuePlateau, true, this);
+        vuePlateau.setVisible(false);
         fenetreFin.setVisible(true);
     }
     
@@ -165,24 +170,24 @@ public class MainDialog {
     }
     
     public void updateJaugeVie() {
-        int vie_j1 = adaptateurNoyau.getPointDeVieJ1();
-        int vie_j2 = adaptateurNoyau.getPointDeVieJ2();
+        int vieJ1 = adaptateurNoyau.getPointDeVieJ1();
+        int vieJ2 = adaptateurNoyau.getPointDeVieJ2();
 
         for (int i = 0; i < 5; i++) {
-            ViePanel viesJ1 = (ViePanel) vuePlateau.getJaugeVieJ1().getComponent(i);
-            ViePanel viesJ2 = (ViePanel) vuePlateau.getJaugeVieJ2().getComponent(i);
+            ViePanel panelViesJ1 = (ViePanel) vuePlateau.getJaugeVieJ1().getComponent(i);
+            ViePanel panelViesJ2 = (ViePanel) vuePlateau.getJaugeVieJ2().getComponent(i);
 
-            viesJ1.setPleine(i < vie_j1);
-            viesJ2.setPleine(i < vie_j2);
+            panelViesJ1.setPleine(i < vieJ1);
+            panelViesJ2.setPleine(i < vieJ2);
         }
     }
     
     public void updatePopularite() {
-        int pop_j1 = adaptateurNoyau.getIndicePopulariteJ1();
-        int pop_j2 = adaptateurNoyau.getIndicePopulariteJ2();
+        int popJ1 = adaptateurNoyau.getIndicePopulariteJ1();
+        int popJ2 = adaptateurNoyau.getIndicePopulariteJ2();
 
-        vuePlateau.getJaugePopJ1().setNiveau(pop_j1);
-        vuePlateau.getJaugePopJ2().setNiveau(pop_j2);
+        vuePlateau.getJaugePopJ1().setNiveau(popJ1);
+        vuePlateau.getJaugePopJ2().setNiveau(popJ2);
     }
 
     public void updateZoneAction() {
@@ -229,12 +234,7 @@ public class MainDialog {
     }
     
     public void lancerApp() {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                initAccueil();
-            }
-        });
+        java.awt.EventQueue.invokeLater(this::initAccueil);
     }
     
     public void updateNbCartes(){
