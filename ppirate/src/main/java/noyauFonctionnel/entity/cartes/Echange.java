@@ -17,8 +17,8 @@ public class Echange extends Carte {
         super(id, nom, description);
         
         setEffet((self, cible) -> {
-            Carte c1 = self.carteHasard(); 
-            Carte c2 = cible.carteHasard(); 
+            Carte c1 = self.carteHasard(3); 
+            Carte c2 = cible.carteHasard(4); 
             self.getMainJoueur().prendreCarte(c2);
             cible.getMainJoueur().prendreCarte(c1);
         });
