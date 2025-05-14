@@ -137,8 +137,7 @@ public class Plateau extends javax.swing.JFrame {
         ZonePopularitePanelJoueur1 = new vue.ui.presentation.components.ZonePopularitePanel();
         jPanelZoneAction = new javax.swing.JPanel();
         fillerZoneAction1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 150), new java.awt.Dimension(32767, 50));
-        jPanelZoneAction1 = new javax.swing.JPanel();
-        jLabelAction = new javax.swing.JLabel();
+        jPanelZoneAction1 = new vue.ui.presentation.components.ZonePopularitePanel();
         fillerZoneAction2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
         jPanelPioche = new javax.swing.JPanel();
         fillerPioche1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 150), new java.awt.Dimension(32767, 50));
@@ -172,13 +171,14 @@ public class Plateau extends javax.swing.JFrame {
         jLabelBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1080, 720));
+        setMinimumSize(new java.awt.Dimension(1080, 750));
+        setPreferredSize(new java.awt.Dimension(1080, 750));
         getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
 
-        jPanelZoneJeu.setMaximumSize(new java.awt.Dimension(1080, 720));
-        jPanelZoneJeu.setMinimumSize(new java.awt.Dimension(1080, 720));
+        jPanelZoneJeu.setMaximumSize(new java.awt.Dimension(1080, 750));
+        jPanelZoneJeu.setMinimumSize(new java.awt.Dimension(1080, 750));
         jPanelZoneJeu.setOpaque(false);
-        jPanelZoneJeu.setPreferredSize(new java.awt.Dimension(1080, 720));
+        jPanelZoneJeu.setPreferredSize(new java.awt.Dimension(1080, 750));
         jPanelZoneJeu.setLayout(new java.awt.BorderLayout());
 
         jPanelCommun.setOpaque(false);
@@ -186,7 +186,7 @@ public class Plateau extends javax.swing.JFrame {
 
         jPanelZonesPopularite.setBorder(javax.swing.BorderFactory.createEmptyBorder(50, 50, 50, 50));
         jPanelZonesPopularite.setOpaque(false);
-        jPanelZonesPopularite.setLayout(new java.awt.GridLayout(2, 0));
+        jPanelZonesPopularite.setLayout(new java.awt.GridLayout(2, 0, 0, 4));
         jPanelZonesPopularite.add(ZonePopularitePanelJoueur2);
         jPanelZonesPopularite.add(ZonePopularitePanelJoueur1);
 
@@ -197,13 +197,8 @@ public class Plateau extends javax.swing.JFrame {
         jPanelZoneAction.setLayout(new java.awt.GridLayout(3, 0));
         jPanelZoneAction.add(fillerZoneAction1);
 
-        jPanelZoneAction1.setBackground(new java.awt.Color(102, 102, 102));
-        jPanelZoneAction1.setPreferredSize(new java.awt.Dimension(100, 26));
-        jPanelZoneAction1.setLayout(new javax.swing.BoxLayout(jPanelZoneAction1, javax.swing.BoxLayout.LINE_AXIS));
-
-        jLabelAction.setText("ACTION");
-        jPanelZoneAction1.add(jLabelAction);
-
+        jPanelZoneAction1.setMinimumSize(new java.awt.Dimension(10, 155));
+        jPanelZoneAction1.setPreferredSize(new java.awt.Dimension(100, 155));
         jPanelZoneAction.add(jPanelZoneAction1);
         jPanelZoneAction.add(fillerZoneAction2);
 
@@ -326,14 +321,14 @@ public class Plateau extends javax.swing.JFrame {
 
         getContentPane().add(jPanelZoneJeu);
 
-        jPanelBackground.setMaximumSize(new java.awt.Dimension(1080, 720));
-        jPanelBackground.setMinimumSize(new java.awt.Dimension(1080, 720));
-        jPanelBackground.setPreferredSize(new java.awt.Dimension(1080, 720));
+        jPanelBackground.setMaximumSize(new java.awt.Dimension(1080, 750));
+        jPanelBackground.setMinimumSize(new java.awt.Dimension(1080, 750));
+        jPanelBackground.setPreferredSize(new java.awt.Dimension(1080, 750));
 
-        jLabelBackground.setMaximumSize(new java.awt.Dimension(1080, 720));
-        jLabelBackground.setMinimumSize(new java.awt.Dimension(1080, 720));
+        jLabelBackground.setMaximumSize(new java.awt.Dimension(1080, 750));
+        jLabelBackground.setMinimumSize(new java.awt.Dimension(1080, 750));
         jLabelBackground.setOpaque(true);
-        jLabelBackground.setPreferredSize(new java.awt.Dimension(1080, 720));
+        jLabelBackground.setPreferredSize(new java.awt.Dimension(1080, 750));
 
         javax.swing.GroupLayout jPanelBackgroundLayout = new javax.swing.GroupLayout(jPanelBackground);
         jPanelBackground.setLayout(jPanelBackgroundLayout);
@@ -380,7 +375,6 @@ public class Plateau extends javax.swing.JFrame {
     private javax.swing.Box.Filler fillerPioche2;
     private javax.swing.Box.Filler fillerZoneAction1;
     private javax.swing.Box.Filler fillerZoneAction2;
-    private javax.swing.JLabel jLabelAction;
     private javax.swing.JLabel jLabelBackground;
     private javax.swing.JLabel jLabelNomJoueur1;
     private javax.swing.JLabel jLabelNomJoueur2;
@@ -396,7 +390,7 @@ public class Plateau extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelNomJoueur2;
     private javax.swing.JPanel jPanelPioche;
     private javax.swing.JPanel jPanelZoneAction;
-    private javax.swing.JPanel jPanelZoneAction1;
+    private vue.ui.presentation.components.ZonePopularitePanel jPanelZoneAction1;
     private javax.swing.JPanel jPanelZoneJeu;
     private javax.swing.JPanel jPanelZonesPopularite;
     // End of variables declaration//GEN-END:variables
