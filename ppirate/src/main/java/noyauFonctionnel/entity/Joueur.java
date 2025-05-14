@@ -114,9 +114,9 @@ public class Joueur {
         return !carteProtegeJoueur.stream().anyMatch(carte -> carte.equals(attaque));
     }
     
-    public Carte carteHasard(){
+    public Carte carteHasard(int nbCartes){
         Random randomNum = new Random();
-        int nb = randomNum.nextInt(4);
+        int nb = randomNum.nextInt(nbCartes);
         Carte c = this.mainJoueur.getCartes().get(nb);
         this.mainJoueur.getCartes().remove(nb);
         return c;
