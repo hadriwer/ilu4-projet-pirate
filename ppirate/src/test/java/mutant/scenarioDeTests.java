@@ -181,12 +181,12 @@ class scenarioDeTests {
 	public void changerJoueur() {
 		// Avant changement
 	    boolean tourInitial = jeu.getTourDeJeu();
-	    assertEquals("Jack", jeu.donnerTourDeJoueur().getNom());
+	    assertEquals("Jack", jeu.getTourDeJeu() ? jeu.getJoueur1Nom() : jeu.getJoueur2Nom());
 	    assertEquals(tourInitial, jeu.getTourDeJeu());
 	    
 	    // Après changement 
 	    jeu.changerJoueur();
-	    assertEquals("Paul", jeu.donnerTourDeJoueur().getNom());
+	    assertEquals("Paul", jeu.getTourDeJeu() ? jeu.getJoueur1Nom() : jeu.getJoueur2Nom());
 	    assertNotEquals(tourInitial, jeu.getTourDeJeu());
 	}
 	
@@ -209,11 +209,12 @@ class scenarioDeTests {
 	
 	@Test
 	void ajouterEtRetirerCarteMain() {
+		Joueur jCourant =  jeu.getTourDeJeu() ? jeu.getJoueur1() : jeu.getJoueur2();
 	    jeu.joueurPrendreCarte(carteAttaque);
-	    assertTrue(jeu.donnerTourDeJoueur().getMainJoueur().getCartes().contains(carteAttaque));
+	    assertTrue(jCourant.getMainJoueur().getCartes().contains(carteAttaque));
 
 	    jeu.removeCarteMainJoueur(carteAttaque);
-	    assertFalse(jeu.donnerTourDeJoueur().getMainJoueur().getCartes().contains(carteAttaque));
+	    assertFalse(jCourant.getMainJoueur().getCartes().contains(carteAttaque));
 	}
 
 

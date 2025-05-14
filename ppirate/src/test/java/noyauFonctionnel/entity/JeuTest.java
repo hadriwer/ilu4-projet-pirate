@@ -40,7 +40,7 @@ class JeuTest {
     @Test
     public void testDonnerTourDeJoueur2() {
     	jeu.changerJoueur();
-        assertEquals("Paul", jeu.donnerTourDeJoueur().getNom());
+    	assertEquals("Paul", jeu.getTourDeJeu() ? jeu.getJoueur1Nom() : jeu.getJoueur2Nom());
     }
     
     
@@ -48,7 +48,7 @@ class JeuTest {
     public void testChangerJoueur() {
     	jeu.changerJoueur();
     	jeu.changerJoueur();
-        assertEquals("Jack", jeu.donnerTourDeJoueur().getNom());
+    	assertEquals("Jack", jeu.getTourDeJeu() ? jeu.getJoueur1Nom() : jeu.getJoueur2Nom());
     }
     
     

@@ -116,7 +116,7 @@ public class Joueur {
     
     public Carte carteHasard(){
         Random randomNum = new Random();
-        int nb = randomNum.nextInt(4);
+        int nb = randomNum.nextInt(3);
         Carte c = this.mainJoueur.getCartes().get(nb);
         this.mainJoueur.getCartes().remove(nb);
         return c;
