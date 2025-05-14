@@ -23,7 +23,6 @@ public class Jeu {
     private Joueur joueur2;
     private boolean tourDeJeu;
     private final Pioche pioche;
-    private int compteNombreJeu;
     
     // Zone de jeu
     private List<Carte> zonePopulariteJ1;
@@ -35,14 +34,9 @@ public class Jeu {
         this.joueur1 = new Joueur(pioche.distribuer(NOMBRE_CARTE));
         this.joueur2 = new Joueur(pioche.distribuer(NOMBRE_CARTE));
         this.tourDeJeu = true;
-        this.compteNombreJeu = 1;
         this.zoneAction = new ArrayList<>();
         this.zonePopulariteJ1 = new ArrayList<>();
         this.zonePopulariteJ2 = new ArrayList<>();
-    }
-    
-    public Joueur donnerTourDeJoueur() {
-        return tourDeJeu ? joueur1 : joueur2;
     }
     
     public void changerJoueur() {
