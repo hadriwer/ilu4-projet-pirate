@@ -4,13 +4,18 @@
  */
 package vue.ui.dialog;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import util.EnumCarte;
 import static util.EnumCarte.ATTAQUE;
 import static util.EnumCarte.POPULARITE;
 import vue.ui.presentation.Plateau;
 import vue.ui.presentation.CartePanel;
 import vue.ui.presentation.ChoixNom;
+import vue.ui.presentation.FinPartie;
 import vue.ui.presentation.components.ViePanel;
 
 /**
@@ -58,6 +63,11 @@ public class MainDialog {
     
     public void handleChangerJoueur() {
         adaptateurNoyau.changerJoueur();
+    }
+    
+    public void handleTerminerJeu() {
+        JDialog fenetreFin = new FinPartie(vuePlateau, true);
+        fenetreFin.setVisible(true);
     }
     
     public CartePanel extractCardPanel(int idCarte, boolean enabled){
