@@ -215,4 +215,32 @@ class scenarioDeTests {
 	    jeu.removeCarteMainJoueur(carteAttaque);
 	    assertFalse(jeu.donnerTourDeJoueur().getMainJoueur().getCartes().contains(carteAttaque));
 	}
+
+
+	@Test
+	public void initialisationJoueur() {
+	    assertEquals(5, j1.getIndiceVie());
+	    assertEquals(0, j1.getIndicePopularite());
+	    assertEquals(4, j1.getMainJoueur().getCartes().size());
+    	assertEquals("Jack", jeu.getJoueur1Nom());
+    	assertEquals("Paul", jeu.getJoueur2Nom());
+
+	}
+	
+	
+	@Test
+	public void gainVieSurJ1Simple() {
+		j1.perdreVie(3);
+		carteGainVie.apply(j1, j2);
+		
+		assertEquals(4, j1.getIndiceVie());
+	}
+	
+	@Test
+	public void gainVieSurJ1Depassant5() {
+		j1.perdreVie(1);
+		carteGainVie.apply(j1, j2);
+		
+		assertEquals(5, j1.getIndiceVie());
+	}
 }
