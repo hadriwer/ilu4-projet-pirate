@@ -1,4 +1,5 @@
-package mutant;
+package scenarioDeTest;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
