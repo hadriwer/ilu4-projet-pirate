@@ -19,11 +19,11 @@ public class Joueur {
     private int indicePopularite;
     private int indiceVie;
     private final MainJoueur mainJoueur;
-    public static final int MAXVIE = 5;
-    public static final int MINVIE = 0;
-    public static final int MAXPOP = 5;
-    public static final int MINPOP = 0;
-    public List<Attaque> carteProtegeJoueur;
+    private static final int MAXVIE = 5;
+    private static final int MINVIE = 0;
+    private static final int MAXPOP = 5;
+    private static final int MINPOP = 0;
+    private  List<Attaque> carteProtegeJoueur;
     
     public Joueur(List<Carte> mainJoueur) {
         this.indicePopularite = MINPOP;

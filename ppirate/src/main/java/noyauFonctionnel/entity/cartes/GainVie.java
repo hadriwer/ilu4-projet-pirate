@@ -37,7 +37,7 @@ public class GainVie extends Carte {
     }
 
     @Override
-    public Carte clone() {
+    public GainVie clone() {
         return new GainVie(id, nom, description, gainVie);
     }
     
