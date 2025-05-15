@@ -147,7 +147,7 @@ public class MainConsole {
                 afficherJeu(nomJ1,nomJ2);
                 
                 
-                System.out.println("Tour de joueur " + (adaptateur.getTourDeJeu() ? nomJ1 : nomJ2));
+                System.out.println("Tour de " + (adaptateur.getTourDeJeu() ? nomJ1+" (joueur 1)" : nomJ2+" (joueur 2)"));
                 
                 int indexCarte = -1;
                 do {
@@ -170,7 +170,7 @@ public class MainConsole {
                 System.out.println("Votre carte est posée");
                 int cartePiochee=adaptateur.piocher();
                 adaptateur.joueurPrendreCarte(cartePiochee);
-                System.out.println("Vous piochez la carte "+mainJoueurCurr.get(3).toString());
+                System.out.println("Vous piochez la carte "+carteString(cartePiochee));
                 
                 System.out.println("On change de Joueur.");
                 adaptateur.changerJoueur();
