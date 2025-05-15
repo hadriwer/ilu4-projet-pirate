@@ -105,7 +105,6 @@ public class TimerPanel extends javax.swing.JPanel {
             jLabelTimer.setText("Fin du tour");
             timer.stop();
             dialog.handleChangerJoueur();
-            System.out.println("On change de joueur car le temps est écoulé.");
             dialog.updatePlateau();
             restartTimer();
         }
