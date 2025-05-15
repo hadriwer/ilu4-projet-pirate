@@ -73,11 +73,11 @@
                 <Property name="verticalGap" type="int" value="4"/>
               </Layout>
               <SubComponents>
-                <Container class="vue.ui.presentation.components.ZonePopularitePanel" name="ZonePopularitePanelJoueur2">
+                <Container class="vue.ui.presentation.components.ZonePopularitePanel" name="zonePopularitePanelJoueur2">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
                 </Container>
-                <Container class="vue.ui.presentation.components.ZonePopularitePanel" name="ZonePopularitePanelJoueur1">
+                <Container class="vue.ui.presentation.components.ZonePopularitePanel" name="zonePopularitePanelJoueur1">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
                 </Container>
@@ -184,7 +184,7 @@
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.VerticalStrut"/>
                   </AuxValues>
                 </Component>
-                <Component class="vue.ui.presentation.components.Pioche" name="Pioche">
+                <Component class="vue.ui.presentation.components.Pioche" name="pioche">
                 </Component>
                 <Component class="javax.swing.Box$Filler" name="fillerPioche2">
                   <Properties>
@@ -230,7 +230,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
               <SubComponents>
-                <Container class="vue.ui.presentation.components.JaugeDePopularitePanel" name="JaugeDePopularitePanelJoueur1">
+                <Container class="vue.ui.presentation.components.JaugeDePopularitePanel" name="jaugeDePopularitePanelJoueur1">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="null" type="code"/>
@@ -256,7 +256,7 @@
                     </DimensionLayout>
                   </Layout>
                 </Container>
-                <Component class="vue.ui.presentation.components.JaugeDeViePanel" name="JaugeDeViePanelJoueur1">
+                <Component class="vue.ui.presentation.components.JaugeDeViePanel" name="jaugeDeViePanelJoueur1">
                   <Properties>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
@@ -266,7 +266,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="vue.ui.presentation.components.ProfilJoueurPanel" name="ProfilJoueurPanelJoueur1">
+                <Component class="vue.ui.presentation.components.ProfilJoueurPanel" name="profilJoueurPanelJoueur1">
                   <Properties>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
@@ -333,7 +333,7 @@
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalStrut"/>
                   </AuxValues>
                 </Component>
-                <Container class="vue.ui.presentation.components.MainJoueurPanel" name="MainJoueurPanelJoueur1">
+                <Container class="vue.ui.presentation.components.MainJoueurPanel" name="mainJoueurPanelJoueur1">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
                 </Container>
@@ -353,7 +353,7 @@
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalStrut"/>
                   </AuxValues>
                 </Component>
-                <Component class="vue.ui.presentation.components.TimerPanel" name="TimerPanel">
+                <Component class="vue.ui.presentation.components.TimerPanel" name="timerPanel">
                   <Properties>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[100, 200]"/>
@@ -391,7 +391,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
               <SubComponents>
-                <Container class="vue.ui.presentation.components.JaugeDePopularitePanel" name="JaugeDePopularitePanelJoueur2">
+                <Container class="vue.ui.presentation.components.JaugeDePopularitePanel" name="jaugeDePopularitePanelJoueur2">
                   <Properties>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
@@ -414,7 +414,7 @@
                     </DimensionLayout>
                   </Layout>
                 </Container>
-                <Component class="vue.ui.presentation.components.JaugeDeViePanel" name="JaugeDeViePanelJoueur2">
+                <Component class="vue.ui.presentation.components.JaugeDeViePanel" name="jaugeDeViePanelJoueur2">
                   <Properties>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
@@ -424,7 +424,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="vue.ui.presentation.components.ProfilJoueurPanel" name="ProfilNomJoueur2">
+                <Component class="vue.ui.presentation.components.ProfilJoueurPanel" name="profilNomJoueur2">
                   <Properties>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
@@ -491,7 +491,7 @@
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalStrut"/>
                   </AuxValues>
                 </Component>
-                <Container class="vue.ui.presentation.components.MainJoueurPanel" name="MainJoueurPanelJoueur2">
+                <Container class="vue.ui.presentation.components.MainJoueurPanel" name="mainJoueurPanelJoueur2">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
                 </Container>
@@ -511,7 +511,7 @@
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalStrut"/>
                   </AuxValues>
                 </Component>
-                <Component class="vue.ui.presentation.components.DescriptionPanel" name="DescriptionPanel">
+                <Component class="vue.ui.presentation.components.DescriptionPanel" name="descriptionPanel">
                 </Component>
               </SubComponents>
             </Container>

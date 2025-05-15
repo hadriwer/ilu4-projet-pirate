@@ -34,34 +34,34 @@ class EchangeTest {
     
     
     @Test
-    public void testToString() {
+    void testToString() {
         String attendu = "Echange[nom=Echange]";
         assertEquals(attendu, carteEchange.toString());
     }
     
     
     @Test
-    public void testHashCode() {
+    void testHashCode() {
         Echange memeEchange = new Echange(2, "Echange", "desc");
         assertEquals(carteEchange.hashCode(), memeEchange.hashCode());
     }
     
     
     @Test
-    public void testClone() {
+    void testClone() {
     	Echange copie = carteEchange.copie();
         assertEquals(carteEchange, copie);
         assertNotSame(carteEchange, copie);
     }
 
     @Test
-    public void testGetType() {
+    void testGetType() {
         assertEquals(EnumCarte.ECHANGE, carteEchange.getType());
     }
 
     
     @Test
-    public void testSetEffet() {
+    void testSetEffet() {
         carteEchange.apply(j1, j2);
 
     }

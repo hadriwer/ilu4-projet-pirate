@@ -7,30 +7,31 @@ import org.junit.jupiter.api.Test;
 
 
 class PiocheTest {
-	
-	private Jeu jeu;
     private Pioche pioche;
     private DictionnaireCarte dictCarte;
-    
 	
-	@BeforeEach
+    @BeforeEach
     public void setUp() {
         dictCarte = new DictionnaireCarte();
         
         pioche = new Pioche(dictCarte);
-     
-        jeu = new Jeu(pioche);
     }
 	
 	
     @Test
-    public void testIsEmpty() {
+    void testIsEmpty() {
     	assertFalse(pioche.isEmpty());
     }
-    
+   
     
     @Test
-    public void testNbCartesRestantes() {
-    	assertEquals(61, pioche.nbCartesRestantes());
+    void testNbCartesRestantesAvantLancementJeu() {
+    	assertEquals(67, pioche.nbCartesRestantes());
+    }
+    
+    @Test
+    void testNbCartesRestantesApresLancementJeu() {
+    	new Jeu(pioche);
+    	assertEquals(59, pioche.nbCartesRestantes());
     }
 }

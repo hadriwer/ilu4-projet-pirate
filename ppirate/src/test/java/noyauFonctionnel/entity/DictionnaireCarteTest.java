@@ -22,7 +22,7 @@ class DictionnaireCarteTest {
 	
 	
     @Test 
-    public void testSetEtGeTCarte() {
+    void testSetEtGeTCarte() {
     	Carte[] cartes = {cartePopularite};
     	dictCarte.setCartes(cartes);
     	assertEquals(cartePopularite, dictCarte.getCarte(0));

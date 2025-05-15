@@ -27,19 +27,19 @@ class AttaqueTest {
 
     
     @Test
-    public void testGetActionVie() {
+    void testGetActionVie() {
     	assertEquals(2, carteAttaque.getActionVie());
     }
     
     
     @Test
-    public void testGetSelfDegats() {
+    void testGetSelfDegats() {
     	assertEquals(0, carteAttaque.getSelfDegats());
     }
     
     
     @Test
-    public void testToString() {
+    void testToString() {
         String attendu = "Attaque[nom=Attaque, degat=2, auto-degat=0]";
         assertEquals(attendu, carteAttaque.toString());
     }
@@ -47,61 +47,61 @@ class AttaqueTest {
     
     
     @Test
-    public void testEqualsTrue() {
+    void testEqualsTrue() {
     	// cas même référence
-    	assertTrue(carteAttaque.equals(carteAttaque));
+    	assertEquals(carteAttaque, carteAttaque);
     	
     	// cas même attributs
         Attaque memeAttaque = new Attaque(2, "Attaque", "desc", 2, 0);
-        assertTrue(carteAttaque.equals(memeAttaque));
+        assertEquals(carteAttaque, memeAttaque);
     }
     
     
     @Test
-    public void testEqualsFalse() {
+    void testEqualsFalse() {
     	// cas object null
-    	assertFalse(carteAttaque.equals(null));
+    	assertNotEquals(null, carteAttaque);
     	
     	// cas pas une carte
-    	assertFalse(carteAttaque.equals("Pas une carte"));
+    	assertNotEquals("Pas une carte", carteAttaque);
     	
     	// cas nom différent
         Attaque attaqueDiff1 = new Attaque(2, "AttaqueDiff1", "desc", 2, 0);
-        assertFalse(carteAttaque.equals(attaqueDiff1));
+        assertNotEquals(carteAttaque, attaqueDiff1);
         
         // cas effet selfDegat différent
         Attaque attaqueDiff2 = new Attaque(3, "Attaque", "desc", 2, 1);
-        assertFalse(carteAttaque.equals(attaqueDiff2));
+        assertNotEquals(carteAttaque, attaqueDiff2);
         
         // cas effet actionVie différent
         Attaque attaqueDiff3 = new Attaque(4, "Attaque", "desc", 1, 0);
-        assertFalse(carteAttaque.equals(attaqueDiff3));
+        assertNotEquals(carteAttaque, attaqueDiff3);
         
     }
     
     
     @Test
-    public void testHashCode() {
+    void testHashCode() {
         Attaque memeAttaque = new Attaque(2, "Attaque", "desc", 2, 0);
         assertEquals(carteAttaque.hashCode(), memeAttaque.hashCode());
     }
     
     
     @Test
-    public void testClone() {
+    void testClone() {
         Attaque copie = carteAttaque.copie();
         assertEquals(carteAttaque, copie);
         assertNotSame(carteAttaque, copie);
     }
 
     @Test
-    public void testGetType() {
+    void testGetType() {
         assertEquals(EnumCarte.ATTAQUE, carteAttaque.getType());
     }
     
     
     @Test
-    public void testEffetAppliqueSiNonProtege() {
+    void testEffetAppliqueSiNonProtege() {
         
         carteAttaque.apply(j1, j2);
 
@@ -111,7 +111,7 @@ class AttaqueTest {
 
     
     @Test
-    public void testEffetAppliqueSiProtege() {
+    void testEffetAppliqueSiProtege() {
     	j2.getCarteProtegeJoueur().add(carteAttaque);
     	
         carteAttaque.apply(j1, j2);

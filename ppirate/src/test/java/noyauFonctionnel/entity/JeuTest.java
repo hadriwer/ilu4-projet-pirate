@@ -38,14 +38,14 @@ class JeuTest {
     
     
     @Test
-    public void testDonnerTourDeJoueur2() {
+    void testDonnerTourDeJoueur2() {
     	jeu.changerJoueur();
     	assertEquals("Paul", jeu.getTourDeJeu() ? jeu.getJoueur1Nom() : jeu.getJoueur2Nom());
     }
     
     
     @Test
-    public void testChangerJoueur() {
+    void testChangerJoueur() {
     	jeu.changerJoueur();
     	jeu.changerJoueur();
     	assertEquals("Jack", jeu.getTourDeJeu() ? jeu.getJoueur1Nom() : jeu.getJoueur2Nom());
@@ -54,7 +54,7 @@ class JeuTest {
     
     
     @Test
-    public void testDeposerCarteDansAction() {
+    void testDeposerCarteDansAction() {
         jeu.deposerCarte(carteAttaque);
         assertTrue(jeu.getZoneAction().contains(carteAttaque));
         
@@ -67,7 +67,7 @@ class JeuTest {
     
     
     @Test
-    public void testDeposerCarteDansPopularite() {
+    void testDeposerCarteDansPopularite() {
         jeu.deposerCarte(cartePopularite);
         assertTrue(jeu.getZonePopulariteJ1().contains(cartePopularite));
         
@@ -78,75 +78,75 @@ class JeuTest {
     
     
     @Test
-    public void testVerifierFinPartieFalse() {
+    void testVerifierFinPartieFalse() {
         assertFalse(jeu.verifierFinPartie());
     }
 
     
     @Test
-    public void testVerifierFinPartieGagnantJ1Pop() {    	
+    void testVerifierFinPartieGagnantJ1Pop() {    	
         jeu.getJoueur1().gagnerPop(5);
         assertTrue(jeu.verifierFinPartie());
     }
     
    
     @Test
-    public void testVerifierFinPartieGagnantJ2Pop() {    	
+    void testVerifierFinPartieGagnantJ2Pop() {    	
         jeu.getJoueur2().gagnerPop(5);
         assertTrue(jeu.verifierFinPartie());
     }
     
     
     @Test
-    public void testVerifierFinPartiePerdantJ1Vie() {    	
+    void testVerifierFinPartiePerdantJ1Vie() {    	
         jeu.getJoueur1().perdreVie(5);
         assertTrue(jeu.verifierFinPartie());
     }
     
    
     @Test
-    public void testVerifierFinPartiePerdantJ2Vie() {    	
+    void testVerifierFinPartiePerdantJ2Vie() {    	
         jeu.getJoueur2().perdreVie(5);
         assertTrue(jeu.verifierFinPartie());
     }
     
     
     @Test
-    public void testGiveJoueurGagnantJ1Gagne() {    	
+    void testGiveJoueurGagnantJ1Gagne() {    	
     	jeu.getJoueur1().gagnerPop(5);
     	assertEquals("Jack", jeu.giveJoueurGagnant().getNom());
     }
     
    
     @Test
-    public void testGiveJoueurGagnantJ2Perd() {    	
+    void testGiveJoueurGagnantJ2Perd() {    	
     	jeu.getJoueur2().perdreVie(5);
     	assertEquals("Jack", jeu.giveJoueurGagnant().getNom());
     }
     
     
     @Test
-    public void testGiveJoueurGagnantJ2Gagne() {    	
+    void testGiveJoueurGagnantJ2Gagne() {    	
     	jeu.getJoueur2().gagnerPop(5);
     	assertEquals("Paul", jeu.giveJoueurGagnant().getNom());
     }
     
    
     @Test
-    public void testGiveJoueurGagnantJ1Perd() {    	
+    void testGiveJoueurGagnantJ1Perd() {    	
     	jeu.getJoueur1().perdreVie(5);
     	assertEquals("Paul", jeu.giveJoueurGagnant().getNom());
     }
     
     
     @Test
-    public void testGiveJoueurGagnantFalse() {    	
+    void testGiveJoueurGagnantFalse() {    	
     	assertNull(jeu.giveJoueurGagnant());
     }
     
     
     @Test
-    public void testJoueurPrendreEtRemoveJ1() {
+    void testJoueurPrendreEtRemoveJ1() {
     	// Test Prendre
     	jeu.joueurPrendreCarte(carteAttaque);
     	assertTrue(jeu.getJoueur1().getMainJoueur().getCartes().contains(carteAttaque));
@@ -159,7 +159,7 @@ class JeuTest {
     
     
     @Test
-    public void testJoueurPrendreEtRemoveJ2() {
+    void testJoueurPrendreEtRemoveJ2() {
     	// Test Prendre
     	jeu.changerJoueur();
     	jeu.joueurPrendreCarte(carteAttaque);
@@ -173,7 +173,7 @@ class JeuTest {
     
     
     @Test 
-    public void testAppliquerEffetCarte() {
+    void testAppliquerEffetCarte() {
     	// pour J1
         jeu.appliquerEffetCarte(cartePopularite);
         assertEquals(1, jeu.getJoueur1().getIndicePopularite());
@@ -186,25 +186,25 @@ class JeuTest {
     
     
     @Test
-    public void testGetPioche() {
+    void testGetPioche() {
     	assertEquals(pioche, jeu.getPioche());
     }
     
     
     @Test
-    public void testGetJoueur1Nom() {
+    void testGetJoueur1Nom() {
     	assertEquals("Jack", jeu.getJoueur1Nom());
     }
     
     
     @Test
-    public void testGetJoueur2Nom() {
+    void testGetJoueur2Nom() {
     	assertEquals("Paul", jeu.getJoueur2Nom());
     }
     
     
     @Test
-    public void testGetTourDeJeu() {
+    void testGetTourDeJeu() {
     	// Si True => tour de J1
     	assertTrue(jeu.getTourDeJeu());
     	
@@ -215,7 +215,7 @@ class JeuTest {
     
     
     @Test
-    public void testToString() {
+    void testToString() {
     	// tour de J1
     	jeu.deposerCarte(cartePopularite);
         jeu.toString();

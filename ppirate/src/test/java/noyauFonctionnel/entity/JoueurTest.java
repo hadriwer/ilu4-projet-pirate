@@ -14,7 +14,7 @@ import org.junit.jupiter.api.BeforeEach;
  *
  * @author ember
  */
-public class JoueurTest {
+class JoueurTest {
     private Joueur joueurMainVide;
     private Joueur joueurMainPleine;
     private Popularite popularite1;
@@ -39,40 +39,40 @@ public class JoueurTest {
     
     
     @Test
-    public void testGetNom() {
+    void testGetNom() {
         assertEquals("Jack", joueurMainVide.getNom());
     }
     
     
     @Test
-    public void testSetNom() {
+    void testSetNom() {
     	joueurMainVide.setNom("Dave");
     	assertEquals("Dave", joueurMainVide.getNom());
     }
     
     
     @Test
-    public void testGetIndicePopularite() {
+    void testGetIndicePopularite() {
         assertEquals(0, joueurMainVide.getIndicePopularite());
     }
 
     
     @Test
-    public void testGetIndiceVieInitial() {
+    void testGetIndiceVieInitial() {
         assertEquals(5, joueurMainVide.getIndiceVie());
     }
     
     
     // test de la perte de vie dans le cas normal sans dépasser 0 
     @Test
-    public void testPerdreVie() {
+    void testPerdreVie() {
         joueurMainVide.perdreVie(1);
         assertEquals(4, joueurMainVide.getIndiceVie());
     }
     
     // test de la perte de vie dans le cas normal en dépassant 0 
     @Test
-    public void testPerdreVieDepassement() {
+    void testPerdreVieDepassement() {
     	joueurMainVide.perdreVie(6);
         assertEquals(0, joueurMainVide.getIndiceVie());
     }
@@ -80,7 +80,7 @@ public class JoueurTest {
     
     // test du gain de vie dans le cas normal sans dépasser 5 
     @Test
-    public void testGagnerVie() {
+    void testGagnerVie() {
     	joueurMainVide.perdreVie(2);
         joueurMainVide.gagnerVie(1);
         assertEquals(4, joueurMainVide.getIndiceVie());
@@ -88,7 +88,7 @@ public class JoueurTest {
     
     // test du gain de vie dans le cas normal en dépassant 5 
     @Test
-    public void testGagnerVieDepassement() {
+    void testGagnerVieDepassement() {
     	joueurMainVide.perdreVie(1);
         joueurMainVide.gagnerVie(2);
         assertEquals(5, joueurMainVide.getIndiceVie());
@@ -96,86 +96,87 @@ public class JoueurTest {
 
     
     @Test
-    public void testGagnerPop() {
+    void testGagnerPop() {
     	joueurMainVide.gagnerPop(1);
         assertEquals(1, joueurMainVide.getIndicePopularite());
     }
     
    
     @Test
-    public void testGagnerPopDepassement() {
+    void testGagnerPopDepassement() {
     	joueurMainVide.gagnerPop(6);
         assertEquals(5, joueurMainVide.getIndicePopularite());
     }
 
     
     @Test
-    public void testAGagneFalse() {
+    void testAGagneFalse() {
         assertFalse(joueurMainVide.aGagne());
     }
     
     
     @Test
-    public void testAGagneTrue() {
+    void testAGagneTrue() {
     	joueurMainVide.gagnerPop(5);
     	assertTrue(joueurMainVide.aGagne()); 
     }
 
     
     @Test
-    public void testAPerduFalse() {
+    void testAPerduFalse() {
     	assertFalse(joueurMainVide.aPerdu());
     }
     
     
     @Test
-    public void testAPerduTrue() {
+    void testAPerduTrue() {
     	joueurMainVide.perdreVie(5);
     	assertTrue(joueurMainVide.aPerdu()); 
     }
 
     
     @Test
-    public void testToStringMainVide() {
+    void testToStringMainVide() {
         String expResult = "Joueur[nom=Jack, vie=5, popularite=0, contenu de la main= vide]";
         assertEquals(expResult, joueurMainVide.toString());
     }
     
     
     @Test
-    public void testToStringMainPleine() {
-        String expResult = "Joueur[nom=Paul, vie=5, popularite=0, contenu de la main=(\n"
-        		+ "Popularite[nom=Carte1, gain=1, auto-degat=1]\n"
-        		+ "Popularite[nom=Carte1, gain=1, auto-degat=1]\n"
-        		+ "Popularite[nom=Carte1, gain=1, auto-degat=1]\n"
-        		+ "Popularite[nom=Carte1, gain=1, auto-degat=1]\n"
-        		+ ")]";
+    void testToStringMainPleine() {
+        String expResult = """
+        		Joueur[nom=Paul, vie=5, popularite=0, contenu de la main=(
+        		Popularite[nom=Carte1, gain=1, auto-degat=1]
+        		Popularite[nom=Carte1, gain=1, auto-degat=1]
+        		Popularite[nom=Carte1, gain=1, auto-degat=1]
+        		Popularite[nom=Carte1, gain=1, auto-degat=1]
+        		)]""";
         assertEquals(expResult, joueurMainPleine.toString());
     }
     
     	
     @Test
-    public void testPrendreCarte() {
+    void testPrendreCarte() {
         joueurMainVide.prendreCarte(attaque1);
         assertTrue(joueurMainVide.getMainJoueur().getCartes().contains(attaque1));
     }
     
     
     @Test
-    public void testPeutAttaquerTrue() {
+    void testPeutAttaquerTrue() {
         assertTrue(joueurMainVide.peutAttaquer(attaque1));
     }
     
     
     @Test
-    public void testPeutAttaquerFalse() {
+    void testPeutAttaquerFalse() {
     	joueurMainVide.getCarteProtegeJoueur().add(attaque1);
         assertFalse(joueurMainVide.peutAttaquer(attaque1));
     }
     
     
     @Test
-    public void testCarteHasard() {
+    void testCarteHasard() {
     	int tailleAvant = joueurMainPleine.getMainJoueur().getCartes().size();
         Carte c = joueurMainPleine.carteHasard(joueurMainPleine.getMainJoueur().getCartes().size());
         assertNotNull(c);
@@ -184,14 +185,14 @@ public class JoueurTest {
     
     
     @Test
-    public void testMainJoueurJouerCarteExistante() {
+    void testMainJoueurJouerCarteExistante() {
     	for (int i = 0; i<4; i++)
     	joueurMainPleine.getMainJoueur().jouerCarte(popularite1);
         assertFalse(joueurMainPleine.getMainJoueur().getCartes().contains(popularite1));
     }
 
     @Test
-    public void testMainJoueurJouerCarteInexistante() {
+    void testMainJoueurJouerCarteInexistante() {
         joueurMainVide.getMainJoueur().jouerCarte(popularite1);
         assertTrue(joueurMainPleine.getMainJoueur().getCartes().contains(popularite1));
     }

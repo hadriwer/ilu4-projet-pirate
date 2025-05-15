@@ -41,59 +41,59 @@ class CarteTest {
     
     
     @Test
-    public void testGetNom() {
+    void testGetNom() {
         assertEquals("carte", carte.getNom());
     }
 
     @Test
-    public void testGetDescription() {
+    void testGetDescription() {
         assertEquals("desc", carte.getDescription());
     }
 
     @Test
-    public void testSetId() {
+    void testSetId() {
         carte.setId(10);
         assertEquals(10, carte.getId());
     }
 
     @Test
-    public void testEqualsTrue() {
+    void testEqualsTrue() {
     	// cas même référence
-    	assertTrue(carte.equals(carte));
+    	assertEquals(carte, carte);
     	
     	// cas même attributs
         Carte memeCarte = new CarteTestImpl(1, "carte", "desc");
-        assertTrue(carte.equals(memeCarte));
+        assertEquals(carte, memeCarte);
     }
     
     
     @Test
-    public void testEqualsFalse() {
+    void testEqualsFalse() {
     	// cas object null
-    	assertFalse(carte.equals(null));
+    	assertNotEquals(null, carte);
     	
     	// cas pas une carte
-    	assertFalse(carte.equals("Pas une carte"));
+    	assertNotEquals("Pas une carte", carte);
     	
     	// cas nom différent
         Carte carteDiff1 = new CarteTestImpl(1, "carteDiff1", "desc");
-        assertFalse(carte.equals(carteDiff1));
+        assertNotEquals(carte, carteDiff1);
         
         // cas description différent
         Carte carteDiff2 = new CarteTestImpl(1, "carte", "desc2");
-        assertFalse(carte.equals(carteDiff2));
+        assertNotEquals(carte, carteDiff2);
     }
 
     
     @Test
-    public void testHashCode() {
+    void testHashCode() {
     	Carte memeCarte = new CarteTestImpl(1, "carte", "desc");
         assertEquals(carte.hashCode(), memeCarte.hashCode());
     }
 
 
     @Test
-    public void testSetEffetEtApply() {
+    void testSetEffetEtApply() {
         
     	Joueur j1 = new Joueur(new ArrayList<>());
     	Joueur j2 = new Joueur(new ArrayList<>());

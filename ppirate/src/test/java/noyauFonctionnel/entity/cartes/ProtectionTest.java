@@ -27,37 +27,37 @@ class ProtectionTest {
     }
 
     @Test
-    public void testGetNomAttaqueBloque() {
+    void testGetNomAttaqueBloque() {
         assertEquals("Attaque", carteProtection.getNomAttaqueBloque());
     }
 
     @Test
-    public void testToString() {
+    void testToString() {
         String attendu = "Protection[nom=Protection, attaque bloquée=Attaque]";
         assertEquals(attendu, carteProtection.toString());
     }
     
     
     @Test
-    public void testBloqueTrue() {
+    void testBloqueTrue() {
         assertTrue(carteProtection.bloque(carteAttaque));
     }
 
     @Test
-    public void testBloqueFalse() {
+    void testBloqueFalse() {
         assertFalse(carteProtection.bloque(new Attaque(1, "autreAttaque", "desc", 2, 0)));
     }
     
     
     @Test
-    public void testHashCode() {
+    void testHashCode() {
         Protection memeProtection = new Protection(2, "Protection", "desc", carteAttaque);
         assertEquals(carteProtection.hashCode(), memeProtection.hashCode());
     }
     
     
     @Test
-    public void testClone() {
+    void testClone() {
     	Protection copie = carteProtection.copie();
         assertEquals(carteProtection, copie);
         assertNotSame(carteProtection, copie);
@@ -66,13 +66,13 @@ class ProtectionTest {
     
     
     @Test
-    public void testGetType() {
+    void testGetType() {
         assertEquals(EnumCarte.PROTECTION, carteProtection.getType());
     }
 
     
     @Test
-    public void testEffetApplique() {
+    void testEffetApplique() {
         
     	assertTrue(j1.getCarteProtegeJoueur().isEmpty());
 

@@ -24,24 +24,24 @@ class GainVieTest {
     }
 
     @Test
-    public void testGetGainVie() {
+    void testGetGainVie() {
         assertEquals(2, carteGainVie.getGainVie());
     }
 
     @Test
-    public void testGetType() {
+    void testGetType() {
         assertEquals(EnumCarte.GAIN_VIE, carteGainVie.getType());
     }
 
     @Test
-    public void testClone() {
+    void testClone() {
         Carte copie = carteGainVie.copie();
         assertEquals(carteGainVie, copie);
         assertNotSame(carteGainVie, copie);
     }
 
     @Test
-    public void testApplyEffetGainVie() {
+    void testApplyEffetGainVie() {
         j1.perdreVie(3);  
         carteGainVie.apply(j1, j2); 
         assertEquals(4, j1.getIndiceVie()); 

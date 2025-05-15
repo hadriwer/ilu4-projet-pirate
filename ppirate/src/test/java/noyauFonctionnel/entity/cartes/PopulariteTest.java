@@ -26,19 +26,19 @@ class PopulariteTest {
 
     
     @Test
-    public void testGetPointDePop() {
+    void testGetPointDePop() {
     	assertEquals(2, cartePopularite.getPointDePop());
     }
     
     
     @Test
-    public void testGetSelfDegats() {
+    void testGetSelfDegats() {
     	assertEquals(1, cartePopularite.getSelfDegats());
     }
     
     
     @Test
-    public void testToString() {
+    void testToString() {
         String attendu = "Popularite[nom=Popularite, gain=2, auto-degat=1]";
         assertEquals(attendu, cartePopularite.toString());
     }
@@ -46,61 +46,60 @@ class PopulariteTest {
     
     
     @Test
-    public void testEqualsTrue() {
+    void testEqualsTrue() {
     	// cas même référence
-    	assertTrue(cartePopularite.equals(cartePopularite));
+    	assertEquals(cartePopularite, cartePopularite);
     	
     	// cas même attributs
         Popularite memePopularite = new Popularite(2, "Popularite", "desc", 2, 1);
-        assertTrue(cartePopularite.equals(memePopularite));
+        assertEquals(cartePopularite, memePopularite);
     }
     
     
     @Test
-    public void testEqualsFalse() {
+    void testEqualsFalse() {
     	// cas object null
-    	assertFalse(cartePopularite.equals(null));
+    	assertNotEquals(null, cartePopularite);
     	
     	// cas pas une carte
-    	assertFalse(cartePopularite.equals("Pas une carte"));
+    	assertNotEquals("Pas une carte", cartePopularite);
     	
     	// cas nom différent
     	Popularite populariteDiff1 = new Popularite(2, "populariteDiff1", "desc", 2, 1);
-        assertFalse(cartePopularite.equals(populariteDiff1));
+        assertNotEquals(cartePopularite, populariteDiff1);
         
         // cas effet selfDegat différent
         Popularite populariteDiff2 = new Popularite(3, "Popularite", "desc", 2, 0);
-        assertFalse(cartePopularite.equals(populariteDiff2));
+        assertNotEquals(cartePopularite, populariteDiff2);
         
         // cas effet gain différent
         Popularite populariteDiff3 = new Popularite(4, "Popularite", "desc", 1, 1);
-        assertFalse(cartePopularite.equals(populariteDiff3));
-        
+        assertNotEquals(cartePopularite, populariteDiff3);
     }
     
     
     @Test
-    public void testHashCode() {
+    void testHashCode() {
     	Popularite memePopularite = new Popularite(2, "Popularite", "desc", 2, 1);
         assertEquals(cartePopularite.hashCode(), memePopularite.hashCode());
     }
     
     
     @Test
-    public void testClone() {
+    void testClone() {
     	Popularite copie = cartePopularite.copie();
         assertEquals(cartePopularite, copie);
         assertNotSame(cartePopularite, copie);
     }
 
     @Test
-    public void testGetType() {
+    void testGetType() {
         assertEquals(EnumCarte.POPULARITE, cartePopularite.getType());
     }
     
     
     @Test
-    public void testEffetApplique() {
+    void testEffetApplique() {
         
     	cartePopularite.apply(j1, j2);
 
