@@ -7,6 +7,7 @@ package noyauFonctionnel.controller;
 import java.util.List;
 import noyauFonctionnel.entity.DictionnaireCarte;
 import noyauFonctionnel.entity.Jeu;
+import noyauFonctionnel.entity.cartes.Carte;
 
 /**
  *
@@ -50,15 +51,15 @@ public class ControlJeu {
     }
     
     public List<Integer> getZoneAction() {
-        return jeu.getZoneAction().stream().map(c -> c.getId()).toList();
+        return jeu.getZoneAction().stream().map(Carte::getId).toList();
     }
     
     public List<Integer> getZonePopulariteJ1() {
-        return jeu.getZonePopulariteJ1().stream().map(c -> c.getId()).toList();
+        return jeu.getZonePopulariteJ1().stream().map(Carte::getId).toList();
     }
     
     public List<Integer> getZonePopulariteJ2() {
-        return jeu.getZonePopulariteJ2().stream().map(c -> c.getId()).toList();
+        return jeu.getZonePopulariteJ2().stream().map(Carte::getId).toList();
     }
     
     public boolean isZoneActionEmpty() {
@@ -70,11 +71,11 @@ public class ControlJeu {
     }
     
     public List<Integer> getMainJoueur1() {
-        return jeu.getJoueur1().getMainJoueur().getCartes().stream().map(c -> c.getId()).toList();
+        return jeu.getJoueur1().getMainJoueur().getCartes().stream().map(Carte::getId).toList();
     }
     
     public List<Integer> getMainJoueur2() {
-        return jeu.getJoueur2().getMainJoueur().getCartes().stream().map(c -> c.getId()).toList();
+        return jeu.getJoueur2().getMainJoueur().getCartes().stream().map(Carte::getId).toList();
     }
     
     public boolean isMainJoueur1Empty() {

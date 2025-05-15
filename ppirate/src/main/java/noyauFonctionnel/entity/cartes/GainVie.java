@@ -4,6 +4,7 @@
  */
 package noyauFonctionnel.entity.cartes;
 
+import java.util.Objects;
 import util.EnumCarte;
 
 /**
@@ -32,12 +33,32 @@ public class GainVie extends Carte {
     }
     
     @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), gainVie);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final GainVie other = (GainVie) obj;
+        return this.gainVie == other.gainVie;
+    }
+    
+    @Override
     public String toString() {
         return "GainVie[nom=" + this.getNom() + ", gain de vie=" + gainVie +"]";
     }
 
     @Override
-    public GainVie clone() {
+    public GainVie copie() {
         return new GainVie(id, nom, description, gainVie);
     }
     

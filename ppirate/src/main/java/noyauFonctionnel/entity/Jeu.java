@@ -143,19 +143,19 @@ public class Jeu {
     
     @Override
     public String toString(){
-        String result = "";
+    	StringBuilder result = new StringBuilder();
         if (!this.tourDeJeu){
-            result += this.joueur2.toString() +"\nZone de Popularité J2: [";
+            result.append(this.joueur2.toString()).append("\nZone de Popularité J2: [");
             for (Carte c : this.zonePopulariteJ2){
-                result += c.toString() +" ";  
+                result.append(c.toString()).append(" ");  
             }
         }else{
-            result += this.joueur1.toString() +"\nZone de Popularité J1: [";
+            result.append(this.joueur1.toString()).append("\nZone de Popularité J1: [");
             for (Carte c : this.zonePopulariteJ1){
-                result += c.toString() +" ";  
+                result.append(c.toString()).append(" ");  
             } 
         }
-        result += "]\nZone d'action : "+ (this.zoneAction.isEmpty() ? "vide" : this.zoneAction.getLast());
-        return result;
+        result.append("]\nZone d'action : ").append(this.zoneAction.isEmpty() ? "vide" : this.zoneAction.getLast());
+        return result.toString();
     }
 }

@@ -4,11 +4,11 @@ import java.util.Objects;
 import noyauFonctionnel.entity.Joueur;
 import util.EnumCarte;
 
-public abstract class Carte implements Cloneable {
+public abstract class Carte {
     protected int id;
     protected final String nom;
     protected final String description;
-    private EffetCarte effet;
+    private IEffetCarte effet;
     
     
     protected Carte(int id, String nom, String description) {
@@ -19,7 +19,7 @@ public abstract class Carte implements Cloneable {
 
     public abstract EnumCarte getType(); 
     
-    public void setEffet(EffetCarte effet) {
+    public void setEffet(IEffetCarte effet) {
         this.effet = effet;
     }
     
@@ -45,19 +45,26 @@ public abstract class Carte implements Cloneable {
     
     @Override
     public int hashCode() {
-        return Objects.hash(getNom(), getDescription());
+        return Objects.hash(nom, description);
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Carte c = (Carte) o;
-        
-        return this.nom.equals(c.getNom()) && this.description.equals(c.getDescription());
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Carte other = (Carte) obj;
+        if (!Objects.equals(this.nom, other.nom)) {
+            return false;
+        }
+        return Objects.equals(this.description, other.description);
     }
-    
-    @Override
-    public abstract Carte clone();
-    
+
+    public abstract Carte copie();
 }

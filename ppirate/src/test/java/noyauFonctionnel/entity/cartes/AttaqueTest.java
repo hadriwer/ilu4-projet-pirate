@@ -89,7 +89,7 @@ class AttaqueTest {
     
     @Test
     public void testClone() {
-        Attaque copie = carteAttaque.clone();
+        Attaque copie = carteAttaque.copie();
         assertEquals(carteAttaque, copie);
         assertNotSame(carteAttaque, copie);
     }

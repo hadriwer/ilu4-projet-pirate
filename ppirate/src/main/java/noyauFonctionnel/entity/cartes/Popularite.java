@@ -43,7 +43,7 @@ public class Popularite extends Carte {
     }
     
     @Override
-    public Popularite clone() {
+    public Popularite copie() {
         return new Popularite(id, nom, description, pointDePop, selfDegats);
     }
 

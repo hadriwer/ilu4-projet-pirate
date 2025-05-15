@@ -48,7 +48,7 @@ public class Attaque extends Carte {
     }
     
     @Override
-    public Attaque clone() {
+    public Attaque copie() {
         return new Attaque(id, nom, description, actionVie, selfDegats);
     }
 

@@ -26,7 +26,7 @@ class CarteTest {
         }
 
         @Override
-        public Carte clone() {
+        public Carte copie() {
             return new CarteTestImpl(this.id, this.nom, this.description);
         }
     }
@@ -99,7 +99,7 @@ class CarteTest {
     	Joueur j2 = new Joueur(new ArrayList<>());
 
         // Implémentation factice de EffetCarte
-        EffetCarte effetFictif = new EffetCarte() {
+        IEffetCarte effetFictif = new IEffetCarte() {
             @Override
             public void apply(Joueur self, Joueur cible) {
                 self.perdreVie(1);

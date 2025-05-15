@@ -11,6 +11,6 @@ import noyauFonctionnel.entity.Joueur;
  * @author wer
  */
 @FunctionalInterface
-public interface EffetCarte {
+public interface IEffetCarte {
     void apply(Joueur self, Joueur cible);
 }

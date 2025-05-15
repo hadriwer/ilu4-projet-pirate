@@ -88,7 +88,7 @@ class PopulariteTest {
     
     @Test
     public void testClone() {
-    	Popularite copie = cartePopularite.clone();
+    	Popularite copie = cartePopularite.copie();
         assertEquals(cartePopularite, copie);
         assertNotSame(cartePopularite, copie);
     }

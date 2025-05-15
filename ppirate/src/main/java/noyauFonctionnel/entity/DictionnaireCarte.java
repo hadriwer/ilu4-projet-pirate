@@ -13,10 +13,6 @@ import noyauFonctionnel.entity.cartes.Carte;
 public class DictionnaireCarte {
     private Carte[] cartes;
     
-    public DictionnaireCarte(){
-        
-    }
-    
     public void setCartes(Carte[] cartes){
         this.cartes=cartes;
         // modifie l'id de chaque carte pour qu'il sois unique

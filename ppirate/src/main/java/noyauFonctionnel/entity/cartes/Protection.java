@@ -38,17 +38,33 @@ public class Protection extends Carte{
     
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode());
+        return Objects.hash(super.hashCode(), attaqueBloque);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Protection other = (Protection) obj;
+        return Objects.equals(this.attaqueBloque, other.attaqueBloque);
     }
     
-    @Override
-    public Protection clone() {
-        return new Protection(id, nom, description, attaqueBloque);
-    }
+    
 
     @Override
     public EnumCarte getType() {
         return EnumCarte.PROTECTION;
     }
-    
+
+    @Override
+    public Protection copie() {
+        return new Protection(id, nom, description, attaqueBloque.copie());
+    }
 }

@@ -35,7 +35,7 @@ class GainVieTest {
 
     @Test
     public void testClone() {
-        Carte copie = carteGainVie.clone();
+        Carte copie = carteGainVie.copie();
         assertEquals(carteGainVie, copie);
         assertNotSame(carteGainVie, copie);
     }

@@ -16,6 +16,8 @@ import util.EnumCarte;
  * @author Solène
  */
 public class ControlCarte {
+	
+	private static final String ERREUR_IDCARTE_INVALIDE = "idCarte invalide";
    
     private final DictionnaireCarte dictionnaireCarte;
     
@@ -32,17 +34,17 @@ public class ControlCarte {
         return ((Protection) dictionnaireCarte.getCarte(idCarte)).getNomAttaqueBloque();
     }
     
-    public String getNom(int IdCarte){
-        return dictionnaireCarte.getCarte(IdCarte).getNom();
+    public String getNom(int idCarte){
+        return dictionnaireCarte.getCarte(idCarte).getNom();
     }
-    public String getDescription(int IdCarte){
-        return dictionnaireCarte.getCarte(IdCarte).getDescription();
+    public String getDescription(int idCarte){
+        return dictionnaireCarte.getCarte(idCarte).getDescription();
     }
-    public int getPointPopularite(int IdCarte){
-        if (dictionnaireCarte.getCarte(IdCarte).getType() == EnumCarte.POPULARITE){
-            return ((Popularite) dictionnaireCarte.getCarte(IdCarte)).getPointDePop();
+    public int getPointPopularite(int idCarte){
+        if (dictionnaireCarte.getCarte(idCarte).getType() == EnumCarte.POPULARITE){
+            return ((Popularite) dictionnaireCarte.getCarte(idCarte)).getPointDePop();
         }else{
-            throw new IllegalArgumentException("idCarte invalide!");
+            throw new IllegalArgumentException(ERREUR_IDCARTE_INVALIDE);
         }
     }
     public int getSelfDegat(int idCarte){
@@ -52,13 +54,13 @@ public class ControlCarte {
         if (dictionnaireCarte.getCarte(idCarte).getType() == EnumCarte.ATTAQUE){
             return ((Attaque) dictionnaireCarte.getCarte(idCarte)).getSelfDegats();
         }
-            throw new IllegalArgumentException("idCarte invalide!");
+            throw new IllegalArgumentException(ERREUR_IDCARTE_INVALIDE);
     }
     public int getActionVie(int idCarte){
         if (dictionnaireCarte.getCarte(idCarte).getType() == EnumCarte.ATTAQUE){
             return ((Attaque) dictionnaireCarte.getCarte(idCarte)).getActionVie();
         }else{
-            throw new IllegalArgumentException("idCarte invalide!");
+            throw new IllegalArgumentException(ERREUR_IDCARTE_INVALIDE);
         }            
     }
     
@@ -66,7 +68,7 @@ public class ControlCarte {
         if (dictionnaireCarte.getCarte(idCarte).getType() == EnumCarte.GAIN_VIE) {
             return ((GainVie) dictionnaireCarte.getCarte(idCarte)).getGainVie();
         }else{
-            throw new IllegalArgumentException("idCarte invalide!");
+            throw new IllegalArgumentException(ERREUR_IDCARTE_INVALIDE);
         }
     }
     

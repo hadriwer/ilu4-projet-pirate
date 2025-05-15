@@ -101,7 +101,7 @@ public class CarteFactory {
             lancerDeGrappin);
         
         // Carte d'échange
-        Echange EchangeButin = new Echange(0, "Echange de Butin","Vous envoyez un de vos matelot faire un échange de trésor aléatoire avec l'ennemi");
+        Echange echangeButin = new Echange(0, "Echange de Butin","Vous envoyez un de vos matelot faire un échange de trésor aléatoire avec l'ennemi");
         
         
         // Cartes gain de vie
@@ -115,7 +115,7 @@ public class CarteFactory {
                 "Votre très chère mer désinfecte et accélère la guérison de vos blessure", 3);
 
         // Assemblage
-        Map<Carte, Integer> configuration = new HashMap<Carte, Integer>();
+        Map<Carte, Integer> configuration = new HashMap<>();
         
         configuration.put(mainDeFer, 4);
         configuration.put(abordageReussi, 4);
@@ -139,7 +139,7 @@ public class CarteFactory {
         configuration.put(navireInsubmersible, 1);
         configuration.put(charismeIntimidant, 1);
 
-        configuration.put(EchangeButin, 1);
+        configuration.put(echangeButin, 1);
         
         configuration.put(repasFestif, 4);
         configuration.put(eauDeVie, 4);

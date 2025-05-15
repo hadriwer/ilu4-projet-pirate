@@ -29,7 +29,7 @@ public class Echange extends Carte {
     }
     
     @Override
-    public Echange clone() {
+    public Echange copie() {
         return new Echange(id, nom, description);
     }
 

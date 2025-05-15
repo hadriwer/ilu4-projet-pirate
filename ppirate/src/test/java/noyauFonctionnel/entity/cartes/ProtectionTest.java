@@ -11,8 +11,7 @@ import noyauFonctionnel.entity.Joueur;
 import util.EnumCarte;
 
 class ProtectionTest {
-
-	private Protection carteProtection;
+    private Protection carteProtection;
     private Attaque carteAttaque;
     private Joueur j1;
     private Joueur j2;
@@ -34,7 +33,7 @@ class ProtectionTest {
 
     @Test
     public void testToString() {
-        String attendu = "Protection[nom=Protection attaque bloquée=Attaque]";
+        String attendu = "Protection[nom=Protection, attaque bloquée=Attaque]";
         assertEquals(attendu, carteProtection.toString());
     }
     
@@ -59,7 +58,7 @@ class ProtectionTest {
     
     @Test
     public void testClone() {
-    	Protection copie = carteProtection.clone();
+    	Protection copie = carteProtection.copie();
         assertEquals(carteProtection, copie);
         assertNotSame(carteProtection, copie);
     }

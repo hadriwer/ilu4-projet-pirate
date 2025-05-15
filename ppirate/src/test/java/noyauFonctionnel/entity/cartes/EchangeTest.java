@@ -49,7 +49,7 @@ class EchangeTest {
     
     @Test
     public void testClone() {
-    	Echange copie = carteEchange.clone();
+    	Echange copie = carteEchange.copie();
         assertEquals(carteEchange, copie);
         assertNotSame(carteEchange, copie);
     }
