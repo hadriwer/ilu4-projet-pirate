@@ -57,6 +57,7 @@ public abstract class Carte implements Cloneable {
         return this.nom.equals(c.getNom()) && this.description.equals(c.getDescription());
     }
     
+    @Override
     public abstract Carte clone();
     
 }

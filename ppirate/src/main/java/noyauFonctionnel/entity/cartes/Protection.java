@@ -12,7 +12,7 @@ import util.EnumCarte;
  * @author Solène
  */
 public class Protection extends Carte{
-    private Attaque attaqueBloque;
+    private final Attaque attaqueBloque;
     
     public Protection(int id, String nom, String description, Attaque attaqueBloque) {
         super(id, nom, description);

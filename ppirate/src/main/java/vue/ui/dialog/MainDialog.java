@@ -20,7 +20,7 @@ import vue.ui.presentation.components.ViePanel;
  * @author ember
  */
 public class MainDialog {
-    private AdaptateurDuNoyauFonctionnel adaptateurNoyau;
+    private final AdaptateurDuNoyauFonctionnel adaptateurNoyau;
     private Plateau vuePlateau;
     private ChoixNom vueAccueil;
 

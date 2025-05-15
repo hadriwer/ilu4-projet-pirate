@@ -16,7 +16,7 @@ import java.awt.geom.RoundRectangle2D;
  * @author David Marquet
  */
 public class ZonePopularitePanel extends javax.swing.JPanel {
-    private float opacite;
+    private final float opacite;
     private static final int BORDURE = 15;
     /**
      * Creates new form ZonePopularitePanel

@@ -127,7 +127,7 @@ public class Joueur {
     }
     
     public class MainJoueur {
-        private List<Carte> mainJoueur;
+        private final List<Carte> mainJoueur;
 
         public MainJoueur(List<Carte> mainJoueur) {
             this.mainJoueur = new ArrayList<>(mainJoueur);

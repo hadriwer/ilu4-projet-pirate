@@ -13,7 +13,6 @@ import vue.ui.dialog.MainDialog;
 import vue.ui.presentation.components.JaugeDePopularitePanel;
 import vue.ui.presentation.components.JaugeDeViePanel;
 import vue.ui.presentation.components.TimerPanel;
-import vue.ui.presentation.components.ViePanel;
 import vue.ui.presentation.components.Pioche;
 
 /**
@@ -21,7 +20,7 @@ import vue.ui.presentation.components.Pioche;
  * @author ember
  */
 public class Plateau extends javax.swing.JFrame {
-    private MainDialog dialog;
+    private final MainDialog dialog;
        // Ajout TEMPORAIRE pour corriger le problème du Designer
 
     /**

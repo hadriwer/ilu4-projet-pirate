@@ -16,7 +16,7 @@ import java.awt.geom.RoundRectangle2D;
  * @author Mathéo Vintrou
  */
 public class MainJoueurPanel extends javax.swing.JPanel {
-    private float opacite;
+    private final float opacite;
     private static final int BORDURE = 10;
     /**
      * Creates new form MainJoueurPanel

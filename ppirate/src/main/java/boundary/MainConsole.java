@@ -15,10 +15,8 @@ import vue.ui.dialog.AdaptateurDuNoyauFonctionnel;
  * @author wer, Solène
  */
 public class MainConsole {
-    private Scanner scanner;
-    private int j1;
-    private int j2;
-    private AdaptateurDuNoyauFonctionnel adaptateur;
+    private final Scanner scanner;
+    private final AdaptateurDuNoyauFonctionnel adaptateur;
     
     public MainConsole(AdaptateurDuNoyauFonctionnel adaptateur) {  
         this.adaptateur=adaptateur;
@@ -127,56 +125,57 @@ public class MainConsole {
     }
     
     public void lancerJeu() {
-        System.out.println("Début du jeu !");
-        String nomJ1;
-        do {
-            System.out.print("Joueur 1, entrez votre nom : ");
-            nomJ1 = scanner.nextLine();
-        } while (nomJ1.trim().isEmpty());
-        
-        adaptateur.setNomJoueur1(nomJ1);
-
-        String nomJ2;
-        do {
-            System.out.print("Joueur 2, Entrez votre nom : ");
-            nomJ2 = scanner.nextLine();
-        } while (nomJ2.trim().isEmpty());
-
-        adaptateur.setNomJoueur2(nomJ2);
-        
-        while (!adaptateur.verifierFinPartie()) {            
-            afficherJeu(nomJ1,nomJ2);
-            
-            
-            System.out.println("Tour de joueur " + (adaptateur.getTourDeJeu() ? nomJ1 : nomJ2));
-            
-            int indexCarte = -1;
+        try (scanner) {
+            System.out.println("Début du jeu !");
+            String nomJ1;
             do {
-                System.out.print("Choisissez une carte (index entre 1 et 4) : ");
-
-                if (scanner.hasNextInt()) {
-                    indexCarte = scanner.nextInt();
-                } else {
-                    System.out.println("Entrée invalide. Veuillez entrer un entier.");
-                    scanner.next();
-                }
-            } while (indexCarte < 1 || indexCarte > 4);
-
-            List<Integer> mainJoueurCurr = adaptateur.getTourDeJeu() ? adaptateur.getMainJoueur1() : adaptateur.getMainJoueur2();
-            int carteChoisie = mainJoueurCurr.get(indexCarte - 1);
+                System.out.print("Joueur 1, entrez votre nom : ");
+                nomJ1 = scanner.nextLine();
+            } while (nomJ1.trim().isEmpty());
             
-            adaptateur.deposerCarte(carteChoisie);   
-            adaptateur.appliquerEffetCarte(carteChoisie);
-            adaptateur.removeCarteMainJoueur(carteChoisie);
-            System.out.println("Votre carte est posée");
-            int cartePiochee=adaptateur.piocher();
-            adaptateur.joueurPrendreCarte(cartePiochee);
-            System.out.println("Vous piochez la carte "+mainJoueurCurr.get(3).toString());
-                        
-            System.out.println("On change de Joueur.");
-            adaptateur.changerJoueur();
+            adaptateur.setNomJoueur1(nomJ1);
+            
+            String nomJ2;
+            do {
+                System.out.print("Joueur 2, Entrez votre nom : ");
+                nomJ2 = scanner.nextLine();
+            } while (nomJ2.trim().isEmpty());
+            
+            adaptateur.setNomJoueur2(nomJ2);
+            
+            while (!adaptateur.verifierFinPartie()) {
+                afficherJeu(nomJ1,nomJ2);
+                
+                
+                System.out.println("Tour de joueur " + (adaptateur.getTourDeJeu() ? nomJ1 : nomJ2));
+                
+                int indexCarte = -1;
+                do {
+                    System.out.print("Choisissez une carte (index entre 1 et 4) : ");
+                    
+                    if (scanner.hasNextInt()) {
+                        indexCarte = scanner.nextInt();
+                    } else {
+                        System.out.println("Entrée invalide. Veuillez entrer un entier.");
+                        scanner.next();
+                    }
+                } while (indexCarte < 1 || indexCarte > 4);
+                
+                List<Integer> mainJoueurCurr = adaptateur.getTourDeJeu() ? adaptateur.getMainJoueur1() : adaptateur.getMainJoueur2();
+                int carteChoisie = mainJoueurCurr.get(indexCarte - 1);
+                
+                adaptateur.deposerCarte(carteChoisie);
+                adaptateur.appliquerEffetCarte(carteChoisie);
+                adaptateur.removeCarteMainJoueur(carteChoisie);
+                System.out.println("Votre carte est posée");
+                int cartePiochee=adaptateur.piocher();
+                adaptateur.joueurPrendreCarte(cartePiochee);
+                System.out.println("Vous piochez la carte "+mainJoueurCurr.get(3).toString());
+                
+                System.out.println("On change de Joueur.");
+                adaptateur.changerJoueur();
+            }
+            System.out.println("\nOn a un gagnant ! Le joueur "+ (adaptateur.joueur1gagne() ? nomJ1 : nomJ2) + " a gagné !!!");
         }
-        System.out.println("\nOn a un gagnant ! Le joueur "+ (adaptateur.joueur1gagne() ? nomJ1 : nomJ2) + " a gagné !!!");
-        scanner.close();
     }
 }

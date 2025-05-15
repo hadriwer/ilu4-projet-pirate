@@ -16,8 +16,8 @@ import vue.ui.dialog.MainDialog;
  * @author wer
  */
 public class FinPartie extends javax.swing.JDialog {
-    private javax.swing.JFrame parent;
-    private MainDialog dialog;
+    private final javax.swing.JFrame parent;
+    private final MainDialog dialog;
     /**
      * Creates new form FinPartie
      * @param parent

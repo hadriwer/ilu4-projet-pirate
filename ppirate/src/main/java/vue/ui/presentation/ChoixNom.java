@@ -6,7 +6,6 @@ package vue.ui.presentation;
 
 import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.border.EmptyBorder;
@@ -20,7 +19,7 @@ import vue.ui.dialog.MainDialog;
  * @author ember
  */
 public class ChoixNom extends javax.swing.JFrame {
-    private MainDialog dialog;
+    private final MainDialog dialog;
     
     
     /**

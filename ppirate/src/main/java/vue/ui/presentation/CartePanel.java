@@ -23,14 +23,14 @@ import vue.ui.dialog.MainDialog;
 public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
     
     //Attributs pour l'IHM
-    private MainDialog dialog;
+    private final MainDialog dialog;
     private JPanel ancienParent;
     private Plateau plateau;
     private JPanel glassPane;
-    private int idCarte;
-    private EnumCarte type;
-    private String nom;
-    private String description;
+    private final int idCarte;
+    private final EnumCarte type;
+    private final String nom;
+    private final String description;
     private int pointPopularite;
     private int selfDegat;
     private int actionVie; 

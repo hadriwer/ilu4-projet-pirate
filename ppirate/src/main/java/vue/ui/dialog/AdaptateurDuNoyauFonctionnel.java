@@ -6,9 +6,6 @@ package vue.ui.dialog;
 
 import java.util.List;
 import noyauFonctionnel.controller.*;
-import noyauFonctionnel.entity.Jeu;
-import noyauFonctionnel.entity.cartes.Attaque;
-import noyauFonctionnel.entity.cartes.Popularite;
 import util.EnumCarte;
 
 /**
@@ -16,9 +13,9 @@ import util.EnumCarte;
  * @author wer
  */
 public class AdaptateurDuNoyauFonctionnel {
-    private ControlJeu controlJeu;
-    private ControlChoisirNomJoueur controlChoisirNomJoueur;
-    private ControlCarte controlCarte;
+    private final ControlJeu controlJeu;
+    private final ControlChoisirNomJoueur controlChoisirNomJoueur;
+    private final ControlCarte controlCarte;
     
     public AdaptateurDuNoyauFonctionnel(ControlJeu controlJeu, ControlChoisirNomJoueur controlChoisirNomJoueur, ControlCarte controlCarte) {
         this.controlJeu = controlJeu;

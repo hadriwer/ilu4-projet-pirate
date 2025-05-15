@@ -17,7 +17,7 @@ import util.EnumCarte;
  */
 public class ControlCarte {
    
-    private DictionnaireCarte dictionnaireCarte;
+    private final DictionnaireCarte dictionnaireCarte;
     
     public ControlCarte(DictionnaireCarte dictionnaireCarte){
         this.dictionnaireCarte=dictionnaireCarte;

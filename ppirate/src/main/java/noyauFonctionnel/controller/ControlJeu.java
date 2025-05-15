@@ -7,17 +7,14 @@ package noyauFonctionnel.controller;
 import java.util.List;
 import noyauFonctionnel.entity.DictionnaireCarte;
 import noyauFonctionnel.entity.Jeu;
-import noyauFonctionnel.entity.Joueur;
-import noyauFonctionnel.entity.Pioche;
-import noyauFonctionnel.entity.cartes.Carte;
 
 /**
  *
  * @author wer
  */
 public class ControlJeu {
-    private Jeu jeu;
-    private DictionnaireCarte dictionnaireCarte;
+    private final Jeu jeu;
+    private final DictionnaireCarte dictionnaireCarte;
     
     public ControlJeu(Jeu jeu, DictionnaireCarte dictionnaireCarte) {
         this.jeu = jeu;

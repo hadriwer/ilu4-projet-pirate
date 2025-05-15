@@ -25,7 +25,7 @@ public class Pioche {
         });
         
         Collections.shuffle(pioche);
-        dictionnaireCarte.setCartes(pioche.toArray(new Carte[0]));
+        dictionnaireCarte.setCartes(pioche.toArray(Carte[]::new));
     }
     
     public boolean isEmpty() {

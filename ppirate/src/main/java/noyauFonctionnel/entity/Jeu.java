@@ -6,12 +6,7 @@ package noyauFonctionnel.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import noyauFonctionnel.entity.cartes.Attaque;
 import noyauFonctionnel.entity.cartes.Carte;
-import noyauFonctionnel.entity.cartes.GainVie;
-import noyauFonctionnel.entity.cartes.Popularite;
-import noyauFonctionnel.entity.cartes.Protection;
-import noyauFonctionnel.entity.cartes.Echange;
 import util.EnumCarte;
 
 /**
@@ -20,15 +15,15 @@ import util.EnumCarte;
  */
 public class Jeu {
     private static final int NOMBRE_CARTE = 4;
-    private Joueur joueur1;
-    private Joueur joueur2;
+    private final Joueur joueur1;
+    private final Joueur joueur2;
     private boolean tourDeJeu;
     private final Pioche pioche;
     
     // Zone de jeu
-    private List<Carte> zonePopulariteJ1;
-    private List<Carte> zonePopulariteJ2;
-    private List<Carte> zoneAction;
+    private final List<Carte> zonePopulariteJ1;
+    private final List<Carte> zonePopulariteJ2;
+    private final List<Carte> zoneAction;
     
     public Jeu(Pioche pioche) {
         this.pioche = pioche;

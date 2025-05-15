@@ -8,9 +8,7 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.RenderingHints;
-import java.awt.geom.AffineTransform;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.event.EventListenerList;
 import vue.ui.dialog.MainDialog;
@@ -29,9 +27,9 @@ public class TimerPanel extends javax.swing.JPanel {
      */
     javax.swing.Timer timer;
     private int decompte;
-    private int duree;
+    private final int duree;
     private static final int TEMPS = 10;
-    private float opacite;
+    private final float opacite;
     private static final int BORDURE = 15;
     
     public TimerPanel() {

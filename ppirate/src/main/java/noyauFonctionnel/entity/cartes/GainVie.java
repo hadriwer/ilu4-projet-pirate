@@ -11,7 +11,7 @@ import util.EnumCarte;
  * @author wer
  */
 public class GainVie extends Carte {
-    private int gainVie;
+    private final int gainVie;
 
     public GainVie(int id, String nom, String description, int gainVie) {
         super(id, nom, description);
