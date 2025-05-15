@@ -84,7 +84,7 @@ public class Pioche extends javax.swing.JPanel {
         int height = 110;
         int arc = 30;
             // afficher le dos d'une carte
-            GradientPaint gradient = new GradientPaint(x, y, new Color(150, 0, 0), x + width, y + height, new Color(255, 50, 50));
+            GradientPaint gradient = new GradientPaint(x, y, new Color(150, 0, 0), x + width*1.0f, y + height*1.0f, new Color(255, 50, 50));
             g2d.setPaint(gradient);
             g2d.fillRoundRect(x, y, width, height, arc, arc);
 
@@ -92,9 +92,6 @@ public class Pioche extends javax.swing.JPanel {
             g2d.setStroke(new BasicStroke(4));
             g2d.drawRoundRect(x, y, width, height, arc, arc);
             
-            //g2d.setColor(Color.black);
-            //g2d.setFont(new Font("Serif", Font.BOLD, 24));
-            //g2d.drawString("Pioche", x + 10, y + height / 2);
             super.paintComponent(g);
         }
     

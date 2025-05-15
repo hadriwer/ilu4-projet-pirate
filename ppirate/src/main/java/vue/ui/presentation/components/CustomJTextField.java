@@ -80,7 +80,7 @@ public class CustomJTextField extends JTextField {
     @Override
     public boolean contains(int x, int y) {
         if (shape == null || !shape.getBounds().equals(getBounds())) {
-            shape = new RoundRectangle2D.Float(0, 0, getWidth() - 1, getHeight() - 1, getBorderRadius(),
+            shape = new RoundRectangle2D.Float(0, 0, getWidth() - 1.0f, getHeight() - 1.0f, getBorderRadius(),
                     getBorderRadius());
         }
 

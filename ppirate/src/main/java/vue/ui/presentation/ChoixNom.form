@@ -133,7 +133,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="vue.ui.presentation.components.CustomJTextField" name="CustomJTextFieldPirate1Field">
+                    <Component class="vue.ui.presentation.components.CustomJTextField" name="customJTextFieldPirate1Field">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                           <BorderConstraints direction="South"/>
@@ -165,7 +165,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="vue.ui.presentation.components.CustomJTextField" name="CustomJTextFieldPirate2Field">
+                    <Component class="vue.ui.presentation.components.CustomJTextField" name="customJTextFieldPirate2Field">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                           <BorderConstraints direction="South"/>
@@ -196,9 +196,9 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="vue.ui.presentation.components.CustomJButton" name="CustomJButtonStart">
+                <Component class="vue.ui.presentation.components.CustomJButton" name="customJButtonStart">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CustomJButtonStartActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="customJButtonStartActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.Box$Filler" name="filler2">

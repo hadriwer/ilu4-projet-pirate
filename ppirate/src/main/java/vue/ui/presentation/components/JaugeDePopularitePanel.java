@@ -31,13 +31,13 @@ public class JaugeDePopularitePanel extends javax.swing.JPanel {
         public final int niveau;
         public final int pourcentage;
         public final Color color;
-        public final String nom_niveau;
+        public final String nomNiveau;
 
-        private NiveauPopularite(Color color, String nom_niveau) {
+        private NiveauPopularite(Color color, String nomNiveau) {
             this.niveau = this.ordinal();
             this.pourcentage = niveau == 0 ? 10 : niveau * 20;
             this.color = color;
-            this.nom_niveau = nom_niveau;
+            this.nomNiveau = nomNiveau;
         }
 
         public NiveauPopularite next() {
@@ -119,8 +119,8 @@ public class JaugeDePopularitePanel extends javax.swing.JPanel {
         // pour la height on doit se placer au milieu de la hauteur du texte, 
         // par défaut on est en haut à droite du texte donc pas aligné verticalement
         FontMetrics fm = g2.getFontMetrics();
-        g2.drawString(niveau.nom_niveau,
-                width/2 - fm.stringWidth(niveau.nom_niveau)/2,
+        g2.drawString(niveau.nomNiveau,
+                width/2 - fm.stringWidth(niveau.nomNiveau)/2,
                 (height + fm.getAscent() / 2) / 2);
     }
 

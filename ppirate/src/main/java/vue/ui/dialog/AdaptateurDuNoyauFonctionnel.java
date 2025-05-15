@@ -71,14 +71,14 @@ public class AdaptateurDuNoyauFonctionnel {
         return controlCarte.getNomAttaqueBloque(idCarte);
     }
     
-    public String getNom(int IdCarte){
-        return controlCarte.getNom(IdCarte);
+    public String getNom(int idCarte){
+        return controlCarte.getNom(idCarte);
     }
-    public String getDescription(int IdCarte){
-        return controlCarte.getDescription(IdCarte);
+    public String getDescription(int idCarte){
+        return controlCarte.getDescription(idCarte);
     }
-    public int getPointPopularite(int IdCarte){
-        return controlCarte.getPointPopularite(IdCarte);
+    public int getPointPopularite(int idCarte){
+        return controlCarte.getPointPopularite(idCarte);
     }
     public int getSelfDegat(int idCarte){
         return controlCarte.getSelfDegat(idCarte);

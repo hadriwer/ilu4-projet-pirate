@@ -35,8 +35,6 @@ public class ZonePopularitePanel extends javax.swing.JPanel {
         g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,this.opacite)); // baisse l'opacité du panel
         g2d.setColor(Color.BLACK);
         g2d.fill(new RoundRectangle2D.Float(0,0,getWidth(),getHeight(),BORDURE,BORDURE));
-        
-        //g2d.dispose();
     }
 
     /**

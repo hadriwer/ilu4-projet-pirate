@@ -17,8 +17,8 @@ import javax.swing.plaf.basic.BasicButtonUI;
  * @author ember
  */
 public class CustomJButton extends JButton {
-    Shape shape;
-    int round;
+    private Shape shape;
+    private int round;
     private int radius;
 
     public void setBorderRadius(int radius) {
@@ -55,7 +55,7 @@ public class CustomJButton extends JButton {
     @Override
     public boolean contains(int x, int y) {
         if (shape == null || !shape.getBounds().equals(getBounds())) {
-            shape = new RoundRectangle2D.Float(0, 0, getWidth() - 1, getHeight() - 1, round, round);
+            shape = new RoundRectangle2D.Float(0, 0, getWidth() - 1.0f, getHeight() - 1.0f, round, round);
         }
 
         return shape.contains(x, y);

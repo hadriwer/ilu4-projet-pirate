@@ -39,7 +39,7 @@ public class Pioche {
     public List<Carte> distribuer(int n) {
         return IntStream.range(0, n)
                 .mapToObj(t -> piocher())
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()); // .toList() est conseillé au lieu de .collect(...)
     }
    
     

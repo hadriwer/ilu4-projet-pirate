@@ -149,18 +149,18 @@ public class Joueur {
         
         @Override
         public String toString(){
-            String cartes = "";
+            StringBuilder cartes = new StringBuilder();
             if (this.getCartes().isEmpty()) {
-                return cartes + " vide";
+                return cartes.append(" vide").toString();
             }
-            cartes += "(\n";
+            cartes.append("(\n");
             
             for (Carte c : this.getCartes()){
-                cartes += c.toString() + "\n";
+                cartes.append(c.toString()).append("\n");
             }
             
-            cartes += ")";
-            return cartes;
+            cartes.append(")");
+            return cartes.toString();
         }
     }
 }

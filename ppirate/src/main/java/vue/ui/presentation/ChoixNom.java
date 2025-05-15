@@ -31,7 +31,7 @@ public class ChoixNom extends javax.swing.JFrame {
         this.dialog = dialog;
         initComponents();
         // bloquer les pseudos à 10 caractères
-        this.CustomJTextFieldPirate1Field.setDocument(new PlainDocument(){
+        this.customJTextFieldPirate1Field.setDocument(new PlainDocument(){
             @Override
             public void insertString(int offs, String str, AttributeSet a) throws BadLocationException{
                 if (str != null){
@@ -41,7 +41,7 @@ public class ChoixNom extends javax.swing.JFrame {
                 }
             }
         });
-        this.CustomJTextFieldPirate2Field.setDocument(new PlainDocument(){
+        this.customJTextFieldPirate2Field.setDocument(new PlainDocument(){
             @Override
             public void insertString(int offs, String str, AttributeSet a) throws BadLocationException{
                 if (str != null){
@@ -56,10 +56,10 @@ public class ChoixNom extends javax.swing.JFrame {
         setImage();
         setResizable(false);
         
-        CustomJTextFieldPirate2Field.setPlaceholder("Jack Sparrow");
-        CustomJTextFieldPirate1Field.setPlaceholder("Barbe noire");
-        CustomJTextFieldPirate2Field.setBorder(new EmptyBorder(10, 10, 10, 10));
-        CustomJTextFieldPirate1Field.setBorder(new EmptyBorder(10, 10, 10, 10));
+        customJTextFieldPirate2Field.setPlaceholder("Jack Sparrow");
+        customJTextFieldPirate1Field.setPlaceholder("Barbe noire");
+        customJTextFieldPirate2Field.setBorder(new EmptyBorder(10, 10, 10, 10));
+        customJTextFieldPirate1Field.setBorder(new EmptyBorder(10, 10, 10, 10));
         
         BufferedImage icon = ChargeurImage.chargerImage("presentation/icon_ppirate.png");
         Image iconResize = icon.getScaledInstance(64, 64, Image.SCALE_SMOOTH);
@@ -77,18 +77,18 @@ public class ChoixNom extends javax.swing.JFrame {
         jLabelLogo.setMinimumSize(new Dimension(taille, taille));
         jLabelLogo.setMaximumSize(new Dimension(taille, taille));
 
-        CustomJButtonStart.setText("LANCER LE JEU");
-        CustomJButtonStart.setBorder(new EmptyBorder(10, 10, 10, 10));
+        customJButtonStart.setText("LANCER LE JEU");
+        customJButtonStart.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         
         BufferedImage image2 = ChargeurImage.chargerImage("presentation/enter_game.png");
         Image imageEchelle2;
         imageEchelle2 = image2.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         ImageIcon typeIcon2 = new ImageIcon(imageEchelle2);
-        CustomJButtonStart.setIcon(typeIcon2);
+        customJButtonStart.setIcon(typeIcon2);
         
-        CustomJTextFieldPirate1Field.addActionListener(e -> CustomJButtonStart.doClick());
-        CustomJTextFieldPirate2Field.addActionListener(e -> CustomJButtonStart.doClick());
+        customJTextFieldPirate1Field.addActionListener(e -> customJButtonStart.doClick());
+        customJTextFieldPirate2Field.addActionListener(e -> customJButtonStart.doClick());
     }
 
     public void setImage() {
@@ -121,13 +121,13 @@ public class ChoixNom extends javax.swing.JFrame {
         jPanelZoneNom = new javax.swing.JPanel();
         jPanelZonePirate1 = new javax.swing.JPanel();
         jLabelPirate1Nom = new javax.swing.JLabel();
-        CustomJTextFieldPirate1Field = new vue.ui.presentation.components.CustomJTextField();
+        customJTextFieldPirate1Field = new vue.ui.presentation.components.CustomJTextField();
         jPanelZonePirate2 = new javax.swing.JPanel();
         jLabelPirate2Nom = new javax.swing.JLabel();
-        CustomJTextFieldPirate2Field = new vue.ui.presentation.components.CustomJTextField();
+        customJTextFieldPirate2Field = new vue.ui.presentation.components.CustomJTextField();
         jPanelStart = new javax.swing.JPanel();
         jLabelErreur = new javax.swing.JLabel();
-        CustomJButtonStart = new vue.ui.presentation.components.CustomJButton();
+        customJButtonStart = new vue.ui.presentation.components.CustomJButton();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         jPanelBackground = new javax.swing.JPanel();
         jLabelBackground = new javax.swing.JLabel();
@@ -171,7 +171,7 @@ public class ChoixNom extends javax.swing.JFrame {
         jLabelPirate1Nom.setForeground(new java.awt.Color(204, 204, 204));
         jLabelPirate1Nom.setText("Pirate n°1:");
         jPanelZonePirate1.add(jLabelPirate1Nom, java.awt.BorderLayout.CENTER);
-        jPanelZonePirate1.add(CustomJTextFieldPirate1Field, java.awt.BorderLayout.SOUTH);
+        jPanelZonePirate1.add(customJTextFieldPirate1Field, java.awt.BorderLayout.SOUTH);
 
         jPanelZoneNom.add(jPanelZonePirate1);
 
@@ -182,7 +182,7 @@ public class ChoixNom extends javax.swing.JFrame {
         jLabelPirate2Nom.setForeground(new java.awt.Color(204, 204, 204));
         jLabelPirate2Nom.setText("Pirate n°2:");
         jPanelZonePirate2.add(jLabelPirate2Nom, java.awt.BorderLayout.CENTER);
-        jPanelZonePirate2.add(CustomJTextFieldPirate2Field, java.awt.BorderLayout.SOUTH);
+        jPanelZonePirate2.add(customJTextFieldPirate2Field, java.awt.BorderLayout.SOUTH);
 
         jPanelZoneNom.add(jPanelZonePirate2);
 
@@ -195,12 +195,12 @@ public class ChoixNom extends javax.swing.JFrame {
         jLabelErreur.setForeground(new java.awt.Color(255, 51, 51));
         jPanelStart.add(jLabelErreur);
 
-        CustomJButtonStart.addActionListener(new java.awt.event.ActionListener() {
+        customJButtonStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CustomJButtonStartActionPerformed(evt);
+                customJButtonStartActionPerformed(evt);
             }
         });
-        jPanelStart.add(CustomJButtonStart);
+        jPanelStart.add(customJButtonStart);
         jPanelStart.add(filler2);
 
         jPanelDroiteField.add(jPanelStart);
@@ -240,15 +240,15 @@ public class ChoixNom extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
  
-    private void CustomJButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomJButtonStartActionPerformed
-        dialog.submitNomsJoueurs(CustomJTextFieldPirate1Field.getText(), CustomJTextFieldPirate2Field.getText());
-    }//GEN-LAST:event_CustomJButtonStartActionPerformed
+    private void customJButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customJButtonStartActionPerformed
+        dialog.submitNomsJoueurs(customJTextFieldPirate1Field.getText(), customJTextFieldPirate2Field.getText());
+    }//GEN-LAST:event_customJButtonStartActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private vue.ui.presentation.components.CustomJButton CustomJButtonStart;
-    private vue.ui.presentation.components.CustomJTextField CustomJTextFieldPirate1Field;
-    private vue.ui.presentation.components.CustomJTextField CustomJTextFieldPirate2Field;
+    private vue.ui.presentation.components.CustomJButton customJButtonStart;
+    private vue.ui.presentation.components.CustomJTextField customJTextFieldPirate1Field;
+    private vue.ui.presentation.components.CustomJTextField customJTextFieldPirate2Field;
     private javax.swing.Box.Filler filler2;
     private javax.swing.JLabel jLabelBackground;
     private javax.swing.JLabel jLabelErreur;

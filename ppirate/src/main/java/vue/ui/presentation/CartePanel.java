@@ -104,24 +104,12 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
         g2d.fillRoundRect(0,0,getWidth(),getHeight(),20,20);
         
         switch (type) {
-            case POPULARITE -> {
-                g2d.setColor(new Color(74,240,74)); //vert
-            }
-            case ATTAQUE -> {
-                g2d.setColor(new Color(240,74,74)); //rouge
-            }
-            case PROTECTION -> {
-                g2d.setColor(new Color(74,74,240)); //bleu
-            }
-            case ECHANGE -> {
-                g2d.setColor(Color.BLACK);
-            }
-            case GAIN_VIE -> {
-                g2d.setColor(Color.PINK);
-            }
-            default -> {
-                System.err.println("Le type n'est pas connu");
-            }
+            case POPULARITE -> g2d.setColor(new Color(74,240,74));//vert
+            case ATTAQUE -> g2d.setColor(new Color(240,74,74)); //rouge
+            case PROTECTION -> g2d.setColor(new Color(74,74,240)); //bleu
+            case ECHANGE -> g2d.setColor(Color.BLACK);
+            case GAIN_VIE -> g2d.setColor(Color.PINK);
+            default -> System.err.println("Le type n'est pas connu");
         }
         
         g2d.setStroke(new BasicStroke(4,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND));
@@ -219,10 +207,6 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
         }
         
         //récupération de la position absolue de la souris
-        //PointerInfo pointerInfo = MouseInfo.getPointerInfo();
-        //Point cursorLocation = pointerInfo.getLocation();
-        //Point cible = SwingUtilities.convertPoint(glassPane, cursorLocation, ciblePanel);
-
         Point cursorLocation = MouseInfo.getPointerInfo().getLocation();
         SwingUtilities.convertPointFromScreen(cursorLocation, ciblePanel);
         

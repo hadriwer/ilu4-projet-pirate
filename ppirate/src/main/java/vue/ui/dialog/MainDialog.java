@@ -91,15 +91,15 @@ public class MainDialog {
                     c.setSelfDegat(adaptateurNoyau.getSelfDegat(idCarte));
                 }
             }
-            case GAIN_VIE -> {
-                c.setGainVie(adaptateurNoyau.getGainVie(idCarte));
+            case ECHANGE -> {
+            	// aucun traitement
             }
+            case GAIN_VIE -> c.setGainVie(adaptateurNoyau.getGainVie(idCarte));
             case PROTECTION -> {
                 c.setProtection(adaptateurNoyau.getNomAttaqueBloque(idCarte));
                 c.setToolTipText("Protège de " + "\"" + adaptateurNoyau.getNomAttaqueBloque(idCarte) + "\"");
             }
-            default -> {
-            }
+            default -> System.err.println("Mauvais type de carte");
         }
         return c;
     }

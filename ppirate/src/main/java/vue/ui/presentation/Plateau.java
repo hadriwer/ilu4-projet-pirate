@@ -20,7 +20,7 @@ import vue.ui.presentation.components.Pioche;
  * @author ember
  */
 public class Plateau extends javax.swing.JFrame {
-    private final MainDialog dialog;
+    private MainDialog dialog;
        // Ajout TEMPORAIRE pour corriger le problème du Designer
 
     /**
@@ -30,12 +30,8 @@ public class Plateau extends javax.swing.JFrame {
      */
     public Plateau(MainDialog dialog) {
         this.dialog = dialog;
-        // Ajout TEMPORAIRE pour corriger le problème du Designer
-
         initComponents();
         TimerPanel.setDialog(dialog);
-        //this.timerPanel1.setDialog(dialog);
-        //this.pioche1.setDialogue(dialog);
         jLabelBackground.setBounds(0, 0, getWidth(), getHeight());
         setImage();
         setResizable(false);

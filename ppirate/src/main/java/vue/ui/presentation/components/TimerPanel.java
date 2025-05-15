@@ -35,7 +35,7 @@ public class TimerPanel extends javax.swing.JPanel {
     public TimerPanel() {
         this.opacite = 0.5f;
         initComponents();
-        this.timer = new javax.swing.Timer(1000, (e) -> { timerEventHandler(e); });
+        this.timer = new javax.swing.Timer(1000, this::timerEventHandler);
         this.decompte = TEMPS;
         this.duree = TEMPS;
         listenerList = new EventListenerList();
