@@ -23,7 +23,7 @@ public class Joueur {
     private static final int MINVIE = 0;
     private static final int MAXPOP = 5;
     private static final int MINPOP = 0;
-    private List<Attaque> carteProtegeJoueur;
+    private final List<Attaque> carteProtegeJoueur;
     
     public Joueur(List<Carte> mainJoueur) {
         this.indicePopularite = MINPOP;
@@ -111,7 +111,7 @@ public class Joueur {
     
     
     public boolean peutAttaquer(Attaque attaque) {
-        return !carteProtegeJoueur.stream().anyMatch(carte -> carte.equals(attaque));
+        return carteProtegeJoueur.stream().noneMatch(carte -> carte.equals(attaque));
     }
     
     public Carte carteHasard(int nbCartes){
