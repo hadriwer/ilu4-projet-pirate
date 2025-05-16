@@ -58,11 +58,11 @@ class PopulariteTest {
     
     @Test
     void testEqualsFalse() {
-    	// cas object null
-    	assertNotEquals(null, cartePopularite);
-    	
-    	// cas pas une carte
-    	assertNotEquals("Pas une carte", cartePopularite);
+    	// cas object null 
+        assertFalse(cartePopularite.equals(null));
+
+        // cas objet díun autre type
+        assertFalse(cartePopularite.equals("Pas une carte"));
     	
     	// cas nom diff√©rent
     	Popularite populariteDiff1 = new Popularite(2, "populariteDiff1", "desc", 2, 1);
