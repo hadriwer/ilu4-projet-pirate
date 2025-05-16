@@ -69,11 +69,11 @@ class CarteTest {
     
     @Test
     void testEqualsFalse() {
-    	// cas object null
-    	assertNotEquals(null, carte);
-    	
-    	// cas pas une carte
-    	assertNotEquals("Pas une carte", carte);
+    	// cas object null 
+        assertFalse(carte.equals(null));
+
+        // cas objet díun autre type
+        assertFalse(carte.equals("Pas une carte"));
     	
     	// cas nom diff√©rent
         Carte carteDiff1 = new CarteTestImpl(1, "carteDiff1", "desc");
