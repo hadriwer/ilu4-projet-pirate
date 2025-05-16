@@ -239,6 +239,10 @@ public class MainDialog {
         vueAccueil.setVisible(true);
     }
     
+    public void lancerFinJeu() {
+        java.awt.EventQueue.invokeLater(this::handleTerminerJeu);
+    }
+    
     public void lancerApp() {
         java.awt.EventQueue.invokeLater(this::initAccueil);
     }
