@@ -4,8 +4,10 @@
  */
 package vue.ui.dialog;
 
+import noyaufonctionnel.controller.ControlCarte;
+import noyaufonctionnel.controller.ControlJeu;
+import noyaufonctionnel.controller.ControlChoisirNomJoueur;
 import java.util.List;
-import noyauFonctionnel.controller.*;
 import util.EnumCarte;
 
 /**

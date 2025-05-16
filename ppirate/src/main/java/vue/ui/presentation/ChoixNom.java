@@ -20,6 +20,7 @@ import vue.ui.dialog.MainDialog;
  */
 public class ChoixNom extends javax.swing.JFrame {
     private transient MainDialog dialog;
+    private static final String FONTFAMILY = "Verdana";
     
     
     /**
@@ -143,7 +144,7 @@ public class ChoixNom extends javax.swing.JFrame {
         jPanelGaucheLogo.setOpaque(false);
         jPanelGaucheLogo.setLayout(new java.awt.BorderLayout());
 
-        jLabelLogo.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabelLogo.setFont(new java.awt.Font(FONTFAMILY, 0, 16)); // NOI18N
         jLabelLogo.setForeground(new java.awt.Color(255, 255, 255));
         jLabelLogo.setMaximumSize(new java.awt.Dimension(1000, 1000));
         jLabelLogo.setMinimumSize(new java.awt.Dimension(1000, 1000));
@@ -163,7 +164,7 @@ public class ChoixNom extends javax.swing.JFrame {
         jPanelZonePirate1.setOpaque(false);
         jPanelZonePirate1.setLayout(new java.awt.BorderLayout());
 
-        jLabelPirate1Nom.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabelPirate1Nom.setFont(new java.awt.Font(FONTFAMILY, 1, 12)); // NOI18N
         jLabelPirate1Nom.setForeground(new java.awt.Color(204, 204, 204));
         jLabelPirate1Nom.setText("Pirate n°1:");
         jPanelZonePirate1.add(jLabelPirate1Nom, java.awt.BorderLayout.CENTER);
@@ -174,7 +175,7 @@ public class ChoixNom extends javax.swing.JFrame {
         jPanelZonePirate2.setOpaque(false);
         jPanelZonePirate2.setLayout(new java.awt.BorderLayout());
 
-        jLabelPirate2Nom.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabelPirate2Nom.setFont(new java.awt.Font(FONTFAMILY, 1, 12)); // NOI18N
         jLabelPirate2Nom.setForeground(new java.awt.Color(204, 204, 204));
         jLabelPirate2Nom.setText("Pirate n°2:");
         jPanelZonePirate2.add(jLabelPirate2Nom, java.awt.BorderLayout.CENTER);
@@ -187,15 +188,12 @@ public class ChoixNom extends javax.swing.JFrame {
         jPanelStart.setOpaque(false);
         jPanelStart.setLayout(new java.awt.GridLayout(3, 0));
 
-        jLabelErreur.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        jLabelErreur.setForeground(new java.awt.Color(255, 51, 51));
+        jLabelErreur.setFont(new java.awt.Font(FONTFAMILY, 0, 10)); // NOI18N
+        jLabelErreur.setForeground(new java.awt.Color(255, 255, 255));
         jPanelStart.add(jLabelErreur);
 
-        customJButtonStart.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                customJButtonStartActionPerformed(evt);
-            }
-        });
+        customJButtonStart.addActionListener(this::customJButtonStartActionPerformed);
+
         jPanelStart.add(customJButtonStart);
         jPanelStart.add(filler2);
 

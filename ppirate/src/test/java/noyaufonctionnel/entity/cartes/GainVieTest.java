@@ -1,4 +1,4 @@
-package noyauFonctionnel.entity.cartes;
+package noyaufonctionnel.entity.cartes;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import noyauFonctionnel.entity.Joueur;
+import noyaufonctionnel.entity.Joueur;
 import util.EnumCarte;
 
 class GainVieTest {

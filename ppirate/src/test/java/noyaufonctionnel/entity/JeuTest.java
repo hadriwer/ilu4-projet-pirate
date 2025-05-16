@@ -1,11 +1,15 @@
-package noyauFonctionnel.entity;
+package noyaufonctionnel.entity;
 
+import noyaufonctionnel.entity.cartes.GainVie;
+import noyaufonctionnel.entity.cartes.Protection;
+import noyaufonctionnel.entity.cartes.Echange;
+import noyaufonctionnel.entity.cartes.Popularite;
+import noyaufonctionnel.entity.cartes.Attaque;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import noyauFonctionnel.entity.cartes.*;
 
 class JeuTest {
 

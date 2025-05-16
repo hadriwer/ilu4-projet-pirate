@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package noyauFonctionnel.controller;
+package noyaufonctionnel.controller;
 
 import java.util.List;
-import noyauFonctionnel.entity.DictionnaireCarte;
-import noyauFonctionnel.entity.Jeu;
-import noyauFonctionnel.entity.cartes.Carte;
+import noyaufonctionnel.entity.DictionnaireCarte;
+import noyaufonctionnel.entity.Jeu;
+import noyaufonctionnel.entity.cartes.Carte;
 
 /**
  *

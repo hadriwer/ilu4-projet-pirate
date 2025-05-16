@@ -1,6 +1,6 @@
-package noyauFonctionnel.controller;
+package noyaufonctionnel.controller;
 
-import noyauFonctionnel.entity.Jeu;
+import noyaufonctionnel.entity.Jeu;
 
 /**
  *

@@ -31,6 +31,7 @@ public class TimerPanel extends javax.swing.JPanel {
     private static final int TEMPS = 10;
     private final float opacite;
     private static final int BORDURE = 15;
+    private static final String FONTFAMILY = "Verdana";
     
     public TimerPanel() {
         this.opacite = 0.5f;
@@ -158,19 +159,19 @@ public class TimerPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(100, 200));
         setLayout(new java.awt.GridLayout(3, 0));
 
-        jLabelNom.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelNom.setFont(new java.awt.Font(FONTFAMILY, 1, 18)); // NOI18N
         jLabelNom.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNom.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelNom.setText("TEMPS DU TOUR");
         add(jLabelNom);
 
-        jLabelTimer.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelTimer.setFont(new java.awt.Font(FONTFAMILY, 0, 18)); // NOI18N
         jLabelTimer.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTimer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTimer.setText(String.valueOf(TEMPS));
         add(jLabelTimer);
 
-        jLabelTour.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelTour.setFont(new java.awt.Font(FONTFAMILY, 0, 18)); // NOI18N
         jLabelTour.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTour.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTour.setText("Tour de Joueur");

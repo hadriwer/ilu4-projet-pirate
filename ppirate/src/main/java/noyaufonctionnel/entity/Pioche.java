@@ -1,11 +1,11 @@
-package noyauFonctionnel.entity;
+package noyaufonctionnel.entity;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
-import noyauFonctionnel.entity.cartes.Carte;
+import noyaufonctionnel.entity.cartes.Carte;
 import util.CarteFactory;
 
 public class Pioche {

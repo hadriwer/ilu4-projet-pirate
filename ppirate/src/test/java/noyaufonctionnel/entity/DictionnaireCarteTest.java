@@ -1,11 +1,12 @@
-package noyauFonctionnel.entity;
+package noyaufonctionnel.entity;
 
+import noyaufonctionnel.entity.cartes.Carte;
+import noyaufonctionnel.entity.cartes.Popularite;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import noyauFonctionnel.entity.cartes.*;
 
 class DictionnaireCarteTest {
 	

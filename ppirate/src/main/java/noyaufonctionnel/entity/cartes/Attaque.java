@@ -1,4 +1,4 @@
-package noyauFonctionnel.entity.cartes;
+package noyaufonctionnel.entity.cartes;
 
 import java.util.Objects;
 import util.EnumCarte;

@@ -1,11 +1,11 @@
-package noyauFonctionnel.entity;
+package noyaufonctionnel.entity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import noyauFonctionnel.entity.cartes.Attaque;
-import noyauFonctionnel.entity.cartes.Carte;
-import noyauFonctionnel.entity.cartes.Popularite;
+import noyaufonctionnel.entity.cartes.Attaque;
+import noyaufonctionnel.entity.cartes.Carte;
+import noyaufonctionnel.entity.cartes.Popularite;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;

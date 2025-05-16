@@ -1,4 +1,4 @@
-package noyauFonctionnel.entity;
+package noyaufonctionnel.entity;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,12 +26,12 @@ class PiocheTest {
     
     @Test
     void testNbCartesRestantesAvantLancementJeu() {
-    	assertEquals(67, pioche.nbCartesRestantes());
+    	assertEquals(62, pioche.nbCartesRestantes());
     }
     
     @Test
     void testNbCartesRestantesApresLancementJeu() {
     	new Jeu(pioche);
-    	assertEquals(59, pioche.nbCartesRestantes());
+    	assertEquals(54, pioche.nbCartesRestantes());
     }
 }

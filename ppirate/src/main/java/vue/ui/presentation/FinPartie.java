@@ -88,6 +88,7 @@ public class FinPartie extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Fin du Jeu");
         addWindowListener(new java.awt.event.WindowAdapter() {
+        	@Override
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }

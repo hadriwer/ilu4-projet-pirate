@@ -6,14 +6,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import noyauFonctionnel.entity.DictionnaireCarte;
-import noyauFonctionnel.entity.Jeu;
-import noyauFonctionnel.entity.Joueur;
-import noyauFonctionnel.entity.Pioche;
-import noyauFonctionnel.entity.cartes.Attaque;
-import noyauFonctionnel.entity.cartes.Carte;
-import noyauFonctionnel.entity.cartes.GainVie;
-import noyauFonctionnel.entity.cartes.Popularite;
+import noyaufonctionnel.entity.DictionnaireCarte;
+import noyaufonctionnel.entity.Jeu;
+import noyaufonctionnel.entity.Joueur;
+import noyaufonctionnel.entity.Pioche;
+import noyaufonctionnel.entity.cartes.Attaque;
+import noyaufonctionnel.entity.cartes.Carte;
+import noyaufonctionnel.entity.cartes.GainVie;
+import noyaufonctionnel.entity.cartes.Popularite;
 
 class ScenarioDeTests {
 

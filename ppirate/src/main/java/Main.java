@@ -1,11 +1,11 @@
 
 import boundary.MainConsole;
-import noyauFonctionnel.controller.ControlCarte;
-import noyauFonctionnel.controller.ControlChoisirNomJoueur;
-import noyauFonctionnel.controller.ControlJeu;
-import noyauFonctionnel.entity.DictionnaireCarte;
-import noyauFonctionnel.entity.Jeu;
-import noyauFonctionnel.entity.Pioche;
+import noyaufonctionnel.controller.ControlCarte;
+import noyaufonctionnel.controller.ControlChoisirNomJoueur;
+import noyaufonctionnel.controller.ControlJeu;
+import noyaufonctionnel.entity.DictionnaireCarte;
+import noyaufonctionnel.entity.Jeu;
+import noyaufonctionnel.entity.Pioche;
 import vue.ui.dialog.AdaptateurDuNoyauFonctionnel;
 import vue.ui.dialog.MainDialog;
 

@@ -1,7 +1,7 @@
-package noyauFonctionnel.entity.cartes;
+package noyaufonctionnel.entity.cartes;
 
 import java.util.Objects;
-import noyauFonctionnel.entity.Joueur;
+import noyaufonctionnel.entity.Joueur;
 import util.EnumCarte;
 
 public abstract class Carte {

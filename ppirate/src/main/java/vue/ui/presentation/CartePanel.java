@@ -113,14 +113,17 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
         setPreferredSize(new java.awt.Dimension(100, 120));
         setRequestFocusEnabled(false);
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        	@Override
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
             }
         });
         addMouseListener(new java.awt.event.MouseAdapter() {
+        	@Override
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
             }
+        	@Override
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 formMouseReleased(evt);
             }

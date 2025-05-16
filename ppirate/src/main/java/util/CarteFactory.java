@@ -3,12 +3,12 @@ package util;
 import java.util.HashMap;
 import java.util.Map;
 
-import noyauFonctionnel.entity.cartes.Attaque;
-import noyauFonctionnel.entity.cartes.Carte;
-import noyauFonctionnel.entity.cartes.GainVie;
-import noyauFonctionnel.entity.cartes.Protection;
-import noyauFonctionnel.entity.cartes.Popularite;
-import noyauFonctionnel.entity.cartes.Echange;
+import noyaufonctionnel.entity.cartes.Attaque;
+import noyaufonctionnel.entity.cartes.Carte;
+import noyaufonctionnel.entity.cartes.GainVie;
+import noyaufonctionnel.entity.cartes.Protection;
+import noyaufonctionnel.entity.cartes.Popularite;
+import noyaufonctionnel.entity.cartes.Echange;
 
 /**
  *

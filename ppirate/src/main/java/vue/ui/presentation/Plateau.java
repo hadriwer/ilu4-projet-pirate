@@ -21,8 +21,7 @@ import vue.ui.presentation.components.Pioche;
  */
 public class Plateau extends javax.swing.JFrame {
     private transient MainDialog dialog;
-       // Ajout TEMPORAIRE pour corriger le problème du Designer
-
+    
     /**
      * Creates new form Plateau
      * 
