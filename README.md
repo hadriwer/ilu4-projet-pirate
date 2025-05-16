@@ -1,6 +1,6 @@
-# 🏴‍☠️ ilu4-projet-pirate (Groupe 1)
+# ilu4-projet-pirate (Groupe 1)
 
-## 👥 Auteurs 
+## Auteurs 
 
 **Chef de projet** : LOUIS Enzo  
 **Responsable des tests fonctionnels** : DE CHABANNES CURTON LA PALICE Antoine  
@@ -9,20 +9,20 @@
 **Responsable du développement de l’IHM** : FRANCES-GENTILLET Solene  
 **Responsable technique** : VINTROU Matheo
 
-## 🚀 Lancer le jeu
+## Lancer le jeu
 
 Ce projet Java est compatible avec les IDE suivants :
 
-- ✅ **Eclipse**
-- ✅ **NetBeans**
+- **Eclipse**
+- **NetBeans**
 
 
-### 🔧 Prérequis
+### Prérequis
 
 - Java JDK 8 ou supérieur installé ([télécharger ici](https://www.oracle.com/java/technologies/javase-downloads.html))
 - Un IDE Java comme Eclipse ou NetBeans
 
-### 🧩 Importer le projet
+### Importer le projet
 
 #### Avec Eclipse :
 1. Ouvrez Eclipse.
@@ -37,7 +37,7 @@ Ce projet Java est compatible avec les IDE suivants :
 3. Sélectionnez le dossier du projet.
 4. Cliquez sur `Open Project`.
 
-### ▶️ Lancer le jeu
+### Lancer le jeu
 
 Une fois le projet importé :
 - Classe principale : `Main.java`.
@@ -45,7 +45,7 @@ Une fois le projet importé :
 
   
 
-## 🗂️ Arborescence du projet
+## Arborescence du projet
 
 Voici l'arborescence de nos fichiers. Le modèle ECB se trouve dans `ppirate/src/main/java`.
 
@@ -177,7 +177,7 @@ Voici l'arborescence de nos fichiers. Le modèle ECB se trouve dans `ppirate/src
 
 `resources` : image de notre projet  
 
-## 📄 License
+## License
 
 - This project is licensed for personal, non-commercial use only.  
 Commercial use, redistribution, or modification without permission is prohibited.
