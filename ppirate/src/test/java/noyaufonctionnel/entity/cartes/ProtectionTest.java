@@ -82,5 +82,29 @@ class ProtectionTest {
         assertTrue(j1.getCarteProtegeJoueur().contains(carteAttaque)); 
     }
 
+    
+    @Test
+    void testEqualsTrue() {
+    	// cas mÃªme rÃ©fÃ©rence
+    	assertEquals(carteProtection, carteProtection);
+    	
+    	// cas mÃªme attributs
+        Protection memeProtection = new Protection(2, "Protection", "desc", carteAttaque);
+        assertEquals(carteProtection, memeProtection);
+    }
+    
+    
+    @Test
+    void testEqualsFalse() {
+        // cas object null
+        assertFalse(carteProtection.equals(null));
 
+        // cas objet d’un autre type
+        assertFalse(carteProtection.equals("Pas une carte"));
+
+        // cas attaque bloquée différente
+        Attaque autreAttaque = new Attaque(3, "Autre", "desc", 1, 0);
+        Protection protectionDiff = new Protection(2, "Protection", "desc", autreAttaque);
+        assertNotEquals(carteProtection, protectionDiff);
+    }
 }
