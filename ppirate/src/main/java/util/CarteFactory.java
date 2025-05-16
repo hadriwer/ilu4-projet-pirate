@@ -139,11 +139,11 @@ public class CarteFactory {
         configuration.put(navireInsubmersible, 1);
         configuration.put(charismeIntimidant, 1);
 
-        configuration.put(echangeButin, 5);
+        configuration.put(echangeButin, 3);
         
-        configuration.put(repasFestif, 8);
-        configuration.put(eauDeVie, 8);
-        configuration.put(merDesinfectante, 4);
+        configuration.put(repasFestif, 5);
+        configuration.put(eauDeVie, 5);
+        configuration.put(merDesinfectante, 3);
         
         return configuration;
             
