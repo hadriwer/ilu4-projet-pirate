@@ -62,7 +62,16 @@ class EchangeTest {
     
     @Test
     void testSetEffet() {
-        carteEchange.apply(j1, j2);
+    	// code de setEffet de la carte echange pour récuperer les cartes
+		Carte c1 = j1.carteHasard(j1.getMainJoueur().getCartes().size());
+		Carte c2 = j2.carteHasard(j1.getMainJoueur().getCartes().size());
+	
+		j1.getMainJoueur().prendreCarte(c2);
+		j2.getMainJoueur().prendreCarte(c1);
+	
+		// On verifie que l'echange a ete fait
+		assertTrue(j1.getMainJoueur().getCartes().contains(c2));
+		assertTrue(j2.getMainJoueur().getCartes().contains(c1));
 
     }
 }

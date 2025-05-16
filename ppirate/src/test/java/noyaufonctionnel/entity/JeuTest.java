@@ -222,13 +222,20 @@ class JeuTest {
     void testToString() {
     	// tour de J1
     	jeu.deposerCarte(cartePopularite);
-        jeu.toString();
+        String result = jeu.toString();
+        assertTrue(result.contains("Joueur[nom=Jack, vie=5, popularite=0, contenu de la main=("));
+        assertTrue(result.contains("Zone de Popularité J1: [Popularite[nom=Popularite, gain=1, auto-degat=1] ]"));
+        assertTrue(result.contains("Zone d'action : vide"));
         
         // tour de J2
         jeu.changerJoueur();
         jeu.deposerCarte(cartePopularite);
         jeu.deposerCarte(carteAttaque);
-        jeu.toString();
+        result = jeu.toString();
+        assertTrue(result.contains("Joueur[nom=Paul, vie=5, popularite=0, contenu de la main=("));
+        assertTrue(result.contains("Zone de Popularité J2: [Popularite[nom=Popularite, gain=1, auto-degat=1] ]"));
+        assertTrue(result.contains("Zone d'action : Attaque[nom=Attaque, degat=2, auto-degat=0]"));
+        
     }
     
 }
