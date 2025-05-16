@@ -169,7 +169,9 @@ Voici l'arborescence de nos fichiers. Le modèle ECB se trouve dans `ppirate/src
 
 `docs/PLANIFICATION_GANTT.png` : premier jet de planification de tâches
 
-`docs/diagramme_classe_v2.png` : v2 diagramme classe non détaillé (sans méthode, attributs natif)
+`docs/diagramme_sequence_*` : diagramme séquences.
+
+`docs/diagramme_classe_finale.png` : diagramme classe finalisé.
 
 `docs/maquette_ihm_v1.png` : v1 maquette visuel fini sans interaction
 

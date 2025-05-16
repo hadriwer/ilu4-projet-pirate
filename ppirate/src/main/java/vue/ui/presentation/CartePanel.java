@@ -217,7 +217,7 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
                         
             if (dialog.handleVerifierFinDePartie()) {
                 dialog.stopTimer();
-                dialog.handleTerminerJeu();
+                dialog.lancerFinJeu();
             } else {
                 dialog.handleJoueurPioche();
                 dialog.updateMainJoueur();
