@@ -66,7 +66,7 @@ public class ControlCarte {
     
     public int getGainVie(int idCarte) {
         if (dictionnaireCarte.getCarte(idCarte).getType() == EnumCarte.GAIN_VIE) {
-            return ((GainVie) dictionnaireCarte.getCarte(idCarte)).getGainVie();
+            return ((GainVie) dictionnaireCarte.getCarte(idCarte)).getGain();
         }else{
             throw new IllegalArgumentException(ERREUR_IDCARTE_INVALIDE);
         }

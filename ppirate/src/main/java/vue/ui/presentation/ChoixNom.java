@@ -19,7 +19,7 @@ import vue.ui.dialog.MainDialog;
  * @author ember
  */
 public class ChoixNom extends javax.swing.JFrame {
-    private final MainDialog dialog;
+    private transient MainDialog dialog;
     
     
     /**
@@ -34,20 +34,16 @@ public class ChoixNom extends javax.swing.JFrame {
         this.customJTextFieldPirate1Field.setDocument(new PlainDocument(){
             @Override
             public void insertString(int offs, String str, AttributeSet a) throws BadLocationException{
-                if (str != null){
-                    if ((getLength()+str.length())<= 10){
-                        super.insertString(offs,str,a);
-                    }
+                if (str != null && (getLength()+str.length())<= 10){
+                    super.insertString(offs,str,a);
                 }
             }
         });
         this.customJTextFieldPirate2Field.setDocument(new PlainDocument(){
             @Override
             public void insertString(int offs, String str, AttributeSet a) throws BadLocationException{
-                if (str != null){
-                    if ((getLength()+str.length())<= 10){
-                        super.insertString(offs,str,a);
-                    }
+                if (str != null && (getLength()+str.length())<= 10){
+                	super.insertString(offs,str,a);
                 }
             }
         });

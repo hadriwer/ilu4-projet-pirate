@@ -12,19 +12,17 @@ import util.EnumCarte;
  * @author wer
  */
 public class GainVie extends Carte {
-    private final int gainVie;
+    private final int gain;
 
     public GainVie(int id, String nom, String description, int gainVie) {
         super(id, nom, description);
-        this.gainVie = gainVie;
+        this.gain = gainVie;
         
-        setEffet((self, cible) -> {
-            self.gagnerVie(gainVie);
-        });
+        setEffet((self, cible) -> self.gagnerVie(gainVie));
     }
     
-    public int getGainVie() {
-        return gainVie;
+    public int getGain() {
+        return gain;
     }
 
     @Override
@@ -34,7 +32,7 @@ public class GainVie extends Carte {
     
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), gainVie);
+        return Objects.hash(super.hashCode(), gain);
     }
 
     @Override
@@ -49,17 +47,17 @@ public class GainVie extends Carte {
             return false;
         }
         final GainVie other = (GainVie) obj;
-        return this.gainVie == other.gainVie;
+        return this.gain == other.gain;
     }
     
     @Override
     public String toString() {
-        return "GainVie[nom=" + this.getNom() + ", gain de vie=" + gainVie +"]";
+        return "GainVie[nom=" + this.getNom() + ", gain de vie=" + gain +"]";
     }
 
     @Override
     public GainVie copie() {
-        return new GainVie(id, nom, description, gainVie);
+        return new GainVie(id, nom, description, gain);
     }
     
 }

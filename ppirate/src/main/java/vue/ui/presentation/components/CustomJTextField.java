@@ -14,7 +14,7 @@ import java.awt.geom.RoundRectangle2D;
 import javax.swing.JTextField;
 
 public class CustomJTextField extends JTextField {
-    private Shape shape;
+    private transient Shape shape; // transient : sonarlint
     private String placeholder;
     private Color borderColor;
     private int radius;

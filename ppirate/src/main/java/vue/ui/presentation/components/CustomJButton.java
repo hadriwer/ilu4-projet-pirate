@@ -17,7 +17,7 @@ import javax.swing.plaf.basic.BasicButtonUI;
  * @author ember
  */
 public class CustomJButton extends JButton {
-    private Shape shape;
+    private transient Shape shape; // transient pour sonarlint
     private int round;
     private int radius;
 

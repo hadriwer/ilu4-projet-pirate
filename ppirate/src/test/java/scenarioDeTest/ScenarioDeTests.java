@@ -12,10 +12,8 @@ import noyauFonctionnel.entity.Joueur;
 import noyauFonctionnel.entity.Pioche;
 import noyauFonctionnel.entity.cartes.Attaque;
 import noyauFonctionnel.entity.cartes.Carte;
-import noyauFonctionnel.entity.cartes.Echange;
 import noyauFonctionnel.entity.cartes.GainVie;
 import noyauFonctionnel.entity.cartes.Popularite;
-import noyauFonctionnel.entity.cartes.Protection;
 
 class ScenarioDeTests {
 
@@ -23,9 +21,7 @@ class ScenarioDeTests {
 	private Pioche pioche;
 	private Attaque carteAttaque;
 	private Popularite cartePopularite;
-	private Echange carteEchange;
 	private GainVie carteGainVie;
-	private Protection carteProtection;
 	private DictionnaireCarte dictCarte;
 
 	private Joueur j1;
@@ -35,9 +31,7 @@ class ScenarioDeTests {
 	public void setUp() {
 		carteAttaque = new Attaque(1, "Attaque", "desc", 2, 1);
 		cartePopularite = new Popularite(2, "Popularite", "desc", 2, 1);
-		carteEchange = new Echange(3, "Echange", "desc");
 		carteGainVie = new GainVie(4, "GainVie", "desc", 2);
-		carteProtection = new Protection(5, "Protection", "desc", carteAttaque);
 
 		dictCarte = new DictionnaireCarte();
 

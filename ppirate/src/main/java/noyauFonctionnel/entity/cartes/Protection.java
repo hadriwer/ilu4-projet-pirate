@@ -18,9 +18,7 @@ public class Protection extends Carte{
         super(id, nom, description);
         this.attaqueBloque = attaqueBloque;
         
-        setEffet((self, cible) -> {
-            self.getCarteProtegeJoueur().add(attaqueBloque);
-        });
+        setEffet((self, cible) -> self.getCarteProtegeJoueur().add(attaqueBloque));
     }
     
     public String getNomAttaqueBloque() {

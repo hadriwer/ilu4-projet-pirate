@@ -17,6 +17,11 @@ import javax.swing.ImageIcon;
  * @author loferga
  */
 public class ChargeurImage {
+	
+	private ChargeurImage() {
+	    throw new IllegalStateException("Utility class");
+	}
+	
     private static final ClassLoader chargeurClasse=ChargeurImage.class.getClassLoader();
     
     public static BufferedImage chargerImage(String cheminVersLaRessource){
@@ -24,7 +29,7 @@ public class ChargeurImage {
             URL ressourceURL=chargeurClasse.getResource(cheminVersLaRessource);
             return ImageIO.read(ressourceURL);
         }catch(IOException e){
-            Logger.getLogger(ChargeurImage.class.getName()).log(Level.SEVERE,"impossible d'ouvrir {0}",cheminVersLaRessource);
+            Logger.getLogger(ChargeurImage.class.getName()).log(Level.SEVERE,"impossible d ouvrir {0}",cheminVersLaRessource);
             return null;
         }
     }

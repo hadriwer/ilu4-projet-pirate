@@ -23,7 +23,7 @@ import vue.ui.dialog.MainDialog;
 public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
     
     //Attributs pour l'IHM
-    private final MainDialog dialog;
+    private transient MainDialog dialog;
     private JPanel ancienParent;
     private Plateau plateau;
     private JPanel glassPane;
@@ -31,12 +31,6 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
     private final EnumCarte type;
     private final String nom;
     private final String description;
-    private int pointPopularite;
-    private int selfDegat;
-    private int actionVie; 
-    private String protection;
-    
-    
     /**
      * Creates new form CartePanel
      * @param dialog
@@ -58,42 +52,28 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
     }
     
     public void setPointPopularite(int pointPopularite) {
-        this.pointPopularite = pointPopularite;
         jLabelEffet1.setText("Popularité : + " + pointPopularite);
         repaint();
     }
 
     public void setSelfDegat(int selfDegat) {
-        this.selfDegat = selfDegat;
         jLabelEffet2.setText("Blessure : -" + selfDegat+" vie");
         repaint();
     }
 
     public void setActionVie(int actionVie) {
-        this.actionVie = actionVie;
         jLabelEffet1.setText("Dégats : " + actionVie+" vie(s)");
         repaint();
     }
     
     public void setGainVie(int gainVie) {
-        this.actionVie = gainVie;
         jLabelEffet1.setText("Santé : +" + gainVie+" vie(s)");
         repaint();
     }
     
     public void setProtection(String protection) {
-        this.protection = protection;
         jLabelEffet1.setText("<html><body style='width:58px;text-align:center'>Protège de la carte\n" + protection + "</body></html>");
         repaint();
-    }
-    
-    private void removeInteractivity() {
-        for (java.awt.event.MouseMotionListener mml : this.getMouseMotionListeners()) {
-            this.removeMouseMotionListener(mml);
-        }
-        for (java.awt.event.MouseListener ml : this.getMouseListeners()) {
-            this.removeMouseListener(ml);
-        }
     }
     
     @Override

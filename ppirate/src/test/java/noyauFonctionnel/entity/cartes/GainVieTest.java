@@ -25,7 +25,7 @@ class GainVieTest {
 
     @Test
     void testGetGainVie() {
-        assertEquals(2, carteGainVie.getGainVie());
+        assertEquals(2, carteGainVie.getGain());
     }
 
     @Test

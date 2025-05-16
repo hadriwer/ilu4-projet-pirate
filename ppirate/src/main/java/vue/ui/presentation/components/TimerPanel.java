@@ -20,7 +20,7 @@ import vue.ui.presentation.TimeOutListener;
  * @author David Marquet
  */
 public class TimerPanel extends javax.swing.JPanel {
-    private MainDialog dialog;
+    private transient MainDialog dialog;
 
     /**
      * Creates new form TimerPanel

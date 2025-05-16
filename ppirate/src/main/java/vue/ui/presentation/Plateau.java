@@ -20,7 +20,7 @@ import vue.ui.presentation.components.Pioche;
  * @author ember
  */
 public class Plateau extends javax.swing.JFrame {
-    private MainDialog dialog;
+    private transient MainDialog dialog;
        // Ajout TEMPORAIRE pour corriger le problème du Designer
 
     /**

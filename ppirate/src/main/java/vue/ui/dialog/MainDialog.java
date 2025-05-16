@@ -7,8 +7,6 @@ package vue.ui.dialog;
 import java.util.List;
 import javax.swing.JDialog;
 import util.EnumCarte;
-import static util.EnumCarte.ATTAQUE;
-import static util.EnumCarte.POPULARITE;
 import vue.ui.presentation.Plateau;
 import vue.ui.presentation.CartePanel;
 import vue.ui.presentation.ChoixNom;

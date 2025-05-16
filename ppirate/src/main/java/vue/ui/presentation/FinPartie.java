@@ -16,21 +16,21 @@ import vue.ui.dialog.MainDialog;
  * @author wer
  */
 public class FinPartie extends javax.swing.JDialog {
-    private final javax.swing.JFrame parent;
-    private final MainDialog dialog;
+    private final javax.swing.JFrame parentF;
+    private transient MainDialog dialog;
     /**
      * Creates new form FinPartie
-     * @param parent
+     * @param parentF
      * @param modal
      * @param dialog
      */
-    public FinPartie(javax.swing.JFrame parent, boolean modal, MainDialog dialog) {
-        super(parent, modal);
+    public FinPartie(javax.swing.JFrame parentF, boolean modal, MainDialog dialog) {
+        super(parentF, modal);
         initComponents();
-        this.parent = parent;
+        this.parentF = parentF;
         this.dialog = dialog;
         setImage();
-        setLocationRelativeTo(parent);
+        setLocationRelativeTo(parentF);
         setResizable(false);
         setJoueurGagnant();
     }
@@ -144,8 +144,8 @@ public class FinPartie extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        parent.setVisible(false);
-        parent.dispose();
+        parentF.setVisible(false);
+        parentF.dispose();
     }//GEN-LAST:event_formWindowClosed
 
     /**

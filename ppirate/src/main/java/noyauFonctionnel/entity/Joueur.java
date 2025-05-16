@@ -24,6 +24,7 @@ public class Joueur {
     private static final int MAXPOP = 5;
     private static final int MINPOP = 0;
     private final List<Attaque> carteProtegeJoueur;
+    Random randomNum = new Random();
     
     public Joueur(List<Carte> mainJoueur) {
         this.indicePopularite = MINPOP;
@@ -115,7 +116,6 @@ public class Joueur {
     }
     
     public Carte carteHasard(int nbCartes){
-        Random randomNum = new Random();
         int nb = randomNum.nextInt(nbCartes);
         Carte c = this.mainJoueur.getCartes().get(nb);
         this.mainJoueur.getCartes().remove(nb);
@@ -127,40 +127,40 @@ public class Joueur {
     }
     
     public class MainJoueur {
-        private final List<Carte> mainJoueur;
+        private final List<Carte> cartes;
 
         public MainJoueur(List<Carte> mainJoueur) {
-            this.mainJoueur = new ArrayList<>(mainJoueur);
+            this.cartes = new ArrayList<>(mainJoueur);
         }
         
         public void prendreCarte(Carte carte){
-            this.mainJoueur.add(carte);
+            this.cartes.add(carte);
         }
         
         public void jouerCarte(Carte carte){
-            if (this.mainJoueur.contains(carte)){
-                this.mainJoueur.remove(carte);
+            if (this.cartes.contains(carte)){
+                this.cartes.remove(carte);
             }
         }
         
         public List<Carte> getCartes() {
-            return mainJoueur;
+            return cartes;
         }
         
         @Override
         public String toString(){
-            StringBuilder cartes = new StringBuilder();
+            StringBuilder cartesStr = new StringBuilder();
             if (this.getCartes().isEmpty()) {
-                return cartes.append(" vide").toString();
+                return cartesStr.append(" vide").toString();
             }
-            cartes.append("(\n");
+            cartesStr.append("(\n");
             
             for (Carte c : this.getCartes()){
-                cartes.append(c.toString()).append("\n");
+            	cartesStr.append(c.toString()).append("\n");
             }
             
-            cartes.append(")");
-            return cartes.toString();
+            cartesStr.append(")");
+            return cartesStr.toString();
         }
     }
 }

@@ -23,8 +23,8 @@ public class CarteFactory {
     public static Map<Carte, Integer> creerCartes() {
         // Cartes de popularité
         Popularite mainDeFer = new Popularite(0,"Main de fer", 
-            "À la suite d'un bras de fer devant les membres d'équipage vous gagnez deux points de popularité, mais votre effort vous coûte un point de vie.", 
-            2, 1);
+            "À la suite d'un bras de fer devant les membres d'équipage vous gagnez un point de popularité, mais votre effort vous coûte un point de vie.", 
+            1, 1);
 
         Popularite abordageReussi = new Popularite(0,"Abordage réussi", 
             "Au cours d’un abordage, vous faites preuve d’une grande bravoure et gagnez deux points de popularité.", 
@@ -35,8 +35,8 @@ public class CarteFactory {
             1, 0);
 
         Popularite grandeDescente = new Popularite(0,"Grande descente", 
-            "Suite à une beuverie avec l’équipage, vous prouvez votre supériorité et finissez victorieux, gagnant ainsi le respect de vos matelots et deux points de popularité. Malheureusement vous finissez la soirée avec le foie en compote et perdez deux points de vie.", 
-            2, 2);
+            "Suite à une beuverie avec l’équipage, vous prouvez votre supériorité et finissez victorieux, gagnant ainsi le respect de vos matelots et un point de popularité. Malheureusement vous finissez la soirée avec le foie en compote et perdez deux points de vie.", 
+            1, 2);
 
         Popularite revolteSimultanee = new Popularite(0,"Révolte simultanée", 
             "Suite à une mutinerie, vous imposez votre autorité et restez capitaine, gagnant ainsi un point de popularité.", 
@@ -44,7 +44,7 @@ public class CarteFactory {
 
         Popularite butinInestimable = new Popularite(0,"Butin inestimable", 
             "Vous et votre équipage vous approchez d’une île en plein combat. Contre les conseils de votre second et du maître d’équipage, vous décidez de prendre le risque et ordonnez à quelques hommes d’aller y déterrer un potentiel trésor. Votre instinct vous rapporte trois gros coffres bien remplis et trois points de popularité.", 
-            3, 0);
+            3, 3);
 
         Popularite ventEnPoupe = new Popularite(0,"Vent en poupe", 
             "De par votre expérience, vous ordonnez à l’équipage de changer de cap pour vous aider d’une rafale opportune. Vous gagnez en vitesse et remportez un point de popularité.", 
@@ -117,20 +117,20 @@ public class CarteFactory {
         // Assemblage
         Map<Carte, Integer> configuration = new HashMap<>();
         
-        configuration.put(mainDeFer, 4);
-        configuration.put(abordageReussi, 4);
-        configuration.put(discoursInspirant, 4);
-        configuration.put(grandeDescente, 4);
-        configuration.put(revolteSimultanee, 4);
-        configuration.put(butinInestimable, 2);
-        configuration.put(ventEnPoupe, 4);
+        configuration.put(mainDeFer, 2);
+        configuration.put(abordageReussi, 2);
+        configuration.put(discoursInspirant, 2);
+        configuration.put(grandeDescente, 2);
+        configuration.put(revolteSimultanee, 2);
+        configuration.put(butinInestimable, 1);
+        configuration.put(ventEnPoupe, 2);
 
-        configuration.put(bombeArtisanale, 4);
-        configuration.put(coupDeSabre, 4);
-        configuration.put(abordage, 4);
-        configuration.put(bouteilleCassee, 4);
-        configuration.put(salveDeCanon, 4);
-        configuration.put(lancerDeGrappin, 4);
+        configuration.put(bombeArtisanale, 3);
+        configuration.put(coupDeSabre, 3);
+        configuration.put(abordage, 3);
+        configuration.put(bouteilleCassee, 3);
+        configuration.put(salveDeCanon, 3);
+        configuration.put(lancerDeGrappin, 3);
 
         configuration.put(nezDeFer, 1);
         configuration.put(escrimeDeJeunesse, 1);
@@ -139,11 +139,11 @@ public class CarteFactory {
         configuration.put(navireInsubmersible, 1);
         configuration.put(charismeIntimidant, 1);
 
-        configuration.put(echangeButin, 1);
+        configuration.put(echangeButin, 5);
         
-        configuration.put(repasFestif, 4);
-        configuration.put(eauDeVie, 4);
-        configuration.put(merDesinfectante, 2);
+        configuration.put(repasFestif, 8);
+        configuration.put(eauDeVie, 8);
+        configuration.put(merDesinfectante, 4);
         
         return configuration;
             
