@@ -40,7 +40,7 @@ Ce projet Java est compatible avec les IDE suivants :
 ### ▶️ Lancer le jeu
 
 Une fois le projet importé :
-- Localisez la classe principale (par exemple `Main.java` ou `GameLauncher.java`).
+- Classe principale : `Main.java`.
 - Faites un clic droit dessus et sélectionnez **Run** ou **Exécuter le fichier**.  
 
   
