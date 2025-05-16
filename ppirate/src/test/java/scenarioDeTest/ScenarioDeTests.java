@@ -221,4 +221,49 @@ class ScenarioDeTests {
 
 		assertEquals(5, j1.getIndiceVie());
 	}
+	
+	@Test
+	void partieComplete() {
+	    // Initialisation
+	    assertFalse(jeu.verifierFinPartie());
+	    assertEquals("Jack", jeu.getTourDeJeu() ? jeu.getJoueur1Nom() : jeu.getJoueur2Nom());
+
+	    // Tour 1 : Jack joue une carte de popularité
+	    jeu.deposerCarte(cartePopularite);
+	    cartePopularite.apply(j1, j2); // Jack joue Popularité (gain 2, perte 1)
+	    assertEquals(2, j1.getIndicePopularite());
+	    assertEquals(4, j1.getIndiceVie());
+
+	    // Changement de joueur : Paul
+	    jeu.changerJoueur();
+	    assertEquals("Paul", jeu.getTourDeJeu() ? jeu.getJoueur1Nom() : jeu.getJoueur2Nom());
+
+	    // Paul joue une attaque sur Jack
+	    jeu.deposerCarte(carteAttaque);
+	    carteAttaque.apply(j2, j1); // Paul attaque Jack (Jack perd 2, Paul perd 1)
+	    assertEquals(2, j1.getIndiceVie());
+	    assertEquals(4, j2.getIndiceVie());
+
+	    // Changement de joueur : Jack
+	    jeu.changerJoueur();
+
+	    // Jack joue encore une carte de popularité
+	    jeu.deposerCarte(cartePopularite);
+	    cartePopularite.apply(j1, j2); // gain 2 pop, perte 1 vie
+	    assertEquals(4, j1.getIndicePopularite());
+	    assertEquals(1, j1.getIndiceVie());
+
+	    // Changement de joueur : Paul
+	    jeu.changerJoueur();
+
+	    // Paul rejoue une attaque sur Jack
+	    jeu.deposerCarte(carteAttaque);
+	    carteAttaque.apply(j2, j1); // Jack meurt
+
+	    // Vérification fin de partie
+	    assertTrue(jeu.verifierFinPartie());
+	    assertEquals("Paul", jeu.giveJoueurGagnant().getNom());
+	    assertTrue(j1.aPerdu());
+	    assertFalse(j2.aPerdu());
+	}
 }
