@@ -1,5 +1,7 @@
 /ppirate/target/
 .metadata
+.idea
+
 
 target/
 /ppirate/nbproject/
