@@ -146,8 +146,12 @@ public class MainConsole {
             while (!adaptateur.verifierFinPartie()) {
                 afficherJeu(nomJ1,nomJ2);
                 
-                
-                System.out.println("Tour de " + (adaptateur.getTourDeJeu() ? nomJ1+" (joueur 1)" : nomJ2+" (joueur 2)"));
+                boolean tour = adaptateur.getTourDeJeu();
+                if (tour) {
+                	System.out.println("Tour de " + nomJ1 + " (joueur 1)");	
+                } else {
+                	System.out.println("Tour de " + nomJ2 + " (joueur 2)");	
+                }
                 
                 int indexCarte = -1;
                 do {
@@ -175,7 +179,15 @@ public class MainConsole {
                 System.out.println("On change de Joueur.");
                 adaptateur.changerJoueur();
             }
-            System.out.println("\nOn a un gagnant ! Le joueur "+ (adaptateur.joueur1gagne() ? nomJ1 : nomJ2) + " a gagné !!!");
+            
+            String typeVictoire = adaptateur.getTypeVictoire();
+            String nomGagnant = adaptateur.getNomGagnant();
+            
+            if (typeVictoire.equals("égalité")) {
+            	System.out.println("Egalité !");
+            } else {
+            	System.out.println(nomGagnant + "a gagné par " + typeVictoire);
+            }
         }
     }
 }

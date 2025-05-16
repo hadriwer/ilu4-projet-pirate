@@ -24,7 +24,7 @@ public class Joueur {
     private static final int MAXPOP = 5;
     private static final int MINPOP = 0;
     private final List<Attaque> carteProtegeJoueur;
-    Random randomNum = new Random();
+    private Random randomNum = new Random();
     
     public Joueur(List<Carte> mainJoueur) {
         this.indicePopularite = MINPOP;

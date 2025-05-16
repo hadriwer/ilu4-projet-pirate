@@ -156,4 +156,51 @@ public class AdaptateurDuNoyauFonctionnel {
     public boolean getTourDeJeu(){
         return controlJeu.getTourDeJeu();
     }
+    
+    public String getTypeVictoire() {
+        boolean j1Gagne = controlJeu.joueur1gagne();
+        boolean j2Gagne = controlJeu.joueur2gagne();
+        boolean j1Perdu = controlJeu.joueur1perdu();
+        boolean j2Perdu = controlJeu.joueur2perdu();
+
+        // Égalité
+        if ((j1Gagne && j2Gagne) || (j1Perdu && j2Perdu)) {
+            return "égalité";
+        }
+
+        // Victoire par popularité
+        if ((j1Gagne && !j1Perdu) || (j2Gagne && !j2Perdu)) {
+            return "popularité";
+        }
+
+        // Victoire par sacrifice (gagne en popularité et perd en vie)
+        if ((j1Gagne) || (j2Gagne)) {
+            return "sacrifice";
+        }
+
+        // Victoire par K.O. (adversaire perd sans que le joueur gagne directement)
+        if ((j1Perdu) || (j2Perdu)) {
+            return "K.O.";
+        }
+
+        // Par défaut, indéfini
+        return "inconnu";
+    }
+    
+    public String getNomGagnant() {
+        boolean j1Gagne = controlJeu.joueur1gagne();
+        boolean j2Gagne = controlJeu.joueur2gagne();
+        boolean j1Perdu = controlJeu.joueur1perdu();
+        boolean j2Perdu = controlJeu.joueur2perdu();
+
+        if ((j1Gagne && j2Gagne) || (j1Perdu && j2Perdu)) {
+            return "ÉGALITÉ";
+        } else if (j1Gagne || j2Perdu) {
+            return this.getNomJoueur1();
+        } else if (j2Gagne || j1Perdu) {
+            return this.getNomJoueur2();
+        }
+
+        return "Inconnu";
+    }
 }
