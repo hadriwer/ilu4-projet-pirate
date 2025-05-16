@@ -59,11 +59,11 @@ class AttaqueTest {
     
     @Test
     void testEqualsFalse() {
-    	// cas object null
-    	assertNotEquals(null, carteAttaque);
-    	
-    	// cas pas une carte
-    	assertNotEquals("Pas une carte", carteAttaque);
+    	// cas object null 
+        assertFalse(carteAttaque.equals(null));
+
+        // cas objet díun autre type
+        assertFalse(carteAttaque.equals("Pas une carte"));
     	
     	// cas nom diff√©rent
         Attaque attaqueDiff1 = new Attaque(2, "AttaqueDiff1", "desc", 2, 0);

@@ -26,12 +26,12 @@ class PiocheTest {
     
     @Test
     void testNbCartesRestantesAvantLancementJeu() {
-    	assertEquals(62, pioche.nbCartesRestantes());
+    	assertEquals(53, pioche.nbCartesRestantes());
     }
     
     @Test
     void testNbCartesRestantesApresLancementJeu() {
     	new Jeu(pioche);
-    	assertEquals(54, pioche.nbCartesRestantes());
+    	assertEquals(45, pioche.nbCartesRestantes());
     }
 }
