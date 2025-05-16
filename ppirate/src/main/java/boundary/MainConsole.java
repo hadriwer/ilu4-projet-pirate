@@ -180,13 +180,15 @@ public class MainConsole {
                 adaptateur.changerJoueur();
             }
             
+            System.out.println("#################################################");
+            
             String typeVictoire = adaptateur.getTypeVictoire();
             String nomGagnant = adaptateur.getNomGagnant();
             
             if (typeVictoire.equals("égalité")) {
             	System.out.println("Egalité !");
             } else {
-            	System.out.println(nomGagnant + "a gagné par " + typeVictoire);
+            	System.out.println(nomGagnant + " a gagné par " + typeVictoire);
             }
         }
     }
