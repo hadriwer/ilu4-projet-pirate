@@ -118,6 +118,18 @@ public class ControlJeu {
         return jeu.getJoueur1().aGagne();
     }
     
+    public boolean joueur2gagne() {
+        return jeu.getJoueur2().aGagne();
+    }
+    
+    public boolean joueur1perdu() {
+        return jeu.getJoueur1().aPerdu();
+    }
+    
+    public boolean joueur2perdu() {
+        return jeu.getJoueur2().aPerdu();
+    }
+    
     public int getNbCartesRestantes(){
         return jeu.getPioche().nbCartesRestantes();
     }

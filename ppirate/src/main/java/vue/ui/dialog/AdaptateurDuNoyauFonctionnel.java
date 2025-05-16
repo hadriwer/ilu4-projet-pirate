@@ -27,6 +27,18 @@ public class AdaptateurDuNoyauFonctionnel {
         return controlJeu.joueur1gagne();
     }
     
+    public boolean joueur2gagne() {
+        return controlJeu.joueur2gagne();
+    }
+    
+    public boolean joueur1perdu() {
+        return controlJeu.joueur1perdu();
+    }
+    
+    public boolean joueur2perdu() {
+        return controlJeu.joueur2perdu();
+    }
+    
     public int getPointDeVieJ1(){
         return controlJeu.getPointDeVieJ1();
     }

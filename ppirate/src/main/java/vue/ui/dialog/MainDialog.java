@@ -41,6 +41,18 @@ public class MainDialog {
         return adaptateurNoyau.joueur1gagne();
     }
     
+    public boolean handleJoueur2Gagne() {
+        return adaptateurNoyau.joueur2gagne();
+    }
+    
+    public boolean handleJoueur1Perdu() {
+        return adaptateurNoyau.joueur1perdu();
+    }
+    
+    public boolean handleJoueur2Perdu() {
+        return adaptateurNoyau.joueur2perdu();
+    }
+    
     public boolean handleVerifierFinDePartie() {
         return adaptateurNoyau.verifierFinPartie();
     }
@@ -191,7 +203,7 @@ public class MainDialog {
         if (!adaptateurNoyau.getZoneAction().isEmpty()) {
             vuePlateau.getZoneAction().removeAll();
             List<Integer> listZoneAction= adaptateurNoyau.getZoneAction();
-            CartePanel c=extractCardPanel(listZoneAction.getLast(), false);
+            CartePanel c=extractCardPanel(listZoneAction.get(listZoneAction.size() - 1), false);
             vuePlateau.getZoneAction().add(c);
         }
         vuePlateau.getZoneAction().revalidate();

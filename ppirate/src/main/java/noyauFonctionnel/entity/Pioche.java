@@ -1,49 +1,47 @@
 package noyauFonctionnel.entity;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import noyauFonctionnel.entity.cartes.Carte;
 import util.CarteFactory;
 
 public class Pioche {
     
-    private final List<Carte> pioche;
+    private final List<Carte> contenu;
     
     public Pioche(DictionnaireCarte dictionnaireCarte) {
-        pioche = new LinkedList<>();
+    	contenu = new ArrayList<>();
         
         Map<Carte, Integer> configuration = CarteFactory.creerCartes();
         
         configuration.entrySet().stream().forEach(entry -> {
             for (int i = 0; i < entry.getValue(); i++) {
-                pioche.add(entry.getKey().copie()); 
+            	contenu.add(entry.getKey().copie()); 
             }
         });
         
-        Collections.shuffle(pioche);
-        dictionnaireCarte.setCartes(pioche.toArray(Carte[]::new));
+        Collections.shuffle(contenu);
+        dictionnaireCarte.setCartes(contenu.toArray(Carte[]::new));
     }
     
     public boolean isEmpty() {
-        return pioche.isEmpty();
+        return contenu.isEmpty();
     }
     
     public Carte piocher() {
-        return pioche.removeLast(); // remove last complexité O(1)
+        return contenu.remove(contenu.size() - 1);
     }
     
     public List<Carte> distribuer(int n) {
-        return IntStream.range(0, n)
-                .mapToObj(t -> piocher())
-                .collect(Collectors.toList()); // .toList() est conseillé au lieu de .collect(...)
+        return IntStream.range(0, n).mapToObj(t -> piocher()).toList(); 
+        // .collect(Collectors.toList()) en java < 16 (au lieu de .toList())
     }
    
     
     public int nbCartesRestantes(){
-        return pioche.size();
+        return contenu.size();
     }
 }

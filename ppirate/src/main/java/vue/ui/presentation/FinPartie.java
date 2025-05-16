@@ -31,24 +31,43 @@ public class FinPartie extends javax.swing.JDialog {
         this.dialog = dialog;
         setImage();
         setLocationRelativeTo(parent);
+        setResizable(false);
         setJoueurGagnant();
     }
     
     private void setJoueurGagnant() {
-        if (dialog.handleJoueur1Gagne()) {
-            jLabel4.setText(dialog.getPlateau().getLabelJ1().getText());
-        }
-        else {
-            jLabel4.setText(dialog.getPlateau().getLabelJ2().getText());
+        if ((dialog.handleJoueur1Gagne() && dialog.handleJoueur2Gagne()) || (dialog.handleJoueur1Perdu() && dialog.handleJoueur2Perdu())) {
+            nomGagnantOuEgalite.setText("ÉGALITÉ"); // ez
+            descriptionResultat.setText("Aucun gagnant aujourd'hui !");
+        } else if (dialog.handleJoueur1Gagne()) {
+            nomGagnantOuEgalite.setText(dialog.getPlateau().getLabelJ1().getText());
+            if (dialog.handleJoueur1Perdu()) {
+                descriptionResultat.setText("Victoire par sacrifice !");
+            } else {
+                descriptionResultat.setText("Victoire par popularité !"); // ez
+            }
+        }  else if (dialog.handleJoueur2Gagne()) {
+            nomGagnantOuEgalite.setText(dialog.getPlateau().getLabelJ2().getText());
+            if (dialog.handleJoueur2Perdu()) {
+                descriptionResultat.setText("Victoire par sacrifice !");
+            } else {
+                descriptionResultat.setText("Victoire par popularité !"); // ez
+            }
+        } else if (dialog.handleJoueur2Perdu()) {
+            nomGagnantOuEgalite.setText(dialog.getPlateau().getLabelJ1().getText());
+            descriptionResultat.setText("Victoire par K.O !"); // ez
+        } else if (dialog.handleJoueur1Perdu()) {
+            nomGagnantOuEgalite.setText(dialog.getPlateau().getLabelJ2().getText());
+            descriptionResultat.setText("Victoire par K.O !"); // ez
         }
     }
     
     private void setImage(){
         BufferedImage image=ChargeurImage.chargerImage("presentation/plateau_background.png");
         Image imageEchelle;
-        imageEchelle = image.getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_SMOOTH);
+        imageEchelle = image.getScaledInstance(jLabelBackground.getWidth(), jLabelBackground.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon typeIcon=new ImageIcon(imageEchelle);
-        jLabel1.setIcon(typeIcon);
+        jLabelBackground.setIcon(typeIcon);
     }
 
     /**
@@ -60,9 +79,11 @@ public class FinPartie extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        nomGagnantOuEgalite = new javax.swing.JLabel();
+        descriptionResultat = new javax.swing.JLabel();
+        jPanelBackground = new javax.swing.JPanel();
+        jLabelBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Fin du Jeu");
@@ -71,20 +92,53 @@ public class FinPartie extends javax.swing.JDialog {
                 formWindowClosed(evt);
             }
         });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
 
-        jLabel3.setFont(new java.awt.Font("Suruma", 0, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("gagne la partie");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1080, 750));
+        jPanel1.setOpaque(false);
+        jPanel1.setPreferredSize(new java.awt.Dimension(1080, 750));
+        jPanel1.setLayout(new java.awt.GridLayout(2, 0));
 
-        jLabel4.setFont(new java.awt.Font("Suruma", 0, 48)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("COMMENT");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+        nomGagnantOuEgalite.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        nomGagnantOuEgalite.setForeground(new java.awt.Color(255, 255, 255));
+        nomGagnantOuEgalite.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nomGagnantOuEgalite.setLabelFor(descriptionResultat);
+        nomGagnantOuEgalite.setToolTipText("");
+        jPanel1.add(nomGagnantOuEgalite);
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 300));
+        descriptionResultat.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        descriptionResultat.setForeground(new java.awt.Color(255, 255, 255));
+        descriptionResultat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(descriptionResultat);
+
+        getContentPane().add(jPanel1);
+
+        jPanelBackground.setMaximumSize(new java.awt.Dimension(1080, 750));
+        jPanelBackground.setMinimumSize(new java.awt.Dimension(1080, 750));
+
+        jLabelBackground.setMaximumSize(new java.awt.Dimension(1080, 750));
+        jLabelBackground.setMinimumSize(new java.awt.Dimension(1080, 750));
+        jLabelBackground.setOpaque(true);
+        jLabelBackground.setPreferredSize(new java.awt.Dimension(1080, 750));
+
+        javax.swing.GroupLayout jPanelBackgroundLayout = new javax.swing.GroupLayout(jPanelBackground);
+        jPanelBackground.setLayout(jPanelBackgroundLayout);
+        jPanelBackgroundLayout.setHorizontalGroup(
+            jPanelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBackgroundLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanelBackgroundLayout.setVerticalGroup(
+            jPanelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBackgroundLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanelBackground);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -97,25 +151,12 @@ public class FinPartie extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
-    /*
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                FinPartie dialog = new FinPartie(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel descriptionResultat;
+    private javax.swing.JLabel jLabelBackground;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelBackground;
+    private javax.swing.JLabel nomGagnantOuEgalite;
     // End of variables declaration//GEN-END:variables
 }

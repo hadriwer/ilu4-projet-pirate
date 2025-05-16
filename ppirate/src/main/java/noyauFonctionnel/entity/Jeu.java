@@ -155,7 +155,7 @@ public class Jeu {
                 result.append(c.toString()).append(" ");  
             } 
         }
-        result.append("]\nZone d'action : ").append(this.zoneAction.isEmpty() ? "vide" : this.zoneAction.getLast());
+        result.append("]\nZone d'action : ").append(this.zoneAction.isEmpty() ? "vide" : this.zoneAction.get(zoneAction.size() - 1));
         return result.toString();
     }
 }
