@@ -77,6 +77,47 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
         repaint();
     }
     
+    public int getId() {
+        return idCarte;
+    }
+    public EnumCarte getType() {
+        return type;
+    }
+    public String getNom() {
+        return nom;
+    }
+    public String getDescription() {
+        return description;
+    }
+
+    public void reAddInteractivity() {
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+            @Override
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                formMouseReleased(evt);
+            }
+        });
+    }
+    
+    public void removeInteractivity() {
+        for (java.awt.event.MouseMotionListener mml : this.getMouseMotionListeners()) {
+            this.removeMouseMotionListener(mml);
+        }
+        for (java.awt.event.MouseListener ml : this.getMouseListeners()) {
+            this.removeMouseListener(ml);
+        }
+    }
+    
     @Override
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g.create();
@@ -220,22 +261,7 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
             dialog.updateCarteZonePopularite();
             dialog.handleRemoveCarteMainJoueur(idCarte);
             dialog.updateMainJoueur();
-            dialog.handleAppliquerEffetCarte(idCarte);
-            dialog.updateJaugeVie();
-            dialog.updatePopularite();
-                        
-            if (dialog.handleVerifierFinDePartie()) {
-                dialog.stopTimer();
-                dialog.lancerFinJeu();
-            } else {
-                dialog.handleJoueurPioche();
-                dialog.updateMainJoueur();
-                dialog.updateNbCartes();
-
-                dialog.handleChangerJoueur();
-                dialog.updatePlateau();
-                dialog.restartTimer();
-            }            
+            dialog.handleAppliquerEffetCarte(this);
         }
         else { //sinon on la remet dans la main du joueur
             ancienParent.add(this);  // ← remettre dans la main
@@ -244,6 +270,24 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
         }
     }//GEN-LAST:event_formMouseReleased
 
+    public void afterMouseReleased() {        
+        dialog.updateJaugeVie();
+        dialog.updatePopularite();
+
+        if (dialog.handleVerifierFinDePartie()) {
+            dialog.stopTimer();
+            dialog.lancerFinJeu();
+        } else {
+            dialog.handleJoueurPioche();
+            dialog.updateMainJoueur();
+            dialog.updateNbCartes();
+
+            dialog.handleChangerJoueur();
+            dialog.updatePlateau();
+            dialog.restartTimer();
+        }      
+    }
+    
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         if (!isEnabled()) return;
         

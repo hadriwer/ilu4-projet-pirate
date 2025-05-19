@@ -4,8 +4,16 @@
  */
 package vue.ui.dialog;
 
+import java.awt.Component;
+import java.awt.Point;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 import util.EnumCarte;
 import vue.ui.presentation.Plateau;
 import vue.ui.presentation.CartePanel;
@@ -63,10 +71,6 @@ public class MainDialog {
         adaptateurNoyau.removeCarteMainJoueur(idCarte);
     }
     
-    public void handleAppliquerEffetCarte(int idCarte) {
-        adaptateurNoyau.appliquerEffetCarte(idCarte);
-    }
-    
     public void handleJoueurPioche() {
         int idCarte= adaptateurNoyau.piocher();
         adaptateurNoyau.joueurPrendreCarte(idCarte);
@@ -80,6 +84,130 @@ public class MainDialog {
         JDialog fenetreFin = new FinPartie(vuePlateau, true, this);
         vuePlateau.setVisible(false);
         fenetreFin.setVisible(true);
+    }
+    
+    
+    private CartePanel findCartePanelById(JPanel panel, int idCarte) {
+        for (var comp : panel.getComponents()) {
+            if (comp instanceof CartePanel cartePanel && cartePanel.getId() == idCarte) {
+                return cartePanel;
+            }
+        }
+        return null;
+    }
+    
+    public CompletableFuture<Void> animateCartePanel(CartePanel carteJ1, CartePanel carteJ2, JPanel glassPane) {
+        CompletableFuture<Void> future = new CompletableFuture<>();
+
+        Timer t = new Timer(10, e -> {
+            if (carteJ1.getLocation().y <= 0) {
+                ((Timer) e.getSource()).stop();
+                glassPane.remove(carteJ1);
+                glassPane.remove(carteJ2);
+                future.complete(null); // signale que l'animation est finie
+            } else {
+                carteJ1.setLocation(carteJ1.getLocation().x, carteJ1.getLocation().y - 8);
+                carteJ2.setLocation(carteJ2.getLocation().x, carteJ2.getLocation().y + 8);
+                glassPane.revalidate();
+                glassPane.repaint();
+            }
+        });
+
+        t.start();
+        return future;
+    }
+    
+    public void setAllMainInteractivity(boolean enabled) {
+        for (Component c : vuePlateau.getMainJoueurPanel1().getComponents()) {
+            if (c instanceof CartePanel cartePanel) {
+                if (enabled) {
+                    cartePanel.reAddInteractivity();
+                } else {
+                    cartePanel.removeInteractivity();
+                }
+            }
+        }
+
+        for (Component c : vuePlateau.getMainJoueurPanel2().getComponents()) {
+            if (c instanceof CartePanel cartePanel) {
+                if (enabled) {
+                    cartePanel.reAddInteractivity();
+                } else {
+                    cartePanel.removeInteractivity();
+                }
+            }
+        }
+    }
+    
+    public void handleAppliquerEffetCarte(CartePanel carte) {
+        // check si c un echange :
+        EnumCarte type = carte.getType();//adaptateurNoyau.getType(idCarte);
+        Set<Integer> mainJ1original = new HashSet<>(adaptateurNoyau.getMainJoueur1());
+        Set<Integer> mainJ2original = new HashSet<>(adaptateurNoyau.getMainJoueur2());
+        // difference entre getMains ici
+        // dans tous les cas on applique ça
+        adaptateurNoyau.appliquerEffetCarte(carte.getId());
+        if (type == EnumCarte.ECHANGE) {
+            // remove all interactivy
+            setAllMainInteractivity(false);
+            
+            Set<Integer> mainJ1final = new HashSet<>(adaptateurNoyau.getMainJoueur1());
+            Set<Integer> mainJ2final = new HashSet<>(adaptateurNoyau.getMainJoueur2());
+            mainJ1original.removeAll(mainJ1final);
+            int idCarteJ1 = mainJ1original.iterator().next();
+            mainJ2original.removeAll(mainJ2final);
+            int idCarteJ2 = mainJ2original.iterator().next();
+            
+            JPanel glassPane = (JPanel) vuePlateau.getGlassPane();
+            
+            CartePanel carteEchangeJ1 = findCartePanelById(vuePlateau.getMainJoueurPanel1(), idCarteJ1);
+            JPanel ancienParentCarteEchangeJ1 = (JPanel) carteEchangeJ1.getParent();
+
+            ancienParentCarteEchangeJ1.revalidate();
+            ancienParentCarteEchangeJ1.repaint();
+            ancienParentCarteEchangeJ1.doLayout();
+            Point carteSurEcran = SwingUtilities.convertPoint(ancienParentCarteEchangeJ1,carteEchangeJ1.getLocation(), glassPane);
+            
+            //on enlève la carte de la main du joueur
+            ancienParentCarteEchangeJ1.remove(carteEchangeJ1);
+            ancienParentCarteEchangeJ1.revalidate();
+            ancienParentCarteEchangeJ1.repaint();
+            
+            
+            // carte joueur 2 échange : même code
+            CartePanel carteEchangeJ2 = findCartePanelById(vuePlateau.getMainJoueurPanel2(), idCarteJ2);
+            JPanel ancienParentCarteEchangeJ2 = (JPanel) carteEchangeJ2.getParent();
+
+            ancienParentCarteEchangeJ2.revalidate();
+            ancienParentCarteEchangeJ2.repaint();
+            ancienParentCarteEchangeJ2.doLayout();
+            Point carteSurEcran2 = SwingUtilities.convertPoint(ancienParentCarteEchangeJ2,carteEchangeJ2.getLocation(), glassPane);
+            
+            //on enlève la carte de la main du joueur
+            ancienParentCarteEchangeJ2.remove(carteEchangeJ1);
+            ancienParentCarteEchangeJ2.revalidate();
+            ancienParentCarteEchangeJ2.repaint();
+            
+            
+            glassPane.setLayout(null);
+            glassPane.setVisible(true);
+            glassPane.add(carteEchangeJ1);
+            glassPane.add(carteEchangeJ2);
+            carteEchangeJ1.setBounds(carteSurEcran.x, carteSurEcran.y, carteEchangeJ1.getPreferredSize().width, carteEchangeJ1.getPreferredSize().height);
+            carteEchangeJ2.setBounds(carteSurEcran2.x, carteSurEcran2.y, carteEchangeJ2.getPreferredSize().width, carteEchangeJ2.getPreferredSize().height);
+
+            glassPane.revalidate();
+            glassPane.repaint();
+            
+            animateCartePanel(carteEchangeJ1, carteEchangeJ2, glassPane).thenRun(() -> {
+                // Code ici exécuté APRÈS la fin de l’animation
+                setAllMainInteractivity(true);
+                carte.afterMouseReleased();
+            });
+            
+        } else {
+            carte.afterMouseReleased();
+        }
     }
     
     public CartePanel extractCardPanel(int idCarte, boolean enabled){
