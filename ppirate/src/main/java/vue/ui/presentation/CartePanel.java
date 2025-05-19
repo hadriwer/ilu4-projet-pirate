@@ -31,6 +31,7 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
     private final EnumCarte type;
     private final String nom;
     private final String description;
+    private Boolean entered=false;
     /**
      * Creates new form CartePanel
      * @param dialog
@@ -80,7 +81,12 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g.create();
         
-        g2d.setColor(Color.WHITE);
+        if (entered){
+            g2d.setColor(new Color(230,230,230)); //gris
+        }else{
+            g2d.setColor(Color.WHITE);
+        }
+        
         g2d.fillRoundRect(0,0,getWidth(),getHeight(),20,20);
         
         switch (type) {
@@ -113,17 +119,20 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
         setPreferredSize(new java.awt.Dimension(100, 120));
         setRequestFocusEnabled(false);
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-        	@Override
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
             }
         });
         addMouseListener(new java.awt.event.MouseAdapter() {
-        	@Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                formMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
             }
-        	@Override
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 formMouseReleased(evt);
             }
@@ -249,6 +258,16 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
         this.setLocation(x - this.getWidth()/2,y - this.getHeight()/2);
         glassPane.repaint();
     }//GEN-LAST:event_formMouseDragged
+
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        entered=true;
+        repaint();
+    }//GEN-LAST:event_formMouseEntered
+
+    private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
+        entered=false;
+        repaint();
+    }//GEN-LAST:event_formMouseExited
 
     
 
