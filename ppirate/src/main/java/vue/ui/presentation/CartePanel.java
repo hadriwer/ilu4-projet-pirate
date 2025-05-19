@@ -217,7 +217,6 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
         ancienParent.repaint();
 
         //et on l'ajoute au glassPane
-        
         glassPane.add(this);
         this.setLocation(cursorLocation.x - getWidth() / 2, cursorLocation.y - getHeight() / 2);
         glassPane.revalidate();
