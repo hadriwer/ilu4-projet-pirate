@@ -13,7 +13,7 @@ import java.awt.geom.RoundRectangle2D;
 
 /**
  *
- * @author vnm4618a
+ * @author Solène
  */
 public class DescriptionPanel extends javax.swing.JPanel {
     private final float opacite;

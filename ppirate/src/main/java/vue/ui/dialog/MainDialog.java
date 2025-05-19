@@ -15,7 +15,7 @@ import vue.ui.presentation.components.ViePanel;
 
 /**
  *
- * @author ember
+ * @author ember, Solène
  */
 public class MainDialog {
     private final AdaptateurDuNoyauFonctionnel adaptateurNoyau;

@@ -37,7 +37,6 @@ public class Pioche {
     
     public List<Carte> distribuer(int n) {
         return IntStream.range(0, n).mapToObj(t -> piocher()).toList(); 
-        // .collect(Collectors.toList()) en java < 16 (au lieu de .toList())
     }
    
     
