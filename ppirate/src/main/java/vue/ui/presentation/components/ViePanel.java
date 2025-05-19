@@ -35,29 +35,27 @@ public class ViePanel extends javax.swing.JPanel {
         repaint();
     }
     
-    private Path2D createHeartPath(float x, float y, float width, float height) {
-        float beX = x + width / 2;  // bottom endpoint X
-        float beY = y + height;     // bottom endpoint Y
+    private Path2D creerCheminCoeur(float x, float y, float largeur, float hauteur) {
+        float eiX = x + largeur / 2;  // point d'extrémité inférieur X
+        float eiY = y + hauteur;     // point d'extrémité inférieur Y
 
-        float c1DX = width  * 0.968f;  // delta X of control point 1
-        float c1DY = height * 0.672f;  // delta Y of control point 1
-        float c2DX = width  * 0.281f;  // delta X of control point 2
-        float c2DY = height * 1.295f;  // delta Y of control point 2
-        float teDY = height * 0.850f;  // delta Y of top endpoint
+        float c1DX = largeur  * 0.968f;  // delta X du point de contrôle 1
+        float c1DY = hauteur * 0.672f;  // delta Y du point de contrôle 1
+        float c2DX = largeur  * 0.281f;  // delta X du point de contrôle 2
+        float c2DY = hauteur * 1.295f;  // delta Y du point de contrôle 2
+        float esDY = hauteur * 0.850f;  // delta Y du point d'extrémité supérieur
 
-        Path2D.Float heartPath = new Path2D.Float();
-        heartPath.moveTo(beX, beY);       // bottom endpoint
-        // left side of heart
-        heartPath.curveTo(
-                beX - c1DX, beY - c1DY,   // control point 1
-                beX - c2DX, beY - c2DY,   // control point 2
-                beX       , beY - teDY);  // top endpoint
-        // right side of heart
-        heartPath.curveTo(
-                beX + c2DX, beY - c2DY,   // control point 2
-                beX + c1DX, beY - c1DY,   // control point 1
-                beX       , beY);         // bottom endpoint
-        return heartPath;
+        Path2D.Float cheminCoeur = new Path2D.Float();
+        cheminCoeur.moveTo(eiX, eiY);       // point d'extrémité inférieur
+        // côté gauche du coeur
+        cheminCoeur.curveTo(eiX - c1DX, eiY - c1DY,   // point de contrôle 1
+                eiX - c2DX, eiY - c2DY,   // point de contrôle 2
+                eiX       , eiY - esDY);  // point d'extrémité supérieur
+        // côté droit du coeur
+        cheminCoeur.curveTo(eiX + c2DX, eiY - c2DY,   // point de contrôle 2
+                eiX + c1DX, eiY - c1DY,   // point de contrôle 1
+                eiX       , eiY);         // point d'extrémité inférieur
+        return cheminCoeur;
     }
 
     
@@ -68,24 +66,24 @@ public class ViePanel extends javax.swing.JPanel {
 
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
         
-        int margin = 2;   // just some margin around the heart shape
-        int panelWidth=this.getWidth();
-        int panelHeight=this.getHeight();
-        int boxSize = Math.min(panelWidth, panelHeight) - margin * 2;
-        float boxX = (panelWidth - boxSize) / 2.0f;
-        float boxY = (panelHeight - boxSize) / 2.0f;
+        int margin = 2;   // marge autour du coeur
+        int panelLargeur=this.getWidth();
+        int panelHauteur=this.getHeight();
+        int tailleBoite = Math.min(panelLargeur, panelHauteur) - margin * 2;
+        float boiteX = (panelLargeur - tailleBoite) / 2.0f;
+        float boiteY = (panelHauteur - tailleBoite) / 2.0f;
         
-        Path2D heart=createHeartPath(boxX,boxY,boxSize,boxSize);
+        Path2D coeur=creerCheminCoeur(boiteX,boiteY,tailleBoite,tailleBoite);
         
         g2d.setStroke(new BasicStroke(2));
-        g2d.draw(heart);
+        g2d.draw(coeur);
         
-        if (pleine){
+        if (pleine){ // si le coeur est plein on le colore en rouge
             g2d.setColor(Color.red);
-            g2d.fill(heart);
-        }else{
+            g2d.fill(coeur);
+        }else{ //sinon en noir
             g2d.setColor(Color.black);
-            g2d.fill(heart);
+            g2d.fill(coeur);
         }
     }
 
