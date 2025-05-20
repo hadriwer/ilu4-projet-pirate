@@ -13,7 +13,7 @@ import java.awt.RenderingHints;
 
 /**
  *
- * @author wer
+ * @author Hadrien Lagier, David Marquet
  */
 public class Pioche extends javax.swing.JPanel {
 

@@ -23,7 +23,7 @@ import vue.ui.presentation.components.ViePanel;
 
 /**
  *
- * @author ember, Solène
+ * @author Enzo, Solène, Hadrien
  */
 public class MainDialog {
     private final AdaptateurDuNoyauFonctionnel adaptateurNoyau;

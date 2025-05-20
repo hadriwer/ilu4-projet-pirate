@@ -13,7 +13,7 @@ import vue.ui.dialog.MainDialog;
 
 /**
  *
- * @author wer
+ * @author Hadrien Lagier, Enzo Louis
  */
 public class FinPartie extends javax.swing.JDialog {
     private final javax.swing.JFrame parentF;
