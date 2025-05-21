@@ -312,7 +312,11 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
         repaint();
     }//GEN-LAST:event_formMouseExited
 
-    
+    @Override
+    public void timeOut(TimeOutEvent event) {
+        formMouseReleased(null); //la méthode n'utilisant jamais l'évènement
+        this.setEnabled(false); //la carte est posé on la désactive pour ne pas pouvoir la rejouer dans la seconde qui reste
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelEffet1;
@@ -320,9 +324,4 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
     private javax.swing.JLabel jLabelNom;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void timeOut(TimeOutEvent event) {
-        formMouseReleased(null); //la méthode n'utilisant jamais l'évènement
-        this.setEnabled(false); //la carte est posé on la désactive pour ne pas pouvoir la rejouer dans la seconde qui reste
-    }
 }

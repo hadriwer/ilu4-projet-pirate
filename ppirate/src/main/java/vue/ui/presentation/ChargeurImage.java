@@ -10,7 +10,6 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -33,12 +32,4 @@ public class ChargeurImage {
             return null;
         }
     }
-    
-    public static ImageIcon chargerIcon(String cheminVersLaRessource){
-        URL ressourceURL=chargeurClasse.getResource(cheminVersLaRessource);
-        return new ImageIcon(ressourceURL);
-    }
-    
-    
-    
 }
