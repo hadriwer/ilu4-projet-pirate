@@ -303,6 +303,7 @@ public class CartePanel extends javax.swing.JPanel implements TimeOutListener{
     }//GEN-LAST:event_formMouseDragged
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        if (!isEnabled()) return;
         entered=true;
         repaint();
     }//GEN-LAST:event_formMouseEntered
