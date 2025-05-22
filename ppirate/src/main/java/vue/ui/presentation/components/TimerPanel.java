@@ -74,7 +74,7 @@ public class TimerPanel extends javax.swing.JPanel {
         g2d.setColor(Color.BLACK);
         g2d.fill(new RoundRectangle2D.Float(0,0,getWidth(),getHeight(),BORDURE,BORDURE));
         
-        // fond rond timer
+        // fond timer cercle
         int padding = 100;
         int diametre = Math.min(getWidth(), getHeight()-padding);
         int x = (getWidth() - diametre)/2;
@@ -82,7 +82,7 @@ public class TimerPanel extends javax.swing.JPanel {
         g2d.setColor(Color.GRAY);
         g2d.fillOval(x, y, diametre, diametre);
         
-        //temps qui défile
+        // mise à jour du timer cercle
         g2d.setColor(Color.RED);
         int arcAngle =  (360/this.duree) * (this.duree - this.decompte);
         g2d.fillArc(x,y,diametre, diametre, 90, arcAngle);
@@ -103,14 +103,14 @@ public class TimerPanel extends javax.swing.JPanel {
             for (TimeOutListener listener : listenerList.getListeners(TimeOutListener.class)) {
                 listener.timeOut(event);
             }
-            jLabelTimer.setText("Fin du tour");
+            labelTimer.setText("Fin du tour");
             timer.stop();
             dialog.handleChangerJoueur();
             dialog.updatePlateau();
             restartTimer();
         }
         else{
-           jLabelTimer.setText(String.valueOf(this.decompte));
+           labelTimer.setText(String.valueOf(this.decompte));
         }
         repaint();
     }
@@ -138,7 +138,7 @@ public class TimerPanel extends javax.swing.JPanel {
     }
     
     public void setTour(String nomJoueur){
-        jLabelTour.setText("Tour de "+ nomJoueur);
+        labelTour.setText("Tour de "+ nomJoueur);
     }
 
     /**
@@ -150,38 +150,38 @@ public class TimerPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelNom = new javax.swing.JLabel();
-        jLabelTimer = new javax.swing.JLabel();
-        jLabelTour = new javax.swing.JLabel();
+        labelNom = new javax.swing.JLabel();
+        labelTimer = new javax.swing.JLabel();
+        labelTour = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(100, 200));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(100, 200));
         setLayout(new java.awt.GridLayout(3, 0));
 
-        jLabelNom.setFont(new java.awt.Font(FONTFAMILY, 1, 18)); // NOI18N
-        jLabelNom.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelNom.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNom.setText("TEMPS DU TOUR");
-        add(jLabelNom);
+        labelNom.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        labelNom.setForeground(new java.awt.Color(255, 255, 255));
+        labelNom.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelNom.setText("TEMPS DU TOUR");
+        add(labelNom);
 
-        jLabelTimer.setFont(new java.awt.Font(FONTFAMILY, 0, 18)); // NOI18N
-        jLabelTimer.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTimer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelTimer.setText(String.valueOf(TEMPS));
-        add(jLabelTimer);
+        labelTimer.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelTimer.setForeground(new java.awt.Color(255, 255, 255));
+        labelTimer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTimer.setText(String.valueOf(TEMPS));
+        add(labelTimer);
 
-        jLabelTour.setFont(new java.awt.Font(FONTFAMILY, 0, 18)); // NOI18N
-        jLabelTour.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTour.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelTour.setText("Tour de Joueur");
-        add(jLabelTour);
+        labelTour.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelTour.setForeground(new java.awt.Color(255, 255, 255));
+        labelTour.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTour.setText("Tour de Joueur");
+        add(labelTour);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabelNom;
-    private javax.swing.JLabel jLabelTimer;
-    private javax.swing.JLabel jLabelTour;
+    private javax.swing.JLabel labelNom;
+    private javax.swing.JLabel labelTimer;
+    private javax.swing.JLabel labelTour;
     // End of variables declaration//GEN-END:variables
 }
