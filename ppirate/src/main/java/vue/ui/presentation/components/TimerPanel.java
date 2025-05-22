@@ -99,10 +99,6 @@ public class TimerPanel extends javax.swing.JPanel {
             }
         }
         if (this.decompte < 0){
-            TimeOutEvent event = new TimeOutEvent(this); // si le décompte est fini on prévient la carte
-            for (TimeOutListener listener : listenerList.getListeners(TimeOutListener.class)) {
-                listener.timeOut(event);
-            }
             labelTimer.setText("Fin du tour");
             timer.stop();
             dialog.handleChangerJoueur();

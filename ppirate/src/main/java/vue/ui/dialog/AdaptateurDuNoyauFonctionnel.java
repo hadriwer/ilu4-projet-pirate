@@ -12,7 +12,7 @@ import util.EnumCarte;
 
 /**
  *
- * @author wer, Solène
+ * @author Hadrien, Enzo, Solène
  */
 public class AdaptateurDuNoyauFonctionnel {
     private final ControlJeu controlJeu;
